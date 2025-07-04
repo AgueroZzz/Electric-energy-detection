@@ -10,6 +10,12 @@
 *.dll
 *.dylib
 
+*.user
+*.user.*
+*.qmlc
+*.jom
+*.qm
+
 # Qt-es
 object_script.*.Release
 object_script.*.Debug
@@ -52,3 +58,8 @@ compile_commands.json
 *creator.user*
 
 *_qmlcache.qrc
+
+build*/
+*/build/*
+*.pro.user
+*.autosave
