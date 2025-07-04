@@ -63,3 +63,6 @@ build*/
 */build/*
 *.pro.user
 *.autosave
+
+energy/build
+energy/build/*
