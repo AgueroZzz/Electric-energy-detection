@@ -22,10 +22,18 @@ class MainWindow;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    enum index_tset{
+        test_null = 0,
+        test_sxjlcs = 1,
+        test_sxzlcs
+    };
+
+signals:
+    void sig_test_pro_choose(quint16 test_id);
 
 private slots:
     void slot_test_pro_choose(quint16 test_id);
@@ -36,7 +44,7 @@ private:
     void init_ui();
     void createMenuBar();
     void createStatusBar();
-    void createMainContent();
+    void clearCurrentTest(); // 清理当前测试控件
 
     // 菜单界面
     QMenu* fileMenu;
@@ -45,11 +53,20 @@ private:
     QMenu* helpMenu;
     QMenu* testMenu;
 
+    QWidget *centralWidget;
+
     // 主界面Widget
     QWidget* headerWidget;
 
+    QVBoxLayout *mainLayout;
+
     // 当前测试索引
     test* _test = nullptr;
+    quint16 _test_id;
+
+    // 测试控件工厂
+    using TestCreator = std::function<test*(quint16)>;
+    std::map<quint16, TestCreator> testCreators; // 映射 test_id 到创建函数
 };
 
 #endif // MAINWINDOW_H

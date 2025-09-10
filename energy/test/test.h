@@ -1,20 +1,27 @@
 #ifndef TEST_H
 #define TEST_H
 
-// 所有测试基类
+#include <QWidget>
+#include <QDebug>
+#include <QVBoxLayout>
+#include <QLabel>
 
-#include <QObject>
+namespace Ui {
+class test;
+}
 
-class test : public QObject
+class test : public QWidget
 {
     Q_OBJECT
-public:
-    explicit test(quint16 test_id, QObject *parent = nullptr);
 
-signals:
+public:
+    explicit test(quint16 test_id, QWidget *parent = nullptr);
+    ~test();
 
 private:
-    quint16 _current_test_id;
+    // Ui::test *ui;
+
+    quint16 _test_id;
 };
 
 #endif // TEST_H

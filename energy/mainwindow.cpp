@@ -1,13 +1,21 @@
 #include "mainwindow.h"
+#include "test/test_02.h"
 #include "ui_mainwindow.h"
+#include "test/test_choose.h"
+#include "test/test_01.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-    ui->setupUi(this);
+    // 测试项目工厂
+    testCreators = {
+        {0, [](quint16 id) { return new test_01(id); }},
+        {1, [](quint16 id) { return new test_02(id); }}
+    };
 
     init_ui();
+
 }
 
 MainWindow::~MainWindow()
@@ -17,20 +25,34 @@ MainWindow::~MainWindow()
 
 void MainWindow::slot_test_pro_choose(quint16 test_id)
 {
-    switch (test_id) {
-    case 1:
-        break;
-    default:
-        break;
+    qDebug() << "slot_test_pro_choose called with test_id:" << test_id;
+
+    // 如果 test_id 相同，忽略
+    if (test_id == _test_id) {
+        qDebug() << "Same test_id, no change needed";
+        return;
+    }
+
+    // 清理当前测试控件
+    clearCurrentTest();
+
+    // 创建新控件
+    auto it = testCreators.find(test_id);
+    if (it != testCreators.end()) {
+        _test = it->second(test_id);
+        _test->setMinimumSize(200, 200); // 确保控件有大小
+        setCentralWidget(_test);
+        qDebug() << "Test widget added for test_id:" << test_id;
+        _test_id = test_id;
+    } else {
+        qDebug() << "Invalid test_id:" << test_id;
     }
 }
 
 void MainWindow::init_ui()
 {
-    resize(1200, 800);
+    resize(1500, 900);
     createMenuBar();
-
-    createMainContent();
 }
 
 void MainWindow::createMenuBar()
@@ -47,12 +69,12 @@ void MainWindow::createMenuBar()
     testMenu = menuBar()->addMenu("项目(&P)");
     QAction* test_act_open = new QAction("打开测试", testMenu);
     QAction* test_act_close = new QAction("关闭测试", testMenu);
+    testMenu->addAction(test_act_open);
+    testMenu->addAction(test_act_close);
     QObject::connect(test_act_open, &QAction::triggered, this, [=](){
-        if(_test == nullptr){
-
-        }else{
-            _test->deleteLater();
-        }
+        test_choose* _choose = new test_choose();
+        QObject::connect(_choose, &test_choose::sig_test_pro_choose, this, &MainWindow::slot_test_pro_choose);
+        _choose->show();
     });
 
 
@@ -76,15 +98,13 @@ void MainWindow::createMenuBar()
     helpMenu->addAction("帮助文档(&H)");
 }
 
-void MainWindow::createMainContent()
+void MainWindow::clearCurrentTest()
 {
-    // 创建中央部件
-    QWidget *centralWidget = new QWidget(this);
-    setCentralWidget(centralWidget);
-
-    // 创建主垂直布局
-    QVBoxLayout *mainLayout = new QVBoxLayout(centralWidget);
-    mainLayout->setSpacing(8);
-    mainLayout->setContentsMargins(12, 12, 12, 12);
-
+    if (_test) {
+        _test->close();
+        _test->deleteLater();
+        _test = nullptr;
+        _test_id = -1;
+        qDebug() << "Current test widget cleared";
+    }
 }

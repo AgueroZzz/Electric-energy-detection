@@ -14,17 +14,22 @@ SOURCES += \
     mainwindow.cpp \
     serial/serial_port.cpp \
     test/test.cpp \
-    test/test_1.cpp
+    test/test_01.cpp \
+    test/test_02.cpp \
+    test/test_choose.cpp
 
 HEADERS += \
     mainwindow.h \
     serial/serial_port.h \
     test/test.h \
-    test/test_1.h
+    test/test_01.h \
+    test/test_02.h \
+    test/test_choose.h
 
 FORMS += \
     mainwindow.ui \
-    test/test_1.ui
+    test/test.ui \
+    test/test_choose.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
