@@ -11,7 +11,12 @@ public:
 private:
     void init_UI();
 
-    QWidget* headWidget;
+    void init_top_btn();
+
+    // 顶部/中部/底部Widget
+    QWidget* _top_widget;
+    QWidget* _middle_widget;
+    QWidget* _footer_widget;
 };
 
 #endif // TEST__1_H

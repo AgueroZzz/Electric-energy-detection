@@ -8,9 +8,11 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    setMinimumSize(1300,800);
+
     // 测试项目工厂
     testCreators = {
-        {0, [](quint16 id) { return new test_01(id); }},
+        {0, [](quint16 id) { return new test_01(id); }},        // 三相交流实验
         {1, [](quint16 id) { return new test_02(id); }}
     };
 

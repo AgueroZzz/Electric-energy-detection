@@ -2,9 +2,10 @@
 #define TEST_H
 
 #include <QWidget>
-#include <QDebug>
 #include <QVBoxLayout>
-#include <QLabel>
+#include <QHBoxLayout>
+#include <QPushButton>
+#include <QFrame>
 
 namespace Ui {
 class test;
@@ -19,8 +20,6 @@ public:
     ~test();
 
 private:
-    // Ui::test *ui;
-
     quint16 _test_id;
 };
 
