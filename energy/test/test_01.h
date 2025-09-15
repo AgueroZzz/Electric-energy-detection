@@ -12,6 +12,7 @@ private:
     void init_UI();
 
     void init_top_btn();
+    void init_middle_widget();
 
     // 顶部/中部/底部Widget
     QWidget* _top_widget;

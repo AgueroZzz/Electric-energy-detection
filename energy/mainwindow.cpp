@@ -18,6 +18,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     init_ui();
 
+    test_choose* _choose = new test_choose();
+    _choose->show();
 }
 
 MainWindow::~MainWindow()
