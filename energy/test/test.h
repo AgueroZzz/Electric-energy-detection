@@ -6,6 +6,8 @@
 #include <QHBoxLayout>
 #include <QPushButton>
 #include <QFrame>
+#include <QCheckBox>
+#include <QFile>
 
 namespace Ui {
 class test;
@@ -18,6 +20,8 @@ class test : public QWidget
 public:
     explicit test(quint16 test_id, QWidget *parent = nullptr);
     ~test();
+
+    void set_qss();
 
 private:
     quint16 _test_id;

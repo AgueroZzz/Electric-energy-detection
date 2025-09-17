@@ -9,3 +9,13 @@ test::test(quint16 test_id, QWidget *parent)
 test::~test()
 {
 }
+
+void test::set_qss()
+{
+    QFile file(":/qss/style.qss");
+    if(file.open(QFile::ReadOnly)){
+        QString styleSheet = QLatin1String(file.readAll());
+        setStyleSheet(styleSheet);
+        file.close();
+    }
+}

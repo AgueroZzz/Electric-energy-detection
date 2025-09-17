@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/qss">
-        <file>login.qss</file>
+        <file>style.qss</file>
     </qresource>
     <qresource prefix="/iocn">
         <file>icon/icon_btn_dkcs.svg</file>

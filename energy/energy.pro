@@ -13,6 +13,7 @@ SOURCES += \
     global/component.cpp \
     main.cpp \
     mainwindow.cpp \
+    serial/serial_opera.cpp \
     serial/serial_port.cpp \
     sql/sql.cpp \
     test/test.cpp \
@@ -23,6 +24,7 @@ SOURCES += \
 HEADERS += \
     global/component.h \
     mainwindow.h \
+    serial/serial_opera.h \
     serial/serial_port.h \
     sql/sql.h \
     test/test.h \
@@ -32,6 +34,7 @@ HEADERS += \
 
 FORMS += \
     mainwindow.ui \
+    serial/serial_opera.ui \
     test/test_choose.ui
 
 # Default rules for deployment.

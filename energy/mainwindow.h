@@ -14,6 +14,7 @@
 #include <QGroupBox>
 
 #include "test/test.h"
+#include "test/test_choose.h"
 
 namespace Ui {
 class MainWindow;
@@ -67,6 +68,9 @@ private:
     // 测试控件工厂
     using TestCreator = std::function<test*(quint16)>;
     std::map<quint16, TestCreator> testCreators; // 映射 test_id 到创建函数
+
+    // 功能选择界面
+    test_choose* _choose = nullptr;
 };
 
 

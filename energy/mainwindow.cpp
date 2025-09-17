@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "test/test_02.h"
 #include "ui_mainwindow.h"
-#include "test/test_choose.h"
 #include "test/test_01.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -9,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     setMinimumSize(1300,800);
+
+    showMaximized();
 
     // 测试项目工厂
     testCreators = {
@@ -18,8 +19,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     init_ui();
 
-    test_choose* _choose = new test_choose();
+    _choose = new test_choose();
+    QObject::connect(_choose, &test_choose::sig_test_pro_choose, this, &MainWindow::slot_test_pro_choose);
     _choose->show();
+    _choose->raise();
+    _choose->activateWindow();
 }
 
 MainWindow::~MainWindow()
@@ -76,9 +80,9 @@ void MainWindow::createMenuBar()
     testMenu->addAction(test_act_open);
     testMenu->addAction(test_act_close);
     QObject::connect(test_act_open, &QAction::triggered, this, [=](){
-        test_choose* _choose = new test_choose();
-        QObject::connect(_choose, &test_choose::sig_test_pro_choose, this, &MainWindow::slot_test_pro_choose);
         _choose->show();
+        _choose->raise();
+        _choose->activateWindow();
     });
 
 
