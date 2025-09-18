@@ -6,11 +6,19 @@ ui_charts::ui_charts(QWidget *parent) :
     ui(new Ui::ui_charts)
 {
     ui->setupUi(this);
+
+    initUI();
 }
 
 ui_charts::~ui_charts()
 {
     delete ui;
+}
+
+void ui_charts::initUI()
+{
+    ui->all_layout->setStretch(0, 8);
+    ui->all_layout->setStretch(1, 2);
 }
 
 void ui_charts::initRadar()
