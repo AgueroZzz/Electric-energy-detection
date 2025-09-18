@@ -2,6 +2,7 @@
 #define TEST__1_H
 
 #include "test.h"
+#include "ui/test01/ui_001.h"
 
 class test_01 : public test
 {
@@ -14,6 +15,7 @@ private:
     void init_top_btn();                        // 初始化顶部按钮
     void init_middle_widget();                  // 初始化中间widget
     void init_middle_left_down_widget();        // 初始化中间-左侧-底部widget
+    void init_radar_charts();                   // 初始化雷达图
 
     // 顶部/中部/底部Widget
     QWidget* _top_widget;
@@ -41,19 +43,8 @@ private:
     QPushButton* _btn_line_v;   // 线电压
     QPushButton* _btn_order_component; // 序分量
 
-    // 复选框部分
-    QCheckBox* _check_test_action;          // 测试类型-测接点动作
-    QCheckBox* _check_test_action_back;     // 测试类型-测动作和返回
+    ui_001* _ui_001;                        // 左侧窗口测试类型ui
 
-    QCheckBox* _check_open_and;             // 开入量逻辑类型-逻辑与
-    QCheckBox* _check_open_or;              // 开入量逻辑类型-逻辑或
-
-    QCheckBox* _check_mode_hand;            // 测试-手动
-    QCheckBox* _check_mode_auto;            // 测试-自动
-    QCheckBox* _check_mode_h_a;             // 测试-半自动
-
-    QCheckBox* _check_up;                   // 测试-递增
-    QCheckBox* _check_down;                 // 测试-递减
 };
 
 #endif // TEST__1_H

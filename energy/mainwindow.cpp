@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     showMaximized();
 
+
+
     // 测试项目工厂
     testCreators = {
         {0, [](quint16 id) { return new test_01(id); }},        // 三相交流实验
@@ -59,7 +61,8 @@ void MainWindow::slot_test_pro_choose(quint16 test_id)
 
 void MainWindow::init_ui()
 {
-    resize(1500, 900);
+    // resize(1500, 900);
+    setStyleSheet("QMainWindow { background-color: #EEF0ED; }");
     createMenuBar();
 }
 

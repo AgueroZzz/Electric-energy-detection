@@ -1,19 +1,17 @@
 QGroupBox {
-    border:  1px solid #000;
-    border-radius: 6px;
-    margin-top: 3ex;
-    /* padding-top: 30px; */
-    background-color: rgb(220, 219, 219);
-    font-size: 14px;
+    border: 1px solid #5A5A5A;   /* 低对比度灰色边框 */
+    border-radius: 3px;
+    margin-top: 18px;            /* 标题与内容的距离 */
+    background-color: #D0D0D0;   /* 稍深的灰色背景 */
+    color: #D0D0D0;              /* 浅灰文字 */
+    font: bold 11px "Microsoft YaHei";
 }
 
-/* QGroupBox::title {
+QGroupBox::title {
     subcontrol-origin: margin;
     subcontrol-position: top left;
-    padding: 2px 12px;
-    background-color: white;
-    color: #2c3e50;
-    font-weight: 600;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-} */
+    padding: 0 6px;              /* 标题内边距 */
+    color: #000000;              /* 字体浅灰 */
+    background-color: transparent; /* 保持和背景统一，低对比 */
+    font: bold 20px;
+}

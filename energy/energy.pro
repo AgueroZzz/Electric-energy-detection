@@ -1,5 +1,5 @@
 QT += core gui
-QT += serialport sql
+QT += serialport sql charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -19,7 +19,9 @@ SOURCES += \
     test/test.cpp \
     test/test_01.cpp \
     test/test_02.cpp \
-    test/test_choose.cpp
+    test/test_choose.cpp \
+    ui/test01/ui_001.cpp \
+    ui/test01/ui_charts.cpp
 
 HEADERS += \
     global/component.h \
@@ -30,12 +32,16 @@ HEADERS += \
     test/test.h \
     test/test_01.h \
     test/test_02.h \
-    test/test_choose.h
+    test/test_choose.h \
+    ui/test01/ui_001.h \
+    ui/test01/ui_charts.h
 
 FORMS += \
     mainwindow.ui \
     serial/serial_opera.ui \
-    test/test_choose.ui
+    test/test_choose.ui \
+    ui/test01/ui_001.ui \
+    ui/test01/ui_charts.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

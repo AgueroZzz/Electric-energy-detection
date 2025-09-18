@@ -133,48 +133,11 @@ void test_01::init_middle_widget()
     QVBoxLayout* _centre_left_layout = new QVBoxLayout();
     // 串口操作widget
     serial_opera* _opera = new serial_opera();
-    // 点击选择widget
-    QWidget* _check_widget = new QWidget();
-    QGridLayout* check_layout = new QGridLayout(_check_widget);
 
-    QGroupBox* _test_type_box = new QGroupBox("测试类型");
-    QGroupBox* _test_open_box = new QGroupBox("开入量逻辑类型");
-    QGroupBox* _test_box = new QGroupBox("测试选择");
-
-    _check_test_action = new QCheckBox("测接点动作");          // 测试类型-测接点动作
-    _check_test_action_back = new QCheckBox("测动作和返回");     // 测试类型-测动作和返回
-    _check_open_and = new QCheckBox("逻辑与");             // 开入量逻辑类型-逻辑与
-    _check_open_or = new QCheckBox("逻辑或");              // 开入量逻辑类型-逻辑或
-    _check_mode_hand = new QCheckBox("手动");            // 测试-手动
-    _check_mode_auto = new QCheckBox("自动");            // 测试-自动
-    _check_mode_h_a = new QCheckBox("半自动");             // 测试-半自动
-    _check_up = new QCheckBox("递增");                   // 测试-递增
-    _check_down = new QCheckBox("递减");                 // 测试-递减
-
-    QVBoxLayout* _test_type_layout = new QVBoxLayout();
-    _test_type_layout->addWidget(_check_test_action);
-    _test_type_layout->addWidget(_check_test_action_back);
-    _test_type_box->setLayout(_test_type_layout);
-
-    QVBoxLayout* _test_open_layout = new QVBoxLayout();
-    _test_open_layout->addWidget(_check_open_and);
-    _test_open_layout->addWidget(_check_open_or);
-    _test_open_box->setLayout(_test_open_layout);
-
-    QGridLayout* _test_layout = new QGridLayout();
-    _test_layout->addWidget(_check_mode_hand, 0, 0);
-    _test_layout->addWidget(_check_mode_auto, 0, 1);
-    _test_layout->addWidget(_check_mode_h_a, 0, 2);
-    _test_layout->addWidget(_check_up, 1, 0);
-    _test_layout->addWidget(_check_down, 1, 1);
-
-    // 设置每个选择group在选择widget中的排序
-    check_layout->addWidget(_test_type_box, 0, 0);
-    check_layout->addWidget(_test_open_box, 0, 1);
-    check_layout->addWidget(_test_box, 1, 0);
+    _ui_001 = new ui_001();
 
     _centre_left_layout->addWidget(_opera);
-    _centre_left_layout->addWidget(_check_widget);
+    _centre_left_layout->addWidget(_ui_001);
     _centre_left_widget->setLayout(_centre_left_layout);
 
     _h_layout->addWidget(_centre_left_widget);
@@ -190,4 +153,9 @@ void test_01::init_middle_widget()
 
 
     _middle_widget->setLayout(_h_layout);
+}
+
+void test_01::init_radar_charts()
+{
+
 }
