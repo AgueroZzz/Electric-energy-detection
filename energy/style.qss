@@ -15,3 +15,33 @@ QGroupBox::title {
     background-color: transparent; /* 保持和背景统一，低对比 */
     font: bold 20px;
 }
+
+QToolButton {
+    background-color: #f0f0f0;      /* 默认背景 */
+    border: 1px solid #d0d0d0;      /* 边框 */
+    border-radius: 8px;             /* 圆角 */
+    padding: 2px;                   /* 内边距 */
+    margin: 4px;                    /* 按钮之间的间距 */
+    font-size: 12px;                /* 文字大小 */
+    color: #333333;                 /* 文字颜色 */
+}
+
+/* 鼠标悬停效果 */
+QToolButton:hover {
+    background-color: #e6f0ff;      /* 微蓝背景 */
+    border: 1px solid #5a9bd5;      /* 高亮边框 */
+    color: #0055aa;                 /* 文字变蓝 */
+}
+
+/* 按下效果 */
+QToolButton:pressed {
+    background-color: #cce0ff;      /* 更深的蓝色背景 */
+    border: 1px solid #2a6fbb;
+}
+
+/* 禁用状态 */
+QToolButton:disabled {
+    background-color: #f8f8f8;
+    border: 1px solid #cccccc;
+    color: #aaaaaa;
+}
