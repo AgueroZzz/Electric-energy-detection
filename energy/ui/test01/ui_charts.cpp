@@ -12,6 +12,8 @@ ui_charts::ui_charts(QWidget *parent) :
     initRadar();
 
     initSeries();
+
+    initBtn();
 }
 
 ui_charts::~ui_charts()
@@ -69,6 +71,14 @@ void ui_charts::initUI()
     // 创建 chart
     m_chart = new QPolarChart();
     chartView->setChart(m_chart);
+
+    // ✅ 背景深灰
+    m_chart->setBackgroundBrush(QBrush(QColor(45, 45, 45)));
+    m_chart->setBackgroundPen(Qt::NoPen);
+
+    // ✅ 绘图区浅灰
+    m_chart->setPlotAreaBackgroundBrush(QBrush(QColor(70, 70, 70)));
+    m_chart->setPlotAreaBackgroundVisible(true);
 }
 
 void ui_charts::initRadar()
@@ -86,29 +96,31 @@ void ui_charts::initRadar()
     m_angularAxis->setTickCount(13);   // 每 30°
     m_chart->addAxis(m_angularAxis, QPolarChart::PolarOrientationAngular);
 
+    // ✅ 坐标轴文字颜色
+    m_radialAxis->setLabelsColor(Qt::white);
+    m_angularAxis->setLabelsColor(Qt::white);
+
+    // ✅ 网格线颜色
+    m_radialAxis->setGridLineColor(QColor(120, 120, 120));
+    m_angularAxis->setGridLineColor(QColor(120, 120, 120));
+
+    // 图例
     m_chart->legend()->setVisible(true);
     m_chart->legend()->setAlignment(Qt::AlignBottom);
+    m_chart->legend()->setLabelColor(Qt::white);
 }
 
 void ui_charts::initSeries()
 {
     // 三相电流
-    m_seriesIa = new QLineSeries();
-    m_seriesIb = new QLineSeries();
-    m_seriesIc = new QLineSeries();
-
-    m_seriesIa->setName("Ia");
-    m_seriesIb->setName("Ib");
-    m_seriesIc->setName("Ic");
+    m_seriesIa = new QLineSeries(); m_seriesIa->setName("Ia"); m_seriesIa->setColor(QColor(100,180,255));  // 浅蓝
+    m_seriesIb = new QLineSeries(); m_seriesIb->setName("Ib"); m_seriesIb->setColor(QColor(100,255,180));  // 浅绿
+    m_seriesIc = new QLineSeries(); m_seriesIc->setName("Ic"); m_seriesIc->setColor(QColor(180,100,255));  // 紫色
 
     // 三相电压
-    m_seriesUa = new QLineSeries();
-    m_seriesUb = new QLineSeries();
-    m_seriesUc = new QLineSeries();
-
-    m_seriesUa->setName("Ua");
-    m_seriesUb->setName("Ub");
-    m_seriesUc->setName("Uc");
+    m_seriesUa = new QLineSeries(); m_seriesUa->setName("Ua"); m_seriesUa->setColor(QColor(255,200,100));  // 橙黄
+    m_seriesUb = new QLineSeries(); m_seriesUb->setName("Ub"); m_seriesUb->setColor(QColor(255,120,120));  // 红
+    m_seriesUc = new QLineSeries(); m_seriesUc->setName("Uc"); m_seriesUc->setColor(QColor(120,255,255));  // 青
 
     // 加到 chart
     m_chart->addSeries(m_seriesIa);
@@ -132,5 +144,19 @@ void ui_charts::initSeries()
 
 void ui_charts::initBtn()
 {
+    _btn_dcsc = createToolButton(":/icon/icon/chart_dc.svg", "对称输出");
+    _btn_fdq= createToolButton(":/icon/icon/chart_fdq.svg", "放大器");
+    _btn_bg_x = createToolButton(":/icon/icon/chart_x.svg", "背景X");
+    _btn_bg_o = createToolButton(":/icon/icon/chart_o.svg", "背景圆");
+    _btn_xfl_1 = createToolButton(":/icon/icon/chart_xiangfl.svg", "相分量");
+    _btn_xdy = createToolButton(":/icon/icon/chart_xdy.svg", "线电压");
+    _btn_xfl_2 = createToolButton(":/icon/icon/chart_xufl.svg", "序分量");
 
+    ui->btn_widget_layout->addWidget(_btn_dcsc);
+    ui->btn_widget_layout->addWidget(_btn_fdq);
+    ui->btn_widget_layout->addWidget(_btn_bg_x);
+    ui->btn_widget_layout->addWidget(_btn_bg_o);
+    ui->btn_widget_layout->addWidget(_btn_xfl_1);
+    ui->btn_widget_layout->addWidget(_btn_xdy);
+    ui->btn_widget_layout->addWidget(_btn_xfl_2);
 }

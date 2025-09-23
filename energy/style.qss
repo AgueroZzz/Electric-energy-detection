@@ -45,3 +45,77 @@ QToolButton:disabled {
     border: 1px solid #cccccc;
     color: #aaaaaa;
 }
+
+QTableWidget {
+    background-color: #ffffff;
+    border: 1px solid #b3b3b3;
+    gridline-color: #d9d9d9;
+    font-family: "Arial", sans-serif;
+    font-size: 14px;
+    color: #2e2e2e;
+}
+
+QTableWidget::item {
+    padding: 8px;
+    border: none;
+}
+
+QTableWidget::item:hover {
+    background-color: #ececec;
+}
+
+QTableWidget::item:selected {
+    background-color: #d6e4f0;
+    color: #1a4971;
+}
+
+QHeaderView::section {
+    background-color: #cccccc;
+    border: 1px solid #b3b3b3;
+    padding: 6px;
+    font-weight: bold;
+    color: #2e2e2e;
+}
+
+QHeaderView::section:hover {
+    background-color: #b8b8b8;
+}
+
+QTableWidget QTableCornerButton::section {
+    background-color: #cccccc;
+    border: 1px solid #b3b3b3;
+}
+
+QScrollBar:vertical {
+    border: none;
+    background: #d9d9d9;
+    width: 12px;
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical {
+    background: #a6a6a6;
+    min-height: 20px;
+    border-radius: 6px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QScrollBar:horizontal {
+    border: none;
+    background: #d9d9d9;
+    height: 12px;
+    margin: 0px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #a6a6a6;
+    min-width: 20px;
+    border-radius: 6px;
+}
+
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    width: 0px;
+}

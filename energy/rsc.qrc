@@ -2,17 +2,25 @@
     <qresource prefix="/qss">
         <file>style.qss</file>
     </qresource>
-    <qresource prefix="/iocn">
-        <file>icon/icon_btn_dkcs.svg</file>
-        <file>icon/icon_btn_print.svg</file>
-        <file>icon/icon_btn_save.svg</file>
-        <file>icon/icon_btn_power.svg</file>
-        <file>icon/icon_btn_shortout.svg</file>
-        <file>icon/icon_btn_recover.svg</file>
-        <file>icon/icon_btn_rset.svg</file>
-        <file>icon/icon_btn_down.svg</file>
-        <file>icon/icon_btn_start.svg</file>
-        <file>icon/icon_btn_stop.svg</file>
-        <file>icon/icon_btn_up.svg</file>
+    <qresource prefix="/icon">
+        <file>icon/data_recover.svg</file>
+        <file>icon/down.svg</file>
+        <file>icon/open_file.svg</file>
+        <file>icon/power_calc.svg</file>
+        <file>icon/print_file.svg</file>
+        <file>icon/recover.svg</file>
+        <file>icon/save_file.svg</file>
+        <file>icon/short_calc.svg</file>
+        <file>icon/start.svg</file>
+        <file>icon/stop.svg</file>
+        <file>icon/up.svg</file>
+        <file>icon/chart_dc.svg</file>
+        <file>icon/chart_fdq.svg</file>
+        <file>icon/chart_o.svg</file>
+        <file>icon/chart_x.svg</file>
+        <file>icon/chart_xdy.svg</file>
+        <file>icon/chart_xiangfl.svg</file>
+        <file>icon/chart_xufl.svg</file>
+        <file>icon/app_icon.svg</file>
     </qresource>
 </RCC>

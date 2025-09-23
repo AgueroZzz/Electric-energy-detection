@@ -11,7 +11,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     showMaximized();
 
+    setWindowIcon(QIcon(":/icon/icon/app_icon.svg"));
 
+    setWindowTitle("电力测试软件");
 
     // 测试项目工厂
     testCreators = {

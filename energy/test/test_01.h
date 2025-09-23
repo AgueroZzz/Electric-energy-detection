@@ -15,8 +15,7 @@ private:
 
     void init_top_btn();                        // 初始化顶部按钮
     void init_middle_widget();                  // 初始化中间widget
-    void init_middle_left_down_widget();        // 初始化中间-左侧-底部widget
-    void init_qss();                            // 初始化QSS
+    void init_footer_widget();                  // 初始化底部widget
 
     // 顶部/中部/底部Widget
     QWidget* _top_widget;
@@ -35,6 +34,12 @@ private:
     QToolButton* _btn_start_test;       // 开始实验
     QToolButton* _btn_end_test;       // 停止实验
     QToolButton* _btn_reset_test;     // 数据复位
+
+    QTableWidget* _chart_table_widget;      // 右侧表格
+
+    QTableWidget* _chart_foot_left_widget;      // 底部左侧表格
+    QTableWidget* _chart_foot_middle_widget;      // 底部左侧表格
+    QTableWidget* _chart_foot_right_widget;      // 底部左侧表格
 
     ui_001* _ui_001;                        // 左侧窗口测试类型ui
     ui_charts* _ui_charts;                  // 中间图表窗口ui
