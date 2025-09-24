@@ -76,6 +76,7 @@ void test_01::init_top_btn()
 
     total_layout->addLayout(btn_layout);
     _top_widget->setLayout(total_layout);
+    _top_widget->setObjectName("topWidget");
 }
 
 void test_01::init_middle_widget()
@@ -84,8 +85,11 @@ void test_01::init_middle_widget()
     QHBoxLayout* _h_layout = new QHBoxLayout();     // 总体layout
 
     QWidget* _centre_left_widget = new QWidget();       // 左侧操作widget
+    _centre_left_widget->setObjectName("centre_left_widget");
     _ui_charts = new ui_charts();     // 中间图标widget
 
+    QWidget* _right_table_widget = new QWidget();
+    QVBoxLayout* _table_layout = new QVBoxLayout();
     _chart_table_widget = new QTableWidget();   // 右侧表格
     _chart_table_widget->setRowCount(8);
     _chart_table_widget->setColumnCount(8);
@@ -94,21 +98,37 @@ void test_01::init_middle_widget()
     QStringList headers;
     headers << "参量" << "有效值" << "变" << "步长" << "上限" << "相位" << "变" << "步长";
     _chart_table_widget->setHorizontalHeaderLabels(headers);
-
-    // 设置行标题
-    QStringList rows;
-    rows << "UA" << "UB" << "UC" << "IA" << "IB" << "IC" << "Ux" << "Hz";
-    _chart_table_widget->setVerticalHeaderLabels(rows);
-
     // 表格美化
     _chart_table_widget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    _chart_table_widget->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);   // 行等高
+    _chart_table_widget->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    _chart_table_widget->verticalHeader()->setVisible(false);
+
+    // 下方操作按钮
+    QWidget* _right_table_down_widget =new QWidget();
+    QHBoxLayout* _right_table_down_layout = new QHBoxLayout();
+    _Ux = new QComboBox();
+    QStringList ux_list;
+    ux_list << "任意方式" << "+3Uo" << "-3Uo" << "+√3 * 3Uo" << "-√3 * 3Uo" << "A相电压" << "B相电压" << "C相电压";
+    _Ux->addItems(ux_list);
+    _delay_time = new QTextEdit();
+    _right_table_down_layout->addWidget(new QLabel("Ux:"));
+    _right_table_down_layout->addWidget(_Ux);
+    _right_table_down_layout->addStretch();
+    _right_table_down_layout->addWidget(new QLabel("开关变位去抖时间"));
+    _right_table_down_layout->addWidget(_delay_time);
+    _delay_time->setMaximumHeight(25);
+    _right_table_down_layout->addWidget(new QLabel("ms"));
+    _right_table_down_widget->setLayout(_right_table_down_layout);
+
+    _table_layout->addWidget(_chart_table_widget, 9);
+    _table_layout->addWidget(_right_table_down_widget, 1);
+    _right_table_widget->setLayout(_table_layout);
+    init_table();
 
     // 左侧layout
     QVBoxLayout* _centre_left_layout = new QVBoxLayout();
     // 串口操作widget
     serial_opera* _opera = new serial_opera();
-
     _ui_001 = new ui_001();
 
     _centre_left_layout->addWidget(_opera);
@@ -117,7 +137,7 @@ void test_01::init_middle_widget()
 
     _h_layout->addWidget(_centre_left_widget);
     _h_layout->addWidget(_ui_charts);
-    _h_layout->addWidget(_chart_table_widget);
+    _h_layout->addWidget(_right_table_widget);
     _h_layout->setStretch(0, 20);   // top
     _h_layout->setStretch(1, 45);  // middle
     _h_layout->setStretch(2, 35);  // bottom
@@ -160,12 +180,6 @@ void test_01::init_footer_widget()
     // 设置行头
     QStringList middle_rows;
     middle_rows << "A" << "B" << "C" << "R" << "a" << "b" << "c";
-
-    // 使用自定义的复选框行头
-    auto *header = new CheckBoxHeader(Qt::Vertical, _chart_foot_middle_widget);
-    _chart_foot_middle_widget->setVerticalHeader(header);
-
-    // 设置行头标签
     _chart_foot_middle_widget->setVerticalHeaderLabels(middle_rows);
 
     _chart_foot_middle_widget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
@@ -183,9 +197,21 @@ void test_01::init_footer_widget()
     _chart_foot_right_widget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     _chart_foot_right_widget->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);   // 行等高
 
-    _foot_table_layout->addWidget(_chart_foot_left_widget, 0);
-    _foot_table_layout->addWidget(_chart_foot_middle_widget, 1);
-    _foot_table_layout->addWidget(_chart_foot_right_widget, 2);
+    _foot_table_layout->addWidget(_chart_foot_left_widget);
+    _foot_table_layout->addWidget(_chart_foot_middle_widget);
+    _foot_table_layout->addWidget(_chart_foot_right_widget);
 
     _footer_widget->setLayout(_foot_table_layout);
+}
+
+void test_01::init_table()
+{
+    QStringList rows;
+    rows << "UA" << "UB" << "UC" << "IA" << "IB" << "IC" << "Ux" << "Hz";
+    for(int row = 0; row < rows.size(); ++row){
+        QTableWidgetItem* paramItem = new QTableWidgetItem(rows[row]);
+        paramItem->setCheckState(Qt::Unchecked);
+        paramItem->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled);
+        _chart_table_widget->setItem(row, 0, paramItem);
+    }
 }

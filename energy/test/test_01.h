@@ -16,6 +16,7 @@ private:
     void init_top_btn();                        // 初始化顶部按钮
     void init_middle_widget();                  // 初始化中间widget
     void init_footer_widget();                  // 初始化底部widget
+    void init_table();                          // 初始化表格
 
     // 顶部/中部/底部Widget
     QWidget* _top_widget;
@@ -40,6 +41,9 @@ private:
     QTableWidget* _chart_foot_left_widget;      // 底部左侧表格
     QTableWidget* _chart_foot_middle_widget;      // 底部左侧表格
     QTableWidget* _chart_foot_right_widget;      // 底部左侧表格
+
+    QComboBox* _Ux;
+    QTextEdit* _delay_time;
 
     ui_001* _ui_001;                        // 左侧窗口测试类型ui
     ui_charts* _ui_charts;                  // 中间图表窗口ui

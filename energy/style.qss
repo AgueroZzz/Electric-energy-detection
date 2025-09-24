@@ -1,3 +1,15 @@
+QWidget#topWidget {
+    border: 1px solid #d0d0d0;
+}
+
+QWidget#centre_left_widget {
+    border: 1px solid #d0d0d0;
+}
+
+QWidget#chart_widget {
+    border: 1px solid #d0d0d0;
+}
+
 QGroupBox {
     border: 1px solid #5A5A5A;   /* 低对比度灰色边框 */
     border-radius: 3px;
