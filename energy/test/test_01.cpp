@@ -13,6 +13,8 @@ test_01::test_01(quint16 test_id, QWidget *parent)
     init_footer_widget();
 
     set_qss();
+
+    init_table();
 }
 
 void test_01::init_UI()
@@ -123,7 +125,6 @@ void test_01::init_middle_widget()
     _table_layout->addWidget(_chart_table_widget, 9);
     _table_layout->addWidget(_right_table_down_widget, 1);
     _right_table_widget->setLayout(_table_layout);
-    init_table();
 
     // 左侧layout
     QVBoxLayout* _centre_left_layout = new QVBoxLayout();
@@ -141,7 +142,6 @@ void test_01::init_middle_widget()
     _h_layout->setStretch(0, 20);   // top
     _h_layout->setStretch(1, 45);  // middle
     _h_layout->setStretch(2, 35);  // bottom
-
 
     _middle_widget->setLayout(_h_layout);
 
