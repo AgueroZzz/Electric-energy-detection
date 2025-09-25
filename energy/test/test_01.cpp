@@ -161,11 +161,9 @@ void test_01::init_footer_widget()
     QStringList left_headers;
     left_headers << "参量" << "幅值" << "相位";
     _chart_foot_left_widget->setHorizontalHeaderLabels(left_headers);
-    QStringList left_rows;
-    left_rows << "UAB" << "UBC" << "UCA" << "Uo" << "U+" << "U-" << "Io" << "I+" << "I-";
-    _chart_foot_left_widget->setVerticalHeaderLabels(left_rows);
     _chart_foot_left_widget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     _chart_foot_left_widget->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);   // 行等高
+    _chart_foot_left_widget->verticalHeader()->setVisible(false);
 
     // 中部
     // 设置行列数
@@ -177,13 +175,9 @@ void test_01::init_footer_widget()
     middle_headers << "开入量" << "动作时间" << "返回时间";
     _chart_foot_middle_widget->setHorizontalHeaderLabels(middle_headers);
 
-    // 设置行头
-    QStringList middle_rows;
-    middle_rows << "A" << "B" << "C" << "R" << "a" << "b" << "c";
-    _chart_foot_middle_widget->setVerticalHeaderLabels(middle_rows);
-
     _chart_foot_middle_widget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     _chart_foot_middle_widget->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);   // 行等高
+    _chart_foot_middle_widget->verticalHeader()->setVisible(false);
 
     // 右部
     _chart_foot_right_widget->setRowCount(7);
@@ -191,11 +185,9 @@ void test_01::init_footer_widget()
     QStringList right_headers;
     right_headers << "参量" << "动作" << "返回" << "返回系数";
     _chart_foot_right_widget->setHorizontalHeaderLabels(right_headers);
-    QStringList right_rows;
-    right_rows << "UA" << "UB" << "UC" << "IA" << "IB" << "IC" << "Ux";
-    _chart_foot_right_widget->setVerticalHeaderLabels(right_rows);
     _chart_foot_right_widget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     _chart_foot_right_widget->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);   // 行等高
+    _chart_foot_right_widget->verticalHeader()->setVisible(false);
 
     _foot_table_layout->addWidget(_chart_foot_left_widget);
     _foot_table_layout->addWidget(_chart_foot_middle_widget);
@@ -213,5 +205,31 @@ void test_01::init_table()
         paramItem->setCheckState(Qt::Unchecked);
         paramItem->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled);
         _chart_table_widget->setItem(row, 0, paramItem);
+    }
+
+    QStringList left_rows;
+    left_rows << "UAB" << "UBC" << "UCA" << "Uo" << "U+" << "U-" << "Io" << "I+" << "I-";
+    for(int row = 0; row < left_rows.size(); ++row){
+        QTableWidgetItem* paramItem = new QTableWidgetItem(left_rows[row]);
+        paramItem->setFlags(Qt::ItemIsEnabled);
+        _chart_foot_left_widget->setItem(row, 0, paramItem);
+    }
+
+    QStringList middle_rows;
+    middle_rows << "A" << "B" << "C" << "R" << "a" << "b" << "c";
+    for(int row = 0; row < middle_rows.size(); ++row){
+        QTableWidgetItem* paramItem = new QTableWidgetItem(middle_rows[row]);
+        paramItem->setCheckState(Qt::Unchecked);
+        paramItem->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled);
+        _chart_foot_middle_widget->setItem(row, 0, paramItem);
+    }
+
+    QStringList right_rows;
+    right_rows << "UA" << "UB" << "UC" << "IA" << "IB" << "IC" << "Ux";
+    for(int row = 0; row < right_rows.size(); ++row){
+        QTableWidgetItem* paramItem = new QTableWidgetItem(right_rows[row]);
+        paramItem->setCheckState(Qt::Unchecked);
+        paramItem->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled);
+        _chart_foot_right_widget->setItem(row, 0, paramItem);
     }
 }
