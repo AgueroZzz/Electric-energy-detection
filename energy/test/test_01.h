@@ -22,6 +22,7 @@ private:
     QWidget* _top_widget;
     QWidget* _middle_widget;
     QWidget* _footer_widget;
+    QWidget* _status_widget;
 
     // 顶部btn
     QToolButton* _btn_open_para;        // 打开参数按钮
@@ -47,6 +48,8 @@ private:
 
     ui_001* _ui_001;                        // 左侧窗口测试类型ui
     ui_charts* _ui_charts;                  // 中间图表窗口ui
+    // 默认单元格数据
+    QList<QList<QVariant>> default_data_list;
 };
 
 #endif // TEST__1_H

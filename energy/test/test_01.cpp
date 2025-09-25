@@ -15,6 +15,15 @@ test_01::test_01(quint16 test_id, QWidget *parent)
     set_qss();
 
     init_table();
+
+    default_data_list = {{10.000, true, 1.000, 120, 0.0, false, 1.0},
+                         {10.000, true, 1.000, 120, 240.0, false, 1.0},
+                         {10.000, true, 1.000, 120, 120.0, false, 1.0},
+                         {2.000, false, 1.000, 20, 0.0, false, 1.0},
+                         {3.000, false, 1.000, 30, 240.0, false, 1.0},
+                         {5.000, false, 1.000, 30, 120.0, false, 1.0},
+                         {10.000, false, 1.000, 120, 0.0, false, 1.0},
+                         {50.000, false, 0.000, 1000}};
 }
 
 void test_01::init_UI()
@@ -201,11 +210,24 @@ void test_01::init_table()
     QStringList rows;
     rows << "UA" << "UB" << "UC" << "IA" << "IB" << "IC" << "Ux" << "Hz";
     for(int row = 0; row < rows.size(); ++row){
-        QTableWidgetItem* paramItem = new QTableWidgetItem(rows[row]);
-        paramItem->setCheckState(Qt::Unchecked);
-        paramItem->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled);
-        _chart_table_widget->setItem(row, 0, paramItem);
+        QWidget* cell_widget = create_cell_widget(rows[row]);
+        QCheckBox* b_1 = new QCheckBox();
+        QCheckBox* b_2 = new QCheckBox();
+        QWidget *container_1 = new QWidget();
+        QHBoxLayout *layout_1 = new QHBoxLayout(container_1);
+        layout_1->addWidget(b_1);
+        layout_1->setAlignment(Qt::AlignCenter);
+        b_1->setCheckState(Qt::Unchecked);
+        QWidget *container_2 = new QWidget();
+        QHBoxLayout *layout_2 = new QHBoxLayout(container_2);
+        layout_2->addWidget(b_2);
+        layout_2->setAlignment(Qt::AlignCenter);
+        b_2->setCheckState(Qt::Unchecked);
+        _chart_table_widget->setCellWidget(row, 0, cell_widget);
+        _chart_table_widget->setCellWidget(row, 2, container_1);
+        _chart_table_widget->setCellWidget(row, 6, container_2);
     }
+
 
     QStringList left_rows;
     left_rows << "UAB" << "UBC" << "UCA" << "Uo" << "U+" << "U-" << "Io" << "I+" << "I-";

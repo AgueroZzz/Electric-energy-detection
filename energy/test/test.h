@@ -21,6 +21,7 @@
 #include <QPainter>
 #include <QComboBox>
 #include <QTextEdit>
+#include <QLabel>
 
 namespace Ui {
 class test;
@@ -45,6 +46,21 @@ public:
         btn->setIconSize(QSize(24, 24));
         btn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding); // 自动拉伸
         return btn;
+    }
+
+    // 工具函数：创建一个带复选框和文字的widget
+    inline QWidget* create_cell_widget(const QString& cell_name, QWidget* parent = nullptr){
+        QWidget* cell_widget = new QWidget(parent);
+        QHBoxLayout* cell_layout= new QHBoxLayout();
+        QCheckBox* check = new QCheckBox();
+        QLabel* label = new QLabel(cell_name);
+        cell_layout->addWidget(check);
+        cell_layout->addWidget(label);
+        cell_widget->setLayout(cell_layout);
+
+        cell_widget->setStyleSheet("QWidget{background-color : #cccccc}");
+
+        return cell_widget;
     }
 
 private:
