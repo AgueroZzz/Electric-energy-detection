@@ -11,7 +11,7 @@ public:
     test_01(quint16 test_id, QWidget *parent = nullptr);
 
 private:
-    void init_UI();
+    void init_UI() override;
 
     void init_top_btn();                        // 初始化顶部按钮
     void init_middle_widget();                  // 初始化中间widget

@@ -82,8 +82,8 @@ QTableWidget::item:selected {
 }
 
 QCheckBox::indicator {
-    width: 24px; 
-    height: 24px; 
+    width: 20px; 
+    height: 20px; 
 }
 
 QHeaderView::section {
@@ -92,6 +92,10 @@ QHeaderView::section {
     padding: 6px;
     font-weight: bold;
     color: #2e2e2e;
+}
+
+QHeaderView{
+    font-color: #1296db;
 }
 
 QHeaderView::section:hover {

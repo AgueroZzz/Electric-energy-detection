@@ -44,7 +44,7 @@ void test_01::init_UI()
     layout->setStretch(2, 30);  // bottom
 
     // 设置组件之间的距离
-    layout->setSpacing(2);
+    layout->setSpacing(1);
     layout->setContentsMargins(5, 5, 5, 5);
 
     setLayout(layout);
