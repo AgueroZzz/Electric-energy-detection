@@ -37,9 +37,6 @@ public:
 
     void set_qss();
 
-    // 初始化UI界面，必须在子类中实现
-    virtual void init_UI() = 0;
-
     // 工具函数：创建一个带图标和文字的按钮
     inline QToolButton* createToolButton(const QString &iconPath, const QString &text, QWidget *parent = nullptr) {
         QToolButton* btn = new QToolButton(parent);

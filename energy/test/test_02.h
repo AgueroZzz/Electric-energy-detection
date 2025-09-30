@@ -9,7 +9,11 @@ public:
     test_02(quint16 test_id, QWidget *parent = nullptr);
 
 private:
-    void init_UI() override;
+    void init_UI();
+
+    void init_top_widget();                     // 初始化顶部按钮
+    void init_middle_widget();                  // 初始化中间widget
+    void init_footer_widget();                  // 初始化底部widget
 
     // 顶部/中部/底部Widget
     QWidget* _top_widget;
@@ -26,7 +30,7 @@ private:
     QToolButton* _btn_start_test;       // 开始实验
     QToolButton* _btn_end_test;       // 停止实验
     QToolButton* _btn_reset_test;     // 数据复位
-    QToolButton* _btn_;
+    QToolButton* _btn_fdq;              // 放大器
 };
 
 #endif // TEST__2_H

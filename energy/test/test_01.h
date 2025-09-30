@@ -13,7 +13,7 @@ public:
 private:
     void init_UI() override;
 
-    void init_top_btn();                        // 初始化顶部按钮
+    void init_top_widget();                     // 初始化顶部按钮
     void init_middle_widget();                  // 初始化中间widget
     void init_footer_widget();                  // 初始化底部widget
     void init_table();                          // 初始化表格

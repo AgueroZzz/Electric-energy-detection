@@ -6,7 +6,7 @@ test_01::test_01(quint16 test_id, QWidget *parent)
 {
     init_UI();
 
-    init_top_btn();
+    init_top_widget();
 
     init_middle_widget();
 
@@ -50,7 +50,7 @@ void test_01::init_UI()
     setLayout(layout);
 }
 
-void test_01::init_top_btn()
+void test_01::init_top_widget()
 {
     // 竖排排列
     QVBoxLayout* total_layout = new QVBoxLayout();
