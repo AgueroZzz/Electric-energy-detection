@@ -21,7 +21,8 @@ SOURCES += \
     test/test_02.cpp \
     test/test_choose.cpp \
     ui/test01/ui_001.cpp \
-    ui/test01/ui_charts.cpp
+    ui/test01/ui_charts.cpp \
+    ui/test02/ui_002.cpp
 
 HEADERS += \
     global/component.h \
@@ -34,14 +35,18 @@ HEADERS += \
     test/test_02.h \
     test/test_choose.h \
     ui/test01/ui_001.h \
-    ui/test01/ui_charts.h
+    ui/test01/ui_001.h \
+    ui/test01/ui_charts.h \
+    ui/test01/ui_charts.h \
+    ui/test02/ui_002.h
 
 FORMS += \
     mainwindow.ui \
     serial/serial_opera.ui \
     test/test_choose.ui \
     ui/test01/ui_001.ui \
-    ui/test01/ui_charts.ui
+    ui/test01/ui_charts.ui \
+    ui/test02/ui_002.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
