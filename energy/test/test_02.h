@@ -2,6 +2,7 @@
 #define TEST__2_H
 
 #include "test.h"
+#include "ui/test02/ui_002.h"
 
 class test_02 : public test
 {
@@ -31,6 +32,8 @@ private:
     QToolButton* _btn_end_test;       // 停止实验
     QToolButton* _btn_reset_test;     // 数据复位
     QToolButton* _btn_fdq;              // 放大器
+
+    ui_002* _ui_002;
 };
 
 #endif // TEST__2_H
