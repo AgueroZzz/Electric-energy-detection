@@ -92,8 +92,6 @@ void test_02::init_middle_widget()
     _centre_left_widget->setLayout(_centre_left_layout);
 
     _h_layout->addWidget(_centre_left_widget);
-    // _h_layout->addWidget(_ui_charts);
-    // _h_layout->addWidget(_right_table_widget);
     _h_layout->setStretch(0, 20);   // top
     _h_layout->setStretch(1, 45);  // middle
     _h_layout->setStretch(2, 35);  // bottom

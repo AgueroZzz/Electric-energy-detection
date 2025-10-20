@@ -13,20 +13,16 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="all_layout">
    <item>
     <widget class="QWidget" name="widget" native="true">
      <layout class="QVBoxLayout" name="verticalLayout_6">
       <item>
-       <widget class="QGroupBox" name="groupBox_3">
+       <widget class="QGroupBox" name="gp_table">
         <property name="title">
          <string>实验参数</string>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_11">
-         <item>
-          <widget class="QTableWidget" name="tableWidget"/>
-         </item>
-        </layout>
+        <layout class="QVBoxLayout" name="verticalLayout_11"/>
        </widget>
       </item>
      </layout>
@@ -36,7 +32,7 @@
     <widget class="QWidget" name="widget_2" native="true">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QWidget" name="widget_3" native="true"/>
+       <widget class="QWidget" name="serial_widget" native="true"/>
       </item>
       <item>
        <widget class="QWidget" name="widget_4" native="true">
@@ -46,32 +42,32 @@
            <item>
             <widget class="QLabel" name="label_3">
              <property name="text">
-              <string>TextLabel</string>
+              <string>开关确认时间(ms):</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit"/>
+            <widget class="QLineEdit" name="ld_open_check_time"/>
            </item>
           </layout>
          </item>
          <item>
-          <widget class="QGroupBox" name="groupBox_4">
+          <widget class="QGroupBox" name="gb_goal">
            <property name="title">
-            <string>GroupBox</string>
+            <string>实验目的</string>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_9">
             <item>
-             <widget class="QCheckBox" name="checkBox_4">
+             <widget class="QCheckBox" name="cb_goal_action">
               <property name="text">
-               <string>CheckBox</string>
+               <string>测接点动作</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCheckBox" name="checkBox_5">
+             <widget class="QCheckBox" name="cb_goal_back">
               <property name="text">
-               <string>CheckBox</string>
+               <string>测动作和返回</string>
               </property>
              </widget>
             </item>
@@ -85,29 +81,29 @@
        <widget class="QWidget" name="widget_5" native="true">
         <layout class="QVBoxLayout" name="verticalLayout_7">
          <item>
-          <widget class="QGroupBox" name="groupBox_5">
+          <widget class="QGroupBox" name="gb_method">
            <property name="title">
-            <string>GroupBox</string>
+            <string>实验方法</string>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_8">
             <item>
-             <widget class="QCheckBox" name="checkBox">
+             <widget class="QCheckBox" name="cb_method_manual">
               <property name="text">
-               <string>CheckBox</string>
+               <string>手动</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCheckBox" name="checkBox_2">
+             <widget class="QCheckBox" name="cb_method_auto_up">
               <property name="text">
-               <string>CheckBox</string>
+               <string>自动加</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCheckBox" name="checkBox_3">
+             <widget class="QCheckBox" name="cb_method_auto_dowm">
               <property name="text">
-               <string>CheckBox</string>
+               <string>自动减</string>
               </property>
              </widget>
             </item>
@@ -116,12 +112,12 @@
               <item>
                <widget class="QLabel" name="label_4">
                 <property name="text">
-                 <string>TextLabel</string>
+                 <string>间隔时间(ms):</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEdit_2"/>
+               <widget class="QLineEdit" name="ld_interval_time"/>
               </item>
              </layout>
             </item>

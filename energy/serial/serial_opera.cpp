@@ -86,7 +86,7 @@ void serial_opera::refresh_port_info()
     _port_combo->clear();
     const auto ports = QSerialPortInfo::availablePorts();
     for(const QSerialPortInfo &info : ports){
-        qDebug() << "availavle port is" << info.portName();
+        // qDebug() << "availavle port is" << info.portName();
         _port_combo->addItem(info.portName());
     }
 }
