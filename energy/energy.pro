@@ -11,6 +11,7 @@ CONFIG += c++17
 
 SOURCES += \
     global/component.cpp \
+    global/tools.cpp \
     main.cpp \
     mainwindow.cpp \
     serial/serial_opera.cpp \
@@ -27,6 +28,7 @@ SOURCES += \
 
 HEADERS += \
     global/component.h \
+    global/tools.h \
     mainwindow.h \
     serial/serial_opera.h \
     serial/serial_port.h \

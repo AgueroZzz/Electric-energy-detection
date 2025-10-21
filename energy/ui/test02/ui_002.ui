@@ -22,7 +22,6 @@
         <property name="title">
          <string>实验参数</string>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_11"/>
        </widget>
       </item>
      </layout>

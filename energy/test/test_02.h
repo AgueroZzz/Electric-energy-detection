@@ -16,6 +16,7 @@ private:
     void init_middle_widget();                  // 初始化中间widget
     void init_footer_widget();                  // 初始化底部widget
     void init_table_footer();                   // 初始化底部表格
+    void init_table();                          // 初始化表格
 
     // 顶部/中部/底部Widget
     QWidget* _top_widget;

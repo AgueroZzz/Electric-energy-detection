@@ -6,9 +6,9 @@ ui_001::ui_001(QWidget *parent)
     , ui(new Ui::ui_001)
 {
     ui->setupUi(this);
-    ui->all_layout->setStretch(0, 2);
-    ui->all_layout->setStretch(1, 2);
-    ui->all_layout->setStretch(3, 6);
+    ui->all_layout->setStretch(0, 20);
+    ui->all_layout->setStretch(1, 20);
+    ui->all_layout->setStretch(3, 60);
 }
 
 ui_001::~ui_001()

@@ -34,14 +34,9 @@ void test_01::init_UI()
 
     // 垂直布局
     QVBoxLayout *layout = new QVBoxLayout();
-    layout->addWidget(_top_widget);
-    layout->addWidget(_middle_widget);
-    layout->addWidget(_footer_widget);
-
-    // 设置比例（5 : 65 : 30）
-    layout->setStretch(0, 5);   // top
-    layout->setStretch(1, 65);  // middle.
-    layout->setStretch(2, 30);  // bottom
+    layout->addWidget(_top_widget, 5);
+    layout->addWidget(_middle_widget, 50);
+    layout->addWidget(_footer_widget, 45);
 
     // 设置组件之间的距离
     layout->setSpacing(1);
@@ -203,6 +198,7 @@ void test_01::init_footer_widget()
     _foot_table_layout->addWidget(_chart_foot_right_widget);
 
     _footer_widget->setLayout(_foot_table_layout);
+    _footer_widget->setMinimumHeight(250);
 }
 
 void test_01::init_table()

@@ -10,6 +10,10 @@ test_02::test_02(quint16 test_id, QWidget *parent)
     init_middle_widget();
 
     init_footer_widget();
+
+    init_table();
+
+    set_qss();
 }
 
 void test_02::init_UI()
@@ -20,14 +24,9 @@ void test_02::init_UI()
 
     // 垂直布局
     QVBoxLayout *layout = new QVBoxLayout();
-    layout->addWidget(_top_widget);
-    layout->addWidget(_middle_widget);
-    layout->addWidget(_footer_widget);
-
-    // 设置比例（5 : 65 : 30）
-    layout->setStretch(0, 5);   // top
-    layout->setStretch(1, 65);  // middle.
-    layout->setStretch(2, 30);  // bottom
+    layout->addWidget(_top_widget, 5);
+    layout->addWidget(_middle_widget, 50);
+    layout->addWidget(_footer_widget, 45);
 
     // 设置组件之间的距离
     layout->setSpacing(1);
@@ -85,13 +84,21 @@ void test_02::init_middle_widget()
 
     // 左侧操作选择widget
     _ui_002 = new ui_002();
-    _centre_left_layout->addWidget(_ui_002);
 
     // 左侧图表Widget
+    QWidget* chart_widget = new QWidget();
+    QVBoxLayout* c_layout = new QVBoxLayout();
+    QLabel* c_label = new QLabel();
+    c_label->setStyleSheet("background-color: blue;");
+    c_layout->addWidget(c_label);
+    chart_widget->setLayout(c_layout);
 
+    _centre_left_layout->addWidget(_ui_002);
     _centre_left_widget->setLayout(_centre_left_layout);
+    // _centre_left_widget->setMinimumWidth(900);
 
-    _h_layout->addWidget(_centre_left_widget);
+    _h_layout->addWidget(_centre_left_widget, 3);
+    _h_layout->addWidget(chart_widget, 2);
     _h_layout->setStretch(0, 20);   // top
     _h_layout->setStretch(1, 45);  // middle
     _h_layout->setStretch(2, 35);  // bottom
@@ -103,5 +110,19 @@ void test_02::init_middle_widget()
 
 void test_02::init_footer_widget()
 {
+    QHBoxLayout* _foot_table_layout = new QHBoxLayout();
 
+    QLabel* label = new QLabel();
+    label->setStyleSheet("background-color: blue;");
+
+    _foot_table_layout->addWidget(label);
+
+    _footer_widget->setLayout(_foot_table_layout);
+    _footer_widget->setMinimumHeight(250);
+}
+
+void test_02::init_table()
+{
+    // 初始化中间表格内
+    _ui_002->init_table();
 }
