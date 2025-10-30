@@ -6,22 +6,389 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>903</width>
-    <height>546</height>
+    <width>752</width>
+    <height>609</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="all_layout">
+  <layout class="QVBoxLayout" name="verticalLayout_2" stretch="2,1">
+   <property name="sizeConstraint">
+    <enum>QLayout::SetNoConstraint</enum>
+   </property>
+   <property name="leftMargin">
+    <number>5</number>
+   </property>
+   <property name="topMargin">
+    <number>5</number>
+   </property>
+   <property name="rightMargin">
+    <number>5</number>
+   </property>
+   <property name="bottomMargin">
+    <number>5</number>
+   </property>
    <item>
     <widget class="QWidget" name="widget" native="true">
      <layout class="QVBoxLayout" name="verticalLayout_6">
+      <property name="spacing">
+       <number>3</number>
+      </property>
       <item>
        <widget class="QGroupBox" name="gp_table">
         <property name="title">
          <string>实验参数</string>
         </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QTableWidget" name="test_table">
+           <property name="gridStyle">
+            <enum>Qt::SolidLine</enum>
+           </property>
+           <property name="rowCount">
+            <number>6</number>
+           </property>
+           <attribute name="horizontalHeaderStretchLastSection">
+            <bool>false</bool>
+           </attribute>
+           <attribute name="verticalHeaderVisible">
+            <bool>false</bool>
+           </attribute>
+           <attribute name="verticalHeaderCascadingSectionResizes">
+            <bool>false</bool>
+           </attribute>
+           <attribute name="verticalHeaderHighlightSections">
+            <bool>true</bool>
+           </attribute>
+           <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+            <bool>false</bool>
+           </attribute>
+           <attribute name="verticalHeaderStretchLastSection">
+            <bool>false</bool>
+           </attribute>
+           <row/>
+           <row/>
+           <row/>
+           <row/>
+           <row/>
+           <row/>
+           <column>
+            <property name="text">
+             <string>参量</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>有效值</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>变</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>步长</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>上限</string>
+            </property>
+           </column>
+           <item row="0" column="0">
+            <property name="text">
+             <string>UA</string>
+            </property>
+            <property name="textAlignment">
+             <set>AlignCenter</set>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled</set>
+            </property>
+           </item>
+           <item row="0" column="1">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+           </item>
+           <item row="0" column="2">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="textAlignment">
+             <set>AlignCenter</set>
+            </property>
+            <property name="checkState">
+             <enum>Checked</enum>
+            </property>
+           </item>
+           <item row="0" column="3">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+            <property name="background">
+             <brush brushstyle="Dense3Pattern">
+              <color alpha="255">
+               <red>240</red>
+               <green>230</green>
+               <blue>140</blue>
+              </color>
+             </brush>
+            </property>
+            <property name="foreground">
+             <brush brushstyle="Dense6Pattern">
+              <color alpha="255">
+               <red>0</red>
+               <green>0</green>
+               <blue>0</blue>
+              </color>
+             </brush>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled</set>
+            </property>
+           </item>
+           <item row="0" column="4">
+            <property name="text">
+             <string>160</string>
+            </property>
+           </item>
+           <item row="1" column="0">
+            <property name="text">
+             <string>UB</string>
+            </property>
+            <property name="textAlignment">
+             <set>AlignCenter</set>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled</set>
+            </property>
+           </item>
+           <item row="1" column="1">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+           </item>
+           <item row="1" column="2">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="checkState">
+             <enum>Checked</enum>
+            </property>
+           </item>
+           <item row="1" column="3">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+            <property name="background">
+             <brush brushstyle="Dense3Pattern">
+              <color alpha="255">
+               <red>240</red>
+               <green>230</green>
+               <blue>140</blue>
+              </color>
+             </brush>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled</set>
+            </property>
+           </item>
+           <item row="1" column="4">
+            <property name="text">
+             <string>160</string>
+            </property>
+           </item>
+           <item row="2" column="0">
+            <property name="text">
+             <string>UC</string>
+            </property>
+            <property name="textAlignment">
+             <set>AlignCenter</set>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled</set>
+            </property>
+           </item>
+           <item row="2" column="1">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+           </item>
+           <item row="2" column="2">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="checkState">
+             <enum>Checked</enum>
+            </property>
+           </item>
+           <item row="2" column="3">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+            <property name="background">
+             <brush brushstyle="Dense3Pattern">
+              <color alpha="255">
+               <red>240</red>
+               <green>230</green>
+               <blue>140</blue>
+              </color>
+             </brush>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled</set>
+            </property>
+           </item>
+           <item row="2" column="4">
+            <property name="text">
+             <string>160</string>
+            </property>
+           </item>
+           <item row="3" column="0">
+            <property name="text">
+             <string>IA</string>
+            </property>
+            <property name="textAlignment">
+             <set>AlignCenter</set>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled</set>
+            </property>
+           </item>
+           <item row="3" column="1">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+           </item>
+           <item row="3" column="2">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="checkState">
+             <enum>Checked</enum>
+            </property>
+           </item>
+           <item row="3" column="3">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+            <property name="background">
+             <brush brushstyle="Dense3Pattern">
+              <color alpha="255">
+               <red>240</red>
+               <green>230</green>
+               <blue>140</blue>
+              </color>
+             </brush>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled</set>
+            </property>
+           </item>
+           <item row="3" column="4">
+            <property name="text">
+             <string>10</string>
+            </property>
+           </item>
+           <item row="4" column="0">
+            <property name="text">
+             <string>IB</string>
+            </property>
+            <property name="textAlignment">
+             <set>AlignCenter</set>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled</set>
+            </property>
+           </item>
+           <item row="4" column="1">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+           </item>
+           <item row="4" column="2">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="checkState">
+             <enum>Checked</enum>
+            </property>
+           </item>
+           <item row="4" column="3">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+            <property name="background">
+             <brush brushstyle="Dense3Pattern">
+              <color alpha="255">
+               <red>240</red>
+               <green>230</green>
+               <blue>140</blue>
+              </color>
+             </brush>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled</set>
+            </property>
+           </item>
+           <item row="4" column="4">
+            <property name="text">
+             <string>10</string>
+            </property>
+           </item>
+           <item row="5" column="0">
+            <property name="text">
+             <string>IC</string>
+            </property>
+            <property name="textAlignment">
+             <set>AlignCenter</set>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled</set>
+            </property>
+           </item>
+           <item row="5" column="1">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+           </item>
+           <item row="5" column="2">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="checkState">
+             <enum>Checked</enum>
+            </property>
+           </item>
+           <item row="5" column="3">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+            <property name="background">
+             <brush brushstyle="Dense3Pattern">
+              <color alpha="255">
+               <red>240</red>
+               <green>230</green>
+               <blue>140</blue>
+              </color>
+             </brush>
+            </property>
+            <property name="flags">
+             <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled</set>
+            </property>
+           </item>
+           <item row="5" column="4">
+            <property name="text">
+             <string>10</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
      </layout>
@@ -29,9 +396,143 @@
    </item>
    <item>
     <widget class="QWidget" name="widget_2" native="true">
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="3,2,2">
       <item>
-       <widget class="QWidget" name="serial_widget" native="true"/>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="title">
+         <string>串口操作</string>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="2,1">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,2">
+             <item>
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>串口名称</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="cb_serial_name"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="1,2">
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="text">
+                <string>波特率</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="cb_baudrate"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="1,2">
+             <item>
+              <widget class="QLabel" name="label_5">
+               <property name="text">
+                <string>流控制</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="cb_flow"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="1,2">
+             <item>
+              <widget class="QLabel" name="label_6">
+               <property name="text">
+                <string>校验位</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="cb_parity"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="1,2">
+             <item>
+              <widget class="QLabel" name="label_7">
+               <property name="text">
+                <string>停止位</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="cb_stop"/>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1">
+           <item>
+            <widget class="QPushButton" name="btn_open_serial">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>刷新串口</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_stop_serial">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>打开串口</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
       </item>
       <item>
        <widget class="QWidget" name="widget_4" native="true">
@@ -40,6 +541,11 @@
           <layout class="QHBoxLayout" name="horizontalLayout_4">
            <item>
             <widget class="QLabel" name="label_3">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>开关确认时间(ms):</string>
              </property>
@@ -58,6 +564,11 @@
            <layout class="QVBoxLayout" name="verticalLayout_9">
             <item>
              <widget class="QCheckBox" name="cb_goal_action">
+              <property name="font">
+               <font>
+                <pointsize>13</pointsize>
+               </font>
+              </property>
               <property name="text">
                <string>测接点动作</string>
               </property>
@@ -65,6 +576,11 @@
             </item>
             <item>
              <widget class="QCheckBox" name="cb_goal_back">
+              <property name="font">
+               <font>
+                <pointsize>13</pointsize>
+               </font>
+              </property>
               <property name="text">
                <string>测动作和返回</string>
               </property>
@@ -87,6 +603,11 @@
            <layout class="QVBoxLayout" name="verticalLayout_8">
             <item>
              <widget class="QCheckBox" name="cb_method_manual">
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="text">
                <string>手动</string>
               </property>
@@ -94,6 +615,11 @@
             </item>
             <item>
              <widget class="QCheckBox" name="cb_method_auto_up">
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="text">
                <string>自动加</string>
               </property>
@@ -101,6 +627,11 @@
             </item>
             <item>
              <widget class="QCheckBox" name="cb_method_auto_dowm">
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="text">
                <string>自动减</string>
               </property>
@@ -110,6 +641,11 @@
              <layout class="QHBoxLayout" name="horizontalLayout_5">
               <item>
                <widget class="QLabel" name="label_4">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
                 <property name="text">
                  <string>间隔时间(ms):</string>
                 </property>

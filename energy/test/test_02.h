@@ -3,6 +3,8 @@
 
 #include "test.h"
 #include "ui/test02/ui_002.h"
+#include "ui/test02/ui_charts_002.h"
+#include "ui/test02/ui_table_002.h"
 
 class test_02 : public test
 {
@@ -16,7 +18,7 @@ private:
     void init_middle_widget();                  // 初始化中间widget
     void init_footer_widget();                  // 初始化底部widget
     void init_table_footer();                   // 初始化底部表格
-    void init_table();                          // 初始化表格
+    // void init_table();                          // 初始化表格
 
     // 顶部/中部/底部Widget
     QWidget* _top_widget;
@@ -36,6 +38,8 @@ private:
     QToolButton* _btn_fdq;              // 放大器
 
     ui_002* _ui_002;
+    ui_charts_002* _ui_charts_002;
+    ui_table_002* _ui_table_002;
 };
 
 #endif // TEST__2_H

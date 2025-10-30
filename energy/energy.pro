@@ -20,10 +20,13 @@ SOURCES += \
     test/test.cpp \
     test/test_01.cpp \
     test/test_02.cpp \
+    test/test_03.cpp \
     test/test_choose.cpp \
     ui/test01/ui_001.cpp \
     ui/test01/ui_charts.cpp \
     ui/test02/ui_002.cpp \
+    ui/test02/ui_charts_002.cpp \
+    ui/test02/ui_table_002.cpp \
     ui/test03/ui_003.cpp
 
 HEADERS += \
@@ -36,10 +39,13 @@ HEADERS += \
     test/test.h \
     test/test_01.h \
     test/test_02.h \
+    test/test_03.h \
     test/test_choose.h \
     ui/test01/ui_001.h \
     ui/test01/ui_charts.h \
     ui/test02/ui_002.h \
+    ui/test02/ui_charts_002.h \
+    ui/test02/ui_table_002.h \
     ui/test03/ui_003.h
 
 FORMS += \
@@ -49,6 +55,7 @@ FORMS += \
     ui/test01/ui_001.ui \
     ui/test01/ui_charts.ui \
     ui/test02/ui_002.ui \
+    ui/test02/ui_table_002.ui \
     ui/test03/ui_003.ui
 
 # Default rules for deployment.

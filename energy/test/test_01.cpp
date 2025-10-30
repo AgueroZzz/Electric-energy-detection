@@ -15,15 +15,6 @@ test_01::test_01(quint16 test_id, QWidget *parent)
     set_qss();
 
     init_table();
-
-    default_data_list = {{10.000, true, 1.000, 120, 0.0, false, 1.0},
-                         {10.000, true, 1.000, 120, 240.0, false, 1.0},
-                         {10.000, true, 1.000, 120, 120.0, false, 1.0},
-                         {2.000, false, 1.000, 20, 0.0, false, 1.0},
-                         {3.000, false, 1.000, 30, 240.0, false, 1.0},
-                         {5.000, false, 1.000, 30, 120.0, false, 1.0},
-                         {10.000, false, 1.000, 120, 0.0, false, 1.0},
-                         {50.000, false, 0.000, 1000}};
 }
 
 void test_01::init_UI()
@@ -34,7 +25,7 @@ void test_01::init_UI()
 
     // 垂直布局
     QVBoxLayout *layout = new QVBoxLayout();
-    layout->addWidget(_top_widget, 5);
+    layout->addWidget(_top_widget, 15);
     layout->addWidget(_middle_widget, 50);
     layout->addWidget(_footer_widget, 45);
 

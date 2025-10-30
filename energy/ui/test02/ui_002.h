@@ -20,7 +20,6 @@ public:
     ~ui_002();
 
     void init_UI();
-    void init_table();
 
     // 工具函数：创建一个带复选框和文字的widget
     inline QWidget* create_cell_widget(const QString& cell_name, QWidget* parent = nullptr){
