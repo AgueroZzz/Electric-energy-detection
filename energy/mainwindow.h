@@ -33,7 +33,8 @@ public:
         test_sxzlcs,                // 交直流实验
         test_xbsy,                  // 谐波实验
         test_ztxl_I,                // 状态序列1
-        test_ztxl_II                // 状态序列2
+        test_ztxl_II,               // 状态序列2
+        test_i_t                    // i-t测试
     };
 
 signals:

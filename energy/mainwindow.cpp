@@ -6,6 +6,7 @@
 #include "test/test_04.h"
 #include "test/test_05.h"
 #include "test/test_06.h"
+#include "test/test_07.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -26,7 +27,8 @@ MainWindow::MainWindow(QWidget *parent)
         {2, [](quint16 id) { return new test_03(id); }},        // 交直流实验
         {3, [](quint16 id) { return new test_04(id); }},        // 谐波实验
         {4, [](quint16 id) { return new test_05(id); }},        // 状态序列1
-        {5, [](quint16 id) { return new test_06(id); }}         // 状态序列1
+        {5, [](quint16 id) { return new test_06(id); }},        // 状态序列1
+        {6, [](quint16 id) { return new test_07(id); }}         // 状态序列1
     };
 
     init_ui();
