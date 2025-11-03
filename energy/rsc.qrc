@@ -22,5 +22,7 @@
         <file>icon/chart_xiangfl.svg</file>
         <file>icon/chart_xufl.svg</file>
         <file>icon/app_icon.svg</file>
+        <file>icon/switch.svg</file>
+        <file>icon/test_history.svg</file>
     </qresource>
 </RCC>

@@ -28,9 +28,12 @@ public:
     ~MainWindow();
 
     enum index_tset{
-        test_null = 0,
-        test_sxjlcs = 1,
-        test_sxzlcs
+        test_null = 0,              // 三相交流实验
+        test_sxjlcs = 1,            // 三项直流实验
+        test_sxzlcs,                // 交直流实验
+        test_xbsy,                  // 谐波实验
+        test_ztxl_I,                // 状态序列1
+        test_ztxl_II                // 状态序列2
     };
 
 signals:

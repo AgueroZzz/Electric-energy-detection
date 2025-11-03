@@ -21,13 +21,17 @@ SOURCES += \
     test/test_01.cpp \
     test/test_02.cpp \
     test/test_03.cpp \
+    test/test_04.cpp \
+    test/test_05.cpp \
     test/test_choose.cpp \
     ui/test01/ui_001.cpp \
     ui/test01/ui_charts.cpp \
     ui/test02/ui_002.cpp \
     ui/test02/ui_charts_002.cpp \
     ui/test02/ui_table_002.cpp \
-    ui/test03/ui_003.cpp
+    ui/test03/ui_003.cpp \
+    ui/test04/ui_004.cpp \
+    ui/test05/ui_005.cpp
 
 HEADERS += \
     global/component.h \
@@ -40,13 +44,17 @@ HEADERS += \
     test/test_01.h \
     test/test_02.h \
     test/test_03.h \
+    test/test_04.h \
+    test/test_05.h \
     test/test_choose.h \
     ui/test01/ui_001.h \
     ui/test01/ui_charts.h \
     ui/test02/ui_002.h \
     ui/test02/ui_charts_002.h \
     ui/test02/ui_table_002.h \
-    ui/test03/ui_003.h
+    ui/test03/ui_003.h \
+    ui/test04/ui_004.h \
+    ui/test05/ui_005.h
 
 FORMS += \
     mainwindow.ui \
@@ -56,7 +64,9 @@ FORMS += \
     ui/test01/ui_charts.ui \
     ui/test02/ui_002.ui \
     ui/test02/ui_table_002.ui \
-    ui/test03/ui_003.ui
+    ui/test03/ui_003.ui \
+    ui/test04/ui_004.ui \
+    ui/test05/ui_005.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

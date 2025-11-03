@@ -1,6 +1,6 @@
-#include "test_03.h"
+#include "test_04.h"
 
-test_03::test_03(quint16 test_id, QWidget *parent)
+test_04::test_04(quint16 test_id, QWidget *parent)
     : test(test_id, parent)
 {
     init_UI();
@@ -8,15 +8,15 @@ test_03::test_03(quint16 test_id, QWidget *parent)
     init_top_widget();
 }
 
-void test_03::init_UI()
+void test_04::init_UI()
 {
     _top_widget = new QWidget();
-    _ui_003 = new ui_003();
+    _ui_004 = new ui_004();
 
     // 垂直布局
     QVBoxLayout *layout = new QVBoxLayout();
     layout->addWidget(_top_widget);
-    layout->addWidget(_ui_003);
+    layout->addWidget(_ui_004);
 
     layout->setStretch(0, 1);
     layout->setStretch(1, 9);
@@ -28,13 +28,15 @@ void test_03::init_UI()
     setLayout(layout);
 }
 
-void test_03::init_top_widget()
+void test_04::init_top_widget()
 {
     // 竖排排列
     QVBoxLayout* total_layout = new QVBoxLayout();
+    total_layout->setSpacing(3);
 
     // 第一排按钮横排排列
     QHBoxLayout* btn_layout = new QHBoxLayout();
+    btn_layout->setContentsMargins(3, 3, 3, 3);
 
     _btn_open_para    = createToolButton(":/icon/icon/open_file.svg",   "打开参数");
     _btn_save_para    = createToolButton(":/icon/icon/save_file.svg",   "保存参数");

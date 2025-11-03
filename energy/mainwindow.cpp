@@ -2,6 +2,9 @@
 #include "test/test_02.h"
 #include "ui_mainwindow.h"
 #include "test/test_01.h"
+#include "test/test_03.h"
+#include "test/test_04.h"
+#include "test/test_05.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -18,7 +21,10 @@ MainWindow::MainWindow(QWidget *parent)
     // 测试项目工厂
     testCreators = {
         {0, [](quint16 id) { return new test_01(id); }},        // 三相交流实验
-        {1, [](quint16 id) { return new test_02(id); }}
+        {1, [](quint16 id) { return new test_02(id); }},        // 三项直流实验
+        {2, [](quint16 id) { return new test_03(id); }},        // 交直流实验
+        {3, [](quint16 id) { return new test_04(id); }},        // 谐波实验
+        {4, [](quint16 id) { return new test_05(id); }},        // 状态序列1
     };
 
     init_ui();
@@ -37,11 +43,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::slot_test_pro_choose(quint16 test_id)
 {
-    qDebug() << "slot_test_pro_choose called with test_id:" << test_id;
-
     // 如果 test_id 相同，忽略
     if (test_id == _test_id) {
-        qDebug() << "Same test_id, no change needed";
         return;
     }
 
@@ -57,13 +60,11 @@ void MainWindow::slot_test_pro_choose(quint16 test_id)
         qDebug() << "Test widget added for test_id:" << test_id;
         _test_id = test_id;
     } else {
-        qDebug() << "Invalid test_id:" << test_id;
     }
 }
 
 void MainWindow::init_ui()
 {
-    // resize(1500, 900);
     setStyleSheet("QMainWindow { background-color: #EEF0ED; }");
     createMenuBar();
 }
@@ -118,6 +119,5 @@ void MainWindow::clearCurrentTest()
         _test->deleteLater();
         _test = nullptr;
         _test_id = -1;
-        qDebug() << "Current test widget cleared";
     }
 }

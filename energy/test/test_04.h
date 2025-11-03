@@ -1,24 +1,22 @@
-#ifndef TEST__3_H
-#define TEST__3_H
+#ifndef TEST__4_H
+#define TEST__4_H
 
 #include "test.h"
-#include "ui/test03/ui_003.h"
+#include "ui/test04/ui_004.h"
 
-class test_03 : public test
+class test_04 : public test
 {
 public:
-    test_03(quint16 test_id, QWidget *parent = nullptr);
+    test_04(quint16 test_id, QWidget *parent = nullptr);
 
 private:
     void init_UI();
 
     void init_top_widget();                     // 初始化顶部按钮
-    void init_middle_widget();                  // 初始化中间widget
 
     // 顶部/中部/底部Widget
     QWidget* _top_widget;
-    ui_003* _ui_003;
-    QWidget* _status_widget;
+    ui_004* _ui_004;
 
     // 顶部btn
     QToolButton* _btn_open_para;        // 打开参数按钮
@@ -31,4 +29,4 @@ private:
     QToolButton* _btn_reset_test;     // 数据复位
 };
 
-#endif // TEST__3_H
+#endif // TEST__4_H
