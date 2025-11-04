@@ -6,13 +6,4324 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1065</width>
-    <height>600</height>
+    <width>1177</width>
+    <height>761</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <layout class="QVBoxLayout" name="verticalLayout_39" stretch="4,1">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_110" stretch="1,1">
+     <item>
+      <widget class="QTabWidget" name="tabWidget">
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="tab_csxm">
+        <attribute name="title">
+         <string>测试项目</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout" stretch="1,5,1,2">
+         <property name="leftMargin">
+          <number>4</number>
+         </property>
+         <property name="topMargin">
+          <number>4</number>
+         </property>
+         <property name="rightMargin">
+          <number>4</number>
+         </property>
+         <property name="bottomMargin">
+          <number>4</number>
+         </property>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <spacer name="horizontalSpacer_126">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>测试对象名称</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_128">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QComboBox" name="comboBox"/>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_127">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,1">
+           <item>
+            <widget class="QGroupBox" name="groupBox">
+             <property name="title">
+              <string>测试项目</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_4">
+                <item>
+                 <spacer name="horizontalSpacer_3">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="checkBox_2">
+                  <property name="text">
+                   <string>功率方向保护-保护动作边界</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_4">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_5">
+                <item>
+                 <spacer name="horizontalSpacer_5">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="checkBox_3">
+                  <property name="text">
+                   <string>功率方向保护-保护动作电流</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_6">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_6">
+                <item>
+                 <spacer name="horizontalSpacer_7">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="checkBox_4">
+                  <property name="text">
+                   <string>功率方向保护-保护动作电压</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_8">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_7">
+                <item>
+                 <spacer name="horizontalSpacer_9">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="checkBox_5">
+                  <property name="text">
+                   <string>功率方向保护-保护动作时间</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_10">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_8">
+                <item>
+                 <spacer name="horizontalSpacer_11">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="checkBox_6">
+                  <property name="text">
+                   <string>功率方向保护-保护动作阻抗</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_12">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_2">
+             <property name="title">
+              <string>时间设置</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_3">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="2,2,1">
+                <item>
+                 <widget class="QLabel" name="label_5">
+                  <property name="text">
+                   <string>故障前时间：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_2"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_6">
+                  <property name="text">
+                   <string>s</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="2,2,1">
+                <item>
+                 <widget class="QLabel" name="label_7">
+                  <property name="text">
+                   <string>最大故障时间：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_3"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_8">
+                  <property name="text">
+                   <string>s</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="2,2,1">
+                <item>
+                 <widget class="QLabel" name="label_9">
+                  <property name="text">
+                   <string>试验间断时间：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_4"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_10">
+                  <property name="text">
+                   <string>s</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Ux定义:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="comboBox_2"/>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string>额定电压:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit"/>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_4">
+             <property name="text">
+              <string>V</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="checkBox">
+             <property name="text">
+              <string>突变量启动</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QTextBrowser" name="textBrowser">
+           <property name="html">
+            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft YaHei UI'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;提示：1、当选择”突变量启动”时，每次试验先进入故障前状态，然后进入故障状态；&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;           2、故障前状态三相电压值为UN，角度为0°，-120°，120°，三项电流为0；&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="tab_cbj">
+        <attribute name="title">
+         <string>测边界</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout_9" stretch="2,2,1">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_30">
+           <item>
+            <widget class="QWidget" name="widget" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_17">
+                <item>
+                 <widget class="QLabel" name="label_21">
+                  <property name="text">
+                   <string>试验电压：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBox_3"/>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_10"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_22">
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_18">
+                <item>
+                 <widget class="QLabel" name="label_23">
+                  <property name="text">
+                   <string>试验电流：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBox_4"/>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_11"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_24">
+                  <property name="text">
+                   <string>A</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_20">
+                <item>
+                 <widget class="QLabel" name="label_25">
+                  <property name="text">
+                   <string>Φ(UA,IA)搜索范围</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_12"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_26">
+                  <property name="text">
+                   <string>到</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_13"/>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_19">
+                <item>
+                 <widget class="QLabel" name="label_27">
+                  <property name="text">
+                   <string>Φ(UA,IA)搜索步长</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_14"/>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_3">
+             <property name="title">
+              <string>整定值</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_4" stretch="1,1,1,1,1">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="3,3,1">
+                <item>
+                 <widget class="QLabel" name="label_11">
+                  <property name="text">
+                   <string>灵敏角：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_5"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_12">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_13" stretch="3,3,1">
+                <item>
+                 <widget class="QLabel" name="label_13">
+                  <property name="text">
+                   <string>边界1：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_6"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_14">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_14" stretch="3,3,1">
+                <item>
+                 <widget class="QLabel" name="label_15">
+                  <property name="text">
+                   <string>边界2：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_7"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_16">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_15" stretch="3,3,1">
+                <item>
+                 <widget class="QLabel" name="label_17">
+                  <property name="text">
+                   <string>允许误差：±</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_8"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_18">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_16" stretch="3,3,1">
+                <item>
+                 <widget class="QLabel" name="label_19">
+                  <property name="text">
+                   <string>试验灵敏角：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_9"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_20">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_31">
+           <item>
+            <widget class="QWidget" name="widget_2" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_6" stretch="1,1,1,1,1">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_21" stretch="3,1,3,1,3,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_17">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_28">
+                  <property name="text">
+                   <string>3U0</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_15"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_29">
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_16"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_30">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_18">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_22" stretch="3,1,3,1,3,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_19">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_31">
+                  <property name="text">
+                   <string>U2</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_17"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_32">
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_18"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_33">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_20">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_23" stretch="3,1,3,1,3,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_22">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_34">
+                  <property name="text">
+                   <string>3I0</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_19"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_35">
+                  <property name="text">
+                   <string>A</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_20"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_36">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_21">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_24" stretch="3,1,3,1,3,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_23">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_37">
+                  <property name="text">
+                   <string>I2</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_21"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_38">
+                  <property name="text">
+                   <string>A</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_22"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_39">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_24">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_25" stretch="3,1,2,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_25">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_40">
+                  <property name="text">
+                   <string>其他相电压</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_23"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_41">
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_26">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="widget_3" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_7">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_27">
+                <item>
+                 <widget class="QLabel" name="label_42">
+                  <property name="text">
+                   <string>动作角定义:Φ</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBox_5"/>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_26">
+                <item>
+                 <widget class="QLabel" name="label_43">
+                  <property name="text">
+                   <string>动作角当前值：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_24"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_44">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QGroupBox" name="groupBox_4">
+                <property name="title">
+                 <string>矢量图显示</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_8">
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_28">
+                   <item>
+                    <spacer name="horizontalSpacer_14">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QRadioButton" name="radioButton_2">
+                     <property name="text">
+                      <string>显示三项电压、电流矢量图</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_13">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_29">
+                   <item>
+                    <spacer name="horizontalSpacer_15">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QRadioButton" name="radioButton">
+                     <property name="text">
+                      <string>显示动作角矢量图</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_16">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QTextBrowser" name="textBrowser_2">
+           <property name="html">
+            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft YaHei UI'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;提示：1、Φ搜索范围的始值和终值均应在动作区外&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;          2、其他相相位和试验相保持对称&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;          3、角度定义是指电压超前电流的角度&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="tab_cdl">
+        <attribute name="title">
+         <string>测电流</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout_15">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_42">
+           <item>
+            <widget class="QWidget" name="widget_6" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_13">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_43">
+                <item>
+                 <widget class="QLabel" name="label_62">
+                  <property name="text">
+                   <string>试验电压：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBox_7"/>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_35"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_63">
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_44">
+                <item>
+                 <widget class="QLabel" name="label_64">
+                  <property name="text">
+                   <string>试验电流：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBox_8"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_65">
+                  <property name="text">
+                   <string>A</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_47">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_45">
+                <item>
+                 <widget class="QLabel" name="label_66">
+                  <property name="text">
+                   <string>试验相电流搜索范围从</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_37"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_67">
+                  <property name="text">
+                   <string>到</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_38"/>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_48">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_46">
+                <item>
+                 <widget class="QLabel" name="label_68">
+                  <property name="text">
+                   <string>试验相电流搜索步长</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_39"/>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_46">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_52">
+                <item>
+                 <widget class="QLabel" name="label_80">
+                  <property name="text">
+                   <string>UBC超前IA角度：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_36"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_81">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_41">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_6">
+             <property name="title">
+              <string>整定值</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_14" stretch="1,1,1,1">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_47" stretch="3,3,1,0">
+                <item>
+                 <widget class="QLabel" name="label_69">
+                  <property name="text">
+                   <string>整定动作电流：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_40"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_70">
+                  <property name="text">
+                   <string>A</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_45">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_48" stretch="3,3,1,0">
+                <item>
+                 <widget class="QLabel" name="label_71">
+                  <property name="text">
+                   <string>允许误差：±</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_41"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_72">
+                  <property name="text">
+                   <string>%</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_44">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_38">
+                <item>
+                 <widget class="QLabel" name="label_59">
+                  <property name="text">
+                   <string>动作电流定义：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBox_6"/>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_42">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_39">
+                <item>
+                 <widget class="QLabel" name="label_60">
+                  <property name="text">
+                   <string>动作电流当前值：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_34"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_61">
+                  <property name="text">
+                   <string>A</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_43">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_32">
+           <item>
+            <widget class="QWidget" name="widget_4" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_10" stretch="1,1,1,1,1">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_33" stretch="3,1,3,1,3,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_27">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_45">
+                  <property name="text">
+                   <string>3U0</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_25"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_46">
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_26"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_47">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_28">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_34" stretch="3,1,3,1,3,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_29">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_48">
+                  <property name="text">
+                   <string>U2</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_27"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_49">
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_28"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_50">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_30">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_35" stretch="3,1,3,1,3,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_31">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_51">
+                  <property name="text">
+                   <string>3I0</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_29"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_52">
+                  <property name="text">
+                   <string>A</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_30"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_53">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_32">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_36" stretch="3,1,3,1,3,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_33">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_54">
+                  <property name="text">
+                   <string>I2</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_31"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_55">
+                  <property name="text">
+                   <string>A</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_32"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_56">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_34">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_37" stretch="3,1,2,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_35">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_57">
+                  <property name="text">
+                   <string>其他相电压</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_33"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_58">
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_36">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="widget_5" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_11">
+              <item>
+               <widget class="QGroupBox" name="groupBox_5">
+                <property name="title">
+                 <string>矢量图显示</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_12">
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_40">
+                   <item>
+                    <spacer name="horizontalSpacer_37">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QRadioButton" name="radioButton_3">
+                     <property name="text">
+                      <string>显示三项电压、电流矢量图</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_38">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_41">
+                   <item>
+                    <spacer name="horizontalSpacer_39">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QRadioButton" name="radioButton_4">
+                     <property name="text">
+                      <string>显示动作相矢量图</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_40">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_79">
+                   <property name="font">
+                    <font>
+                     <pointsize>13</pointsize>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>其它相相位和试验相保持对此</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="tab_cdy">
+        <attribute name="title">
+         <string>测电压</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout_21">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_49">
+           <item>
+            <widget class="QWidget" name="widget_7" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_16">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_50">
+                <item>
+                 <widget class="QLabel" name="label_73">
+                  <property name="text">
+                   <string>试验电压：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBox_9"/>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_71">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_51">
+                <item>
+                 <widget class="QLabel" name="label_75">
+                  <property name="text">
+                   <string>试验电流：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBox_10"/>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_59"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_76">
+                  <property name="text">
+                   <string>A</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_49">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_53">
+                <item>
+                 <widget class="QLabel" name="label_77">
+                  <property name="text">
+                   <string>试验相电压搜索范围从</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_43"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_78">
+                  <property name="text">
+                   <string>到</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_44"/>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_50">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_54">
+                <item>
+                 <widget class="QLabel" name="label_82">
+                  <property name="text">
+                   <string>试验相电压搜索步长</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_45"/>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_51">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_55">
+                <item>
+                 <widget class="QLabel" name="label_83">
+                  <property name="text">
+                   <string>UBC超前IA角度：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_46"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_84">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_52">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_7">
+             <property name="title">
+              <string>整定值</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_17" stretch="1,1,1,1">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_56" stretch="3,3,1,0">
+                <item>
+                 <widget class="QLabel" name="label_85">
+                  <property name="text">
+                   <string>整定动作电压：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_47"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_86">
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_53">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_57" stretch="3,3,1,0">
+                <item>
+                 <widget class="QLabel" name="label_87">
+                  <property name="text">
+                   <string>允许误差：±</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_48"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_88">
+                  <property name="text">
+                   <string>%</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_54">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_58">
+                <item>
+                 <widget class="QLabel" name="label_89">
+                  <property name="text">
+                   <string>动作电压定义：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBox_11"/>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_55">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_59">
+                <item>
+                 <widget class="QLabel" name="label_90">
+                  <property name="text">
+                   <string>动作电压当前值：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_49"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_91">
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_56">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_60">
+           <item>
+            <widget class="QWidget" name="widget_8" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_18" stretch="1,1,1,1,1">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_61" stretch="3,1,3,1,3,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_57">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_92">
+                  <property name="text">
+                   <string>3U0</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_50"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_93">
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_51"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_94">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_58">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_62" stretch="3,1,3,1,3,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_59">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_95">
+                  <property name="text">
+                   <string>U2</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_52"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_96">
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_53"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_97">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_60">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_63" stretch="3,1,3,1,3,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_61">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_98">
+                  <property name="text">
+                   <string>3I0</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_54"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_99">
+                  <property name="text">
+                   <string>A</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_55"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_100">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_62">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_64" stretch="3,1,3,1,3,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_63">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_101">
+                  <property name="text">
+                   <string>I2</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_56"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_102">
+                  <property name="text">
+                   <string>A</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_57"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_103">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_64">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_65" stretch="3,1,2,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_65">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_104">
+                  <property name="text">
+                   <string>其他相电压</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_58"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_105">
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_66">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="widget_9" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_19">
+              <item>
+               <widget class="QGroupBox" name="groupBox_8">
+                <property name="title">
+                 <string>矢量图显示</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_20">
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_66">
+                   <item>
+                    <spacer name="horizontalSpacer_67">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QRadioButton" name="radioButton_5">
+                     <property name="text">
+                      <string>显示三项电压、电流矢量图</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_68">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_67">
+                   <item>
+                    <spacer name="horizontalSpacer_69">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QRadioButton" name="radioButton_6">
+                     <property name="text">
+                      <string>显示动作相矢量图</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_70">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_106">
+                   <property name="font">
+                    <font>
+                     <pointsize>13</pointsize>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>其它相相位和试验相保持对此</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="tab_dzsj">
+        <attribute name="title">
+         <string>动作时间</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout_27">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_76">
+           <item>
+            <widget class="QWidget" name="widget_12" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_25">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_77">
+                <item>
+                 <widget class="QLabel" name="label_74">
+                  <property name="text">
+                   <string>试验电压：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBox_12"/>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_70"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_124">
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_86">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_78">
+                <item>
+                 <widget class="QLabel" name="label_122">
+                  <property name="text">
+                   <string>试验电流：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBox_13"/>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_69"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_123">
+                  <property name="text">
+                   <string>A</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_87">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_81">
+                <item>
+                 <widget class="QLabel" name="label_127">
+                  <property name="text">
+                   <string>UBC超前IA角度：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_73"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_128">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_90">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_10">
+             <property name="title">
+              <string>整定值</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_26" stretch="1,1">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_82" stretch="3,3,1,0">
+                <item>
+                 <widget class="QLabel" name="label_129">
+                  <property name="text">
+                   <string>整定动作电压：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_74"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_130">
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_91">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_83" stretch="3,3,1,0">
+                <item>
+                 <widget class="QLabel" name="label_131">
+                  <property name="text">
+                   <string>允许误差：±</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_75"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_132">
+                  <property name="text">
+                   <string>%</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_92">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_79">
+           <item>
+            <widget class="QWidget" name="widget_10" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_22" stretch="1,1,1,1,1">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_69" stretch="3,1,3,1,3,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_72">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_107">
+                  <property name="text">
+                   <string>3U0</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_60"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_108">
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_61"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_109">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_73">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_70" stretch="3,1,3,1,3,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_74">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_110">
+                  <property name="text">
+                   <string>U2</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_62"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_111">
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_63"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_112">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_75">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_71" stretch="3,1,3,1,3,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_76">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_113">
+                  <property name="text">
+                   <string>3I0</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_64"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_114">
+                  <property name="text">
+                   <string>A</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_65"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_115">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_77">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_72" stretch="3,1,3,1,3,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_78">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_116">
+                  <property name="text">
+                   <string>I2</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_66"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_117">
+                  <property name="text">
+                   <string>A</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_67"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_118">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_79">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_73" stretch="3,1,2,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_80">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_119">
+                  <property name="text">
+                   <string>其他相电压</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_68"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_120">
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_81">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_23" stretch="1,2">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_68">
+               <item>
+                <spacer name="horizontalSpacer_88">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_125">
+                 <property name="text">
+                  <string>动作时间：</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_42"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_126">
+                 <property name="text">
+                  <string>ms</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_89">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_9">
+               <property name="title">
+                <string>矢量图显示</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_24">
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_74">
+                  <item>
+                   <spacer name="horizontalSpacer_82">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QRadioButton" name="radioButton_7">
+                    <property name="text">
+                     <string>显示三项电压、电流矢量图</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_83">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_75">
+                  <item>
+                   <spacer name="horizontalSpacer_84">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QRadioButton" name="radioButton_8">
+                    <property name="text">
+                     <string>显示动作相矢量图</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_85">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_121">
+                  <property name="font">
+                   <font>
+                    <pointsize>13</pointsize>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>其它相相位和试验相保持对此</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="tab_czk">
+        <attribute name="title">
+         <string>测阻抗</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout_35">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_80">
+           <item>
+            <widget class="QWidget" name="widget_11" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_34">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_84">
+                <item>
+                 <widget class="QLabel" name="label_133">
+                  <property name="text">
+                   <string>试验电压：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBox_14"/>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_71"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_134">
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_85">
+                <item>
+                 <widget class="QLabel" name="label_135">
+                  <property name="text">
+                   <string>试验电流：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBox_15"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_136">
+                  <property name="text">
+                   <string>A</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_93">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_86">
+                <item>
+                 <widget class="QLabel" name="label_137">
+                  <property name="text">
+                   <string>试验相电流搜索范围从</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_72"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_138">
+                  <property name="text">
+                   <string>到</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_76"/>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_94">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_87">
+                <item>
+                 <widget class="QLabel" name="label_139">
+                  <property name="text">
+                   <string>试验相电流搜索步长</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_77"/>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_95">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_88">
+                <item>
+                 <widget class="QLabel" name="label_140">
+                  <property name="text">
+                   <string>UBC超前IA角度：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_78"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_141">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_96">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_101">
+                <item>
+                 <spacer name="horizontalSpacer_115">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="radioButton_11">
+                  <property name="text">
+                   <string>变电压</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_117">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="radioButton_12">
+                  <property name="text">
+                   <string>变电流</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_116">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_33">
+             <item>
+              <widget class="QGroupBox" name="groupBox_11">
+               <property name="title">
+                <string>整定值</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_28">
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_89" stretch="3,3,1,0">
+                  <item>
+                   <widget class="QLabel" name="label_142">
+                    <property name="text">
+                     <string>整定动作电流：</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="lineEdit_79"/>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_143">
+                    <property name="text">
+                     <string>A</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_97">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_90" stretch="3,3,1,0">
+                  <item>
+                   <widget class="QLabel" name="label_144">
+                    <property name="text">
+                     <string>允许误差：±</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="lineEdit_80"/>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_145">
+                    <property name="text">
+                     <string>%</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_98">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_29" stretch="1,1,1,1">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_91">
+                 <item>
+                  <spacer name="horizontalSpacer_99">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_146">
+                   <property name="text">
+                    <string>当前电压：</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_81"/>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_147">
+                   <property name="text">
+                    <string>V</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_100">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_92">
+                 <item>
+                  <spacer name="horizontalSpacer_109">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_161">
+                   <property name="text">
+                    <string>当前阻抗：</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_90"/>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_148">
+                   <property name="text">
+                    <string>Ω</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_110">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_102">
+                 <item>
+                  <spacer name="horizontalSpacer_118">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_162">
+                   <property name="text">
+                    <string>其他相电压：</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_91"/>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_164">
+                   <property name="text">
+                    <string>V</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_119">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_103">
+                 <item>
+                  <spacer name="horizontalSpacer_120">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_165">
+                   <property name="text">
+                    <string>零序补偿系数：(0-2)</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_92"/>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_121">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_93">
+           <item>
+            <widget class="QWidget" name="widget_13" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_30" stretch="1,1,1,1">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_94" stretch="3,1,3,1,3,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_101">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_149">
+                  <property name="text">
+                   <string>3U0</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_82"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_150">
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_83"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_151">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_102">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_95" stretch="3,1,3,1,3,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_103">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_152">
+                  <property name="text">
+                   <string>U2</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_84"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_153">
+                  <property name="text">
+                   <string>V</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_85"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_154">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_104">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_96" stretch="3,1,3,1,3,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_105">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_155">
+                  <property name="text">
+                   <string>3I0</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_86"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_156">
+                  <property name="text">
+                   <string>A</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_87"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_157">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_106">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_97" stretch="3,1,3,1,3,1,3">
+                <item>
+                 <spacer name="horizontalSpacer_107">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_158">
+                  <property name="text">
+                   <string>I2</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_88"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_159">
+                  <property name="text">
+                   <string>A</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_89"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_160">
+                  <property name="text">
+                   <string>°</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_108">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="widget_14" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_31">
+              <item>
+               <widget class="QGroupBox" name="groupBox_12">
+                <property name="title">
+                 <string>矢量图显示</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_32">
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_99">
+                   <item>
+                    <spacer name="horizontalSpacer_111">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QRadioButton" name="radioButton_9">
+                     <property name="text">
+                      <string>显示三项电压、电流矢量图</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_112">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_100">
+                   <item>
+                    <spacer name="horizontalSpacer_113">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QRadioButton" name="radioButton_10">
+                     <property name="text">
+                      <string>显示动作相矢量图</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_114">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_163">
+                   <property name="font">
+                    <font>
+                     <pointsize>13</pointsize>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>其它相相位和试验相保持对此</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="tab_kgl">
+        <attribute name="title">
+         <string>开关量</string>
+        </attribute>
+        <layout class="QHBoxLayout" name="horizontalLayout_105" stretch="2,3">
+         <item>
+          <widget class="QGroupBox" name="groupBox_13">
+           <property name="title">
+            <string>开入量</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_37">
+            <item>
+             <widget class="QCheckBox" name="checkBox_7">
+              <property name="text">
+               <string>接入点A</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBox_8">
+              <property name="text">
+               <string>接入点B</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBox_9">
+              <property name="text">
+               <string>接入点C</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBox_10">
+              <property name="text">
+               <string>接入点R</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBox_11">
+              <property name="text">
+               <string>接入点a</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBox_12">
+              <property name="text">
+               <string>接入点b</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBox_13">
+              <property name="text">
+               <string>接入点c</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_36" stretch="8,2">
+           <item>
+            <widget class="QGroupBox" name="groupBox_14">
+             <property name="title">
+              <string>开出量</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_38" stretch="1,1">
+              <item>
+               <layout class="QGridLayout" name="gridLayout" rowstretch="1,1" columnstretch="1,1,1">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_168">
+                  <property name="text">
+                   <string>故障前：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLabel" name="label_169">
+                  <property name="text">
+                   <string>开出1</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <layout class="QHBoxLayout" name="horizontalLayout_106">
+                  <item>
+                   <widget class="QRadioButton" name="radioButton_13">
+                    <property name="text">
+                     <string>断开</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QRadioButton" name="radioButton_14">
+                    <property name="text">
+                     <string>闭合</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="1" column="0">
+                 <spacer name="horizontalSpacer_124">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QLabel" name="label_170">
+                  <property name="text">
+                   <string>开出2</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <layout class="QHBoxLayout" name="horizontalLayout_107">
+                  <item>
+                   <widget class="QRadioButton" name="radioButton_15">
+                    <property name="text">
+                     <string>断开</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QRadioButton" name="radioButton_16">
+                    <property name="text">
+                     <string>闭合</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QGridLayout" name="gridLayout_2" rowstretch="1,1" columnstretch="1,1,1">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_171">
+                  <property name="text">
+                   <string>故障时：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLabel" name="label_172">
+                  <property name="text">
+                   <string>开出1</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <layout class="QHBoxLayout" name="horizontalLayout_108">
+                  <item>
+                   <widget class="QRadioButton" name="radioButton_17">
+                    <property name="text">
+                     <string>断开</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QRadioButton" name="radioButton_18">
+                    <property name="text">
+                     <string>闭合</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="1" column="0">
+                 <spacer name="horizontalSpacer_125">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QLabel" name="label_173">
+                  <property name="text">
+                   <string>开出2</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <layout class="QHBoxLayout" name="horizontalLayout_109">
+                  <item>
+                   <widget class="QRadioButton" name="radioButton_19">
+                    <property name="text">
+                     <string>断开</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QRadioButton" name="radioButton_20">
+                    <property name="text">
+                     <string>闭合</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_104">
+             <item>
+              <spacer name="horizontalSpacer_122">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_166">
+               <property name="text">
+                <string>防接点抖动时间：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEdit_93"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_167">
+               <property name="text">
+                <string>ms</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_123">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTableWidget" name="tableWidget"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTableWidget" name="tb_result">
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>测试项目</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>试验电压</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>试验电流</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Φ(U,I)</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>动作量</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>始值</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>终值</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>步长</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>整定值1</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>动作值1</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>整定值2</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>动作值2</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>允许误差</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>整定灵敏值</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>测试灵敏角</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

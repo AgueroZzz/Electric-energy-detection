@@ -8,6 +8,7 @@
 #include "test/test_06.h"
 #include "test/test_07.h"
 #include "test/test_08.h"
+#include "test/test_09.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -30,7 +31,8 @@ MainWindow::MainWindow(QWidget *parent)
         {4, [](quint16 id) { return new test_05(id); }},        // 状态序列1
         {5, [](quint16 id) { return new test_06(id); }},        // 状态序列1
         {6, [](quint16 id) { return new test_07(id); }},        // i_t
-        {7, [](quint16 id) { return new test_08(id); }}         // 频率及高低周保护
+        {7, [](quint16 id) { return new test_08(id); }},        // 频率及高低周保护
+        {8, [](quint16 id) { return new test_09(id); }}         // 功率方向及阻抗
     };
 
     init_ui();

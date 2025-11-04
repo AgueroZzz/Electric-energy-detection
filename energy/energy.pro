@@ -26,6 +26,7 @@ SOURCES += \
     test/test_06.cpp \
     test/test_07.cpp \
     test/test_08.cpp \
+    test/test_09.cpp \
     test/test_choose.cpp \
     ui/test01/ui_001.cpp \
     ui/test01/ui_charts.cpp \
@@ -56,6 +57,7 @@ HEADERS += \
     test/test_06.h \
     test/test_07.h \
     test/test_08.h \
+    test/test_09.h \
     test/test_choose.h \
     ui/test01/ui_001.h \
     ui/test01/ui_charts.h \
