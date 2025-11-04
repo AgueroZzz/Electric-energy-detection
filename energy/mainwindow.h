@@ -34,7 +34,8 @@ public:
         test_xbsy,                  // 谐波实验
         test_ztxl_I,                // 状态序列1
         test_ztxl_II,               // 状态序列2
-        test_i_t                    // i-t测试
+        test_i_t,                   // i-t测试
+        test_pl_gdz                 // 频率及高低周保护
     };
 
 signals:
