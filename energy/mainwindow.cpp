@@ -12,6 +12,7 @@
 #include "test/test_10.h"
 #include "test/test_11.h"
 #include "test/test_12.h"
+#include "test/test_13.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -38,7 +39,8 @@ MainWindow::MainWindow(QWidget *parent)
         {8, [](quint16 id) { return new test_09(id); }},        // 功率方向及阻抗
         {9, [](quint16 id) { return new test_10(id); }},        // 整组试验I
         {10, [](quint16 id) { return new test_11(id); }},       // 整组试验II
-        {11, [](quint16 id) { return new test_12(id); }}
+        {11, [](quint16 id) { return new test_12(id); }},       // 距离与零序保护
+        {12, [](quint16 id) { return new test_13(id); }}        // 线路保护
     };
 
     init_ui();

@@ -39,7 +39,8 @@ public:
         test_glfx_zk,               // 功率方向和阻抗
         test_zzcs_i,                // 整组测试I
         test_zzcs_ii,               // 整组测试II
-        test_jl_lxbh                // 距离和零序保护
+        test_jl_lxbh,               // 距离和零序保护
+        test_xlbhdzjy               // 线路保护定值校验
     };
 
 signals:

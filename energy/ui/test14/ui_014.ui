@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ui_014</class>
+ <widget class="QWidget" name="ui_014">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1098</width>
+    <height>766</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>581</width>
+     <height>731</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="tab_syxm">
+    <attribute name="title">
+     <string>试验项目</string>
+    </attribute>
+    <layout class="QVBoxLayout" name="verticalLayout_3" stretch="3,3,2">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,0">
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>测试项目选择</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QRadioButton" name="radioButton">
+            <property name="text">
+             <string>搜索阻抗边界</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_2">
+            <property name="text">
+             <string>Z(I)特性曲线</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_3">
+            <property name="text">
+             <string>Z(V)特性曲线</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>搜索方式选择</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2" stretch="3,3,1">
+          <item>
+           <widget class="QRadioButton" name="radioButton_4">
+            <property name="text">
+             <string>单向搜索</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_5">
+            <property name="text">
+             <string>双向搜索</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1">
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string>分辨率</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_3">
+       <property name="title">
+        <string>试验参数设置</string>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QTableWidget" name="tb_syxm_sycssz">
+          <property name="rowCount">
+           <number>5</number>
+          </property>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <row/>
+          <row/>
+          <row/>
+          <row/>
+          <row/>
+          <column>
+           <property name="text">
+            <string>设置项</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>值</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>设置项</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>值</string>
+           </property>
+          </column>
+          <item row="0" column="0">
+           <property name="text">
+            <string>故障类型</string>
+           </property>
+          </item>
+          <item row="0" column="2">
+           <property name="text">
+            <string>故障前延时</string>
+           </property>
+          </item>
+          <item row="1" column="0">
+           <property name="text">
+            <string>计算模型</string>
+           </property>
+          </item>
+          <item row="1" column="2">
+           <property name="text">
+            <string>最大故障时间</string>
+           </property>
+          </item>
+          <item row="2" column="0">
+           <property name="text">
+            <string>短路电流</string>
+           </property>
+          </item>
+          <item row="2" column="2">
+           <property name="text">
+            <string>试验间断时间</string>
+           </property>
+          </item>
+          <item row="3" column="0">
+           <property name="text">
+            <string>额定电压</string>
+           </property>
+          </item>
+          <item row="4" column="0">
+           <property name="text">
+            <string>故障方向</string>
+           </property>
+          </item>
+          <item row="4" column="2">
+           <property name="text">
+            <string>故障触发方式</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_4">
+       <property name="title">
+        <string>Ux方式与零序补偿系数设置</string>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QTableWidget" name="tb_syxm_uxfs">
+          <property name="rowCount">
+           <number>3</number>
+          </property>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <row/>
+          <row/>
+          <row/>
+          <column>
+           <property name="text">
+            <string>设置项</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Ux设置</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>设置项</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>零序补偿系数</string>
+           </property>
+          </column>
+          <item row="0" column="0">
+           <property name="text">
+            <string>计算方式</string>
+           </property>
+          </item>
+          <item row="0" column="2">
+           <property name="text">
+            <string>计算方式</string>
+           </property>
+          </item>
+          <item row="1" column="0">
+           <property name="text">
+            <string>幅值</string>
+           </property>
+          </item>
+          <item row="1" column="2">
+           <property name="text">
+            <string>幅值</string>
+           </property>
+          </item>
+          <item row="2" column="0">
+           <property name="text">
+            <string>相位</string>
+           </property>
+          </item>
+          <item row="2" column="2">
+           <property name="text">
+            <string>相位</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="tab_sszkbj">
+    <attribute name="title">
+     <string>搜索阻抗边界</string>
+    </attribute>
+   </widget>
+   <widget class="QWidget" name="tab_zdcs">
+    <attribute name="title">
+     <string>整定参数</string>
+    </attribute>
+   </widget>
+   <widget class="QWidget" name="tab_zgl">
+    <attribute name="title">
+     <string>开关量</string>
+    </attribute>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

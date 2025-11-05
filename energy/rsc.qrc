@@ -27,5 +27,6 @@
         <file>icon/error.svg</file>
         <file>icon/vector.svg</file>
         <file>icon/gz.svg</file>
+        <file>icon/chart_sxq.svg</file>
     </qresource>
 </RCC>
