@@ -12,6 +12,7 @@ test_choose::test_choose(QWidget *parent)
     setFixedSize(600, 800);
     setupUI();
     applyIndustrialStyle();
+    setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
 }
 
 QString test_choose::getSelectedFunction() const

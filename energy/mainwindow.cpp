@@ -9,6 +9,9 @@
 #include "test/test_07.h"
 #include "test/test_08.h"
 #include "test/test_09.h"
+#include "test/test_10.h"
+#include "test/test_11.h"
+#include "test/test_12.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -16,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     setMinimumSize(1300,800);
 
-    showMaximized();
+    // showMaximized();
 
     setWindowIcon(QIcon(":/icon/icon/app_icon.svg"));
 
@@ -32,7 +35,10 @@ MainWindow::MainWindow(QWidget *parent)
         {5, [](quint16 id) { return new test_06(id); }},        // 状态序列1
         {6, [](quint16 id) { return new test_07(id); }},        // i_t
         {7, [](quint16 id) { return new test_08(id); }},        // 频率及高低周保护
-        {8, [](quint16 id) { return new test_09(id); }}         // 功率方向及阻抗
+        {8, [](quint16 id) { return new test_09(id); }},        // 功率方向及阻抗
+        {9, [](quint16 id) { return new test_10(id); }},        // 整组试验I
+        {10, [](quint16 id) { return new test_11(id); }},       // 整组试验II
+        {11, [](quint16 id) { return new test_12(id); }}
     };
 
     init_ui();

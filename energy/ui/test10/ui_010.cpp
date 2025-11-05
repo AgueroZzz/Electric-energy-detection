@@ -1,0 +1,31 @@
+#include "ui_010.h"
+#include "ui_ui_010.h"
+
+ui_010::ui_010(QWidget *parent): QWidget(parent)
+    , ui(new Ui::ui_010)
+{
+    ui->setupUi(this);
+
+    ui->tb_sy_1->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tb_sy_1->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+    ui->tb_sy_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tb_sy_2->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+    ui->dt_sj->setReadOnly(true);
+    ui->dt_sj->setButtonSymbols(QAbstractSpinBox::NoButtons);
+
+    // 创建定时器更新时间
+    QTimer *current_timer = new QTimer(this);
+    connect(current_timer, &QTimer::timeout, [&]() {
+        ui->dt_sj->setDateTime(QDateTime::currentDateTime());
+        ui->dt_sj->setDisplayFormat("yyyy-MM-dd HH:mm:ss");
+    });
+
+    current_timer->start(1000);
+}
+
+ui_010::~ui_010()
+{
+    delete ui;
+}

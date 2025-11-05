@@ -24,5 +24,8 @@
         <file>icon/app_icon.svg</file>
         <file>icon/switch.svg</file>
         <file>icon/test_history.svg</file>
+        <file>icon/error.svg</file>
+        <file>icon/vector.svg</file>
+        <file>icon/gz.svg</file>
     </qresource>
 </RCC>
