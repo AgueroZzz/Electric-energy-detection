@@ -41,7 +41,10 @@ public:
         test_zzcs_ii,               // 整组测试II
         test_jl_lxbh,               // 距离和零序保护
         test_xlbhdzjy,              // 线路保护定值校验
-        test_zktxcs                 // 阻抗特性试验
+        test_zktxcs,                // 阻抗特性试验
+        test_cdbhsy,                // 差动保护
+        test_cddz,                  // 差动定值
+        test_cdjdq,                 // 差动继电器
     };
 
 signals:

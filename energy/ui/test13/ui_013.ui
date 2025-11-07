@@ -189,7 +189,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QTableWidget" name="tableWidget">
+        <widget class="QTableWidget" name="tb_csxm_1">
          <attribute name="verticalHeaderVisible">
           <bool>false</bool>
          </attribute>

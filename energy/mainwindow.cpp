@@ -14,6 +14,9 @@
 #include "test/test_12.h"
 #include "test/test_13.h"
 #include "test/test_14.h"
+#include "test/test_15.h"
+#include "test/test_16.h"
+#include "test/test_17.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -42,7 +45,10 @@ MainWindow::MainWindow(QWidget *parent)
         {10, [](quint16 id) { return new test_11(id); }},       // 整组试验II
         {11, [](quint16 id) { return new test_12(id); }},       // 距离与零序保护
         {12, [](quint16 id) { return new test_13(id); }},       // 线路保护
-        {13, [](quint16 id) { return new test_14(id); }}        // 阻抗特性试验
+        {13, [](quint16 id) { return new test_14(id); }},       // 阻抗特性试验
+        {14, [](quint16 id) { return new test_15(id); }},       // 差动保护定值
+        {15, [](quint16 id) { return new test_16(id); }},       // 差动定值
+        {16, [](quint16 id) { return new test_17(id); }},       // 差动继电器
     };
 
     init_ui();

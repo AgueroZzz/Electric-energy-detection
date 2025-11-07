@@ -6,6 +6,10 @@ ui_013::ui_013(QWidget *parent)
     , ui(new Ui::ui_013)
 {
     ui->setupUi(this);
+
+    ui->tb_csxm_1->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tb_csxm_1->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
 }
 
 ui_013::~ui_013()
