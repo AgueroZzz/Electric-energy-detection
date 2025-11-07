@@ -45,6 +45,7 @@ public:
         test_cdbhsy,                // 差动保护
         test_cddz,                  // 差动定值
         test_cdjdq,                 // 差动继电器
+        test_cdxb,                  // 差动谐波
     };
 
 signals:

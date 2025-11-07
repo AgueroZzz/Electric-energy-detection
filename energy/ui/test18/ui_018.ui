@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ui_018</class>
+ <widget class="QWidget" name="ui_018">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1104</width>
+    <height>641</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="1,1">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_3" stretch="4,3,1">
+     <item>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="title">
+        <string>设置谐波含量</string>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QTableWidget" name="tb_szxbhl">
+          <property name="rowCount">
+           <number>10</number>
+          </property>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <row/>
+          <row/>
+          <row/>
+          <row/>
+          <row/>
+          <row/>
+          <row/>
+          <row/>
+          <row/>
+          <row/>
+          <column>
+           <property name="text">
+            <string>谐波名</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>IA-幅值(A)</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>IA-相位(°)</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>IB-幅值(A)</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>IB-相位(°)</string>
+           </property>
+          </column>
+          <item row="0" column="0">
+           <property name="text">
+            <string>直流</string>
+           </property>
+          </item>
+          <item row="1" column="0">
+           <property name="text">
+            <string>基波</string>
+           </property>
+          </item>
+          <item row="2" column="0">
+           <property name="text">
+            <string>2次</string>
+           </property>
+          </item>
+          <item row="3" column="0">
+           <property name="text">
+            <string>3次</string>
+           </property>
+          </item>
+          <item row="4" column="0">
+           <property name="text">
+            <string>4次</string>
+           </property>
+          </item>
+          <item row="5" column="0">
+           <property name="text">
+            <string>5次</string>
+           </property>
+          </item>
+          <item row="6" column="0">
+           <property name="text">
+            <string>6次</string>
+           </property>
+          </item>
+          <item row="7" column="0">
+           <property name="text">
+            <string>7次</string>
+           </property>
+          </item>
+          <item row="8" column="0">
+           <property name="text">
+            <string>8次</string>
+           </property>
+          </item>
+          <item row="9" column="0">
+           <property name="text">
+            <string>9次</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QWidget" name="widget" native="true">
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="QGroupBox" name="groupBox_5">
+          <property name="title">
+           <string>开关量</string>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <property name="leftMargin">
+            <number>2</number>
+           </property>
+           <property name="topMargin">
+            <number>2</number>
+           </property>
+           <property name="rightMargin">
+            <number>2</number>
+           </property>
+           <property name="bottomMargin">
+            <number>2</number>
+           </property>
+           <item>
+            <widget class="QTableWidget" name="tb_kgl">
+             <property name="rowCount">
+              <number>7</number>
+             </property>
+             <attribute name="verticalHeaderVisible">
+              <bool>false</bool>
+             </attribute>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <column>
+              <property name="text">
+               <string/>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>开关量</string>
+              </property>
+             </column>
+             <item row="0" column="0">
+              <property name="text">
+               <string/>
+              </property>
+              <property name="checkState">
+               <enum>Checked</enum>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+              </property>
+             </item>
+             <item row="0" column="1">
+              <property name="text">
+               <string>接点A</string>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+              </property>
+             </item>
+             <item row="1" column="0">
+              <property name="checkState">
+               <enum>Checked</enum>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+              </property>
+             </item>
+             <item row="1" column="1">
+              <property name="text">
+               <string>接点B</string>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+              </property>
+             </item>
+             <item row="2" column="0">
+              <property name="checkState">
+               <enum>Checked</enum>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+              </property>
+             </item>
+             <item row="2" column="1">
+              <property name="text">
+               <string>接点C</string>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+              </property>
+             </item>
+             <item row="3" column="0">
+              <property name="checkState">
+               <enum>Checked</enum>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+              </property>
+             </item>
+             <item row="3" column="1">
+              <property name="text">
+               <string>接点R</string>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+              </property>
+             </item>
+             <item row="4" column="0">
+              <property name="checkState">
+               <enum>Checked</enum>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+              </property>
+             </item>
+             <item row="4" column="1">
+              <property name="text">
+               <string>接点a</string>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+              </property>
+             </item>
+             <item row="5" column="0">
+              <property name="checkState">
+               <enum>Checked</enum>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+              </property>
+             </item>
+             <item row="5" column="1">
+              <property name="text">
+               <string>接点b</string>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+              </property>
+             </item>
+             <item row="6" column="0">
+              <property name="checkState">
+               <enum>Checked</enum>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+              </property>
+             </item>
+             <item row="6" column="1">
+              <property name="text">
+               <string>接点c</string>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_6">
+          <property name="title">
+           <string>试验参数</string>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <property name="leftMargin">
+            <number>2</number>
+           </property>
+           <property name="topMargin">
+            <number>2</number>
+           </property>
+           <property name="rightMargin">
+            <number>2</number>
+           </property>
+           <property name="bottomMargin">
+            <number>2</number>
+           </property>
+           <item>
+            <widget class="QTableWidget" name="tb_cycs">
+             <property name="rowCount">
+              <number>7</number>
+             </property>
+             <attribute name="verticalHeaderVisible">
+              <bool>false</bool>
+             </attribute>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <column>
+              <property name="text">
+               <string>数据项</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>值</string>
+              </property>
+             </column>
+             <item row="0" column="0">
+              <property name="text">
+               <string>变量</string>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+              </property>
+             </item>
+             <item row="1" column="0">
+              <property name="text">
+               <string>波形</string>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+              </property>
+             </item>
+             <item row="2" column="0">
+              <property name="text">
+               <string>幅值步长</string>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+              </property>
+             </item>
+             <item row="3" column="0">
+              <property name="text">
+               <string>相位步长</string>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+              </property>
+             </item>
+             <item row="4" column="0">
+              <property name="text">
+               <string>变化时间</string>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+              </property>
+             </item>
+             <item row="5" column="0">
+              <property name="text">
+               <string>防抖时间</string>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+              </property>
+             </item>
+             <item row="6" column="0">
+              <property name="text">
+               <string>动作方式</string>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QGroupBox" name="groupBox_7">
+            <property name="title">
+             <string>动作时间</string>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QLineEdit" name="lineEdit"/>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="groupBox_8">
+            <property name="title">
+             <string>返回时间</string>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item>
+              <widget class="QLineEdit" name="lineEdit_2"/>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_2">
+       <property name="title">
+        <string>变化方式</string>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <item>
+         <widget class="QRadioButton" name="radioButton">
+          <property name="text">
+           <string>手动方式</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="radioButton_2">
+          <property name="text">
+           <string>自动增加</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="radioButton_3">
+          <property name="text">
+           <string>自动减少</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,1">
+     <item>
+      <widget class="QGroupBox" name="groupBox_3">
+       <property name="title">
+        <string>IA-波形图</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_4">
+       <property name="title">
+        <string>IB-波形图</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
