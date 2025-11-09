@@ -18,6 +18,8 @@
 #include "test/test_16.h"
 #include "test/test_17.h"
 #include "test/test_18.h"
+#include "test/test_19.h"
+#include "test/test_20.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -51,6 +53,8 @@ MainWindow::MainWindow(QWidget *parent)
         {15, [](quint16 id) { return new test_16(id); }},       // 差动定值
         {16, [](quint16 id) { return new test_17(id); }},       // 差动继电器
         {17, [](quint16 id) { return new test_18(id); }},       // 差动谐波
+        {18, [](quint16 id) { return new test_19(id); }},       // 备自投测试
+        {19, [](quint16 id) { return new test_20(id); }},       // 快切
     };
 
     init_ui();
