@@ -38,6 +38,13 @@ SOURCES += \
     test/test_18.cpp \
     test/test_19.cpp \
     test/test_20.cpp \
+    test/test_21.cpp \
+    test/test_22.cpp \
+    test/test_23.cpp \
+    test/test_24.cpp \
+    test/test_25.cpp \
+    test/test_26.cpp \
+    test/test_27.cpp \
     test/test_choose.cpp \
     ui/test01/ui_001.cpp \
     ui/test01/ui_charts.cpp \
@@ -62,7 +69,13 @@ SOURCES += \
     ui/test18/ui_018.cpp \
     ui/test19/ui_019.cpp \
     ui/test20/ui_020.cpp \
-    ui/test21/ui_021.cpp
+    ui/test21/ui_021.cpp \
+    ui/test22/ui_022.cpp \
+    ui/test23/ui_023.cpp \
+    ui/test24/ui_024.cpp \
+    ui/test25/ui_025.cpp \
+    ui/test26/ui_026.cpp \
+    ui/test27/ui_027.cpp
 
 HEADERS += \
     global/component.h \
@@ -92,7 +105,15 @@ HEADERS += \
     test/test_18.h \
     test/test_19.h \
     test/test_20.h \
+    test/test_21.h \
+    test/test_22.h \
+    test/test_23.h \
+    test/test_24.h \
+    test/test_25.h \
+    test/test_26.h \
+    test/test_27.h \
     test/test_choose.h \
+    test/test_factory.h \
     ui/test01/ui_001.h \
     ui/test01/ui_charts.h \
     ui/test02/ui_002.h \
@@ -116,7 +137,13 @@ HEADERS += \
     ui/test18/ui_018.h \
     ui/test19/ui_019.h \
     ui/test20/ui_020.h \
-    ui/test21/ui_021.h
+    ui/test21/ui_021.h \
+    ui/test22/ui_022.h \
+    ui/test23/ui_023.h \
+    ui/test24/ui_024.h \
+    ui/test25/ui_025.h \
+    ui/test26/ui_026.h \
+    ui/test27/ui_027.h
 
 FORMS += \
     mainwindow.ui \
@@ -144,7 +171,13 @@ FORMS += \
     ui/test18/ui_018.ui \
     ui/test19/ui_019.ui \
     ui/test20/ui_020.ui \
-    ui/test21/ui_021.ui
+    ui/test21/ui_021.ui \
+    ui/test22/ui_022.ui \
+    ui/test23/ui_023.ui \
+    ui/test24/ui_024.ui \
+    ui/test25/ui_025.ui \
+    ui/test26/ui_026.ui \
+    ui/test27/ui_027.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

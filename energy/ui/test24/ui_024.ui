@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ui_024</class>
+ <widget class="QWidget" name="ui_024">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1099</width>
+    <height>803</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>13</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_5" stretch="3,2">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_6">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>试验参数</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QTableWidget" name="tb_sycs">
+            <property name="rowCount">
+             <number>7</number>
+            </property>
+            <attribute name="verticalHeaderVisible">
+             <bool>false</bool>
+            </attribute>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <column>
+             <property name="text">
+              <string>参量</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>有效值</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>变</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>步长</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>上限</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>相位</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>变</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>步长</string>
+             </property>
+            </column>
+            <item row="0" column="0">
+             <property name="text">
+              <string>IA</string>
+             </property>
+            </item>
+            <item row="1" column="0">
+             <property name="text">
+              <string>IB</string>
+             </property>
+            </item>
+            <item row="2" column="0">
+             <property name="text">
+              <string>IC</string>
+             </property>
+            </item>
+            <item row="3" column="0">
+             <property name="text">
+              <string>Ia</string>
+             </property>
+            </item>
+            <item row="4" column="0">
+             <property name="text">
+              <string>Ib</string>
+             </property>
+            </item>
+            <item row="5" column="0">
+             <property name="text">
+              <string>Ic</string>
+             </property>
+            </item>
+            <item row="6" column="0">
+             <property name="text">
+              <string>Hz</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>开关确认时间ms:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEdit"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_2">
+             <property name="title">
+              <string>试验目的</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout">
+              <item>
+               <widget class="QRadioButton" name="radioButton">
+                <property name="text">
+                 <string>测接点动作</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="radioButton_2">
+                <property name="text">
+                 <string>测动作和返回</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_3">
+           <property name="title">
+            <string>试验方式</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <widget class="QRadioButton" name="radioButton_3">
+              <property name="text">
+               <string>手动</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_4">
+              <property name="text">
+               <string>自动加</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_5">
+              <property name="text">
+               <string>自动减</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <widget class="QLabel" name="label_2">
+                <property name="text">
+                 <string>间隔时间ms:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="lineEdit_2"/>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QTableWidget" name="tableWidget_4"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="2,2,3">
+     <item>
+      <widget class="QTableWidget" name="tb_down_1">
+       <property name="rowCount">
+        <number>6</number>
+       </property>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <column>
+        <property name="text">
+         <string>参量</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>幅值</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>相位</string>
+        </property>
+       </column>
+       <item row="0" column="0">
+        <property name="text">
+         <string>Io</string>
+        </property>
+       </item>
+       <item row="1" column="0">
+        <property name="text">
+         <string>I+</string>
+        </property>
+       </item>
+       <item row="2" column="0">
+        <property name="text">
+         <string>I-</string>
+        </property>
+       </item>
+       <item row="3" column="0">
+        <property name="text">
+         <string>io</string>
+        </property>
+       </item>
+       <item row="4" column="0">
+        <property name="text">
+         <string>i+</string>
+        </property>
+       </item>
+       <item row="5" column="0">
+        <property name="text">
+         <string>i-</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTableWidget" name="tb_down_2">
+       <property name="rowCount">
+        <number>7</number>
+       </property>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <column>
+        <property name="text">
+         <string>开入量</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>动作时间</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>返回时间</string>
+        </property>
+       </column>
+       <item row="0" column="0">
+        <property name="text">
+         <string>A</string>
+        </property>
+       </item>
+       <item row="1" column="0">
+        <property name="text">
+         <string>B</string>
+        </property>
+       </item>
+       <item row="2" column="0">
+        <property name="text">
+         <string>C</string>
+        </property>
+       </item>
+       <item row="3" column="0">
+        <property name="text">
+         <string>R</string>
+        </property>
+       </item>
+       <item row="4" column="0">
+        <property name="text">
+         <string>a</string>
+        </property>
+       </item>
+       <item row="5" column="0">
+        <property name="text">
+         <string>b</string>
+        </property>
+       </item>
+       <item row="6" column="0">
+        <property name="text">
+         <string>c</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTableWidget" name="tb_down_3">
+       <property name="rowCount">
+        <number>25</number>
+       </property>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <column>
+        <property name="text">
+         <string/>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>参量</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>动作</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>返回</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>返回系数</string>
+        </property>
+       </column>
+       <item row="0" column="0">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+       </item>
+       <item row="0" column="1">
+        <property name="text">
+         <string>IA</string>
+        </property>
+       </item>
+       <item row="1" column="1">
+        <property name="text">
+         <string>IB</string>
+        </property>
+       </item>
+       <item row="2" column="1">
+        <property name="text">
+         <string>IC</string>
+        </property>
+       </item>
+       <item row="3" column="1">
+        <property name="text">
+         <string>Ia</string>
+        </property>
+       </item>
+       <item row="4" column="1">
+        <property name="text">
+         <string>Ib</string>
+        </property>
+       </item>
+       <item row="5" column="1">
+        <property name="text">
+         <string>Ic</string>
+        </property>
+       </item>
+       <item row="6" column="1">
+        <property name="text">
+         <string>Io</string>
+        </property>
+       </item>
+       <item row="7" column="1">
+        <property name="text">
+         <string>I+</string>
+        </property>
+       </item>
+       <item row="8" column="1">
+        <property name="text">
+         <string>I-</string>
+        </property>
+       </item>
+       <item row="9" column="1">
+        <property name="text">
+         <string>io</string>
+        </property>
+       </item>
+       <item row="10" column="1">
+        <property name="text">
+         <string>i+</string>
+        </property>
+       </item>
+       <item row="11" column="1">
+        <property name="text">
+         <string>i-</string>
+        </property>
+       </item>
+       <item row="12" column="1">
+        <property name="text">
+         <string>ΦIA</string>
+        </property>
+       </item>
+       <item row="13" column="1">
+        <property name="text">
+         <string>ΦIB</string>
+        </property>
+       </item>
+       <item row="14" column="1">
+        <property name="text">
+         <string>ΦIC</string>
+        </property>
+       </item>
+       <item row="15" column="1">
+        <property name="text">
+         <string>ΦIa</string>
+        </property>
+       </item>
+       <item row="16" column="1">
+        <property name="text">
+         <string>ΦIb</string>
+        </property>
+       </item>
+       <item row="17" column="1">
+        <property name="text">
+         <string>ΦIc</string>
+        </property>
+       </item>
+       <item row="18" column="1">
+        <property name="text">
+         <string>ΦIo</string>
+        </property>
+       </item>
+       <item row="19" column="1">
+        <property name="text">
+         <string>ΦI+</string>
+        </property>
+       </item>
+       <item row="20" column="1">
+        <property name="text">
+         <string>ΦI-</string>
+        </property>
+       </item>
+       <item row="21" column="1">
+        <property name="text">
+         <string>Φio</string>
+        </property>
+       </item>
+       <item row="22" column="1">
+        <property name="text">
+         <string>Φi+</string>
+        </property>
+       </item>
+       <item row="23" column="1">
+        <property name="text">
+         <string>Φi-</string>
+        </property>
+       </item>
+       <item row="24" column="1">
+        <property name="text">
+         <string>Hz</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

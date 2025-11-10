@@ -1,6 +1,8 @@
 #include "test_01.h"
 #include "serial/serial_opera.h"
 
+#include "test/test_factory.h"
+
 test_01::test_01(quint16 test_id, QWidget *parent)
     : test(test_id, parent)
 {
@@ -242,3 +244,5 @@ void test_01::init_table()
         _chart_foot_right_widget->setItem(row, 0, paramItem);
     }
 }
+
+REGISTER_TEST(test_01, 0);

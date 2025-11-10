@@ -1,5 +1,7 @@
 #include "test_08.h"
 
+#include "test/test_factory.h"
+
 test_08::test_08(quint16 test_id, QWidget *parent)
     : test(test_id, parent)
 {

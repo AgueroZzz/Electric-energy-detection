@@ -1,0 +1,885 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ui_027</class>
+ <widget class="QWidget" name="ui_027">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1086</width>
+    <height>707</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_8" stretch="7,4">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="5,3">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_7">
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>试验参数设置</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QTableWidget" name="tb_sycs">
+            <property name="rowCount">
+             <number>8</number>
+            </property>
+            <attribute name="verticalHeaderVisible">
+             <bool>false</bool>
+            </attribute>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <row/>
+            <column>
+             <property name="text">
+              <string>参量</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>有效值</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>变</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>步长</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>上限</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>相位</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>变</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>步长</string>
+             </property>
+            </column>
+            <item row="0" column="0">
+             <property name="text">
+              <string>U+</string>
+             </property>
+            </item>
+            <item row="1" column="0">
+             <property name="text">
+              <string>U-</string>
+             </property>
+            </item>
+            <item row="2" column="0">
+             <property name="text">
+              <string>Uo</string>
+             </property>
+            </item>
+            <item row="3" column="0">
+             <property name="text">
+              <string>I+</string>
+             </property>
+            </item>
+            <item row="4" column="0">
+             <property name="text">
+              <string>I-</string>
+             </property>
+            </item>
+            <item row="5" column="0">
+             <property name="text">
+              <string>Io</string>
+             </property>
+            </item>
+            <item row="6" column="0">
+             <property name="text">
+              <string>Ux</string>
+             </property>
+            </item>
+            <item row="7" column="0">
+             <property name="text">
+              <string>Hz</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,1">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <item>
+                <widget class="QLabel" name="label">
+                 <property name="text">
+                  <string>开关变位确认时间:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit"/>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_2">
+                 <property name="text">
+                  <string>ms</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <item>
+                <widget class="QLabel" name="label_3">
+                 <property name="text">
+                  <string>设置Ux：</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="comboBox"/>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_2">
+             <property name="title">
+              <string>试验目的</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_3">
+              <item>
+               <widget class="QRadioButton" name="radioButton">
+                <property name="text">
+                 <string>测接点动作</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="radioButton_2">
+                <property name="text">
+                 <string>测动作和返回</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_3">
+           <property name="title">
+            <string>试验方式</string>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="3,1,3,1,3">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_4">
+              <item>
+               <widget class="QRadioButton" name="radioButton_3">
+                <property name="text">
+                 <string>手动</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="radioButton_4">
+                <property name="text">
+                 <string>全自动</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="radioButton_5">
+                <property name="text">
+                 <string>半自动</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="Line" name="line">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_6">
+              <item>
+               <widget class="QLabel" name="label_4">
+                <property name="text">
+                 <string>间隔时间</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="lineEdit_2"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_5">
+                <property name="text">
+                 <string>ms</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="Line" name="line_2">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <item>
+               <widget class="QRadioButton" name="radioButton_6">
+                <property name="text">
+                 <string>递减</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="radioButton_7">
+                <property name="text">
+                 <string>递增</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QTableWidget" name="tableWidget"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="2,2,3">
+     <item>
+      <widget class="QTableWidget" name="tb_down_1">
+       <property name="rowCount">
+        <number>9</number>
+       </property>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <column>
+        <property name="text">
+         <string>参量</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>幅值</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>相位</string>
+        </property>
+       </column>
+       <item row="0" column="0">
+        <property name="text">
+         <string>UAB</string>
+        </property>
+       </item>
+       <item row="1" column="0">
+        <property name="text">
+         <string>UBC</string>
+        </property>
+       </item>
+       <item row="2" column="0">
+        <property name="text">
+         <string>UCA</string>
+        </property>
+       </item>
+       <item row="3" column="0">
+        <property name="text">
+         <string>UA</string>
+        </property>
+       </item>
+       <item row="4" column="0">
+        <property name="text">
+         <string>UB</string>
+        </property>
+       </item>
+       <item row="5" column="0">
+        <property name="text">
+         <string>UC</string>
+        </property>
+       </item>
+       <item row="6" column="0">
+        <property name="text">
+         <string>IA</string>
+        </property>
+       </item>
+       <item row="7" column="0">
+        <property name="text">
+         <string>IB</string>
+        </property>
+       </item>
+       <item row="8" column="0">
+        <property name="text">
+         <string>IC</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTableWidget" name="tb_down_2">
+       <property name="rowCount">
+        <number>7</number>
+       </property>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <column>
+        <property name="text">
+         <string>开入量</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>动作时间</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>返回时间</string>
+        </property>
+       </column>
+       <item row="0" column="0">
+        <property name="text">
+         <string>A</string>
+        </property>
+       </item>
+       <item row="1" column="0">
+        <property name="text">
+         <string>B</string>
+        </property>
+       </item>
+       <item row="2" column="0">
+        <property name="text">
+         <string>C</string>
+        </property>
+       </item>
+       <item row="3" column="0">
+        <property name="text">
+         <string>R</string>
+        </property>
+       </item>
+       <item row="4" column="0">
+        <property name="text">
+         <string>a</string>
+        </property>
+       </item>
+       <item row="5" column="0">
+        <property name="text">
+         <string>b</string>
+        </property>
+       </item>
+       <item row="6" column="0">
+        <property name="text">
+         <string>c</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTableWidget" name="tb_down_3">
+       <property name="rowCount">
+        <number>33</number>
+       </property>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <column>
+        <property name="text">
+         <string>参量</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>动作</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>返回</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>返回系数</string>
+        </property>
+       </column>
+       <item row="0" column="0">
+        <property name="text">
+         <string>U+</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="1" column="0">
+        <property name="text">
+         <string>U-</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="2" column="0">
+        <property name="text">
+         <string>Uo</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="3" column="0">
+        <property name="text">
+         <string>I+</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="4" column="0">
+        <property name="text">
+         <string>I-</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="5" column="0">
+        <property name="text">
+         <string>Io</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="6" column="0">
+        <property name="text">
+         <string>Ux</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="7" column="0">
+        <property name="text">
+         <string>UAB</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="8" column="0">
+        <property name="text">
+         <string>UBC</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="9" column="0">
+        <property name="text">
+         <string>UCA</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="10" column="0">
+        <property name="text">
+         <string>UA</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="11" column="0">
+        <property name="text">
+         <string>UB</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="12" column="0">
+        <property name="text">
+         <string>UC</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="13" column="0">
+        <property name="text">
+         <string>IA</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="14" column="0">
+        <property name="text">
+         <string>IB</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="15" column="0">
+        <property name="text">
+         <string>IC</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="16" column="0">
+        <property name="text">
+         <string>ΦU+</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="17" column="0">
+        <property name="text">
+         <string>ΦU-</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="18" column="0">
+        <property name="text">
+         <string>ΦUo</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="19" column="0">
+        <property name="text">
+         <string>ΦI+</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="20" column="0">
+        <property name="text">
+         <string>ΦI-</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="21" column="0">
+        <property name="text">
+         <string>ΦIo</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="22" column="0">
+        <property name="text">
+         <string>ΦUx</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="23" column="0">
+        <property name="text">
+         <string>ΦUab</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="24" column="0">
+        <property name="text">
+         <string>ΦUbc</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="25" column="0">
+        <property name="text">
+         <string>ΦUca</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="26" column="0">
+        <property name="text">
+         <string>ΦUA</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="27" column="0">
+        <property name="text">
+         <string>ΦUB</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="28" column="0">
+        <property name="text">
+         <string>ΦUC</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="29" column="0">
+        <property name="text">
+         <string>ΦIA</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="30" column="0">
+        <property name="text">
+         <string>ΦIB</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="31" column="0">
+        <property name="text">
+         <string>ΦIC</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item row="32" column="0">
+        <property name="text">
+         <string>Hz</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

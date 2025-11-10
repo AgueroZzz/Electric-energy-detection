@@ -1,153 +1,114 @@
+// mainwindow.cpp
 #include "mainwindow.h"
-#include "test/test_02.h"
 #include "ui_mainwindow.h"
-#include "test/test_01.h"
-#include "test/test_03.h"
-#include "test/test_04.h"
-#include "test/test_05.h"
-#include "test/test_06.h"
-#include "test/test_07.h"
-#include "test/test_08.h"
-#include "test/test_09.h"
-#include "test/test_10.h"
-#include "test/test_11.h"
-#include "test/test_12.h"
-#include "test/test_13.h"
-#include "test/test_14.h"
-#include "test/test_15.h"
-#include "test/test_16.h"
-#include "test/test_17.h"
-#include "test/test_18.h"
-#include "test/test_19.h"
-#include "test/test_20.h"
+#include <QIcon>
+#include <QDebug>
+
+static constexpr QSize   kMinWindowSize{1300, 800};
+static constexpr char const* kWindowTitle = QT_TR_NOOP("电力测试软件");
+static constexpr char const* kAppIcon    = ":/icon/icon/app_icon.svg";
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(std::make_unique<Ui::MainWindow>())
 {
-    setMinimumSize(1300,800);
+    ui->setupUi(this);
 
-    // showMaximized();
+    setMinimumSize(kMinWindowSize);
+    setWindowIcon(QIcon(kAppIcon));
+    setWindowTitle(tr(kWindowTitle));
 
-    setWindowIcon(QIcon(":/icon/icon/app_icon.svg"));
-
-    setWindowTitle("电力测试软件");
-
-    // 测试项目工厂
-    testCreators = {
-        {0, [](quint16 id) { return new test_01(id); }},        // 三相交流实验
-        {1, [](quint16 id) { return new test_02(id); }},        // 三项直流实验
-        {2, [](quint16 id) { return new test_03(id); }},        // 交直流实验
-        {3, [](quint16 id) { return new test_04(id); }},        // 谐波实验
-        {4, [](quint16 id) { return new test_05(id); }},        // 状态序列1
-        {5, [](quint16 id) { return new test_06(id); }},        // 状态序列1
-        {6, [](quint16 id) { return new test_07(id); }},        // i_t
-        {7, [](quint16 id) { return new test_08(id); }},        // 频率及高低周保护
-        {8, [](quint16 id) { return new test_09(id); }},        // 功率方向及阻抗
-        {9, [](quint16 id) { return new test_10(id); }},        // 整组试验I
-        {10, [](quint16 id) { return new test_11(id); }},       // 整组试验II
-        {11, [](quint16 id) { return new test_12(id); }},       // 距离与零序保护
-        {12, [](quint16 id) { return new test_13(id); }},       // 线路保护
-        {13, [](quint16 id) { return new test_14(id); }},       // 阻抗特性试验
-        {14, [](quint16 id) { return new test_15(id); }},       // 差动保护定值
-        {15, [](quint16 id) { return new test_16(id); }},       // 差动定值
-        {16, [](quint16 id) { return new test_17(id); }},       // 差动继电器
-        {17, [](quint16 id) { return new test_18(id); }},       // 差动谐波
-        {18, [](quint16 id) { return new test_19(id); }},       // 备自投测试
-        {19, [](quint16 id) { return new test_20(id); }},       // 快切
-    };
-
-    init_ui();
-
-    _choose = new test_choose();
-    QObject::connect(_choose, &test_choose::sig_test_pro_choose, this, &MainWindow::slot_test_pro_choose);
-    _choose->show();
-    _choose->raise();
-    _choose->activateWindow();
+    initUi();
+    chooser_ = std::make_unique<test_choose>();
+    connect(chooser_.get(), &test_choose::sig_test_pro_choose, this, &MainWindow::onTestChosen);
 }
 
-MainWindow::~MainWindow()
+MainWindow::~MainWindow() = default;
+
+void MainWindow::initUi()
 {
-    delete ui;
+    setStyleSheet(QStringLiteral("QMainWindow { background-color: #EEF0ED; }"));
+    createMenus();
 }
 
-void MainWindow::slot_test_pro_choose(quint16 test_id)
+void MainWindow::createMenus()
 {
-    // 如果 test_id 相同，忽略
-    if (test_id == _test_id) {
+    // ---------- 文件 ----------
+    fileMenu = menuBar()->addMenu(tr("&File"));
+    fileMenu->addAction(tr("&New"),  this, [](){ /*TODO*/ });
+    fileMenu->addAction(tr("&Open"), this, [](){ /*TODO*/ });
+    fileMenu->addAction(tr("&Save"), this, [](){ /*TODO*/ });
+    fileMenu->addSeparator();
+    fileMenu->addAction(tr("E&xit"), qApp, &QApplication::quit);
+
+    // ---------- 项目 ----------
+    testMenu = menuBar()->addMenu(tr("&Project"));
+    testMenu->addAction(tr("&Open Test"), this, &MainWindow::onOpenTestChooser);
+    testMenu->addAction(tr("&Close Test"), this, &MainWindow::onCloseCurrentTest);
+
+    // ---------- 编辑 ----------
+    editMenu = menuBar()->addMenu(tr("&Edit"));
+    editMenu->addAction(tr("&Undo"));
+    editMenu->addAction(tr("&Redo"));
+    editMenu->addSeparator();
+    editMenu->addAction(tr("Cu&t"));
+    editMenu->addAction(tr("&Copy"));
+    editMenu->addAction(tr("&Paste"));
+
+    // ---------- 工具 ----------
+    toolMenu = menuBar()->addMenu(tr("&Tools"));
+    toolMenu->addAction(tr("Toolbar"));
+    toolMenu->addAction(tr("Status Bar"));
+
+    // ---------- 帮助 ----------
+    helpMenu = menuBar()->addMenu(tr("&Help"));
+    helpMenu->addAction(tr("&About"));
+    helpMenu->addAction(tr("&Help Doc"));
+}
+
+void MainWindow::onOpenTestChooser()
+{
+    chooser_->show();
+    chooser_->raise();
+    chooser_->activateWindow();
+}
+
+void MainWindow::onCloseCurrentTest()
+{
+    resetCurrentTest();
+}
+
+void MainWindow::resetCurrentTest()
+{
+    if (currentTest_) {
+        currentTest_->close();
+        currentTest_.reset();
+        setCentralWidget(nullptr);
+        currentTestId_ = std::numeric_limits<quint16>::max();
+    }
+}
+
+void MainWindow::onTestChosen(quint16 testId)
+{
+    if (testId == currentTestId_) return;
+
+    resetCurrentTest();
+    switchTest(testId);
+}
+
+void MainWindow::switchTest(quint16 testId)
+{
+    const auto &factory = globalTestFactory();
+    auto it = factory.find(testId);
+    if (it == factory.end()) {
+        qWarning() << "No creator for test_id:" << testId;
         return;
     }
 
-    // 清理当前测试控件
-    clearCurrentTest();
+    currentTest_.reset(it.value()(testId));
+    currentTest_->setMinimumSize(200, 200);
+    setCentralWidget(currentTest_.get());
+    currentTestId_ = testId;
 
-    // 创建新控件
-    auto it = testCreators.find(test_id);
-    if (it != testCreators.end()) {
-        _test = it->second(test_id);
-        _test->setMinimumSize(200, 200); // 确保控件有大小
-        setCentralWidget(_test);
-        qDebug() << "Test widget added for test_id:" << test_id;
-        _test_id = test_id;
-    } else {
-    }
-}
-
-void MainWindow::init_ui()
-{
-    setStyleSheet("QMainWindow { background-color: #EEF0ED; }");
-    createMenuBar();
-}
-
-void MainWindow::createMenuBar()
-{
-    // 文件菜单
-    fileMenu = menuBar()->addMenu("文件(&F)");
-    fileMenu->addAction("新建(&N)");
-    fileMenu->addAction("打开(&O)");
-    fileMenu->addAction("保存(&S)");
-    fileMenu->addSeparator();
-    fileMenu->addAction("退出(&X)");
-
-    // 测试选择
-    testMenu = menuBar()->addMenu("项目(&P)");
-    QAction* test_act_open = new QAction("打开测试", testMenu);
-    QAction* test_act_close = new QAction("关闭测试", testMenu);
-    testMenu->addAction(test_act_open);
-    testMenu->addAction(test_act_close);
-    QObject::connect(test_act_open, &QAction::triggered, this, [=](){
-        _choose->show();
-        _choose->raise();
-        _choose->activateWindow();
-    });
-
-
-    // 编辑菜单
-    editMenu = menuBar()->addMenu("编辑(&E)");
-    editMenu->addAction("撤销(&U)");
-    editMenu->addAction("重做(&R)");
-    editMenu->addSeparator();
-    editMenu->addAction("剪切(&T)");
-    editMenu->addAction("复制(&C)");
-    editMenu->addAction("粘贴(&P)");
-
-    // 工具菜单
-    toolMenu = menuBar()->addMenu("工具(&V)");
-    toolMenu->addAction("工具栏");
-    toolMenu->addAction("状态栏");
-
-    // 帮助菜单
-    helpMenu = menuBar()->addMenu("帮助(&H)");
-    helpMenu->addAction("关于(&A)");
-    helpMenu->addAction("帮助文档(&H)");
-}
-
-void MainWindow::clearCurrentTest()
-{
-    if (_test) {
-        _test->close();
-        _test->deleteLater();
-        _test = nullptr;
-        _test_id = -1;
-    }
+    qDebug() << "Test widget added for test_id:" << testId;
 }
