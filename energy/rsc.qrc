@@ -29,4 +29,32 @@
         <file>icon/gz.svg</file>
         <file>icon/chart_sxq.svg</file>
     </qresource>
+    <qresource prefix="/choose_pic">
+        <file>pic/test_01.png</file>
+        <file>pic/test_02.png</file>
+        <file>pic/test_03.png</file>
+        <file>pic/test_04.png</file>
+        <file>pic/test_05.png</file>
+        <file>pic/test_06.png</file>
+        <file>pic/test_07.png</file>
+        <file>pic/test_08.png</file>
+        <file>pic/test_09.png</file>
+        <file>pic/test_10_11.png</file>
+        <file>pic/test_12.png</file>
+        <file>pic/test_13.png</file>
+        <file>pic/test_14.png</file>
+        <file>pic/test_15.png</file>
+        <file>pic/test_16.png</file>
+        <file>pic/test_17.png</file>
+        <file>pic/test_18.png</file>
+        <file>pic/test_19.png</file>
+        <file>pic/test_20.png</file>
+        <file>pic/test_21.png</file>
+        <file>pic/test_22.png</file>
+        <file>pic/test_23.png</file>
+        <file>pic/test_24.png</file>
+        <file>pic/test_25.png</file>
+        <file>pic/test_26.png</file>
+        <file>pic/test_27.png</file>
+    </qresource>
 </RCC>

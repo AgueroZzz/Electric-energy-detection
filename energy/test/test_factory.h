@@ -1,6 +1,9 @@
 #ifndef TEST_FACTORY_H
 #define TEST_FACTORY_H
 
+// test_factory.h
+#pragma once
+
 #include <QMap>
 #include <functional>
 #include <QDebug>
@@ -9,40 +12,29 @@
 
 using TestCreator = std::function<test*(quint16)>;
 
-/**
- * @brief 全局测试工厂（单例）
- * @return QMap<quint16, TestCreator>&
- */
-inline QMap<quint16, TestCreator>& globalTestFactory()
+// 声明
+class TestFactory
 {
-    static QMap<quint16, TestCreator> factory;
-    return factory;
-}
+public:
+    static QMap<quint16, TestCreator>& instance();
+};
 
-/**
- * @brief 注册宏：自动将 test_XX 类加入全局工厂
- * @param TestClass  类名（如 test_23）
- * @param ID         对应的 test_id（如 22）
- *
- * 使用方式：
- *   在 test_23.cpp 底部：
- *   REGISTER_TEST(test_23, 22);
- */
+// 宏：必须在 TestFactory 声明之后
 #define REGISTER_TEST(TestClass, ID) \
 namespace { \
-    struct TestClass##_AutoRegistrar { \
-        TestClass##_AutoRegistrar() { \
+    struct TestClass##_Registrar { \
+        TestClass##_Registrar() { \
             auto creator = [](quint16 id) -> test* { \
                 return new TestClass(id); \
         }; \
-            if (globalTestFactory().contains(ID)) { \
-                qWarning() << "Test ID" << ID << "already registered! Overwriting."; \
+            if (TestFactory::instance().contains(ID)) { \
+                qWarning() << "Test ID" << ID << "already registered!"; \
         } \
-            globalTestFactory().insert(ID, creator); \
+            TestFactory::instance().insert(ID, creator); \
             qDebug() << "Registered test:" << #TestClass << "-> ID" << ID; \
     } \
 }; \
-    static TestClass##_AutoRegistrar g_##TestClass##_registrar; \
+    [[maybe_unused]] static TestClass##_Registrar g_registrar_##TestClass; \
 }
 
 #endif // TEST_FACTORY_H

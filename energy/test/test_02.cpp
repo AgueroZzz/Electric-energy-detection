@@ -8,29 +8,20 @@ test_02::test_02(quint16 test_id, QWidget *parent)
     init_UI();
 
     init_top_widget();
-
-    init_middle_widget();
-
-    init_footer_widget();
-
-    // set_qss();
 }
 
 void test_02::init_UI()
 {
     _top_widget = new QWidget();
-    _middle_widget = new QWidget();
-    _footer_widget = new QWidget();
+    _ui_002 = new ui_002();
 
     // 垂直布局
     QVBoxLayout *layout = new QVBoxLayout();
     layout->addWidget(_top_widget);
-    layout->addWidget(_middle_widget);
-    layout->addWidget(_footer_widget);
+    layout->addWidget(_ui_002);
 
     layout->setStretch(0, 1);
-    layout->setStretch(1, 5);
-    layout->setStretch(2, 4);
+    layout->setStretch(1, 9);
 
     // 设置组件之间的距离
     layout->setSpacing(0);
@@ -75,42 +66,5 @@ void test_02::init_top_widget()
     _top_widget->setObjectName("topWidget");
 }
 
-void test_02::init_middle_widget()
-{
-    _middle_widget->setObjectName("middle_obj");
-    QHBoxLayout* _h_layout = new QHBoxLayout();     // 总体layout
 
-    QWidget* _centre_left_widget = new QWidget();       // 左侧操作widget
-    _centre_left_widget->setObjectName("centre_left_widget");
-
-    // 左侧layout
-    QVBoxLayout* _centre_left_layout = new QVBoxLayout();
-
-    // 左侧操作选择widget
-    _ui_002 = new ui_002();
-
-    // 右侧图标charts
-    _ui_charts_002 = new ui_charts_002();
-
-    _centre_left_layout->addWidget(_ui_002);
-    _centre_left_widget->setLayout(_centre_left_layout);
-
-    _h_layout->addWidget(_centre_left_widget);
-    _h_layout->addWidget(_ui_charts_002);
-
-    _middle_widget->setLayout(_h_layout);
-}
-
-
-
-void test_02::init_footer_widget()
-{
-    QHBoxLayout* _foot_table_layout = new QHBoxLayout();
-
-    _ui_table_002 = new ui_table_002();
-
-    _foot_table_layout->addWidget(_ui_table_002);
-
-    _footer_widget->setLayout(_foot_table_layout);
-    _footer_widget->setMinimumHeight(250);
-}
+REGISTER_TEST(test_02, 1);

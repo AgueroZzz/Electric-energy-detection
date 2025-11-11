@@ -7,20 +7,19 @@ ui_002::ui_002(QWidget *parent)
 {
     ui->setupUi(this);
 
-    init_UI();
+    ui->tb_sycs->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tb_sycs->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+    ui->tb_down_1->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tb_down_1->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+    ui->tb_down_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tb_down_2->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+    ui->tb_down_3->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }
 
 ui_002::~ui_002()
 {
     delete ui;
-}
-
-void ui_002::init_UI()
-{
-    QVBoxLayout* layout = new QVBoxLayout();
-    _opera = new serial_opera();
-    layout->addWidget(_opera);
-
-    ui->test_table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->test_table->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }

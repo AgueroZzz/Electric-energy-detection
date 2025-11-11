@@ -6,9 +6,17 @@ ui_001::ui_001(QWidget *parent)
     , ui(new Ui::ui_001)
 {
     ui->setupUi(this);
-    ui->all_layout->setStretch(0, 20);
-    ui->all_layout->setStretch(1, 20);
-    ui->all_layout->setStretch(3, 60);
+
+    ui->tb_cl->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tb_cl->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+    ui->tb_down_1->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tb_down_1->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+    ui->tb_down_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tb_down_2->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+    ui->tb_down_3->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }
 
 ui_001::~ui_001()

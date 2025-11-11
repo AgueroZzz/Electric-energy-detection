@@ -3,8 +3,6 @@
 
 #include "test.h"
 #include "ui/test02/ui_002.h"
-#include "ui/test02/ui_charts_002.h"
-#include "ui/test02/ui_table_002.h"
 
 class test_02 : public test
 {
@@ -15,16 +13,10 @@ private:
     void init_UI();
 
     void init_top_widget();                     // 初始化顶部按钮
-    void init_middle_widget();                  // 初始化中间widget
-    void init_footer_widget();                  // 初始化底部widget
-    void init_table_footer();                   // 初始化底部表格
-    // void init_table();                          // 初始化表格
 
     // 顶部/中部/底部Widget
     QWidget* _top_widget;
-    QWidget* _middle_widget;
-    QWidget* _footer_widget;
-    QWidget* _status_widget;
+    ui_002* _ui_002;
 
     // 顶部btn
     QToolButton* _btn_open_para;        // 打开参数按钮
@@ -36,10 +28,6 @@ private:
     QToolButton* _btn_end_test;       // 停止实验
     QToolButton* _btn_reset_test;     // 数据复位
     QToolButton* _btn_fdq;              // 放大器
-
-    ui_002* _ui_002;
-    ui_charts_002* _ui_charts_002;
-    ui_table_002* _ui_table_002;
 };
 
 #endif // TEST__2_H

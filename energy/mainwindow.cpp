@@ -21,13 +21,15 @@ MainWindow::MainWindow(QWidget *parent)
     initUi();
     chooser_ = std::make_unique<test_choose>();
     connect(chooser_.get(), &test_choose::sig_test_pro_choose, this, &MainWindow::onTestChosen);
+
+    chooser_->show();
 }
 
 MainWindow::~MainWindow() = default;
 
 void MainWindow::initUi()
 {
-    setStyleSheet(QStringLiteral("QMainWindow { background-color: #EEF0ED; }"));
+    // setStyleSheet(QStringLiteral("QMainWindow { background-color: #EEF0ED; }"));
     createMenus();
 }
 
@@ -98,7 +100,7 @@ void MainWindow::onTestChosen(quint16 testId)
 
 void MainWindow::switchTest(quint16 testId)
 {
-    const auto &factory = globalTestFactory();
+    const auto &factory = TestFactory::instance();
     auto it = factory.find(testId);
     if (it == factory.end()) {
         qWarning() << "No creator for test_id:" << testId;

@@ -10,6 +10,8 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    charts/current_chart.cpp \
+    charts/voltage_chart.cpp \
     global/component.cpp \
     global/tools.cpp \
     main.cpp \
@@ -46,11 +48,10 @@ SOURCES += \
     test/test_26.cpp \
     test/test_27.cpp \
     test/test_choose.cpp \
+    test/test_factory.cpp \
+    ui/chooser.cpp \
     ui/test01/ui_001.cpp \
-    ui/test01/ui_charts.cpp \
     ui/test02/ui_002.cpp \
-    ui/test02/ui_charts_002.cpp \
-    ui/test02/ui_table_002.cpp \
     ui/test03/ui_003.cpp \
     ui/test04/ui_004.cpp \
     ui/test05/ui_005.cpp \
@@ -78,6 +79,8 @@ SOURCES += \
     ui/test27/ui_027.cpp
 
 HEADERS += \
+    charts/current_chart.h \
+    charts/voltage_chart.h \
     global/component.h \
     global/tools.h \
     mainwindow.h \
@@ -114,11 +117,9 @@ HEADERS += \
     test/test_27.h \
     test/test_choose.h \
     test/test_factory.h \
+    ui/chooser.h \
     ui/test01/ui_001.h \
-    ui/test01/ui_charts.h \
     ui/test02/ui_002.h \
-    ui/test02/ui_charts_002.h \
-    ui/test02/ui_table_002.h \
     ui/test03/ui_003.h \
     ui/test04/ui_004.h \
     ui/test05/ui_005.h \
@@ -149,10 +150,9 @@ FORMS += \
     mainwindow.ui \
     serial/serial_opera.ui \
     test/test_choose.ui \
+    ui/chooser.ui \
     ui/test01/ui_001.ui \
-    ui/test01/ui_charts.ui \
     ui/test02/ui_002.ui \
-    ui/test02/ui_table_002.ui \
     ui/test03/ui_003.ui \
     ui/test04/ui_004.ui \
     ui/test05/ui_005.ui \

@@ -17,15 +17,6 @@ ui_003::ui_003(QWidget *parent)
 
     ui->tb_result->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tb_result->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
-    _chart_001 = new ui_charts();
-    _chart_002 = new ui_charts_002();
-
-    QVBoxLayout* _chart_layout = new QVBoxLayout();
-    _chart_layout->setContentsMargins(3, 3, 3, 3);
-    _chart_layout->addWidget(_chart_001, 3);
-    _chart_layout->addWidget(_chart_002, 2);
-    ui->widget_charts->setLayout(_chart_layout);
 }
 
 ui_003::~ui_003()

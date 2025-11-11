@@ -59,3 +59,5 @@ void test_09::init_top_widget()
     _top_widget->setLayout(total_layout);
     _top_widget->setObjectName("topWidget");
 }
+
+REGISTER_TEST(test_09, 8);
