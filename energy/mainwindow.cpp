@@ -19,8 +19,8 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowTitle(tr(kWindowTitle));
 
     initUi();
-    chooser_ = std::make_unique<test_choose>();
-    connect(chooser_.get(), &test_choose::sig_test_pro_choose, this, &MainWindow::onTestChosen);
+    chooser_ = std::make_unique<chooser>();
+    connect(chooser_.get(), &chooser::sig_test_pro_choose, this, &MainWindow::onTestChosen);
 
     chooser_->show();
 }
@@ -36,20 +36,20 @@ void MainWindow::initUi()
 void MainWindow::createMenus()
 {
     // ---------- 文件 ----------
-    fileMenu = menuBar()->addMenu(tr("&File"));
-    fileMenu->addAction(tr("&New"),  this, [](){ /*TODO*/ });
-    fileMenu->addAction(tr("&Open"), this, [](){ /*TODO*/ });
-    fileMenu->addAction(tr("&Save"), this, [](){ /*TODO*/ });
+    fileMenu = menuBar()->addMenu(tr("&文件"));
+    fileMenu->addAction(tr("&新建"),  this, [](){ /*TODO*/ });
+    fileMenu->addAction(tr("&打开"), this, [](){ /*TODO*/ });
+    fileMenu->addAction(tr("&保存"), this, [](){ /*TODO*/ });
     fileMenu->addSeparator();
-    fileMenu->addAction(tr("E&xit"), qApp, &QApplication::quit);
+    fileMenu->addAction(tr("&退出"), qApp, &QApplication::quit);
 
     // ---------- 项目 ----------
-    testMenu = menuBar()->addMenu(tr("&Project"));
-    testMenu->addAction(tr("&Open Test"), this, &MainWindow::onOpenTestChooser);
-    testMenu->addAction(tr("&Close Test"), this, &MainWindow::onCloseCurrentTest);
+    testMenu = menuBar()->addMenu(tr("&项目"));
+    testMenu->addAction(tr("&打开测试项目"), this, &MainWindow::onOpenTestChooser);
+    testMenu->addAction(tr("&关闭测试项目"), this, &MainWindow::onCloseCurrentTest);
 
     // ---------- 编辑 ----------
-    editMenu = menuBar()->addMenu(tr("&Edit"));
+    editMenu = menuBar()->addMenu(tr("&编辑"));
     editMenu->addAction(tr("&Undo"));
     editMenu->addAction(tr("&Redo"));
     editMenu->addSeparator();
@@ -58,12 +58,12 @@ void MainWindow::createMenus()
     editMenu->addAction(tr("&Paste"));
 
     // ---------- 工具 ----------
-    toolMenu = menuBar()->addMenu(tr("&Tools"));
+    toolMenu = menuBar()->addMenu(tr("&工具"));
     toolMenu->addAction(tr("Toolbar"));
     toolMenu->addAction(tr("Status Bar"));
 
     // ---------- 帮助 ----------
-    helpMenu = menuBar()->addMenu(tr("&Help"));
+    helpMenu = menuBar()->addMenu(tr("&帮助"));
     helpMenu->addAction(tr("&About"));
     helpMenu->addAction(tr("&Help Doc"));
 }

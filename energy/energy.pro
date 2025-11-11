@@ -47,7 +47,6 @@ SOURCES += \
     test/test_25.cpp \
     test/test_26.cpp \
     test/test_27.cpp \
-    test/test_choose.cpp \
     test/test_factory.cpp \
     ui/chooser.cpp \
     ui/test01/ui_001.cpp \
@@ -115,7 +114,6 @@ HEADERS += \
     test/test_25.h \
     test/test_26.h \
     test/test_27.h \
-    test/test_choose.h \
     test/test_factory.h \
     ui/chooser.h \
     ui/test01/ui_001.h \
@@ -149,7 +147,6 @@ HEADERS += \
 FORMS += \
     mainwindow.ui \
     serial/serial_opera.ui \
-    test/test_choose.ui \
     ui/chooser.ui \
     ui/test01/ui_001.ui \
     ui/test02/ui_002.ui \

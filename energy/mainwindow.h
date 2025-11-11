@@ -8,7 +8,7 @@
 #include <QMenu>
 #include <QMenuBar>
 #include "test/test.h"
-#include "test/test_choose.h"
+#include "ui/chooser.h"
 #include "test/test_factory.h"
 
 QT_BEGIN_NAMESPACE
@@ -42,6 +42,6 @@ private:
     quint16 currentTestId_ = std::numeric_limits<quint16>::max();
 
     // ---------- 选择器 ----------
-    std::unique_ptr<test_choose> chooser_;
+    std::unique_ptr<chooser> chooser_;
 };
 #endif // MAINWINDOW_H

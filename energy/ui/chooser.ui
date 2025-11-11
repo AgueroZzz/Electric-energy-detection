@@ -6,21 +6,61 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1157</width>
-    <height>699</height>
+    <width>1331</width>
+    <height>1000</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1331</width>
+    <height>1000</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1331</width>
+    <height>1000</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" stretch="1,6">
-   <item>
-    <widget class="QWidget" name="title_widget" native="true"/>
-   </item>
-   <item>
-    <widget class="QWidget" name="btn_widget" native="true"/>
-   </item>
-  </layout>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">chooser {
+background-image:url(:/choose_bg/pic/bg_3x_1331x1000.bmp);
+background-repeat:no-repeat;
+background-position:center;
+background-size:cover;
+}</string>
+  </property>
+  <widget class="QWidget" name="btn_widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>350</y>
+     <width>1100</width>
+     <height>400</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>1100</width>
+     <height>300</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>1100</width>
+     <height>300</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
