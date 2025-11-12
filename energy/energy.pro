@@ -10,8 +10,8 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    charts/ac_chart.cpp \
     charts/current_chart.cpp \
-    charts/voltage_chart.cpp \
     global/component.cpp \
     global/tools.cpp \
     main.cpp \
@@ -78,8 +78,8 @@ SOURCES += \
     ui/test27/ui_027.cpp
 
 HEADERS += \
+    charts/ac_chart.h \
     charts/current_chart.h \
-    charts/voltage_chart.h \
     global/component.h \
     global/tools.h \
     mainwindow.h \

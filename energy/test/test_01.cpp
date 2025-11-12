@@ -1,6 +1,7 @@
 #include "test_01.h"
 
 #include "test/test_factory.h"
+#include "ui_ui_001.h"
 
 test_01::test_01(quint16 test_id, QWidget *parent)
     : test(test_id, parent)
@@ -8,6 +9,10 @@ test_01::test_01(quint16 test_id, QWidget *parent)
     init_UI();
 
     init_top_widget();
+
+    init_chart_widget();
+
+    setWindowTitle("三相交流电压/电流试验");
 }
 
 void test_01::init_UI()
@@ -66,6 +71,44 @@ void test_01::init_top_widget()
     total_layout->addLayout(btn_layout);
     _top_widget->setLayout(total_layout);
     _top_widget->setObjectName("topWidget");
+}
+
+void test_01::init_chart_widget()
+{
+    QVBoxLayout* btn_layout = new QVBoxLayout(_ui_001->ui->btn_widget);
+    _chart_btn_dc = createToolButton(":/icon/icon/chart_dc.svg", "对称输出");
+    _chart_btn_fdq = createToolButton(":/icon/icon/chart_fdq.svg", "放大器");
+    // _chart_btn_fdq->setCheckable(true);
+    _chart_btn_x = createToolButton(":/icon/icon/chart_x.svg", "背景X");
+    _chart_btn_x->setCheckable(true);
+    _chart_btn_o = createToolButton(":/icon/icon/chart_o.svg", "背景圆");
+    _chart_btn_o->setCheckable(true);
+    QButtonGroup* _group = new QButtonGroup();
+    _chart_btn_xfl = createToolButton(":/icon/icon/chart_xiangfl.svg", "相分量");
+    _chart_btn_xfl->setCheckable(true);
+    _chart_btn_xdy = createToolButton(":/icon/icon/chart_xdy.svg", "线电压");
+    _chart_btn_xdy->setCheckable(true);
+    _chart_btn_xufl = createToolButton(":/icon/icon/chart_xufl.svg", "序分量");
+    _chart_btn_xufl->setCheckable(true);
+    _group->addButton(_chart_btn_xfl, 0);
+    _group->addButton(_chart_btn_xdy, 1);
+    _group->addButton(_chart_btn_xufl, 2);
+    _group->setExclusive(true);
+
+    btn_layout->addWidget(_chart_btn_dc);
+    btn_layout->addWidget(_chart_btn_fdq);
+    btn_layout->addWidget(_chart_btn_x);
+    btn_layout->addWidget(_chart_btn_o);
+    btn_layout->addWidget(_chart_btn_xfl);
+    btn_layout->addWidget(_chart_btn_xdy);
+    btn_layout->addWidget(_chart_btn_xufl);
+
+    QHBoxLayout* chart_layout = new QHBoxLayout(_ui_001->ui->chart_widget);
+    _voltage = new ac_chart();
+    QObject::connect(_chart_btn_fdq, &QToolButton::clicked, _voltage, &ac_chart::slot_onZoomOut);
+    QObject::connect(_chart_btn_o, &QToolButton::clicked, _voltage, &ac_chart::slot_setShowGridCircles);
+    QObject::connect(_chart_btn_x, &QToolButton::clicked, _voltage, &ac_chart::slot_setShowAxes);
+    chart_layout->addWidget(_voltage);
 }
 
 REGISTER_TEST(test_01, 0);

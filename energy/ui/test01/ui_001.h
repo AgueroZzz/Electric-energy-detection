@@ -11,6 +11,8 @@ class ui_001 : public QWidget
 {
     Q_OBJECT
 
+    friend class test_01;
+
 public:
     explicit ui_001(QWidget *parent = nullptr);
     ~ui_001();

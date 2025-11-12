@@ -20,7 +20,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_4" stretch="5,2">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="3,1,3">
+    <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="4,1,4">
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <property name="spacing">
@@ -179,7 +179,22 @@
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="2,2,3">
+         <property name="spacing">
+          <number>10</number>
+         </property>
+         <property name="leftMargin">
+          <number>2</number>
+         </property>
+         <property name="topMargin">
+          <number>2</number>
+         </property>
+         <property name="rightMargin">
+          <number>2</number>
+         </property>
+         <property name="bottomMargin">
+          <number>2</number>
+         </property>
          <item>
           <widget class="QGroupBox" name="groupBox">
            <property name="title">
@@ -311,10 +326,10 @@
       </layout>
      </item>
      <item>
-      <widget class="QWidget" name="btn_layout" native="true"/>
+      <widget class="QWidget" name="btn_widget" native="true"/>
      </item>
      <item>
-      <widget class="QWidget" name="chart_layout" native="true"/>
+      <widget class="QWidget" name="chart_widget" native="true"/>
      </item>
     </layout>
    </item>

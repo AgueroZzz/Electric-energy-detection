@@ -22,6 +22,7 @@
 #include <QComboBox>
 #include <QTextEdit>
 #include <QLabel>
+#include <QButtonGroup>
 
 namespace Ui {
 class test;

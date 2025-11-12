@@ -3,7 +3,7 @@
 test::test(quint16 test_id, QWidget *parent)
     :QWidget(parent), _test_id(test_id)
 {
-
+    set_qss();
 }
 
 test::~test()

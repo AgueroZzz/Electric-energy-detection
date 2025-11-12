@@ -10,24 +10,6 @@ QWidget#chart_widget {
     border: 1px solid #d0d0d0;
 }
 
-QGroupBox {
-    border: 1px solid #5A5A5A;   /* 低对比度灰色边框 */
-    border-radius: 3px;
-    margin-top: 18px;            /* 标题与内容的距离 */
-    background-color: #D0D0D0;   /* 稍深的灰色背景 */
-    color: #D0D0D0;              /* 浅灰文字 */
-    font: bold 11px "Microsoft YaHei";
-}
-
-QGroupBox::title {
-    subcontrol-origin: margin;
-    subcontrol-position: top left;
-    padding: 0 6px;              /* 标题内边距 */
-    color: #000000;              /* 字体浅灰 */
-    background-color: transparent; /* 保持和背景统一，低对比 */
-    font: bold 20px;
-}
-
 QToolButton {
     background-color: #f0f0f0;      /* 默认背景 */
     border: 1px solid #d0d0d0;      /* 边框 */
@@ -47,6 +29,12 @@ QToolButton:hover {
 
 /* 按下效果 */
 QToolButton:pressed {
+    background-color: #cce0ff;      /* 更深的蓝色背景 */
+    border: 1px solid #2a6fbb;
+}
+
+/* 选中效果 */
+QToolButton:checked {
     background-color: #cce0ff;      /* 更深的蓝色背景 */
     border: 1px solid #2a6fbb;
 }
@@ -79,11 +67,6 @@ QTableWidget::item:hover {
 QTableWidget::item:selected {
     background-color: #d6e4f0;
     color: #1a4971;
-}
-
-QCheckBox::indicator {
-    width: 20px; 
-    height: 20px; 
 }
 
 QHeaderView::section {

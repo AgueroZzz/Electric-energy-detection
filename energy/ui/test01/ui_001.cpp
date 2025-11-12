@@ -12,11 +12,14 @@ ui_001::ui_001(QWidget *parent)
 
     ui->tb_down_1->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tb_down_1->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tb_down_1->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     ui->tb_down_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tb_down_2->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tb_down_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     ui->tb_down_3->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tb_down_3->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 ui_001::~ui_001()
