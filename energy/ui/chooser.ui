@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1331</width>
-    <height>1000</height>
+    <width>1200</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1331</width>
-    <height>1000</height>
+    <width>1200</width>
+    <height>800</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1331</width>
-    <height>1000</height>
+    <width>1200</width>
+    <height>800</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -39,10 +39,10 @@ background-size:cover;
   <widget class="QWidget" name="btn_widget" native="true">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>350</y>
+     <x>50</x>
+     <y>320</y>
      <width>1100</width>
-     <height>400</height>
+     <height>300</height>
     </rect>
    </property>
    <property name="minimumSize">

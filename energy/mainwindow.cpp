@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
     chooser_ = std::make_unique<chooser>();
     connect(chooser_.get(), &chooser::sig_test_pro_choose, this, &MainWindow::onTestChosen);
 
+    chooser_->setWindowFlags(chooser_->windowFlags() | Qt::WindowStaysOnTopHint);
     chooser_->show();
 }
 

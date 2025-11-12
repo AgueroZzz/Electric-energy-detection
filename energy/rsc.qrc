@@ -31,9 +31,7 @@
     </qresource>
     <qresource prefix="/choose_bg">
         <file>pic/6-35k_0.bmp</file>
-        <file>pic/6-35kV_1.bmp</file>
         <file>pic/ADVZK_0.BMP</file>
-        <file>pic/ADVZK_1.BMP</file>
         <file>pic/bg_3x.bmp</file>
         <file>pic/BG_6X.bmp</file>
         <file>pic/BG_X0.jpg</file>
@@ -41,71 +39,40 @@
         <file>pic/BG_X2.bmp</file>
         <file>pic/btn_bg.jpg</file>
         <file>pic/BZT_0.bmp</file>
-        <file>pic/BZT_1.bmp</file>
         <file>pic/CDJDQ_0.bmp</file>
-        <file>pic/CDJDQ_1.bmp</file>
         <file>pic/CDXZ_0.bmp</file>
-        <file>pic/CDXZ_1.bmp</file>
         <file>pic/DIFF(BP)_.bmp</file>
-        <file>pic/DIFF(BP)_1.bmp</file>
         <file>pic/DIFF_0.BMP</file>
-        <file>pic/DIFF_1.BMP</file>
         <file>pic/DIFFEX_0.BMP</file>
-        <file>pic/DIFFEX_1.BMP</file>
         <file>pic/EXIT_0.BMP</file>
         <file>pic/EXIT_1.BMP</file>
         <file>pic/GLFXZK_0.bmp</file>
-        <file>pic/GLFXZK_1.bmp</file>
         <file>pic/GZZX_0.bmp</file>
-        <file>pic/GZZX_1.bmp</file>
         <file>pic/HARM_0.BMP</file>
-        <file>pic/HARM_1.BMP</file>
         <file>pic/HFMRSZ_0.bmp</file>
-        <file>pic/HFMRSZ_1.bmp</file>
         <file>pic/JLLXBH_0.bmp</file>
-        <file>pic/JLLXBH_1.bmp</file>
         <file>pic/JZLSY_0.bmp</file>
-        <file>pic/JZLSY_1.bmp</file>
         <file>pic/KQ_0.bmp</file>
-        <file>pic/KQ_1.bmp</file>
         <file>pic/MAIN.bmp</file>
         <file>pic/ON-MAIN.BMP</file>
         <file>pic/OSC_0.BMP</file>
-        <file>pic/OSC_1.BMP</file>
         <file>pic/PDSYN_0.BMP</file>
-        <file>pic/PDSYN_1.BMP</file>
         <file>pic/PLGDZ_0.bmp</file>
-        <file>pic/PLGDZ_1.bmp</file>
         <file>pic/RAMP_0.BMP</file>
-        <file>pic/RAMP_1.BMP</file>
         <file>pic/SHOT_0.BMP</file>
-        <file>pic/SHOT_1.BMP</file>
         <file>pic/STATE_0.BMP</file>
-        <file>pic/STATE_1.BMP</file>
         <file>pic/state6i_0.bmp</file>
-        <file>pic/state6i_1.bmp</file>
         <file>pic/stateex_0.bmp</file>
-        <file>pic/stateex_1.bmp</file>
         <file>pic/STEP_0.BMP</file>
-        <file>pic/STEP_1.BMP</file>
         <file>pic/STEP6I_0.BMP</file>
-        <file>pic/STEP6I_1.BMP</file>
         <file>pic/STEP6U_0.bmp</file>
-        <file>pic/STEP6U_1.bmp</file>
         <file>pic/TOOT_0.BMP</file>
-        <file>pic/TOOT_1.BMP</file>
         <file>pic/transplay_0.bmp</file>
-        <file>pic/transplay_1.bmp</file>
         <file>pic/transplay6i_0.bmp</file>
-        <file>pic/transplay6i_1.bmp</file>
         <file>pic/TZK_0.BMP</file>
-        <file>pic/TZK_1.BMP</file>
         <file>pic/XLBHDZJY_0.bmp</file>
-        <file>pic/XLBHDZJY_1.bmp</file>
         <file>pic/ZKTX_0.bmp</file>
-        <file>pic/ZKTX_1.bmp</file>
         <file>pic/ZLSY_0.bmp</file>
-        <file>pic/ZLSY_1.bmp</file>
         <file>pic/bg_3x_1331x1000.bmp</file>
     </qresource>
 </RCC>
