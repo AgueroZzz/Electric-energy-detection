@@ -213,7 +213,7 @@
       </layout>
      </item>
      <item>
-      <widget class="QTableWidget" name="tableWidget_2"/>
+      <widget class="QWidget" name="c_widget" native="true"/>
      </item>
     </layout>
    </item>

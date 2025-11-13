@@ -3,6 +3,7 @@
 
 #include "test.h"
 #include "ui/test02/ui_002.h"
+#include "charts/dc_chart.h"
 
 class test_02 : public test
 {
@@ -14,9 +15,12 @@ private:
 
     void init_top_widget();                     // 初始化顶部按钮
 
+    void init_chart_widget();                   // 初始化图像
+
     // 顶部/中部/底部Widget
     QWidget* _top_widget;
     ui_002* _ui_002;
+    dc_chart* _dc;
 
     // 顶部btn
     QToolButton* _btn_open_para;        // 打开参数按钮

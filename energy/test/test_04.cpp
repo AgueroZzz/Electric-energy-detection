@@ -1,6 +1,7 @@
 #include "test_04.h"
 
 #include "test/test_factory.h"
+#include "ui_ui_004.h"
 
 test_04::test_04(quint16 test_id, QWidget *parent)
     : test(test_id, parent)
@@ -8,6 +9,8 @@ test_04::test_04(quint16 test_id, QWidget *parent)
     init_UI();
 
     init_top_widget();
+
+    init_chart_widget();
 }
 
 void test_04::init_UI()
@@ -64,6 +67,24 @@ void test_04::init_top_widget()
     total_layout->addLayout(btn_layout);
     _top_widget->setLayout(total_layout);
     _top_widget->setObjectName("topWidget");
+}
+
+void test_04::init_chart_widget()
+{
+    _v = new phasewave_chart("voltage");
+    _i = new phasewave_chart("current");
+    QHBoxLayout* v_layout = new QHBoxLayout(_ui_004->ui->v_chart);
+    v_layout->addWidget(_v);
+    QHBoxLayout* i_layout = new QHBoxLayout(_ui_004->ui->i_chart);
+    i_layout->addWidget(_i);
+
+    QObject::connect(_ui_004->ui->cb_ua, &QCheckBox::toggled, _v, &phasewave_chart::slot_phase_a_checked);
+    QObject::connect(_ui_004->ui->cb_ub, &QCheckBox::toggled, _v, &phasewave_chart::slot_phase_b_checked);
+    QObject::connect(_ui_004->ui->cb_uc, &QCheckBox::toggled, _v, &phasewave_chart::slot_phase_c_checked);
+
+    QObject::connect(_ui_004->ui->cb_ia, &QCheckBox::toggled, _i, &phasewave_chart::slot_phase_a_checked);
+    QObject::connect(_ui_004->ui->cb_ib, &QCheckBox::toggled, _i, &phasewave_chart::slot_phase_b_checked);
+    QObject::connect(_ui_004->ui->cb_ic, &QCheckBox::toggled, _i, &phasewave_chart::slot_phase_c_checked);
 }
 
 REGISTER_TEST(test_04, 3);

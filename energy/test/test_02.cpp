@@ -1,6 +1,7 @@
 #include "test_02.h"
 
 #include "test/test_factory.h"
+#include "ui_ui_002.h"
 
 test_02::test_02(quint16 test_id, QWidget *parent)
     : test(test_id, parent)
@@ -8,6 +9,8 @@ test_02::test_02(quint16 test_id, QWidget *parent)
     init_UI();
 
     init_top_widget();
+
+    init_chart_widget();
 }
 
 void test_02::init_UI()
@@ -64,6 +67,14 @@ void test_02::init_top_widget()
     total_layout->addLayout(btn_layout);
     _top_widget->setLayout(total_layout);
     _top_widget->setObjectName("topWidget");
+}
+
+void test_02::init_chart_widget()
+{
+    _dc = new dc_chart();
+    QObject::connect(_btn_fdq, &QToolButton::clicked, _dc, &dc_chart::slot_set_scale);
+    QHBoxLayout* c_layout = new QHBoxLayout(_ui_002->ui->c_widget);
+    c_layout->addWidget(_dc);
 }
 
 

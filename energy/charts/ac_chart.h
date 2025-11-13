@@ -8,7 +8,7 @@
 #include <QMap>
 #include <QPainter>
 
-// 电压相量图
+// 交流电矢量图
 struct Phasor
 {
     double magnitude;   // 幅值

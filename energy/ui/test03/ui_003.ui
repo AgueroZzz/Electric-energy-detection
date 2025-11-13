@@ -1001,7 +1001,16 @@
     </widget>
    </item>
    <item>
-    <widget class="QWidget" name="widget_charts" native="true"/>
+    <widget class="QWidget" name="widget_charts" native="true">
+     <layout class="QVBoxLayout" name="verticalLayout_6">
+      <item>
+       <widget class="QWidget" name="ac_chart_widget" native="true"/>
+      </item>
+      <item>
+       <widget class="QWidget" name="dc_chart_widget" native="true"/>
+      </item>
+     </layout>
+    </widget>
    </item>
   </layout>
  </widget>

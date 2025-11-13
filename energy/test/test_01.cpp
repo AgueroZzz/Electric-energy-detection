@@ -11,8 +11,6 @@ test_01::test_01(quint16 test_id, QWidget *parent)
     init_top_widget();
 
     init_chart_widget();
-
-    setWindowTitle("三相交流电压/电流试验");
 }
 
 void test_01::init_UI()
@@ -108,6 +106,7 @@ void test_01::init_chart_widget()
     QObject::connect(_chart_btn_fdq, &QToolButton::clicked, _voltage, &ac_chart::slot_onZoomOut);
     QObject::connect(_chart_btn_o, &QToolButton::clicked, _voltage, &ac_chart::slot_setShowGridCircles);
     QObject::connect(_chart_btn_x, &QToolButton::clicked, _voltage, &ac_chart::slot_setShowAxes);
+    QObject::connect(_group, &QButtonGroup::idClicked, _voltage, &ac_chart::slot_onModeChanged);
     chart_layout->addWidget(_voltage);
 }
 

@@ -11,7 +11,8 @@ CONFIG += c++17
 
 SOURCES += \
     charts/ac_chart.cpp \
-    charts/current_chart.cpp \
+    charts/dc_chart.cpp \
+    charts/phasewave_chart.cpp \
     global/component.cpp \
     global/tools.cpp \
     main.cpp \
@@ -79,7 +80,8 @@ SOURCES += \
 
 HEADERS += \
     charts/ac_chart.h \
-    charts/current_chart.h \
+    charts/dc_chart.h \
+    charts/phasewave_chart.h \
     global/component.h \
     global/tools.h \
     mainwindow.h \

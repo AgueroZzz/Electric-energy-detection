@@ -3,6 +3,7 @@
 
 #include "test.h"
 #include "ui/test04/ui_004.h"
+#include "charts/phasewave_chart.h"
 
 class test_04 : public test
 {
@@ -14,9 +15,13 @@ private:
 
     void init_top_widget();                     // 初始化顶部按钮
 
+    void init_chart_widget();                   // 初始化图像
+
     // 顶部/中部/底部Widget
     QWidget* _top_widget;
     ui_004* _ui_004;
+    phasewave_chart* _v;
+    phasewave_chart* _i;
 
     // 顶部btn
     QToolButton* _btn_open_para;        // 打开参数按钮

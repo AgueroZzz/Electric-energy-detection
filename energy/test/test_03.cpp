@@ -1,6 +1,7 @@
 #include "test_03.h"
 
 #include "test/test_factory.h"
+#include "ui_ui_003.h"
 
 test_03::test_03(quint16 test_id, QWidget *parent)
     : test(test_id, parent)
@@ -8,6 +9,8 @@ test_03::test_03(quint16 test_id, QWidget *parent)
     init_UI();
 
     init_top_widget();
+
+    init_chart_widget();
 }
 
 void test_03::init_UI()
@@ -62,6 +65,16 @@ void test_03::init_top_widget()
     total_layout->addLayout(btn_layout);
     _top_widget->setLayout(total_layout);
     _top_widget->setObjectName("topWidget");
+}
+
+void test_03::init_chart_widget()
+{
+    _ac = new ac_chart();
+    _dc = new dc_chart();
+    QHBoxLayout* ac_layout = new QHBoxLayout(_ui_003->ui->ac_chart_widget);
+    ac_layout->addWidget(_ac);
+    QHBoxLayout* dc_layout = new QHBoxLayout(_ui_003->ui->dc_chart_widget);
+    dc_layout->addWidget(_dc);
 }
 
 REGISTER_TEST(test_03, 2);

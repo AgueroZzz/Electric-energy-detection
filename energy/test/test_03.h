@@ -3,6 +3,8 @@
 
 #include "test.h"
 #include "ui/test03/ui_003.h"
+#include "charts/ac_chart.h"
+#include "charts/dc_chart.h"
 
 class test_03 : public test
 {
@@ -13,12 +15,15 @@ private:
     void init_UI();
 
     void init_top_widget();                     // 初始化顶部按钮
-    void init_middle_widget();                  // 初始化中间widget
+
+    void init_chart_widget();                   // 初始化图像
 
     // 顶部/中部/底部Widget
     QWidget* _top_widget;
     ui_003* _ui_003;
     QWidget* _status_widget;
+    ac_chart* _ac;
+    dc_chart* _dc;
 
     // 顶部btn
     QToolButton* _btn_open_para;        // 打开参数按钮
