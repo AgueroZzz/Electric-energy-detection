@@ -1,5 +1,7 @@
 #include "ui_004.h"
 #include "ui_ui_004.h"
+#include <QTreeWidgetItem>
+#include <QRegularExpression>
 
 ui_004::ui_004(QWidget *parent)
     : QWidget(parent)
@@ -8,8 +10,15 @@ ui_004::ui_004(QWidget *parent)
     ui->setupUi(this);
 
     initUI();
-
     init_table();
+    initDefaultHarmonicData();
+
+    // 默认显示 UA
+    _currentChannel = "UA";
+    updateTableFromMap("UA");
+
+    // 表格编辑 → 同步数据
+    connect(ui->tb_xbhl, &QTableWidget::itemChanged, this, &ui_004::syncTableToData);
 }
 
 ui_004::~ui_004()
@@ -17,35 +26,9 @@ ui_004::~ui_004()
     delete ui;
 }
 
-void ui_004::slot_itemClicked(QTreeWidgetItem *item, int column)
-{
-    Q_UNUSED(column);
-    // 只响应叶子节点（UA/UB...）
-    if (item->childCount() > 0) return;
-
-    QString channel = item->data(0, Qt::UserRole).toString();
-    if (!channel.isEmpty()) {
-        // updateTable(channel);
-    }
-}
-
-void ui_004::slot_setHarmonicData(const QString &channel, const harmonicMap &data)
-{
-    if (channel.isEmpty() || data.size() != 20) return;
-
-    m_allData[channel] = data;
-
-    // 如果当前显示的就是这个通道，立即刷新表格
-    if (_currentChannel == channel) {
-        updateTableFromMap(channel);
-    }
-}
-
-harmonicMap ui_004::slot_getHarmonicData(const QString &channel) const
-{
-
-}
-
+// ========================================
+// 1. 初始化 UI（树：UA→UB→UC→IA→IB→IC）
+// ========================================
 void ui_004::initUI()
 {
     ui->treeWidget->setHeaderHidden(true);
@@ -53,88 +36,210 @@ void ui_004::initUI()
     // 电压组
     QTreeWidgetItem *voltGroup = new QTreeWidgetItem(ui->treeWidget);
     voltGroup->setText(0, tr("电压"));
-    // voltGroup->setIcon(0, QIcon(":/icons/voltage.png")); // 可选图标
-
-    QTreeWidgetItem *ua = new QTreeWidgetItem(voltGroup);
-    ua->setText(0, "UA");
-    ua->setData(0, Qt::UserRole, "UA");
-    // ua->setIcon(0, QIcon(":/icons/yellow.png"));
-
-    QTreeWidgetItem *ub = new QTreeWidgetItem(voltGroup);
-    ub->setText(0, "UB");
-    ub->setData(0, Qt::UserRole, "UB");
-    // ub->setIcon(0, QIcon(":/icons/green.png"));
-
-    QTreeWidgetItem *uc = new QTreeWidgetItem(voltGroup);
-    uc->setText(0, "UC");
-    uc->setData(0, Qt::UserRole, "UC");
-    // uc->setIcon(0, QIcon(":/icons/red.png"));
+    voltGroup->setFlags(Qt::ItemIsEnabled);
 
     // 电流组
     QTreeWidgetItem *currGroup = new QTreeWidgetItem(ui->treeWidget);
     currGroup->setText(0, tr("电流"));
-    // currGroup->setIcon(0, QIcon(":/icons/current.png"));
+    currGroup->setFlags(Qt::ItemIsEnabled);
 
-    QTreeWidgetItem *ia = new QTreeWidgetItem(currGroup);
-    ia->setText(0, "IA");
-    ia->setData(0, Qt::UserRole, "IA");
-    // ia->setIcon(0, QIcon(":/icons/yellow.png"));
+    // lambda 创建通道
+    auto addChannel = [=](QTreeWidgetItem *parent, const QString &text, const QString &channel) {
+        QTreeWidgetItem *item = new QTreeWidgetItem(parent);
+        item->setText(0, text);
+        item->setData(0, Qt::UserRole, channel);
+        item->setCheckState(0, Qt::Unchecked);
+        item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsUserCheckable);
+        return item;
+    };
 
-    QTreeWidgetItem *ib = new QTreeWidgetItem(currGroup);
-    ib->setText(0, "IB");
-    ib->setData(0, Qt::UserRole, "IB");
-    // ib->setIcon(0, QIcon(":/icons/green.png"));
+    // 顺序：UA → UB → UC → IA → IB → IC
+    QTreeWidgetItem *ua = addChannel(voltGroup, "UA", "UA");
+    QTreeWidgetItem *ub = addChannel(voltGroup, "UB", "UB");
+    QTreeWidgetItem *uc = addChannel(voltGroup, "UC", "UC");
 
-    QTreeWidgetItem *ic = new QTreeWidgetItem(currGroup);
-    ic->setText(0, "IC");
-    ic->setData(0, Qt::UserRole, "IC");
-    // ic->setIcon(0, QIcon(":/icons/red.png"));
+    QTreeWidgetItem *ia = addChannel(currGroup, "IA", "IA");
+    QTreeWidgetItem *ib = addChannel(currGroup, "IB", "IB");
+    QTreeWidgetItem *ic = addChannel(currGroup, "IC", "IC");
 
     ui->treeWidget->expandAll();
 
+    // 连接信号（避免 lambda 重载）
     connect(ui->treeWidget, &QTreeWidget::itemClicked, this, &ui_004::slot_itemClicked);
+    connect(ui->treeWidget, &QTreeWidget::itemChanged, this, &ui_004::on_treeWidget_itemChanged);
+
+    // 默认选中 UA
+    ua->setCheckState(0, Qt::Checked);
 }
 
+// ========================================
+// 2. 初始化表格（固定谐波名 + 不可编辑）
+// ========================================
 void ui_004::init_table()
 {
-    for (int i = 0; i < 20; ++i) {
-        ui->tb_xbhl->setItem(i, 0, new QTableWidgetItem());
-        ui->tb_xbhl->setItem(i, 1, new QTableWidgetItem("0.000 V"));
-        ui->tb_xbhl->setItem(i, 2, new QTableWidgetItem("0.0°"));
+    ui->tb_xbhl->setRowCount(20);
+    ui->tb_xbhl->setColumnCount(3);
+
+    for (int row = 0; row < 20; ++row) {
+        // 第 0 列：谐波名（不可编辑）
+        QTableWidgetItem *nameItem = new QTableWidgetItem(_harmonicKeys[row]);
+        nameItem->setFlags(nameItem->flags() & ~Qt::ItemIsEditable);
+        ui->tb_xbhl->setItem(row, 0, nameItem);
+
+        // 第 1 列：幅值
+        ui->tb_xbhl->setItem(row, 1, new QTableWidgetItem("0.000"));
+
+        // 第 2 列：相位
+        ui->tb_xbhl->setItem(row, 2, new QTableWidgetItem("0.0"));
     }
 
+    ui->tb_xbhl->setHorizontalHeaderLabels({tr("谐波"), tr("幅值"), tr("相位")});
     ui->tb_xbhl->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tb_xbhl->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
-    ui->tb_bhfw->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->tb_bhfw->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
-    ui->tb_blxz->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->tb_blxz->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
-    ui->tb_kglsz->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->tb_kglsz->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
-    ui->tb_result->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->tb_result->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    // 其他表格拉伸
+    auto stretch = [](QTableWidget *tbl) {
+        tbl->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+        tbl->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    };
+    stretch(ui->tb_bhfw);
+    stretch(ui->tb_blxz);
+    stretch(ui->tb_kglsz);
+    stretch(ui->tb_result);
 }
 
+// ========================================
+// 3. 初始化默认数据（每个通道相位一致）
+// ========================================
+void ui_004::initDefaultHarmonicData()
+{
+    auto setChannel = [&](const QString& ch, qreal baseAmp, qreal phase) {
+        harmonicMap map;
+        for (const QString &k : _harmonicKeys) {
+            if(k == "直流"){
+                map[k] = {0.000, 0.0};
+            }else if(k == "基波"){
+                map[k] = {};
+            }else{
+
+            }
+            qreal amp = (k == _harmonicKeys[0]) ? 0.000 : (k == _harmonicKeys[1] ? baseAmp : 0.000);
+            map[k] = {amp, phase};
+        }
+        _allData[ch] = map;
+    };
+
+    setChannel("UA", 10.000,   0.0);
+    setChannel("UB", 10.000, -120.0);
+    setChannel("UC", 10.000,  120.0);
+    setChannel("IA",  1.000,   0.0);
+    setChannel("IB",  1.000, -120.0);
+    setChannel("IC",  1.000,  120.0);
+}
+
+// ========================================
+// 4. 数据 → 表格（强制按 m_harmonicKeys 顺序）
+// ========================================
 void ui_004::updateTableFromMap(const QString &channel)
 {
-    const harmonicMap &data = m_allData[channel];
+    if (!_allData.contains(channel)) return;
+
+    const harmonicMap &data = _allData[channel];
     bool isVoltage = channel.startsWith('U');
 
-    int row = 0;
-    for (auto it = data.constBegin(); it != data.constEnd(); ++it) {
-        const QString &key = it.key();
-        qreal amp = it.value().first;
-        qreal phase = it.value().second;
+    for (int row = 0; row < 20; ++row) {
+        const QString &key = _harmonicKeys[row];
+        auto it = data.constFind(key);
+        if (it == data.constEnd()) continue;
 
-        ui->tb_xbhl->item(row, 0)->setText(key);
+        qreal amp = it->first;
+        qreal phase = it->second;
+
         ui->tb_xbhl->item(row, 1)->setText(QString("%1 %2")
-                                           .arg(amp, 0, 'f', 3)
-                                           .arg(isVoltage ? "V" : "A"));
+                                               .arg(amp, 0, 'f', 3));
         ui->tb_xbhl->item(row, 2)->setText(QString("%1°").arg(phase, 0, 'f', 1));
-        ++row;
     }
+
+    _currentChannel = channel;
+}
+
+// 表格 → 数据
+void ui_004::syncTableToData()
+{
+    if (_currentChannel.isEmpty()) return;
+
+    harmonicMap &data = _allData[_currentChannel];
+
+    for (int row = 0; row < 20; ++row) {
+        QTableWidgetItem *nameItem  = ui->tb_xbhl->item(row, 0);
+        QTableWidgetItem *ampItem   = ui->tb_xbhl->item(row, 1);
+        QTableWidgetItem *phaseItem = ui->tb_xbhl->item(row, 2);
+
+        if (!nameItem || !ampItem || !phaseItem) continue;
+
+        QString key = nameItem->text().trimmed();
+        if (key.isEmpty()) continue;
+
+        // 幅值
+        QString ampText = ampItem->text();
+        bool ok;
+        qreal amp = ampText.toDouble(&ok);
+        if (!ok) amp = 0.0;
+
+        // 相位
+        QString phaseText = phaseItem->text();
+        qreal phase = phaseText.toDouble(&ok);
+        if (!ok) phase = 0.0;
+
+        data[key] = {amp, phase};
+    }
+}
+
+void ui_004::slot_itemClicked(QTreeWidgetItem *item, int column)
+{
+    Q_UNUSED(column);
+    if (item->childCount() > 0) return;
+
+    QString channel = item->data(0, Qt::UserRole).toString();
+    if (channel.isEmpty()) return;
+
+    item->setCheckState(0, Qt::Checked);
+    _currentChannel = channel;
+}
+
+void ui_004::on_treeWidget_itemChanged(QTreeWidgetItem *item, int column)
+{
+    if (column != 0 || item->childCount() > 0 || item->checkState(0) != Qt::Checked)
+        return;
+
+    auto *root = ui->treeWidget->invisibleRootItem();
+    for (int i = 0; i < root->childCount(); ++i) {
+        auto *group = root->child(i);
+        for (int j = 0; j < group->childCount(); ++j) {
+            auto *leaf = group->child(j);
+            if (leaf != item) {
+                leaf->setCheckState(0, Qt::Unchecked);
+            }
+        }
+    }
+
+    QString ch = item->data(0, Qt::UserRole).toString();
+    if (!ch.isEmpty()) {
+        _currentChannel = ch;
+        updateTableFromMap(ch);
+    }
+}
+
+void ui_004::slot_setHarmonicData(const QString &channel, const harmonicMap &data)
+{
+    if (channel.isEmpty() || data.size() != 20) return;
+    _allData[channel] = data;
+    if (_currentChannel == channel) {
+        updateTableFromMap(channel);
+    }
+}
+
+harmonicMap ui_004::slot_getHarmonicData(const QString &channel) const
+{
+    return _allData.value(channel);
 }

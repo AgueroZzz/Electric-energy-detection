@@ -9,8 +9,8 @@ namespace Ui {
 class ui_004;
 }
 
-using harmonicRowData = QPair<qreal, qreal>;
-using harmonicMap = QMap<QString, harmonicRowData>;
+using harmonicRowData = QPair<qreal, qreal>;           // <幅值, 相位>
+using harmonicMap = QMap<QString, harmonicRowData>;    // "基波" -> <10.0, 0.0>
 
 class ui_004 : public QWidget
 {
@@ -24,25 +24,24 @@ public:
 
 private slots:
     void slot_itemClicked(QTreeWidgetItem *item, int column);
-    // 设置指定通道的谐波数据
     void slot_setHarmonicData(const QString &channel, const harmonicMap &data);
-    // 获取指定通道的谐波数据
     harmonicMap slot_getHarmonicData(const QString &channel) const;
+    void on_treeWidget_itemChanged(QTreeWidgetItem *item, int column);
 
 private:
     Ui::ui_004 *ui;
 
-    QString _currentChannel;            // 当前显示的通道
-    QMap<QString, harmonicMap> m_allData;           // 所有通道数据
-
-    // 存储所有数据：key="UA", value=20个<幅值,相位>
-    QMap<QString, QVector<QPair<qreal, qreal>>> _harmonicData;
+    QString _currentChannel;
+    QMap<QString, harmonicMap> _allData;
+    // 全局统一 key 列表
+    QStringList _harmonicKeys = {"直流", "基波", "2次", "3次", "4次", "5次", "6次", "7次", "8次", "9次", "10次",
+                                 "11次", "12次", "13次", "14次", "15次", "16次", "17次", "18次", "19次", "20次"};
 
     void initUI();
-
     void init_table();
-
+    void initDefaultHarmonicData();
     void updateTableFromMap(const QString &channel);
+    void syncTableToData();
 };
 
 #endif // UI___4_H
