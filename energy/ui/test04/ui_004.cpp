@@ -44,23 +44,23 @@ void ui_004::initUI()
     currGroup->setFlags(Qt::ItemIsEnabled);
 
     // lambda 创建通道
-    auto addChannel = [=](QTreeWidgetItem *parent, const QString &text, const QString &channel) {
+    auto addChannel = [=](QTreeWidgetItem *parent, const QString &text) {
         QTreeWidgetItem *item = new QTreeWidgetItem(parent);
         item->setText(0, text);
-        item->setData(0, Qt::UserRole, channel);
+        item->setData(0, Qt::UserRole, text);
         item->setCheckState(0, Qt::Unchecked);
         item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsUserCheckable);
         return item;
     };
 
     // 顺序：UA → UB → UC → IA → IB → IC
-    QTreeWidgetItem *ua = addChannel(voltGroup, "UA", "UA");
-    QTreeWidgetItem *ub = addChannel(voltGroup, "UB", "UB");
-    QTreeWidgetItem *uc = addChannel(voltGroup, "UC", "UC");
+    QTreeWidgetItem *ua = addChannel(voltGroup, "UA");
+    QTreeWidgetItem *ub = addChannel(voltGroup, "UB");
+    QTreeWidgetItem *uc = addChannel(voltGroup, "UC");
 
-    QTreeWidgetItem *ia = addChannel(currGroup, "IA", "IA");
-    QTreeWidgetItem *ib = addChannel(currGroup, "IB", "IB");
-    QTreeWidgetItem *ic = addChannel(currGroup, "IC", "IC");
+    QTreeWidgetItem *ia = addChannel(currGroup, "IA");
+    QTreeWidgetItem *ib = addChannel(currGroup, "IB");
+    QTreeWidgetItem *ic = addChannel(currGroup, "IC");
 
     ui->treeWidget->expandAll();
 
@@ -115,6 +115,7 @@ void ui_004::initDefaultHarmonicData()
 {
     auto setChannel = [&](const QString& ch, qreal baseAmp, qreal phase) {
         harmonicMap map;
+        qDebug() << map;
         for (const QString &k : _harmonicKeys) {
             if(k == "直流"){
                 map[k] = {0.000, 0.0};
