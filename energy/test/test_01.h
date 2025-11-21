@@ -4,6 +4,7 @@
 #include "test.h"
 #include "ui/test01/ui_001.h"
 #include "charts/ac_chart.h"
+#include "global/tool_led.h"
 
 class test_01 : public test
 {
@@ -14,11 +15,13 @@ private:
     void init_UI();
     void init_top_widget();                     // 初始化顶部按钮
     void init_chart_widget();                   // 初始化图像
+    void init_state_widget();                   // 初始化状态栏
 
     // 顶部/中部/底部Widget
     QWidget* _top_widget;
     ui_001* _ui_001;
     ac_chart* _voltage;
+    QWidget* _state_widget;
 
     // 顶部btn
     QToolButton* _btn_open_para;        // 打开参数按钮
@@ -41,6 +44,15 @@ private:
     QToolButton* _chart_btn_xfl;        // 相分量
     QToolButton* _chart_btn_xdy;        // 线电压
     QToolButton* _chart_btn_xufl;       // 序分量
+
+    // 开关量
+    tool_led* _led_A;
+    tool_led* _led_B;
+    tool_led* _led_C;
+    tool_led* _led_R;
+    tool_led* _led_a;
+    tool_led* _led_b;
+    tool_led* _led_c;
 };
 
 #endif // TEST__1_H

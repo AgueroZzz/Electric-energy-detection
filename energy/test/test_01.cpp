@@ -11,20 +11,25 @@ test_01::test_01(quint16 test_id, QWidget *parent)
     init_top_widget();
 
     init_chart_widget();
+
+    init_state_widget();
 }
 
 void test_01::init_UI()
 {
     _top_widget = new QWidget();
     _ui_001 = new ui_001();
+    _state_widget = new QWidget();
 
     // 垂直布局
     QVBoxLayout *layout = new QVBoxLayout();
     layout->addWidget(_top_widget);
     layout->addWidget(_ui_001);
+    layout->addWidget(_state_widget);
 
-    layout->setStretch(0, 1);
-    layout->setStretch(1, 9);
+    layout->setStretch(0, 2);
+    layout->setStretch(1, 12);
+    layout->setStretch(2, 1);
 
     // 设置组件之间的距离
     layout->setSpacing(0);
@@ -108,6 +113,26 @@ void test_01::init_chart_widget()
     QObject::connect(_chart_btn_x, &QToolButton::clicked, _voltage, &ac_chart::slot_setShowAxes);
     QObject::connect(_group, &QButtonGroup::idClicked, _voltage, &ac_chart::slot_onModeChanged);
     chart_layout->addWidget(_voltage);
+}
+
+void test_01::init_state_widget()
+{
+    QHBoxLayout* _led_layout = new QHBoxLayout(_state_widget);
+    _led_A = new tool_led("A");
+    _led_B = new tool_led("B");
+    _led_C = new tool_led("C");
+    _led_R = new tool_led("R");
+    _led_a = new tool_led("a");
+    _led_b = new tool_led("b");
+    _led_c = new tool_led("c");
+
+    _led_layout->addWidget(_led_A);
+    _led_layout->addWidget(_led_B);
+    _led_layout->addWidget(_led_C);
+    _led_layout->addWidget(_led_R);
+    _led_layout->addWidget(_led_a);
+    _led_layout->addWidget(_led_b);
+    _led_layout->addWidget(_led_c);
 }
 
 REGISTER_TEST(test_01, 0);

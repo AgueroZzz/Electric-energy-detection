@@ -18,7 +18,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_4" stretch="10,6,1">
+  <layout class="QVBoxLayout" name="verticalLayout_4" stretch="5,3">
    <property name="spacing">
     <number>2</number>
    </property>
@@ -970,59 +970,6 @@
       </widget>
      </item>
     </layout>
-   </item>
-   <item>
-    <widget class="QWidget" name="status_widget" native="true">
-     <widget class="QLabel" name="label_6">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>0</y>
-        <width>69</width>
-        <height>19</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_7">
-      <property name="geometry">
-       <rect>
-        <x>630</x>
-        <y>10</y>
-        <width>69</width>
-        <height>19</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_3">
-      <property name="geometry">
-       <rect>
-        <x>710</x>
-        <y>0</y>
-        <width>113</width>
-        <height>25</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_8">
-      <property name="geometry">
-       <rect>
-        <x>820</x>
-        <y>10</y>
-        <width>69</width>
-        <height>19</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-    </widget>
    </item>
   </layout>
  </widget>

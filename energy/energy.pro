@@ -14,7 +14,7 @@ SOURCES += \
     charts/dc_chart.cpp \
     charts/phasewave_chart.cpp \
     global/component.cpp \
-    global/tools.cpp \
+    global/tool_led.cpp \
     main.cpp \
     mainwindow.cpp \
     serial/serial_opera.cpp \
@@ -83,7 +83,7 @@ HEADERS += \
     charts/dc_chart.h \
     charts/phasewave_chart.h \
     global/component.h \
-    global/tools.h \
+    global/tool_led.h \
     mainwindow.h \
     serial/serial_opera.h \
     serial/serial_port.h \
