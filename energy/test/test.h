@@ -46,8 +46,8 @@ public:
         btn->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
         btn->setIconSize(QSize(24, 24));
         btn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding); // 自动拉伸
-        btn->setMinimumHeight(45);
-        btn->setMaximumHeight(60);
+        btn->setMinimumHeight(55);
+        btn->setMaximumHeight(55);
         return btn;
     }
 

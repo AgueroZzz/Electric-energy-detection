@@ -28,14 +28,16 @@ void test_01::init_UI()
     layout->addWidget(_state_widget);
 
     layout->setStretch(0, 2);
-    layout->setStretch(1, 12);
+    layout->setStretch(1, 15);
     layout->setStretch(2, 1);
+    _state_widget->setMaximumHeight(30);
 
     // 设置组件之间的距离
     layout->setSpacing(0);
     layout->setContentsMargins(5, 5, 5, 5);
 
     setLayout(layout);
+
 }
 
 void test_01::init_top_widget()
@@ -72,8 +74,11 @@ void test_01::init_top_widget()
     btn_layout->addWidget(_btn_reset_test);
 
     total_layout->addLayout(btn_layout);
+    total_layout->setSpacing(2);
+    total_layout->setContentsMargins(2, 0, 2, 0);
     _top_widget->setLayout(total_layout);
     _top_widget->setObjectName("topWidget");
+    _top_widget->setMaximumHeight(60);
 }
 
 void test_01::init_chart_widget()
