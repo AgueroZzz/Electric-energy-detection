@@ -4,7 +4,7 @@
 #include "test.h"
 #include "ui/test01/ui_001.h"
 #include "charts/ac_chart.h"
-#include "global/tool_led.h"
+#include "global/led.h"
 
 class test_01 : public test
 {
@@ -46,13 +46,15 @@ private:
     QToolButton* _chart_btn_xufl;       // 序分量
 
     // 开关量
-    tool_led* _led_A;
-    tool_led* _led_B;
-    tool_led* _led_C;
-    tool_led* _led_R;
-    tool_led* _led_a;
-    tool_led* _led_b;
-    tool_led* _led_c;
+    QLabel* _state_label;               // 状态
+    QLabel* _runtime_second;            // 运行时间
+    led* _led_A;
+    led* _led_B;
+    led* _led_C;
+    led* _led_R;
+    led* _led_a;
+    led* _led_b;
+    led* _led_c;
 };
 
 #endif // TEST__1_H

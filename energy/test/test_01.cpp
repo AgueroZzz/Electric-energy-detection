@@ -86,14 +86,16 @@ void test_01::init_chart_widget()
     QVBoxLayout* btn_layout = new QVBoxLayout(_ui_001->ui->btn_widget);
     _chart_btn_dc = createToolButton(":/icon/icon/chart_dc.svg", "对称输出");
     _chart_btn_fdq = createToolButton(":/icon/icon/chart_fdq.svg", "放大器");
-    // _chart_btn_fdq->setCheckable(true);
     _chart_btn_x = createToolButton(":/icon/icon/chart_x.svg", "背景X");
     _chart_btn_x->setCheckable(true);
+    _chart_btn_x->setChecked(true);
     _chart_btn_o = createToolButton(":/icon/icon/chart_o.svg", "背景圆");
     _chart_btn_o->setCheckable(true);
+    _chart_btn_o->setChecked(true);
     QButtonGroup* _group = new QButtonGroup();
     _chart_btn_xfl = createToolButton(":/icon/icon/chart_xiangfl.svg", "相分量");
     _chart_btn_xfl->setCheckable(true);
+    _chart_btn_xfl->setChecked(true);
     _chart_btn_xdy = createToolButton(":/icon/icon/chart_xdy.svg", "线电压");
     _chart_btn_xdy->setCheckable(true);
     _chart_btn_xufl = createToolButton(":/icon/icon/chart_xufl.svg", "序分量");
@@ -122,14 +124,32 @@ void test_01::init_chart_widget()
 
 void test_01::init_state_widget()
 {
-    QHBoxLayout* _led_layout = new QHBoxLayout(_state_widget);
-    _led_A = new tool_led("A");
-    _led_B = new tool_led("B");
-    _led_C = new tool_led("C");
-    _led_R = new tool_led("R");
-    _led_a = new tool_led("a");
-    _led_b = new tool_led("b");
-    _led_c = new tool_led("c");
+    QHBoxLayout* _state_layout = new QHBoxLayout(_state_widget);
+    _state_label = new QLabel("就绪");
+    _state_layout->addWidget(_state_label);
+    _state_layout->addStretch();
+    QLabel* _runtime_first = new QLabel("运行时间(s):");
+    _runtime_second = new QLabel("0.00");
+    _state_layout->addWidget(_runtime_first);
+    _state_layout->addWidget(_runtime_second);
+    // 分割线
+    QFrame* _frame = new QFrame();
+    _frame->setFrameShape(QFrame::VLine);
+    _frame->setFrameShadow(QFrame::Sunken);
+    _frame->setLineWidth(1);
+    _frame->setMidLineWidth(0);
+    _state_layout->addWidget(_frame);
+    QLabel* _kgl_label = new QLabel("开关量:");
+    _state_layout->addWidget(_kgl_label);
+    QWidget* _led_widget = new QWidget();
+    QHBoxLayout* _led_layout = new QHBoxLayout(_led_widget);
+    _led_A = new led("A");
+    _led_B = new led("B");
+    _led_C = new led("C");
+    _led_R = new led("R");
+    _led_a = new led("a");
+    _led_b = new led("b");
+    _led_c = new led("c");
 
     _led_layout->addWidget(_led_A);
     _led_layout->addWidget(_led_B);
@@ -138,6 +158,7 @@ void test_01::init_state_widget()
     _led_layout->addWidget(_led_a);
     _led_layout->addWidget(_led_b);
     _led_layout->addWidget(_led_c);
+    _state_layout->addWidget(_led_widget);
 }
 
 REGISTER_TEST(test_01, 0);

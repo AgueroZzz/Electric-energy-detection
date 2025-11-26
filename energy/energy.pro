@@ -1,7 +1,7 @@
 QT += core gui
-QT += serialport sql charts
+QT += serialport sql charts svgwidgets widgets
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+# greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
 
@@ -14,7 +14,7 @@ SOURCES += \
     charts/dc_chart.cpp \
     charts/phasewave_chart.cpp \
     global/component.cpp \
-    global/tool_led.cpp \
+    global/led.cpp \
     main.cpp \
     mainwindow.cpp \
     serial/serial_opera.cpp \
@@ -83,7 +83,7 @@ HEADERS += \
     charts/dc_chart.h \
     charts/phasewave_chart.h \
     global/component.h \
-    global/tool_led.h \
+    global/led.h \
     mainwindow.h \
     serial/serial_opera.h \
     serial/serial_port.h \

@@ -24,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     chooser_->setWindowFlags(chooser_->windowFlags() | Qt::WindowStaysOnTopHint);
     chooser_->show();
+    showMaximized();
 }
 
 MainWindow::~MainWindow() = default;

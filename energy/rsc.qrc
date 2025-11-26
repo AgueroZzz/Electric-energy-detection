@@ -75,4 +75,8 @@
         <file>pic/ZLSY_0.bmp</file>
         <file>pic/bg_3x_1331x1000.bmp</file>
     </qresource>
+    <qresource prefix="/led">
+        <file>led/led_off.svg</file>
+        <file>led/led_on.svg</file>
+    </qresource>
 </RCC>
