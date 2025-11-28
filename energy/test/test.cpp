@@ -4,6 +4,8 @@ test::test(quint16 test_id, QWidget *parent)
     :QWidget(parent), _test_id(test_id)
 {
     set_qss();
+
+    setStyleSheet("font-size: 15px;");
 }
 
 test::~test()

@@ -30,11 +30,11 @@ void test_01::init_UI()
     layout->setStretch(0, 2);
     layout->setStretch(1, 15);
     layout->setStretch(2, 1);
-    _state_widget->setMaximumHeight(30);
+    _state_widget->setMaximumHeight(40);
 
     // 设置组件之间的距离
     layout->setSpacing(0);
-    layout->setContentsMargins(5, 5, 5, 5);
+    layout->setContentsMargins(5, 2, 5, 2);
 
     setLayout(layout);
 
@@ -139,10 +139,9 @@ void test_01::init_state_widget()
     _frame->setLineWidth(1);
     _frame->setMidLineWidth(0);
     _state_layout->addWidget(_frame);
+
     QLabel* _kgl_label = new QLabel("开关量:");
     _state_layout->addWidget(_kgl_label);
-    QWidget* _led_widget = new QWidget();
-    QHBoxLayout* _led_layout = new QHBoxLayout(_led_widget);
     _led_A = new led("A");
     _led_B = new led("B");
     _led_C = new led("C");
@@ -151,14 +150,13 @@ void test_01::init_state_widget()
     _led_b = new led("b");
     _led_c = new led("c");
 
-    _led_layout->addWidget(_led_A);
-    _led_layout->addWidget(_led_B);
-    _led_layout->addWidget(_led_C);
-    _led_layout->addWidget(_led_R);
-    _led_layout->addWidget(_led_a);
-    _led_layout->addWidget(_led_b);
-    _led_layout->addWidget(_led_c);
-    _state_layout->addWidget(_led_widget);
+    _state_layout->addWidget(_led_A);
+    _state_layout->addWidget(_led_B);
+    _state_layout->addWidget(_led_C);
+    _state_layout->addWidget(_led_R);
+    _state_layout->addWidget(_led_a);
+    _state_layout->addWidget(_led_b);
+    _state_layout->addWidget(_led_c);
 }
 
 REGISTER_TEST(test_01, 0);

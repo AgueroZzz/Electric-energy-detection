@@ -20,7 +20,6 @@ void led::slot_state_changed(bool change_state)
 
 void led::initUI()
 {
-    setFixedSize(30, 30);
     QHBoxLayout* _layout = new QHBoxLayout(this);
     _layout->setContentsMargins(0, 0, 0, 0);
     _layout->setSpacing(2);
@@ -29,6 +28,7 @@ void led::initUI()
     _led_svg->setFixedSize(24, 24);
 
     _label = new QLabel(_led_name);
+    // _label->setFixedSize(24, 24);
     _label->setStyleSheet("font-size: 18px;");
 
     _layout->addWidget(_label);
