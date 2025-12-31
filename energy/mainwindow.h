@@ -7,6 +7,8 @@
 #include <memory>
 #include <QMenu>
 #include <QMenuBar>
+#include <QProcess>
+#include <QMessageBox>
 #include "test/test.h"
 #include "ui/chooser.h"
 #include "test/test_factory.h"

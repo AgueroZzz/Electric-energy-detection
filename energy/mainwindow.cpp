@@ -31,7 +31,6 @@ MainWindow::~MainWindow() = default;
 
 void MainWindow::initUi()
 {
-    // setStyleSheet(QStringLiteral("QMainWindow { background-color: #EEF0ED; }"));
     createMenus();
 }
 
@@ -60,9 +59,21 @@ void MainWindow::createMenus()
     editMenu->addAction(tr("&Paste"));
 
     // ---------- 工具 ----------
-    toolMenu = menuBar()->addMenu(tr("&工具"));
-    toolMenu->addAction(tr("Toolbar"));
-    toolMenu->addAction(tr("Status Bar"));
+    toolMenu = menuBar()->addMenu(tr("&系统工具"));
+    QMap<QString, QString> tools = {
+        {tr("&计算器"), "calc.exe"},
+        {tr("&放大镜"), "magnify.exe"},
+        {tr("&记事本"), "notepad.exe"},
+        {tr("&图画"), "mspaint.exe"}
+    };
+
+    for (auto it = tools.begin(); it != tools.end(); ++it) {
+        QAction *action = toolMenu->addAction(it.key());
+        QString toolPath = it.value();
+        connect(action, &QAction::triggered, this, [toolPath]() {
+            QProcess::startDetached(toolPath);
+        });
+    }
 
     // ---------- 帮助 ----------
     helpMenu = menuBar()->addMenu(tr("&帮助"));
