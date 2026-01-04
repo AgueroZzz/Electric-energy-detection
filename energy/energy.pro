@@ -17,8 +17,8 @@ SOURCES += \
     global/led.cpp \
     main.cpp \
     mainwindow.cpp \
-    serial/serial_opera.cpp \
     serial/serial_port.cpp \
+    serial/serial_ui.cpp \
     sql/sql.cpp \
     test/test.cpp \
     test/test_01.cpp \
@@ -85,8 +85,8 @@ HEADERS += \
     global/component.h \
     global/led.h \
     mainwindow.h \
-    serial/serial_opera.h \
     serial/serial_port.h \
+    serial/serial_ui.h \
     sql/sql.h \
     test/test.h \
     test/test_01.h \
@@ -148,7 +148,7 @@ HEADERS += \
 
 FORMS += \
     mainwindow.ui \
-    serial/serial_opera.ui \
+    serial/serial_ui.ui \
     ui/chooser.ui \
     ui/test01/ui_001.ui \
     ui/test02/ui_002.ui \

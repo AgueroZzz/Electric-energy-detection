@@ -1,6 +1,7 @@
 // mainwindow.cpp
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "serial/serial_ui.h"
 #include <QIcon>
 #include <QDebug>
 
@@ -25,6 +26,8 @@ MainWindow::MainWindow(QWidget *parent)
     chooser_->setWindowFlags(chooser_->windowFlags() | Qt::WindowStaysOnTopHint);
     chooser_->show();
     showMaximized();
+    serial_ui* _serial_ui = new serial_ui();
+    _serial_ui->show();
 }
 
 MainWindow::~MainWindow() = default;
