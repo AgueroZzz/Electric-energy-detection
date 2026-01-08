@@ -32,6 +32,12 @@ class test : public QWidget
 {
     Q_OBJECT
 
+signals:
+    void sig_test_start(quint16 test_id);
+
+private slots:
+    // virtual void slot_test_start(quint16 test_id) = 0;
+
 public:
     explicit test(quint16 test_id, QWidget *parent = nullptr);
     ~test();

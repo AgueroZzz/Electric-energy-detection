@@ -2,6 +2,8 @@
 #define UI___1_H
 
 #include <QWidget>
+#include <QCheckBox>
+#include <QTableWidgetItem>
 
 namespace Ui {
 class ui_001;
@@ -19,6 +21,13 @@ public:
 
 private:
     Ui::ui_001 *ui;
+
+    void init_cl_table();
+    void setupVarStep(int row, int colVar, int colStep);
+    void setItemState(QTableWidgetItem *item,
+                      bool editable,
+                      bool green);
+    void updateVarStepState(int row, int colVar, int colStep);
 };
 
 #endif // UI___1_H

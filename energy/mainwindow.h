@@ -12,6 +12,7 @@
 #include "test/test.h"
 #include "ui/chooser.h"
 #include "test/test_factory.h"
+#include "serial/serial_ui.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -26,6 +27,7 @@ public:
 
 private slots:
     void onTestChosen(quint16 testId);
+    void onSerialChosen();
     void onOpenTestChooser();
     void onCloseCurrentTest();
 
@@ -37,7 +39,7 @@ private:
 
     // ---------- UI ----------
     std::unique_ptr<Ui::MainWindow> ui;
-    QMenu *fileMenu{}, *testMenu{}, *editMenu{}, *toolMenu{}, *helpMenu{};
+    QMenu *fileMenu{}, *testMenu{}, *serialMenu{}, *editMenu{}, *toolMenu{}, *helpMenu{};
 
     // ---------- 测试 ----------
     std::unique_ptr<test> currentTest_;
@@ -45,5 +47,7 @@ private:
 
     // ---------- 选择器 ----------
     std::unique_ptr<chooser> chooser_;
+
+    serial_ui* _serial_ui = nullptr;
 };
 #endif // MAINWINDOW_H

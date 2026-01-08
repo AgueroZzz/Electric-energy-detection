@@ -28,6 +28,7 @@
         <file>icon/vector.svg</file>
         <file>icon/gz.svg</file>
         <file>icon/chart_sxq.svg</file>
+        <file>icon/serial.svg</file>
     </qresource>
     <qresource prefix="/choose_bg">
         <file>pic/6-35k_0.bmp</file>

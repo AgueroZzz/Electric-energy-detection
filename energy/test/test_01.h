@@ -55,6 +55,10 @@ private:
     led* _led_a;
     led* _led_b;
     led* _led_c;
+
+    // test interface
+private slots:
+    // void slot_test_start(quint16 test_id) override;
 };
 
 #endif // TEST__1_H

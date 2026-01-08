@@ -17,6 +17,8 @@ SOURCES += \
     global/led.cpp \
     main.cpp \
     mainwindow.cpp \
+    process/process.cpp \
+    process/process_1.cpp \
     serial/serial_port.cpp \
     serial/serial_ui.cpp \
     sql/sql.cpp \
@@ -83,8 +85,11 @@ HEADERS += \
     charts/dc_chart.h \
     charts/phasewave_chart.h \
     global/component.h \
+    global/index.h \
     global/led.h \
     mainwindow.h \
+    process/process.h \
+    process/process_1.h \
     serial/serial_port.h \
     serial/serial_ui.h \
     sql/sql.h \

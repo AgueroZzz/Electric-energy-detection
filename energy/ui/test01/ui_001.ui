@@ -105,12 +105,32 @@
            <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
           </property>
          </item>
+         <item row="0" column="2">
+          <property name="text">
+           <string/>
+          </property>
+         </item>
+         <item row="0" column="6">
+          <property name="text">
+           <string/>
+          </property>
+         </item>
          <item row="1" column="0">
           <property name="text">
            <string>UB</string>
           </property>
           <property name="flags">
            <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+         <item row="1" column="2">
+          <property name="text">
+           <string/>
+          </property>
+         </item>
+         <item row="1" column="6">
+          <property name="text">
+           <string/>
           </property>
          </item>
          <item row="2" column="0">
@@ -121,12 +141,32 @@
            <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
           </property>
          </item>
+         <item row="2" column="2">
+          <property name="text">
+           <string/>
+          </property>
+         </item>
+         <item row="2" column="6">
+          <property name="text">
+           <string/>
+          </property>
+         </item>
          <item row="3" column="0">
           <property name="text">
            <string>IA</string>
           </property>
           <property name="flags">
            <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+         <item row="3" column="2">
+          <property name="text">
+           <string/>
+          </property>
+         </item>
+         <item row="3" column="6">
+          <property name="text">
+           <string/>
           </property>
          </item>
          <item row="4" column="0">
@@ -137,12 +177,32 @@
            <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
           </property>
          </item>
+         <item row="4" column="2">
+          <property name="text">
+           <string/>
+          </property>
+         </item>
+         <item row="4" column="6">
+          <property name="text">
+           <string/>
+          </property>
+         </item>
          <item row="5" column="0">
           <property name="text">
            <string>IC</string>
           </property>
           <property name="flags">
            <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+         <item row="5" column="2">
+          <property name="text">
+           <string/>
+          </property>
+         </item>
+         <item row="5" column="6">
+          <property name="text">
+           <string/>
           </property>
          </item>
          <item row="6" column="0">
@@ -153,12 +213,204 @@
            <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
           </property>
          </item>
+         <item row="6" column="1">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="background">
+           <brush brushstyle="NoBrush">
+            <color alpha="255">
+             <red>194</red>
+             <green>237</green>
+             <blue>195</blue>
+            </color>
+           </brush>
+          </property>
+          <property name="flags">
+           <set>ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+         <item row="6" column="2">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="background">
+           <brush brushstyle="NoBrush">
+            <color alpha="255">
+             <red>194</red>
+             <green>237</green>
+             <blue>195</blue>
+            </color>
+           </brush>
+          </property>
+          <property name="flags">
+           <set>ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+         <item row="6" column="3">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="background">
+           <brush brushstyle="NoBrush">
+            <color alpha="255">
+             <red>194</red>
+             <green>237</green>
+             <blue>195</blue>
+            </color>
+           </brush>
+          </property>
+          <property name="flags">
+           <set>ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+         <item row="6" column="4">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="background">
+           <brush brushstyle="NoBrush">
+            <color alpha="255">
+             <red>194</red>
+             <green>237</green>
+             <blue>195</blue>
+            </color>
+           </brush>
+          </property>
+          <property name="flags">
+           <set>ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+         <item row="6" column="5">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="background">
+           <brush brushstyle="NoBrush">
+            <color alpha="255">
+             <red>194</red>
+             <green>237</green>
+             <blue>195</blue>
+            </color>
+           </brush>
+          </property>
+          <property name="flags">
+           <set>ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+         <item row="6" column="6">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="background">
+           <brush brushstyle="NoBrush">
+            <color alpha="255">
+             <red>194</red>
+             <green>237</green>
+             <blue>195</blue>
+            </color>
+           </brush>
+          </property>
+          <property name="flags">
+           <set>ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+         <item row="6" column="7">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="background">
+           <brush brushstyle="NoBrush">
+            <color alpha="255">
+             <red>194</red>
+             <green>237</green>
+             <blue>195</blue>
+            </color>
+           </brush>
+          </property>
+          <property name="flags">
+           <set>ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
          <item row="7" column="0">
           <property name="text">
            <string>Hz</string>
           </property>
           <property name="flags">
            <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+         <item row="7" column="2">
+          <property name="text">
+           <string/>
+          </property>
+         </item>
+         <item row="7" column="3">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="background">
+           <brush brushstyle="Dense4Pattern">
+            <color alpha="255">
+             <red>194</red>
+             <green>237</green>
+             <blue>195</blue>
+            </color>
+           </brush>
+          </property>
+          <property name="flags">
+           <set>ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+         <item row="7" column="5">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="background">
+           <brush brushstyle="Dense4Pattern">
+            <color alpha="255">
+             <red>194</red>
+             <green>237</green>
+             <blue>195</blue>
+            </color>
+           </brush>
+          </property>
+          <property name="flags">
+           <set>ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+         <item row="7" column="6">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="background">
+           <brush brushstyle="Dense4Pattern">
+            <color alpha="255">
+             <red>194</red>
+             <green>237</green>
+             <blue>195</blue>
+            </color>
+           </brush>
+          </property>
+          <property name="flags">
+           <set>ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+         <item row="7" column="7">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="background">
+           <brush brushstyle="Dense4Pattern">
+            <color alpha="255">
+             <red>194</red>
+             <green>237</green>
+             <blue>195</blue>
+            </color>
+           </brush>
+          </property>
+          <property name="flags">
+           <set>ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
           </property>
          </item>
         </widget>
@@ -176,7 +428,48 @@
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox"/>
+             <widget class="QComboBox" name="cb_ux">
+              <item>
+               <property name="text">
+                <string>任意方式</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>+3Uo</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>-3Uo</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>+√3*3Uo</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>-√3*3Uo</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>A相电压 UA</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>B相电压 UB</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>C相电压 UC</string>
+               </property>
+              </item>
+             </widget>
             </item>
            </layout>
           </item>
@@ -203,7 +496,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit"/>
+             <widget class="QLineEdit" name="le_delay"/>
             </item>
             <item>
              <widget class="QLabel" name="label_3">

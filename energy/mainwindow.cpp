@@ -1,13 +1,15 @@
 // mainwindow.cpp
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "serial/serial_ui.h"
+#include "serial/serial_port.h"
 #include <QIcon>
 #include <QDebug>
 
 static constexpr QSize   kMinWindowSize{1300, 800};
 static constexpr char const* kWindowTitle = QT_TR_NOOP("电力测试软件");
 static constexpr char const* kAppIcon    = ":/icon/icon/app_icon.svg";
+
+serial_port* _serial = nullptr;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -25,9 +27,13 @@ MainWindow::MainWindow(QWidget *parent)
 
     chooser_->setWindowFlags(chooser_->windowFlags() | Qt::WindowStaysOnTopHint);
     chooser_->show();
+
+    // 在此处初始化全局串口对象
+    _serial = new serial_port();
+    _serial->_thread.start();
+
     showMaximized();
-    serial_ui* _serial_ui = new serial_ui();
-    _serial_ui->show();
+    _serial_ui = new serial_ui();
 }
 
 MainWindow::~MainWindow() = default;
@@ -51,6 +57,10 @@ void MainWindow::createMenus()
     testMenu = menuBar()->addMenu(tr("&项目"));
     testMenu->addAction(tr("&打开测试项目"), this, &MainWindow::onOpenTestChooser);
     testMenu->addAction(tr("&关闭测试项目"), this, &MainWindow::onCloseCurrentTest);
+
+    // ---------- 串口操作 ----------
+    serialMenu = menuBar()->addMenu(tr("&串口"));
+    serialMenu->addAction(tr("&串口设置"), this, &MainWindow::onSerialChosen);
 
     // ---------- 编辑 ----------
     editMenu = menuBar()->addMenu(tr("&编辑"));
@@ -112,6 +122,13 @@ void MainWindow::onTestChosen(quint16 testId)
 
     resetCurrentTest();
     switchTest(testId);
+}
+
+void MainWindow::onSerialChosen()
+{
+    _serial_ui->show();
+    _serial_ui->raise();
+    _serial_ui->activateWindow();
 }
 
 void MainWindow::switchTest(quint16 testId)

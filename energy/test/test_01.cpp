@@ -57,6 +57,9 @@ void test_01::init_top_widget()
     _btn_up_para      = createToolButton(":/icon/icon/up.svg",      "递增数据");
     _btn_down_para    = createToolButton(":/icon/icon/down.svg",    "递减数据");
     _btn_start_test   = createToolButton(":/icon/icon/start.svg",   "开始实验");
+    QObject::connect(_btn_start_test, &QPushButton::clicked, this, [=](){
+        emit sig_test_start(0);
+    });
     _btn_end_test     = createToolButton(":/icon/icon/stop.svg",    "停止实验");
     _btn_reset_test   = createToolButton(":/icon/icon/data_recover.svg",    "数据复位");
 
@@ -158,5 +161,10 @@ void test_01::init_state_widget()
     _state_layout->addWidget(_led_b);
     _state_layout->addWidget(_led_c);
 }
+
+// void test_01::slot_test_start(quint16 test_id)
+// {
+
+// }
 
 REGISTER_TEST(test_01, 0);

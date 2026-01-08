@@ -1,5 +1,8 @@
 #include "serial_ui.h"
 #include "ui_serial_ui.h"
+#include "serial/serial_port.h"
+
+extern serial_port* _serial;
 
 serial_ui::serial_ui(QWidget *parent)
     : QWidget(parent)
@@ -8,6 +11,21 @@ serial_ui::serial_ui(QWidget *parent)
     ui->setupUi(this);
 
     QObject::connect(ui->btn_refresh, &QPushButton::clicked, this, &serial_ui::slot_refresh_port);
+    QObject::connect(this, &serial_ui::sig_serial_opera, _serial, &serial_port::slot_serial_opera, Qt::QueuedConnection);
+    QObject::connect(_serial, &serial_port::sig_serial_status_changed, this, &serial_ui::slot_serial_status_changed, Qt::QueuedConnection);
+    QObject::connect(ui->btn_opera_open, &QPushButton::clicked, this, [=](){
+        QStringList serial_deploy;
+        serial_deploy << ui->cb_serial_name->currentText()
+                      << ui->cb_baudrate->currentText()
+                      << ui->cb_data->currentText()
+                      << QString::number(ui->cb_flow->currentIndex())
+                      << index_parity_change(ui->cb_parity->currentText())
+                      << index_stop_change(ui->cb_stop->currentText());
+        emit sig_serial_opera(index_serial_status::serial_on, serial_deploy);
+    });
+    QObject::connect(ui->btn_opera_close, &QPushButton::clicked, this, [=](){
+        emit sig_serial_opera(index_serial_status::serial_off);
+    });
 
     slot_refresh_port();
 
@@ -19,7 +37,7 @@ serial_ui::~serial_ui()
     delete ui;
 }
 
-void serial_ui::setLed(QLabel *label, int color, int size)
+void serial_ui::setLed(QLabel *label, index_serial_status status, int size)
 {
     // 将label中的文字清空
     label->setText("");
@@ -31,22 +49,14 @@ void serial_ui::setLed(QLabel *label, int color, int size)
     QString border = QString("border:1px solid black;");                    // 边框为1px黑色
     // 最后设置背景颜色
     QString background = "background-color:";
-    switch (color) {
-    case 0:
-        // 灰色
-        background += "rgb(190,190,190)";
-        break;
-    case 1:
+    switch (status) {
+    case index_serial_status::serial_off:
         // 红色
         background += "rgb(255,0,0)";
         break;
-    case 2:
+    case index_serial_status::serial_on:
         // 绿色
         background += "rgb(0,255,0)";
-        break;
-    case 3:
-        // 黄色
-        background += "rgb(255,255,0)";
         break;
     default:
         break;
@@ -63,9 +73,6 @@ void serial_ui::slot_refresh_port()
     for (const QSerialPortInfo &port : ports) {
         // 可以显示端口名称和描述信息
         QString displayText = port.portName();
-        if (!port.description().isEmpty()) {
-            displayText += " - " + port.description();
-        }
         ui->cb_serial_name->addItem(displayText, port.portName());
     }
 
@@ -76,4 +83,9 @@ void serial_ui::slot_refresh_port()
     } else {
         ui->cb_serial_name->setEnabled(true);
     }
+}
+
+void serial_ui::slot_serial_status_changed(index_serial_status status)
+{
+    setLed(ui->lb_led, status);
 }
