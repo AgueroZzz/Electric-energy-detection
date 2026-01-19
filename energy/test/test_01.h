@@ -32,6 +32,7 @@ private:
     QToolButton* _btn_recover_para;     // 恢复默认值
     QToolButton* _btn_up_para;          // 递增数据
     QToolButton* _btn_down_para;          // 递减数据
+    QButtonGroup* _btn_test_group;
     QToolButton* _btn_start_test;       // 开始实验
     QToolButton* _btn_end_test;       // 停止实验
     QToolButton* _btn_reset_test;     // 数据复位
@@ -56,9 +57,13 @@ private:
     led* _led_b;
     led* _led_c;
 
+    QTimer* _runtimeTimer = nullptr;
+    quint64 _startTime = 0;
+
     // test interface
 private slots:
-    // void slot_test_start(quint16 test_id) override;
+    void slot_test_start() override;
+    void slot_test_stop() override;
 };
 
 #endif // TEST__1_H

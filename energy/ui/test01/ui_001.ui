@@ -12,7 +12,7 @@
   </property>
   <property name="font">
    <font>
-    <pointsize>11</pointsize>
+    <pointsize>9</pointsize>
    </font>
   </property>
   <property name="windowTitle">
@@ -105,14 +105,39 @@
            <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
           </property>
          </item>
+         <item row="0" column="1">
+          <property name="text">
+           <string>10.000</string>
+          </property>
+         </item>
          <item row="0" column="2">
           <property name="text">
            <string/>
           </property>
          </item>
+         <item row="0" column="3">
+          <property name="text">
+           <string>1.000</string>
+          </property>
+         </item>
+         <item row="0" column="4">
+          <property name="text">
+           <string>120</string>
+          </property>
+         </item>
+         <item row="0" column="5">
+          <property name="text">
+           <string>0.0</string>
+          </property>
+         </item>
          <item row="0" column="6">
           <property name="text">
            <string/>
+          </property>
+         </item>
+         <item row="0" column="7">
+          <property name="text">
+           <string>1.0</string>
           </property>
          </item>
          <item row="1" column="0">
@@ -123,14 +148,39 @@
            <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
           </property>
          </item>
+         <item row="1" column="1">
+          <property name="text">
+           <string>10.000</string>
+          </property>
+         </item>
          <item row="1" column="2">
           <property name="text">
            <string/>
           </property>
          </item>
+         <item row="1" column="3">
+          <property name="text">
+           <string>1.000</string>
+          </property>
+         </item>
+         <item row="1" column="4">
+          <property name="text">
+           <string>120</string>
+          </property>
+         </item>
+         <item row="1" column="5">
+          <property name="text">
+           <string>240.0</string>
+          </property>
+         </item>
          <item row="1" column="6">
           <property name="text">
            <string/>
+          </property>
+         </item>
+         <item row="1" column="7">
+          <property name="text">
+           <string>1.0</string>
           </property>
          </item>
          <item row="2" column="0">
@@ -141,14 +191,39 @@
            <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
           </property>
          </item>
+         <item row="2" column="1">
+          <property name="text">
+           <string>10.000</string>
+          </property>
+         </item>
          <item row="2" column="2">
           <property name="text">
            <string/>
           </property>
          </item>
+         <item row="2" column="3">
+          <property name="text">
+           <string>1.000</string>
+          </property>
+         </item>
+         <item row="2" column="4">
+          <property name="text">
+           <string>120</string>
+          </property>
+         </item>
+         <item row="2" column="5">
+          <property name="text">
+           <string>120.0</string>
+          </property>
+         </item>
          <item row="2" column="6">
           <property name="text">
            <string/>
+          </property>
+         </item>
+         <item row="2" column="7">
+          <property name="text">
+           <string>1.0</string>
           </property>
          </item>
          <item row="3" column="0">
@@ -159,14 +234,39 @@
            <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
           </property>
          </item>
+         <item row="3" column="1">
+          <property name="text">
+           <string>2.000</string>
+          </property>
+         </item>
          <item row="3" column="2">
           <property name="text">
            <string/>
           </property>
          </item>
+         <item row="3" column="3">
+          <property name="text">
+           <string>1.000</string>
+          </property>
+         </item>
+         <item row="3" column="4">
+          <property name="text">
+           <string>20</string>
+          </property>
+         </item>
+         <item row="3" column="5">
+          <property name="text">
+           <string>0.0</string>
+          </property>
+         </item>
          <item row="3" column="6">
           <property name="text">
            <string/>
+          </property>
+         </item>
+         <item row="3" column="7">
+          <property name="text">
+           <string>1.0</string>
           </property>
          </item>
          <item row="4" column="0">
@@ -177,14 +277,39 @@
            <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
           </property>
          </item>
+         <item row="4" column="1">
+          <property name="text">
+           <string>3.000</string>
+          </property>
+         </item>
          <item row="4" column="2">
           <property name="text">
            <string/>
           </property>
          </item>
+         <item row="4" column="3">
+          <property name="text">
+           <string>1.000</string>
+          </property>
+         </item>
+         <item row="4" column="4">
+          <property name="text">
+           <string>30</string>
+          </property>
+         </item>
+         <item row="4" column="5">
+          <property name="text">
+           <string>240.0</string>
+          </property>
+         </item>
          <item row="4" column="6">
           <property name="text">
            <string/>
+          </property>
+         </item>
+         <item row="4" column="7">
+          <property name="text">
+           <string>1.0</string>
           </property>
          </item>
          <item row="5" column="0">
@@ -195,14 +320,39 @@
            <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
           </property>
          </item>
+         <item row="5" column="1">
+          <property name="text">
+           <string>4.000</string>
+          </property>
+         </item>
          <item row="5" column="2">
           <property name="text">
            <string/>
           </property>
          </item>
+         <item row="5" column="3">
+          <property name="text">
+           <string>1.000</string>
+          </property>
+         </item>
+         <item row="5" column="4">
+          <property name="text">
+           <string>30</string>
+          </property>
+         </item>
+         <item row="5" column="5">
+          <property name="text">
+           <string>120.0</string>
+          </property>
+         </item>
          <item row="5" column="6">
           <property name="text">
            <string/>
+          </property>
+         </item>
+         <item row="5" column="7">
+          <property name="text">
+           <string>1.0</string>
           </property>
          </item>
          <item row="6" column="0">
@@ -215,7 +365,7 @@
          </item>
          <item row="6" column="1">
           <property name="text">
-           <string/>
+           <string>10.000</string>
           </property>
           <property name="background">
            <brush brushstyle="NoBrush">
@@ -249,7 +399,7 @@
          </item>
          <item row="6" column="3">
           <property name="text">
-           <string/>
+           <string>1.000</string>
           </property>
           <property name="background">
            <brush brushstyle="NoBrush">
@@ -266,7 +416,7 @@
          </item>
          <item row="6" column="4">
           <property name="text">
-           <string/>
+           <string>120</string>
           </property>
           <property name="background">
            <brush brushstyle="NoBrush">
@@ -283,7 +433,7 @@
          </item>
          <item row="6" column="5">
           <property name="text">
-           <string/>
+           <string>0.0</string>
           </property>
           <property name="background">
            <brush brushstyle="NoBrush">
@@ -317,7 +467,7 @@
          </item>
          <item row="6" column="7">
           <property name="text">
-           <string/>
+           <string>1.0</string>
           </property>
           <property name="background">
            <brush brushstyle="NoBrush">
@@ -340,6 +490,11 @@
            <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
           </property>
          </item>
+         <item row="7" column="1">
+          <property name="text">
+           <string>50.000</string>
+          </property>
+         </item>
          <item row="7" column="2">
           <property name="text">
            <string/>
@@ -347,7 +502,7 @@
          </item>
          <item row="7" column="3">
           <property name="text">
-           <string/>
+           <string>0.000</string>
           </property>
           <property name="background">
            <brush brushstyle="Dense4Pattern">
@@ -360,6 +515,11 @@
           </property>
           <property name="flags">
            <set>ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+         <item row="7" column="4">
+          <property name="text">
+           <string>1000</string>
           </property>
          </item>
          <item row="7" column="5">
@@ -376,7 +536,7 @@
            </brush>
           </property>
           <property name="flags">
-           <set>ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+           <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
           </property>
          </item>
          <item row="7" column="6">
@@ -496,7 +656,11 @@
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="le_delay"/>
+             <widget class="QLineEdit" name="le_delay">
+              <property name="text">
+               <string>5</string>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QLabel" name="label_3">
@@ -612,7 +776,11 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="lineEdit_2"/>
+                 <widget class="QLineEdit" name="lineEdit_2">
+                  <property name="text">
+                   <string>1000</string>
+                  </property>
+                 </widget>
                 </item>
                 <item>
                  <widget class="QLabel" name="label_5">
@@ -669,6 +837,14 @@
     <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="2,2,3">
      <item>
       <widget class="QTableWidget" name="tb_down_1">
+       <property name="styleSheet">
+        <string notr="true">QTableWidget {
+     background-color: &quot;#97E8F2&quot;;
+    }
+    QTableWidget::item {
+       background-color: &quot;#97E8F2&quot;;
+    }</string>
+       </property>
        <property name="rowCount">
         <number>9</number>
        </property>
@@ -748,6 +924,14 @@
      </item>
      <item>
       <widget class="QTableWidget" name="tb_down_2">
+       <property name="styleSheet">
+        <string notr="true">QTableWidget {
+     background-color: &quot;#FFE6FF&quot;;
+    }
+    QTableWidget::item {
+       background-color: &quot;#FFE6FF&quot;;
+    }</string>
+       </property>
        <property name="rowCount">
         <number>7</number>
        </property>
@@ -857,6 +1041,14 @@
      </item>
      <item>
       <widget class="QTableWidget" name="tb_down_3">
+       <property name="styleSheet">
+        <string notr="true">QTableWidget {
+     background-color: &quot;#FFE6FF&quot;;
+    }
+    QTableWidget::item {
+       background-color: &quot;#FFE6FF&quot;;
+    }</string>
+       </property>
        <property name="rowCount">
         <number>33</number>
        </property>

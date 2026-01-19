@@ -17,6 +17,13 @@ void serial_port::set_serial_status(index_serial_status status)
     emit sig_serial_status_changed(status);
 }
 
+void serial_port::clear_serial()
+{
+    if(_port->isOpen()){
+        _port->clear();
+    }
+}
+
 void serial_port::slot_serial_opera(index_serial_status status, QStringList deploy)
 {
     if(status == index_serial_status::serial_off){
@@ -81,6 +88,6 @@ void serial_port::serial_stop()
     if(_port->isOpen()){
         _port->close();
     }
-    _serial_status = index_serial_status::serial_off;
+    set_serial_status(index_serial_status::serial_off);
     return;
 }

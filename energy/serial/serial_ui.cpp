@@ -9,7 +9,7 @@ serial_ui::serial_ui(QWidget *parent)
     , ui(new Ui::serial_ui)
 {
     ui->setupUi(this);
-
+    setWindowTitle("串口操作");
     QObject::connect(ui->btn_refresh, &QPushButton::clicked, this, &serial_ui::slot_refresh_port);
     QObject::connect(this, &serial_ui::sig_serial_opera, _serial, &serial_port::slot_serial_opera, Qt::QueuedConnection);
     QObject::connect(_serial, &serial_port::sig_serial_status_changed, this, &serial_ui::slot_serial_status_changed, Qt::QueuedConnection);

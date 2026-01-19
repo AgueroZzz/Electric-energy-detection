@@ -2,6 +2,9 @@
 
 #include "test/test_factory.h"
 #include "ui_ui_001.h"
+#include "serial/serial_port.h"
+
+extern serial_port* _serial;
 
 test_01::test_01(quint16 test_id, QWidget *parent)
     : test(test_id, parent)
@@ -56,11 +59,24 @@ void test_01::init_top_widget()
     _btn_recover_para = createToolButton(":/icon/icon/recover.svg", "恢复默认值");
     _btn_up_para      = createToolButton(":/icon/icon/up.svg",      "递增数据");
     _btn_down_para    = createToolButton(":/icon/icon/down.svg",    "递减数据");
+    _btn_test_group = new QButtonGroup();
     _btn_start_test   = createToolButton(":/icon/icon/start.svg",   "开始实验");
+    _btn_start_test->setCheckable(true);
+    _btn_start_test->setChecked(true);
+    QObject::connect(this, &test_01::sig_test_start, this, &test_01::slot_test_start, Qt::DirectConnection);
+    QObject::connect(this, &test_01::sig_test_stop, this, &test_01::slot_test_stop, Qt::DirectConnection);
     QObject::connect(_btn_start_test, &QPushButton::clicked, this, [=](){
-        emit sig_test_start(0);
+        emit sig_test_start();
     });
     _btn_end_test     = createToolButton(":/icon/icon/stop.svg",    "停止实验");
+    QObject::connect(_btn_end_test, &QPushButton::clicked, this, [=](){
+        emit sig_test_stop();
+    });
+    _btn_end_test->setCheckable(true);
+    _btn_test_group->addButton(_btn_start_test);
+    _btn_test_group->addButton(_btn_end_test);
+    // 开始、停止按钮互斥
+    _btn_test_group->setExclusive(true);
     _btn_reset_test   = createToolButton(":/icon/icon/data_recover.svg",    "数据复位");
 
     // 把按钮加到布局中
@@ -162,9 +178,21 @@ void test_01::init_state_widget()
     _state_layout->addWidget(_led_c);
 }
 
-// void test_01::slot_test_start(quint16 test_id)
-// {
+void test_01::slot_test_start()
+{
+    setState(TestState::Running);
+}
 
-// }
+void test_01::slot_test_stop()
+{
+    if(getState() == TestState::Running){
+        _serial->clear_serial();
+        setState(TestState::Sttopped);
+    }else if(getState() == TestState::Error){
+
+    }else{
+        return;
+    }
+}
 
 REGISTER_TEST(test_01, 0);

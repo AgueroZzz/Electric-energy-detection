@@ -1,5 +1,13 @@
 #include "test.h"
 
+void test::setState(TestState state)
+{
+    if(_state == state){
+        return;
+    }
+    _state = state;
+}
+
 test::test(quint16 test_id, QWidget *parent)
     :QWidget(parent), _test_id(test_id)
 {

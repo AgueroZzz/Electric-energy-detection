@@ -28,15 +28,16 @@ namespace Ui {
 class test;
 }
 
+enum class TestState{
+    Idle,       // 空闲
+    Running,    // 运行
+    Sttopped,   // 停止
+    Error       // 错误
+};
+
 class test : public QWidget
 {
     Q_OBJECT
-
-signals:
-    void sig_test_start(quint16 test_id);
-
-private slots:
-    // virtual void slot_test_start(quint16 test_id) = 0;
 
 public:
     explicit test(quint16 test_id, QWidget *parent = nullptr);
@@ -72,8 +73,23 @@ public:
         return cell_widget;
     }
 
+signals:
+    void sig_test_start();
+    void sig_test_stop();
+
+private slots:
+    virtual void slot_test_start() {};   // 测试启动槽函数
+    virtual void slot_test_stop() {}   // 测试停止槽函数
+
+protected:
+    // get/set方法
+    TestState getState(){return _state;};
+    void setState(TestState state);
+
 private:
     quint16 _test_id;
+
+    TestState _state = TestState::Idle;  // 默认空闲
 };
 
 #endif // TEST_H

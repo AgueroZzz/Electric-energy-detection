@@ -19,6 +19,8 @@ public:
 
     void set_serial_status(index_serial_status status);
 
+    void clear_serial();
+
 signals:
     void sig_serial_status_changed(index_serial_status status);
 

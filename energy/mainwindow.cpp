@@ -61,6 +61,7 @@ void MainWindow::createMenus()
     // ---------- 串口操作 ----------
     serialMenu = menuBar()->addMenu(tr("&串口"));
     serialMenu->addAction(tr("&串口设置"), this, &MainWindow::onSerialChosen);
+    serialMenu->addAction(tr("&串口监控"), this, &MainWindow::onSerialChosen);
 
     // ---------- 编辑 ----------
     editMenu = menuBar()->addMenu(tr("&编辑"));

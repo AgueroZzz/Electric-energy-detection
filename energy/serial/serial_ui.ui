@@ -248,8 +248,8 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>40</width>
-            <height>40</height>
+            <width>130</width>
+            <height>70</height>
            </size>
           </property>
           <property name="font">
@@ -273,8 +273,8 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>40</width>
-            <height>40</height>
+            <width>130</width>
+            <height>70</height>
            </size>
           </property>
           <property name="font">
@@ -298,8 +298,8 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>40</width>
-            <height>40</height>
+            <width>130</width>
+            <height>70</height>
            </size>
           </property>
           <property name="font">
