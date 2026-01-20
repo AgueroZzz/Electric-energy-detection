@@ -16,6 +16,8 @@ test_01::test_01(quint16 test_id, QWidget *parent)
     init_chart_widget();
 
     init_state_widget();
+
+    QObject::connect(_ui_001->ui->tb_cl, &QTableWidget::itemChanged, this, &test_01::slot_on_tb_cl_changed);
 }
 
 void test_01::init_UI()
@@ -62,7 +64,6 @@ void test_01::init_top_widget()
     _btn_test_group = new QButtonGroup();
     _btn_start_test   = createToolButton(":/icon/icon/start.svg",   "开始实验");
     _btn_start_test->setCheckable(true);
-    _btn_start_test->setChecked(true);
     QObject::connect(this, &test_01::sig_test_start, this, &test_01::slot_test_start, Qt::DirectConnection);
     QObject::connect(this, &test_01::sig_test_stop, this, &test_01::slot_test_stop, Qt::DirectConnection);
     QObject::connect(_btn_start_test, &QPushButton::clicked, this, [=](){
@@ -181,10 +182,13 @@ void test_01::init_state_widget()
 void test_01::slot_test_start()
 {
     setState(TestState::Running);
+
+    qDebug() << "试验开始";
 }
 
 void test_01::slot_test_stop()
 {
+    qDebug() << "试验结束";
     if(getState() == TestState::Running){
         _serial->clear_serial();
         setState(TestState::Sttopped);
@@ -192,6 +196,23 @@ void test_01::slot_test_stop()
 
     }else{
         return;
+    }
+}
+
+void test_01::slot_on_tb_cl_changed(QTableWidgetItem *item)
+{
+    if(!item)
+        return;
+    int row = item->row();
+    int col = item->column();
+
+    // 有效值改变
+    if(col == 1){
+
+    }
+    // 相位改变
+    else if(col == 5){
+
     }
 }
 

@@ -60,10 +60,13 @@ private:
     QTimer* _runtimeTimer = nullptr;
     quint64 _startTime = 0;
 
+    QMap<QString, QStringList> tb_cl_values;        // UI界面的参量表格数据
+
     // test interface
 private slots:
     void slot_test_start() override;
     void slot_test_stop() override;
+    void slot_on_tb_cl_changed(QTableWidgetItem* item);
 };
 
 #endif // TEST__1_H

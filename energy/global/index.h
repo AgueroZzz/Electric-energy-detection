@@ -17,4 +17,6 @@ enum index_serial_deploy{
     serial_stop = 5         // 串口停止位
 };
 
+//
+
 #endif // INDEX_H

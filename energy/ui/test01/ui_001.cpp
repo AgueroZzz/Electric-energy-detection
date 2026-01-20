@@ -30,6 +30,8 @@ ui_001::ui_001(QWidget *parent)
     ui->tb_down_3->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     init_cl_table();
+
+
 }
 
 ui_001::~ui_001()
