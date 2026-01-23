@@ -21,11 +21,6 @@ signals:
     // 如果需要实时数据给图表
     void sig_new_data(const QVariantMap &data);                       // 或用自定义结构体
 
-public slots:
-    virtual void slot_start() = 0;     // 开始测试
-    virtual void slot_stop() = 0;      // 立即停止
-    // virtual void slot_reset();     // 重置内部状态
-
 protected:
     enum class TestPhase {
         Idle,

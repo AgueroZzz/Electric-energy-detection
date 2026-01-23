@@ -7,22 +7,6 @@
 #include "global/led.h"
 #include "process/process_1.h"
 
-enum class t1_test_type{
-    action,
-    action_and_return
-};
-
-enum class t1_logic_type{
-    logic_and,
-    logic_or
-};
-
-enum class t1_test_auto{
-    test_hand,
-    test_auto,
-    test_h_auto
-};
-
 class test_01 : public test
 {
 public:
