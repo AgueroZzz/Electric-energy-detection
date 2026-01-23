@@ -10,9 +10,6 @@ serial_port::serial_port( QObject *parent)
 
 void serial_port::set_serial_status(index_serial_status status)
 {
-    if(_serial_status == status){
-        return;
-    }
     _serial_status = status;
     emit sig_serial_status_changed(status);
 }
@@ -45,6 +42,8 @@ void serial_port::slot_thread_start()
             qWarning() << "串口错误:" << _port->errorString();
         }
     });
+
+    QObject::connect(_port, &QSerialPort::readyRead, this, &serial_port::slot_readReady, Qt::DirectConnection);
 }
 
 void serial_port::slot_thread_stop()
@@ -57,14 +56,39 @@ void serial_port::slot_thread_stop()
     _serial_status = index_serial_status::serial_off;
 }
 
-void serial_port::slot_send_msg_to_serial(const QByteArray *msg)
+void serial_port::slot_send_msg_to_serial(const QByteArray& msg)
 {
+    if(!_port || !_port->isOpen()){
+        qDebug() << "串口未开启";
+        return;
+    }
 
+    if(msg.isEmpty()){
+        qDebug() << "发送数据为空";
+        return;
+    }
+
+    quint64 bytesWritten = _port->write(msg);
+
+    if (bytesWritten == -1) {
+        qWarning() << "发送失败:" << _port->errorString();
+    } else if (bytesWritten < msg.size()) {
+        qWarning() << "发送不完整，只写了" << bytesWritten << "字节，共" << msg.size();
+    } else {
+        qDebug() << "已发送:" << msg.size() << "字节 →" << msg.toHex(' ').toUpper();
+    }
 }
 
-void serial_port::slot_recv_msg_from_serial()
+void serial_port::slot_readReady()
 {
+    if(!_port)
+        return;
+    _serial_data = _port->readAll();
 
+    if(_serial_data.isEmpty())
+        return;
+
+    qDebug() << "收到并覆盖 _serial_data:" << _serial_data.toHex(' ').toUpper();
 }
 
 void serial_port::serial_start(QStringList deploy)

@@ -5,11 +5,54 @@
 #include "ui/test01/ui_001.h"
 #include "charts/ac_chart.h"
 #include "global/led.h"
+#include "process/process_1.h"
+
+enum class t1_test_type{
+    action,
+    action_and_return
+};
+
+enum class t1_logic_type{
+    logic_and,
+    logic_or
+};
+
+enum class t1_test_auto{
+    test_hand,
+    test_auto,
+    test_h_auto
+};
 
 class test_01 : public test
 {
 public:
     test_01(quint16 test_id, QWidget *parent = nullptr);
+
+    inline t1_test_auto get_test_auto(QString name){
+        if(name == "手动"){
+            return t1_test_auto::test_hand;
+        }else if(name == "半自动"){
+            return t1_test_auto::test_h_auto;
+        }else{
+            return t1_test_auto::test_auto;
+        }
+    }
+
+    inline t1_logic_type get_logic_type(QString name){
+        if(name == "逻辑与"){
+            return t1_logic_type::logic_and;
+        }else{
+            return t1_logic_type::logic_or;
+        }
+    }
+
+    inline t1_test_type get_test_type(QString name){
+        if(name == "测接点动作"){
+            return t1_test_type::action;
+        }else{
+            return t1_test_type::action_and_return;
+        }
+    }
 
 private:
     void init_UI();
@@ -60,12 +103,14 @@ private:
     QTimer* _runtimeTimer = nullptr;
     quint64 _startTime = 0;
 
-    QMap<QString, QStringList> tb_cl_values;        // UI界面的参量表格数据
+    QMap<QString, QList<QVariant>> tb_cl_values;        // UI界面的参量表格数据
+
+    process_1* _process_1 = nullptr;
 
     // test interface
 private slots:
-    void slot_test_start() override;
-    void slot_test_stop() override;
+    void slot_test_start();
+    void slot_test_stop();
     void slot_on_tb_cl_changed(QTableWidgetItem* item);
 };
 

@@ -29,14 +29,48 @@ ui_001::ui_001(QWidget *parent)
     ui->tb_down_3->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tb_down_3->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
+    // 实现按钮互斥
+    leftGroup = new QButtonGroup(this);
+    leftGroup->addButton(ui->rb_hand, 0);   // 手动
+    leftGroup->addButton(ui->rb_auto, 1);   // 全自动
+    leftGroup->addButton(ui->rb_h_auto, 2);   // 半自动
+
+    // ------------------- 右边两个按钮互斥 -------------------
+    rightGroup = new QButtonGroup(this);
+    rightGroup->addButton(ui->rb_up,   0);  // 递增
+    rightGroup->addButton(ui->rb_down, 1);  // 递减
+
+    connect(leftGroup, &QButtonGroup::idToggled, this, &ui_001::slot_onLeftMode_changed);
+
+    ui->rb_hand->setChecked(true);
+    slot_onLeftMode_changed(0, true);
+
     init_cl_table();
-
-
 }
 
 ui_001::~ui_001()
 {
     delete ui;
+}
+
+void ui_001::slot_onLeftMode_changed(int id, bool checked)
+{
+    // 只在被选中（checked == true）时处理
+    if (!checked) return;
+
+    bool enableRight = (id == 1 || id == 2);  // 全自动 或 半自动 才启用右边
+
+    // 启用/禁用右边两个单选按钮
+    ui->rb_up->setEnabled(enableRight);
+    ui->rb_down->setEnabled(enableRight);
+
+    // 可选：当禁用时，把右边两个都清空选中状态
+    if (!enableRight) {
+        rightGroup->setExclusive(false);           // 临时关闭互斥
+        ui->rb_up->setChecked(false);
+        ui->rb_down->setChecked(false);
+        rightGroup->setExclusive(true);            // 恢复互斥
+    }
 }
 
 void ui_001::init_cl_table()

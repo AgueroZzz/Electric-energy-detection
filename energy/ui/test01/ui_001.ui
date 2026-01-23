@@ -698,14 +698,14 @@
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_5">
             <item>
-             <widget class="QRadioButton" name="radioButton_6">
+             <widget class="QRadioButton" name="rb_action">
               <property name="text">
                <string>测接点动作</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QRadioButton" name="radioButton_7">
+             <widget class="QRadioButton" name="rb_action_return">
               <property name="text">
                <string>测动作和返回</string>
               </property>
@@ -721,14 +721,14 @@
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_6">
             <item>
-             <widget class="QRadioButton" name="radioButton_8">
+             <widget class="QRadioButton" name="rb_and">
               <property name="text">
                <string>逻辑与</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QRadioButton" name="radioButton_9">
+             <widget class="QRadioButton" name="rb_or">
               <property name="text">
                <string>逻辑或</string>
               </property>
@@ -746,21 +746,21 @@
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_2">
               <item>
-               <widget class="QRadioButton" name="radioButton_3">
+               <widget class="QRadioButton" name="rb_hand">
                 <property name="text">
                  <string>手动</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="radioButton_4">
+               <widget class="QRadioButton" name="rb_auto">
                 <property name="text">
                  <string>全自动</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="radioButton_5">
+               <widget class="QRadioButton" name="rb_h_auto">
                 <property name="text">
                  <string>半自动</string>
                 </property>
@@ -803,14 +803,14 @@
             <item>
              <layout class="QVBoxLayout" name="verticalLayout">
               <item>
-               <widget class="QRadioButton" name="radioButton">
+               <widget class="QRadioButton" name="rb_up">
                 <property name="text">
                  <string>递增</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="radioButton_2">
+               <widget class="QRadioButton" name="rb_down">
                 <property name="text">
                  <string>递减</string>
                 </property>

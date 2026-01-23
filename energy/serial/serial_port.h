@@ -21,6 +21,8 @@ public:
 
     void clear_serial();
 
+    QByteArray get_serial_port_data() {return _serial_data;}
+
 signals:
     void sig_serial_status_changed(index_serial_status status);
 
@@ -28,11 +30,15 @@ public slots:
     void slot_serial_opera(index_serial_status status, QStringList deploy);
     void slot_thread_start();
     void slot_thread_stop();
-    void slot_send_msg_to_serial(const QByteArray* msg);
-    void slot_recv_msg_from_serial();
+    void slot_send_msg_to_serial(const QByteArray& msg);
+
+private slots:
+    void slot_readReady();
 
 private:
     QSerialPort* _port = nullptr;
+
+    QByteArray _serial_data;
 
     void serial_start(QStringList deploy);
     void serial_stop();

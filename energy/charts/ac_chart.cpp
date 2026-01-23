@@ -1,16 +1,33 @@
 #include "ac_chart.h"
 #include <complex>
 
-ac_chart::ac_chart(QWidget *parent)
+ac_chart::ac_chart(const QMap<QString, QList<QVariant>>& initialMap, QWidget *parent)
     : QWidget(parent)
 {
     setMinimumSize(320, 320);
     setStyleSheet("background-color: black;");
-    initUI();
+
+    // 初始化所有相量（基本 + 派生）为默认值
+    initAllPhasors();
+
+    // 如果传入初始 map，解析更新基本相量
+    if (!initialMap.isEmpty()) {
+        parseBasicPhasorsFromMap(initialMap);
+    }
+
+    // 计算派生相量
+    calculateDerivedPhasors();
+
+    // 根据默认模式（相分量）设置可见性
+    updateVisiblePhasors();
+
+    // 初始刷新显示
+    updatePhasorDisplay();
 }
 
 void ac_chart::paintEvent(QPaintEvent *event)
 {
+    Q_UNUSED(event);
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing, true); // 抗锯齿
     painter.fillRect(rect(), Qt::black);                  // 黑色背景
@@ -48,28 +65,29 @@ void ac_chart::slot_setShowAxes(bool show)
     update();
 }
 
-void ac_chart::slot_onModeChanged(int Id)
+void ac_chart::slot_onModeChanged(int id)
 {
-    switch (Id) {
-    case 0: initPhasors_Phase();     break;
-    case 1: initPhasors_Line();      break;
-    case 2: initPhasors_Sequence();  break;
-    }
+    _mode = id;
+
+    // 更新可见性
+    updateVisiblePhasors();
+
+    // 刷新显示
     updatePhasorDisplay();
 }
 
-void ac_chart::slot_updatePhasorDisplay(const QMap<QString, QPair<double, double> > &data)
+void ac_chart::slot_charts_refresh(const QMap<QString, QList<QVariant> > &map)
 {
-    for (auto it = data.constBegin(); it != data.constEnd(); ++it) {
-        const QString& name = it.key();
-        double mag = it.value().first;
-        double pha = it.value().second;
+    // 解析更新基本相量
+    parseBasicPhasorsFromMap(map);
 
-        if (_phasors.contains(name)) {
-            _phasors[name].magnitude = mag;
-            _phasors[name].phase = pha;
-        }
-    }
+    // 重新计算派生相量
+    calculateDerivedPhasors();
+
+    // 更新可见性（根据当前模式）
+    updateVisiblePhasors();
+
+    // 刷新显示
     updatePhasorDisplay();
 }
 
@@ -164,72 +182,141 @@ void ac_chart::drawPhasor(QPainter &painter, const QRect &rect, const Phasor &p,
     painter.drawText(QPointF(x2 + 8, y2 + 5), p.label);
 }
 
-void ac_chart::initUI()
+void ac_chart::initAllPhasors()
 {
-    initPhasors_Phase();
+    // 基本相量（来自表格）
+    _phasors["UA"] = {0.0, 0.0, QColor(222, 116, 63), "UA"};
+    _phasors["UB"] = {0.0, 0.0, QColor(0, 180, 0), "UB"};
+    _phasors["UC"] = {0.0, 0.0, Qt::magenta, "UC"};
+    _phasors["IA"] = {0.0, 0.0, Qt::red, "IA"};
+    _phasors["IB"] = {0.0, 0.0, Qt::blue, "IB"};
+    _phasors["IC"] = {0.0, 0.0, Qt::yellow, "IC"};
+
+    // 派生相量（线电压）
+    _phasors["UAB"] = {0.0, 0.0, QColor(222, 116, 63), "UAB"};
+    _phasors["UBC"] = {0.0, 0.0, QColor(0, 180, 0), "UBC"};
+    _phasors["UCA"] = {0.0, 0.0, Qt::magenta, "UCA"};
+
+    // 派生相量（序分量）
+    _phasors["U0"] = {0.0, 0.0, Qt::gray, "U0"};
+    _phasors["U+"] = {0.0, 0.0, Qt::cyan, "U+"};
+    _phasors["U-"] = {0.0, 0.0, Qt::red, "U-"};
+    _phasors["I0"] = {0.0, 0.0, Qt::darkGray, "I0"};
+    _phasors["I+"] = {0.0, 0.0, Qt::yellow, "I+"};
+    _phasors["I-"] = {0.0, 0.0, Qt::magenta, "I-"};
 }
 
-void ac_chart::initPhasors_Phase()
+void ac_chart::parseBasicPhasorsFromMap(const QMap<QString, QList<QVariant> > &map)
 {
-    _phasors.clear();
-    _phasors["UA"] = {100.0,   30.0, QColor(222, 116, 63),     "UA"};
-    _phasors["UB"] = {100.0,   150.0, QColor(0, 180, 0), "UB"};
-    _phasors["UC"] = {100.0,   270.0, Qt::magenta,    "UC"};
-    _phasors["IA"] = {10.0,    60.0, Qt::red,       "IA"};
-    _phasors["IB"] = {10.0,    180.0, Qt::blue,      "IB"};
-    _phasors["IC"] = {10.0,    300.0, Qt::yellow,    "IC"};
+    // 表格列约定（根据您的代码，假设：
+    // 列1 (索引0): 有效值（magnitude）
+    // 列5 (索引4): 相位（phase）
+    // 调整如果不同
+    constexpr int COL_MAG = 0;  // 有效值列
+    constexpr int COL_PHA = 4;  // 相位列
+
+    QStringList basicKeys = {"UA", "UB", "UC", "IA", "IB", "IC"};
+
+    for (const QString& key : basicKeys) {
+        if (map.contains(key)) {
+            const QList<QVariant>& values = map[key];
+            if (values.size() > qMax(COL_MAG, COL_PHA)) {
+                bool okMag = false, okPha = false;
+                double mag = values[COL_MAG].toDouble(&okMag);
+                double pha = values[COL_PHA].toDouble(&okPha);
+                if (okMag && okPha) {
+                    _phasors[key].magnitude = mag;
+                    _phasors[key].phase = pha;
+                }
+            }
+        }
+    }
 }
 
-void ac_chart::initPhasors_Line()
+void ac_chart::calculateDerivedPhasors()
 {
-    auto get = [&](const QString& k) {
-        auto p = _phasors[k];
+    // 辅助函数：从 Phasor 转复数
+    auto toComplex = [](const Phasor& p) {
         return std::polar(p.magnitude, p.phase * M_PI / 180.0);
     };
-    auto to = [&](std::complex<double> c, QString l, QColor col) {
-        return Phasor{std::abs(c), std::arg(c)*180/M_PI, col, l};
+
+    // 辅助函数：从复数转 Phasor (magnitude, phase)
+    auto updatePhasor = [](Phasor& p, const std::complex<double>& c) {
+        p.magnitude = std::abs(c);
+        p.phase = std::arg(c) * 180.0 / M_PI;
     };
 
-    auto Ua = get("UA"), Ub = get("UB"), Uc = get("UC");
+    // 获取基本相量
+    std::complex<double> Ua = toComplex(_phasors["UA"]);
+    std::complex<double> Ub = toComplex(_phasors["UB"]);
+    std::complex<double> Uc = toComplex(_phasors["UC"]);
+    std::complex<double> Ia = toComplex(_phasors["IA"]);
+    std::complex<double> Ib = toComplex(_phasors["IB"]);
+    std::complex<double> Ic = toComplex(_phasors["IC"]);
 
-    _phasors.clear();
-    _phasors["UAB"] = to(Ua - Ub, "UAB", QColor(222, 116, 63));
-    _phasors["UBC"] = to(Ub - Uc, "UBC", QColor(0,180,0));
-    _phasors["UCA"] = to(Uc - Ua, "UCA", Qt::magenta);
-    _phasors["IA"] = _phasors.value("IA");
-    _phasors["IB"] = _phasors.value("IB");
-    _phasors["IC"] = _phasors.value("IC");
-}
+    // 计算线电压
+    updatePhasor(_phasors["UAB"], Ua - Ub);
+    updatePhasor(_phasors["UBC"], Ub - Uc);
+    updatePhasor(_phasors["UCA"], Uc - Ua);
 
-void ac_chart::initPhasors_Sequence()
-{
-    auto get = [&](const QString& k) {
-        auto p = _phasors[k];
-        return std::polar(p.magnitude, p.phase * M_PI / 180.0);
-    };
-    auto to = [&](std::complex<double> c, QString l, QColor col) {
-        return Phasor{std::abs(c), std::arg(c)*180/M_PI, col, l};
-    };
-
-    auto Ua = get("UA"), Ub = get("UB"), Uc = get("UC");
-    auto Ia = get("IA"), Ib = get("IB"), Ic = get("IC");
-    std::complex<double> a = std::polar(1.0, 120 * M_PI / 180);
+    // 计算序分量
+    std::complex<double> a = std::polar(1.0, 120.0 * M_PI / 180.0);
     std::complex<double> a2 = a * a;
 
-    auto Upos = (Ua + a*Ub + a2*Uc)/3.0;
-    auto Uneg = (Ua + a2*Ub + a*Uc)/3.0;
-    auto Uzero = (Ua + Ub + Uc)/3.0;
-    auto Ipos = (Ia + a*Ib + a2*Ic)/3.0;
-    auto Ineg = (Ia + a2*Ib + a*Ic)/3.0;
-    auto Izero = (Ia + Ib + Ic)/3.0;
+    // 电压序分量
+    std::complex<double> Uzero = (Ua + Ub + Uc) / 3.0;
+    std::complex<double> Upos = (Ua + a * Ub + a2 * Uc) / 3.0;
+    std::complex<double> Uneg = (Ua + a2 * Ub + a * Uc) / 3.0;
 
-    _phasors.clear();
-    _phasors["U+"] = to(Upos,  "U+",  Qt::cyan);
-    _phasors["U-"] = to(Uneg,  "U-",  Qt::red);
-    _phasors["U0"] = to(Uzero, "U0",  Qt::gray);
-    _phasors["I+"] = to(Ipos,  "I+",  Qt::yellow);
-    _phasors["I-"] = to(Ineg,  "I-",  Qt::magenta);
-    _phasors["I0"] = to(Izero, "I0",  Qt::darkGray);
+    // 电流序分量
+    std::complex<double> Izero = (Ia + Ib + Ic) / 3.0;
+    std::complex<double> Ipos = (Ia + a * Ib + a2 * Ic) / 3.0;
+    std::complex<double> Ineg = (Ia + a2 * Ib + a * Ic) / 3.0;
+
+    updatePhasor(_phasors["U0"], Uzero);
+    updatePhasor(_phasors["U+"], Upos);
+    updatePhasor(_phasors["U-"], Uneg);
+    updatePhasor(_phasors["I0"], Izero);
+    updatePhasor(_phasors["I+"], Ipos);
+    updatePhasor(_phasors["I-"], Ineg);
+}
+
+void ac_chart::updateVisiblePhasors()
+{
+    // 先全部设为不可见
+    for (auto& p : _phasors) {
+        p.visible = false;
+    }
+
+    // 根据模式设置可见
+    switch (_mode) {
+    case 0:  // 相分量
+        _phasors["UA"].visible = true;
+        _phasors["UB"].visible = true;
+        _phasors["UC"].visible = true;
+        _phasors["IA"].visible = true;
+        _phasors["IB"].visible = true;
+        _phasors["IC"].visible = true;
+        break;
+    case 1:  // 线电压
+        _phasors["UAB"].visible = true;
+        _phasors["UBC"].visible = true;
+        _phasors["UCA"].visible = true;
+        _phasors["IA"].visible = true;
+        _phasors["IB"].visible = true;
+        _phasors["IC"].visible = true;
+        break;
+    case 2:  // 序分量
+        _phasors["U0"].visible = true;
+        _phasors["U+"].visible = true;
+        _phasors["U-"].visible = true;
+        _phasors["I0"].visible = true;
+        _phasors["I+"].visible = true;
+        _phasors["I-"].visible = true;
+        break;
+    default:
+        break;
+    }
 }
 
 void ac_chart::slot_onZoomOut()

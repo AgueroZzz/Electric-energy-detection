@@ -18,6 +18,26 @@ test_01::test_01(quint16 test_id, QWidget *parent)
     init_state_widget();
 
     QObject::connect(_ui_001->ui->tb_cl, &QTableWidget::itemChanged, this, &test_01::slot_on_tb_cl_changed);
+
+    _process_1 = new process_1(this);
+    connect(_process_1, &process::sig_state_changed, this, [this](QString text, QString color){
+        _state_label->setText(text);
+        _state_label->setStyleSheet(QString("color:%1; font-weight:bold;").arg(color));
+    });
+
+    connect(_process_1, &process::sig_update_runtime, this, [this](double sec){
+        _runtime_second->setText(QString::number(sec, 'f', 2));
+    });
+
+    connect(_process_1, &process::sig_test_finished, this, [this](bool ok, QString reason){
+        _btn_start_test->setChecked(false);
+        if (!ok) {
+            setState(TestState::Error);
+            QMessageBox::warning(this, "测试异常", reason);
+        } else {
+            setState(TestState::Idle);
+        }
+    });
 }
 
 void test_01::init_UI()
@@ -43,6 +63,8 @@ void test_01::init_UI()
 
     setLayout(layout);
 
+
+    get_table_values(*_ui_001->ui->tb_cl, tb_cl_values);
 }
 
 void test_01::init_top_widget()
@@ -134,7 +156,7 @@ void test_01::init_chart_widget()
     btn_layout->addWidget(_chart_btn_xufl);
 
     QHBoxLayout* chart_layout = new QHBoxLayout(_ui_001->ui->chart_widget);
-    _voltage = new ac_chart();
+    _voltage = new ac_chart(tb_cl_values);
     QObject::connect(_chart_btn_fdq, &QToolButton::clicked, _voltage, &ac_chart::slot_onZoomOut);
     QObject::connect(_chart_btn_o, &QToolButton::clicked, _voltage, &ac_chart::slot_setShowGridCircles);
     QObject::connect(_chart_btn_x, &QToolButton::clicked, _voltage, &ac_chart::slot_setShowAxes);
@@ -179,40 +201,41 @@ void test_01::init_state_widget()
     _state_layout->addWidget(_led_c);
 }
 
+// 测试部分
 void test_01::slot_test_start()
 {
+    if (_serial->_serial_status != index_serial_status::serial_on) {
+        QMessageBox::warning(nullptr, "串口错误", "串口未开启");
+        _btn_start_test->setChecked(false);
+        setState(TestState::Error);
+        return;
+    }
+
     setState(TestState::Running);
 
-    qDebug() << "试验开始";
+    QString name = _ui_001->leftGroup->checkedButton()->text();
+    qDebug() << name;
+    get_table_values(*_ui_001->ui->tb_cl, tb_cl_values);
+    // _process_1->slot_start(tb_cl_values, get_test_type());
 }
 
 void test_01::slot_test_stop()
 {
-    qDebug() << "试验结束";
-    if(getState() == TestState::Running){
-        _serial->clear_serial();
-        setState(TestState::Sttopped);
-    }else if(getState() == TestState::Error){
-
-    }else{
-        return;
-    }
+    _process_1->slot_stop();
+    setState(TestState::Sttopped);
 }
 
 void test_01::slot_on_tb_cl_changed(QTableWidgetItem *item)
 {
     if(!item)
         return;
-    int row = item->row();
+    // int row = item->row();
     int col = item->column();
-
-    // 有效值改变
-    if(col == 1){
-
-    }
-    // 相位改变
-    else if(col == 5){
-
+    get_table_values(*_ui_001->ui->tb_cl, tb_cl_values);
+    // 有效值改变和相位改变都会触发雷达图重新绘制
+    if(col == 1 || col == 5){
+        qDebug() << "有效值或相位改变";
+        emit sig_charts_refresh(tb_cl_values);
     }
 }
 
