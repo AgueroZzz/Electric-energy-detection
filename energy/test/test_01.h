@@ -38,6 +38,14 @@ public:
         }
     }
 
+    inline t1_test_auto_tpye get_test_type_a(QString name){
+        if(name == "递增"){
+            return t1_test_auto_tpye::t_a_up;
+        }else{
+            return t1_test_auto_tpye::t_a_down;
+        }
+    }
+
 private:
     void init_UI();
     void init_top_widget();                     // 初始化顶部按钮

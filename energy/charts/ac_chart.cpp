@@ -208,10 +208,8 @@ void ac_chart::initAllPhasors()
 
 void ac_chart::parseBasicPhasorsFromMap(const QMap<QString, QList<QVariant> > &map)
 {
-    // 表格列约定（根据您的代码，假设：
-    // 列1 (索引0): 有效值（magnitude）
-    // 列5 (索引4): 相位（phase）
-    // 调整如果不同
+    // 列1: 有效值（magnitude）
+    // 列5: 相位（phase）
     constexpr int COL_MAG = 0;  // 有效值列
     constexpr int COL_PHA = 4;  // 相位列
 

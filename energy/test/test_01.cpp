@@ -19,7 +19,7 @@ test_01::test_01(quint16 test_id, QWidget *parent)
 
     QObject::connect(_ui_001->ui->tb_cl, &QTableWidget::itemChanged, this, &test_01::slot_on_tb_cl_changed);
 
-    _process_1 = new process_1(this);
+    _process_1 = new process_1();
     connect(_process_1, &process::sig_state_changed, this, [this](QString text, QString color){
         _state_label->setText(text);
         _state_label->setStyleSheet(QString("color:%1; font-weight:bold;").arg(color));
@@ -213,10 +213,13 @@ void test_01::slot_test_start()
 
     setState(TestState::Running);
 
-    QString name = _ui_001->leftGroup->checkedButton()->text();
-    qDebug() << name;
     get_table_values(*_ui_001->ui->tb_cl, tb_cl_values);
-    // _process_1->slot_start(tb_cl_values, get_test_type());
+    _process_1->slot_start(tb_cl_values,
+                           get_test_type(_ui_001->testTypeGroup->checkedButton()->text()),
+                           get_logic_type(_ui_001->logicGroup->checkedButton()->text()),
+                           get_test_auto(_ui_001->leftGroup->checkedButton()->text()),
+                           get_test_type_a(_ui_001->rightGroup->checkedButton()->text()),
+                           _ui_001->ui->le_delay->text());
 }
 
 void test_01::slot_test_stop()

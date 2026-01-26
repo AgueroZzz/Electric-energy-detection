@@ -35,6 +35,8 @@ private:
 
     QButtonGroup *leftGroup;   // 手动 / 全自动 / 半自动
     QButtonGroup *rightGroup;  // 递增 / 递减
+    QButtonGroup *testTypeGroup;    // 接点动作 / 动作和返回
+    QButtonGroup *logicGroup;    // 逻辑与 / 逻辑或
 };
 
 #endif // UI___1_H

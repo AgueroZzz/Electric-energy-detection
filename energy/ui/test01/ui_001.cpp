@@ -35,7 +35,6 @@ ui_001::ui_001(QWidget *parent)
     leftGroup->addButton(ui->rb_auto, 1);   // 全自动
     leftGroup->addButton(ui->rb_h_auto, 2);   // 半自动
 
-    // ------------------- 右边两个按钮互斥 -------------------
     rightGroup = new QButtonGroup(this);
     rightGroup->addButton(ui->rb_up,   0);  // 递增
     rightGroup->addButton(ui->rb_down, 1);  // 递减
@@ -44,6 +43,20 @@ ui_001::ui_001(QWidget *parent)
 
     ui->rb_hand->setChecked(true);
     slot_onLeftMode_changed(0, true);
+
+    // 测试类型互斥按钮
+    testTypeGroup = new QButtonGroup(this);
+    testTypeGroup->addButton(ui->rb_action, 0);     // 测接点动作
+    testTypeGroup->addButton(ui->rb_action_return, 1);      // 接点动作和返回
+    ui->rb_action->setChecked(true);
+
+    // 开入量逻辑
+    logicGroup = new QButtonGroup(this);
+    logicGroup->addButton(ui->rb_and, 0);       // 逻辑与
+    logicGroup->addButton(ui->rb_or, 1);        // 逻辑或
+    ui->rb_and->setChecked(true);
+
+    ui->rb_up->setChecked(true);
 
     init_cl_table();
 }
@@ -65,12 +78,12 @@ void ui_001::slot_onLeftMode_changed(int id, bool checked)
     ui->rb_down->setEnabled(enableRight);
 
     // 可选：当禁用时，把右边两个都清空选中状态
-    if (!enableRight) {
-        rightGroup->setExclusive(false);           // 临时关闭互斥
-        ui->rb_up->setChecked(false);
-        ui->rb_down->setChecked(false);
-        rightGroup->setExclusive(true);            // 恢复互斥
-    }
+    // if (!enableRight) {
+    //     rightGroup->setExclusive(false);           // 临时关闭互斥
+    //     ui->rb_up->setChecked(false);
+    //     ui->rb_down->setChecked(false);
+    //     rightGroup->setExclusive(true);            // 恢复互斥
+    // }
 }
 
 void ui_001::init_cl_table()
@@ -83,6 +96,9 @@ void ui_001::init_cl_table()
         setupVarStep(row, COL_VAR1, COL_STEP1);
 
         // ===== 第二组 变 → 步长 =====
+        if(row == 7){
+            return;
+        }
         setupVarStep(row, COL_VAR2, COL_STEP2);
     }
 }

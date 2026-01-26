@@ -31,9 +31,19 @@ class process_1 : public process
 public:
     explicit process_1(QObject *parent = nullptr);
 
+    enum index_map{
+        map_value = 0,
+        map_change_1,
+        map_change_value_1,
+        map_max,
+        map_phase,
+        map_change_2,
+        map_change_value_2
+    };
+
 public slots:
     void slot_start(QMap<QString, QList<QVariant>> map,
-                    t1_test_type type, t1_logic_type logic, t1_test_auto t_auto, t1_test_auto_tpye t_a_t);
+                    t1_test_type type, t1_logic_type logic, t1_test_auto t_auto, t1_test_auto_tpye t_a_t, QString delay);
     void slot_stop();
 
 private:
@@ -49,10 +59,28 @@ private:
 
     void attemptConnect();
 
+    // 测试参数
+    QMap<QString, QList<QVariant>> _parameter;
+    t1_test_type _type;
+    t1_logic_type _logic;
+    t1_test_auto _auto;
+    t1_test_auto_tpye _auto_type;
+    quint16 _delay_time;
+
+private:
+    void test_connect_to_device();
+    void test_send_para_to_device();
+
 private slots:
-    void slot_onSerialData(const QByteArray &data);
     void slot_onTimeout();
     void slot_updateRuntime();
+
+    // process interface
+public slots:
+    void slot_phase_changed(TestPhase phase) override;
+    // void slot_thread_start() override;
+    // void slot_thread_stop() override;
+
 };
 
 #endif // PROCESS_1_H
