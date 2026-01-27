@@ -27,7 +27,6 @@ public:
 
 private slots:
     void onTestChosen(quint16 testId);
-    void onSerialChosen();
     void onOpenTestChooser();
     void onCloseCurrentTest();
 
@@ -39,7 +38,7 @@ private:
 
     // ---------- UI ----------
     std::unique_ptr<Ui::MainWindow> ui;
-    QMenu *fileMenu{}, *testMenu{}, *serialMenu{}, *editMenu{}, *toolMenu{}, *helpMenu{};
+    QMenu *fileMenu{}, *testMenu{}, *editMenu{}, *toolMenu{}, *helpMenu{};
 
     // ---------- 测试 ----------
     std::unique_ptr<test> currentTest_;

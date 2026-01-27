@@ -41,6 +41,8 @@ public:
         map_change_value_2
     };
 
+    void setSerial(serial_port* serial);  // 新增：设置串口指针的 setter 方法
+
 public slots:
     void slot_start(QMap<QString, QList<QVariant>> map,
                     t1_test_type type, t1_logic_type logic, t1_test_auto t_auto, t1_test_auto_tpye t_a_t, QString delay);
@@ -66,6 +68,8 @@ private:
     t1_test_auto _auto;
     t1_test_auto_tpye _auto_type;
     quint16 _delay_time;
+
+    QSharedPointer<serial_port> _serial;  // 新增：串口成员，使用共享指针
 
 private:
     void test_connect_to_device();

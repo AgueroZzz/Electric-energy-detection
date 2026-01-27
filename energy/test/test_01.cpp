@@ -2,13 +2,20 @@
 
 #include "test/test_factory.h"
 #include "ui_ui_001.h"
-#include "serial/serial_port.h"
-
-extern serial_port* _serial;
 
 test_01::test_01(quint16 test_id, QWidget *parent)
     : test(test_id, parent)
 {
+    _serial_ui = new serial_ui();
+
+    serial_port* serial = new serial_port();
+    _serialPort.reset(serial);
+    serial->_thread.start();
+
+
+    QObject::connect(_serial_ui, &serial_ui::sig_serial_opera, serial, &serial_port::slot_serial_opera, Qt::QueuedConnection);
+    QObject::connect(serial, &serial_port::sig_serial_status_changed, _serial_ui, &serial_ui::slot_serial_status_changed, Qt::QueuedConnection);
+
     init_UI();
 
     init_top_widget();
@@ -17,9 +24,8 @@ test_01::test_01(quint16 test_id, QWidget *parent)
 
     init_state_widget();
 
-    QObject::connect(_ui_001->ui->tb_cl, &QTableWidget::itemChanged, this, &test_01::slot_on_tb_cl_changed);
-
     _process_1 = new process_1();
+    _process_1->setSerial(serial);
     connect(_process_1, &process::sig_state_changed, this, [this](QString text, QString color){
         _state_label->setText(text);
         _state_label->setStyleSheet(QString("color:%1; font-weight:bold;").arg(color));
@@ -62,9 +68,6 @@ void test_01::init_UI()
     layout->setContentsMargins(5, 2, 5, 2);
 
     setLayout(layout);
-
-
-    get_table_values(*_ui_001->ui->tb_cl, tb_cl_values);
 }
 
 void test_01::init_top_widget()
@@ -78,6 +81,11 @@ void test_01::init_top_widget()
     _btn_open_para    = createToolButton(":/icon/icon/open_file.svg",   "打开参数");
     _btn_save_para    = createToolButton(":/icon/icon/save_file.svg",   "保存参数");
     _btn_print_test   = createToolButton(":/icon/icon/print_file.svg",  "打印测试记录");
+    _btn_serial_opera = createToolButton(":/icon/icon/serial.svg",      "串口操作");
+    QObject::connect(_btn_serial_opera, &QToolButton::clicked, this, [=](){
+        _serial_ui->raise();
+        _serial_ui->show();
+    });
     _btn_power_calcu  = createToolButton(":/icon/icon/power_calc.svg",     "功率计算仪表");
     _btn_shortout_calcu = createToolButton(":/icon/icon/short_calc.svg","短路计算仪表");
     _btn_recover_para = createToolButton(":/icon/icon/recover.svg", "恢复默认值");
@@ -106,6 +114,7 @@ void test_01::init_top_widget()
     btn_layout->addWidget(_btn_open_para);
     btn_layout->addWidget(_btn_save_para);
     btn_layout->addWidget(_btn_print_test);
+    btn_layout->addWidget(_btn_serial_opera);
     btn_layout->addWidget(_btn_power_calcu);
     btn_layout->addWidget(_btn_shortout_calcu);
     btn_layout->addWidget(_btn_recover_para);
@@ -156,11 +165,12 @@ void test_01::init_chart_widget()
     btn_layout->addWidget(_chart_btn_xufl);
 
     QHBoxLayout* chart_layout = new QHBoxLayout(_ui_001->ui->chart_widget);
-    _voltage = new ac_chart(tb_cl_values);
+    _voltage = new ac_chart(_ui_001->tb_cl_values);
     QObject::connect(_chart_btn_fdq, &QToolButton::clicked, _voltage, &ac_chart::slot_onZoomOut);
     QObject::connect(_chart_btn_o, &QToolButton::clicked, _voltage, &ac_chart::slot_setShowGridCircles);
     QObject::connect(_chart_btn_x, &QToolButton::clicked, _voltage, &ac_chart::slot_setShowAxes);
     QObject::connect(_group, &QButtonGroup::idClicked, _voltage, &ac_chart::slot_onModeChanged);
+    QObject::connect(_ui_001, &ui_001::sig_charts_refresh, _voltage, &ac_chart::slot_charts_refresh);
     chart_layout->addWidget(_voltage);
 }
 
@@ -204,7 +214,7 @@ void test_01::init_state_widget()
 // 测试部分
 void test_01::slot_test_start()
 {
-    if (_serial->_serial_status != index_serial_status::serial_on) {
+    if (_serialPort->_serial_status != index_serial_status::serial_on) {
         QMessageBox::warning(nullptr, "串口错误", "串口未开启");
         _btn_start_test->setChecked(false);
         setState(TestState::Error);
@@ -212,9 +222,7 @@ void test_01::slot_test_start()
     }
 
     setState(TestState::Running);
-
-    get_table_values(*_ui_001->ui->tb_cl, tb_cl_values);
-    _process_1->slot_start(tb_cl_values,
+    _process_1->slot_start(_ui_001->tb_cl_values,
                            get_test_type(_ui_001->testTypeGroup->checkedButton()->text()),
                            get_logic_type(_ui_001->logicGroup->checkedButton()->text()),
                            get_test_auto(_ui_001->leftGroup->checkedButton()->text()),
@@ -226,20 +234,6 @@ void test_01::slot_test_stop()
 {
     _process_1->slot_stop();
     setState(TestState::Sttopped);
-}
-
-void test_01::slot_on_tb_cl_changed(QTableWidgetItem *item)
-{
-    if(!item)
-        return;
-    // int row = item->row();
-    int col = item->column();
-    get_table_values(*_ui_001->ui->tb_cl, tb_cl_values);
-    // 有效值改变和相位改变都会触发雷达图重新绘制
-    if(col == 1 || col == 5){
-        qDebug() << "有效值或相位改变";
-        emit sig_charts_refresh(tb_cl_values);
-    }
 }
 
 REGISTER_TEST(test_01, 0);

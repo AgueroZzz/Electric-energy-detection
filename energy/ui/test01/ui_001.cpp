@@ -1,5 +1,6 @@
 #include "ui_001.h"
 #include "ui_ui_001.h"
+#include "global/utils.h"
 
 constexpr int COL_VAR1  = 2;
 constexpr int COL_STEP1 = 3;
@@ -59,6 +60,8 @@ ui_001::ui_001(QWidget *parent)
     ui->rb_up->setChecked(true);
 
     init_cl_table();
+    GlobalUtils::get_table_values(*ui->tb_cl, tb_cl_values);
+    QObject::connect(ui->tb_cl, &QTableWidget::itemChanged, this, &ui_001::slot_on_tb_cl_changed);
 }
 
 ui_001::~ui_001()
@@ -84,6 +87,22 @@ void ui_001::slot_onLeftMode_changed(int id, bool checked)
     //     ui->rb_down->setChecked(false);
     //     rightGroup->setExclusive(true);            // 恢复互斥
     // }
+}
+
+void ui_001::slot_on_tb_cl_changed(QTableWidgetItem *item)
+{
+    {
+        if(!item)
+            return;
+        // int row = item->row();
+        int col = item->column();
+        GlobalUtils::get_table_values(*ui->tb_cl, tb_cl_values);
+        // 有效值改变和相位改变都会触发雷达图重新绘制
+        if(col == 1 || col == 5){
+            qDebug() << "有效值或相位改变";
+            emit sig_charts_refresh(tb_cl_values);
+        }
+    }
 }
 
 void ui_001::init_cl_table()

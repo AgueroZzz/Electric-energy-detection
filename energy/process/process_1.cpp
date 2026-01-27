@@ -1,7 +1,4 @@
 #include "process_1.h"
-#include "serial/serial_port.h"
-
-extern serial_port* _serial;
 
 process_1::process_1(QObject *parent)
     : process{parent}
@@ -13,6 +10,12 @@ process_1::process_1(QObject *parent)
     runtimeTimer = new QTimer();
     runtimeTimer->setInterval(100);
     connect(runtimeTimer, &QTimer::timeout, this, &process_1::slot_updateRuntime);
+}
+
+void process_1::setSerial(serial_port *serial)
+{
+    _serial.reset(serial);  // 使用 reset 设置共享指针
+    QObject::connect(this, &process_1::sig_send_msg_to_serial, _serial.data(), &serial_port::slot_send_msg_to_serial, Qt::QueuedConnection);
 }
 
 void process_1::slot_start(QMap<QString, QList<QVariant> > map, t1_test_type type, t1_logic_type logic, t1_test_auto t_auto, t1_test_auto_tpye t_a_t, QString delay)
@@ -48,7 +51,7 @@ void process_1::attemptConnect()
     }
 
     QByteArray cmd = QByteArray::fromHex("01FF");
-    _serial->slot_send_msg_to_serial(cmd);
+    emit sig_send_msg_to_serial(cmd);
 
     timeoutTimer->start(_delay_time);
 }
@@ -108,13 +111,3 @@ void process_1::slot_phase_changed(TestPhase phase)
         return;
     }
 }
-
-// void process_1::slot_thread_start()
-// {
-
-// }
-
-// void process_1::slot_thread_stop()
-// {
-
-// }

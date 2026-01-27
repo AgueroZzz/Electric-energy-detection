@@ -20,8 +20,12 @@ public:
     explicit ui_001(QWidget *parent = nullptr);
     ~ui_001();
 
+signals:
+    void sig_charts_refresh(const QMap<QString ,QList<QVariant>>& map);
+
 private slots:
     void slot_onLeftMode_changed(int id, bool checked);
+    void slot_on_tb_cl_changed(QTableWidgetItem* item);
 
 private:
     Ui::ui_001 *ui;
@@ -32,6 +36,8 @@ private:
                       bool editable,
                       bool green);
     void updateVarStepState(int row, int colVar, int colStep);
+
+    QMap<QString, QList<QVariant>> tb_cl_values;        // UI界面的参量表格数据
 
     QButtonGroup *leftGroup;   // 手动 / 全自动 / 半自动
     QButtonGroup *rightGroup;  // 递增 / 递减

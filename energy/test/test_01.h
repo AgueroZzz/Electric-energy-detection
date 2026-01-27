@@ -7,10 +7,29 @@
 #include "global/led.h"
 #include "process/process_1.h"
 
+
 class test_01 : public test
 {
 public:
     test_01(quint16 test_id, QWidget *parent = nullptr);
+
+    ~test_01(){
+        if (_process_1) {
+            _process_1->slot_stop();
+        }
+        if (_serialPort) {
+            if (_serialPort->_serial_status == index_serial_status::serial_on) {
+                _serialPort->slot_serial_opera(index_serial_status::serial_off, {});
+            }
+            if (_serialPort->_thread.isRunning()) {
+                _serialPort->_thread.quit();
+
+                if (!_serialPort->_thread.wait(3000)) {
+                    qWarning() << "串口线程等待超时，强制终止（可能有资源泄漏）";
+                }
+            }
+        }
+    }
 
     inline t1_test_auto get_test_auto(QString name){
         if(name == "手动"){
@@ -62,6 +81,7 @@ private:
     QToolButton* _btn_open_para;        // 打开参数按钮
     QToolButton* _btn_save_para;        // 保存参数按钮
     QToolButton* _btn_print_test;       // 打印测试记录
+    QToolButton* _btn_serial_opera;     // 串口操作
     QToolButton* _btn_power_calcu;      // 功率计算仪表
     QToolButton* _btn_shortout_calcu;   // 短路计算
     QToolButton* _btn_recover_para;     // 恢复默认值
@@ -95,15 +115,17 @@ private:
     QTimer* _runtimeTimer = nullptr;
     quint64 _startTime = 0;
 
-    QMap<QString, QList<QVariant>> tb_cl_values;        // UI界面的参量表格数据
-
     process_1* _process_1 = nullptr;
+
+    serial_ui* _serial_ui;
+
+    QSharedPointer<serial_port> _serialPort;        // 串口智能指针类
 
     // test interface
 private slots:
     void slot_test_start();
     void slot_test_stop();
-    void slot_on_tb_cl_changed(QTableWidgetItem* item);
+
 };
 
 #endif // TEST__1_H

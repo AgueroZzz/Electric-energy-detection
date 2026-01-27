@@ -13,7 +13,6 @@ SOURCES += \
     charts/ac_chart.cpp \
     charts/dc_chart.cpp \
     charts/phasewave_chart.cpp \
-    global/component.cpp \
     global/led.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -83,9 +82,9 @@ HEADERS += \
     charts/ac_chart.h \
     charts/dc_chart.h \
     charts/phasewave_chart.h \
-    global/component.h \
     global/index.h \
     global/led.h \
+    global/utils.h \
     mainwindow.h \
     process/process.h \
     process/process_1.h \

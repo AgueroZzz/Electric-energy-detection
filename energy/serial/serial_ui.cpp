@@ -2,8 +2,6 @@
 #include "ui_serial_ui.h"
 #include "serial/serial_port.h"
 
-extern serial_port* _serial;
-
 serial_ui::serial_ui(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::serial_ui)
@@ -11,8 +9,6 @@ serial_ui::serial_ui(QWidget *parent)
     ui->setupUi(this);
     setWindowTitle("串口操作");
     QObject::connect(ui->btn_refresh, &QPushButton::clicked, this, &serial_ui::slot_refresh_port);
-    QObject::connect(this, &serial_ui::sig_serial_opera, _serial, &serial_port::slot_serial_opera, Qt::QueuedConnection);
-    QObject::connect(_serial, &serial_port::sig_serial_status_changed, this, &serial_ui::slot_serial_status_changed, Qt::QueuedConnection);
     QObject::connect(ui->btn_opera_open, &QPushButton::clicked, this, [=](){
         QStringList serial_deploy;
         serial_deploy << ui->cb_serial_name->currentText()

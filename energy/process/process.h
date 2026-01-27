@@ -5,6 +5,7 @@
 #include <QTimer>
 #include <QDateTime>
 #include <QThread>
+#include "serial/serial_port.h"
 
 // 测试过程父类
 enum class TestPhase {
@@ -64,6 +65,7 @@ signals:
     void sig_update_runtime(double seconds);                          // 运行时间更新
     void sig_new_data(const QVariantMap &data);                       // 或用自定义结构体
     void sig_phase_changed(TestPhase phase);
+    void sig_send_msg_to_serial(const QByteArray& msg);                    // 向串口发送数据
 
 public slots:
     virtual void slot_phase_changed(TestPhase phase) = 0;
