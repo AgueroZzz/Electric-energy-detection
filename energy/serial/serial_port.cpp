@@ -87,7 +87,7 @@ void serial_port::slot_readReady()
 
     if(_serial_data.isEmpty())
         return;
-
+    emit sig_serial_readyRead();
     qDebug() << "收到并覆盖 _serial_data:" << _serial_data.toHex(' ').toUpper();
 }
 

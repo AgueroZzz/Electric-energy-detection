@@ -61,7 +61,11 @@ ui_001::ui_001(QWidget *parent)
 
     init_cl_table();
     GlobalUtils::get_table_values(*ui->tb_cl, tb_cl_values);
+    calc_uab_value();
+    calc_uo_value();
+    calc_io_value();
     QObject::connect(ui->tb_cl, &QTableWidget::itemChanged, this, &ui_001::slot_on_tb_cl_changed);
+    QObject::connect(ui->cb_ux, &QComboBox::currentIndexChanged, this, &ui_001::slot_ux_mode_changed);
 }
 
 ui_001::~ui_001()
@@ -79,14 +83,6 @@ void ui_001::slot_onLeftMode_changed(int id, bool checked)
     // 启用/禁用右边两个单选按钮
     ui->rb_up->setEnabled(enableRight);
     ui->rb_down->setEnabled(enableRight);
-
-    // 可选：当禁用时，把右边两个都清空选中状态
-    // if (!enableRight) {
-    //     rightGroup->setExclusive(false);           // 临时关闭互斥
-    //     ui->rb_up->setChecked(false);
-    //     ui->rb_down->setChecked(false);
-    //     rightGroup->setExclusive(true);            // 恢复互斥
-    // }
 }
 
 void ui_001::slot_on_tb_cl_changed(QTableWidgetItem *item)
@@ -94,27 +90,67 @@ void ui_001::slot_on_tb_cl_changed(QTableWidgetItem *item)
     {
         if(!item)
             return;
-        // int row = item->row();
+        qDebug() << "cl表格中数据改变";
         int col = item->column();
+        int row = item->row();
         GlobalUtils::get_table_values(*ui->tb_cl, tb_cl_values);
         // 有效值改变和相位改变都会触发雷达图重新绘制
         if(col == 1 || col == 5){
-            qDebug() << "有效值或相位改变";
             emit sig_charts_refresh(tb_cl_values);
+            if(row == 0 || row == 1 || row == 2){
+                auto value_pair = calc_ux_value(ui->cb_ux->currentIndex());
+                set_ux_value(value_pair.first, value_pair.second);
+                calc_uab_value();           // 重新计算UAB/UBC/UCA
+                calc_uo_value();            // 重新计算Uo/U+/U-
+            }
+            if(row == 3 || row == 4 || row == 5){
+                calc_io_value();            // 重新计算Io/I+/I-
+            }
         }
     }
+}
+
+void ui_001::slot_ux_mode_changed(int index)
+{
+    int row = 6;            // Ux所在行
+    if(index == 0){
+        for (int col = 0; col < ui->tb_cl->columnCount(); ++col) {
+            // 获取或创建item
+            QTableWidgetItem *item = ui->tb_cl->item(row, col);
+            if(col == 3 || col == 7){
+                setItemState(item, false, true);
+                continue;
+            }
+            setItemState(item, true, false);
+        }
+        for (int col = 0; col < ui->tb_cl->columnCount(); ++col) {
+            // 获取或创建item
+            QTableWidgetItem *item = ui->tb_cl->item(row, col);
+            if(col == 1){item->setText("10.000");}
+            else if(col == 4){item->setText("120");}
+            else if(col == 5){item->setText("0.0");}
+        }
+        return;
+    }else{
+        for (int col = 0; col < ui->tb_cl->columnCount(); ++col) {
+            // 获取或创建item
+            QTableWidgetItem *item = ui->tb_cl->item(row, col);
+            // 设置为不可编辑
+            item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+            // 设置背景色和填充模式
+            item->setBackground(QBrush(QColor("#c2edc3"), Qt::Dense4Pattern));
+        }
+    }
+    auto value_pair = calc_ux_value(index);
+    set_ux_value(value_pair.first, value_pair.second);
+    return;
 }
 
 void ui_001::init_cl_table()
 {
     int rows = ui->tb_cl->rowCount();
-
     for (int row = 0; row < rows; ++row) {
-
-        // ===== 第一组 变 → 步长 =====
         setupVarStep(row, COL_VAR1, COL_STEP1);
-
-        // ===== 第二组 变 → 步长 =====
         if(row == 7){
             return;
         }
@@ -124,7 +160,6 @@ void ui_001::init_cl_table()
 
 void ui_001::setupVarStep(int row, int colVar, int colStep)
 {
-    // ---- CheckBox ----
     QCheckBox *cb = new QCheckBox();
 
     QWidget *w = new QWidget();
@@ -132,10 +167,7 @@ void ui_001::setupVarStep(int row, int colVar, int colStep)
     l->addWidget(cb);
     l->setAlignment(Qt::AlignCenter);
     l->setContentsMargins(0,0,0,0);
-
     ui->tb_cl->setCellWidget(row, colVar, w);
-
-    // ---- 步长 item ----
     QTableWidgetItem *stepItem = ui->tb_cl->item(row, colStep);
     if (!stepItem) {
         stepItem = new QTableWidgetItem();
@@ -145,11 +177,9 @@ void ui_001::setupVarStep(int row, int colVar, int colStep)
     // 初始状态
     updateVarStepState(row, colVar, colStep);
 
-    // ---- CheckBox 联动 ----
-    connect(cb, &QCheckBox::stateChanged, this,
-            [=](int){
-                updateVarStepState(row, colVar, colStep);
-            });
+    connect(cb, &QCheckBox::stateChanged, this, [=](int){
+        updateVarStepState(row, colVar, colStep);
+    });
 }
 
 void ui_001::setItemState(QTableWidgetItem *item, bool editable, bool green)
@@ -179,16 +209,129 @@ void ui_001::updateVarStepState(int row, int colVar, int colStep)
     QWidget *w = ui->tb_cl->cellWidget(row, colVar);
     QCheckBox *cb = w ? w->findChild<QCheckBox *>() : nullptr;
     bool checked = cb && cb->isChecked();
-
     if (row == ROW_UX && ui->cb_ux->currentIndex() != 0) {
         // 强制锁死
         setItemState(stepItem, false, true);
         return;
     }
-
     if (checked) {
         setItemState(stepItem, true, false);
     } else {
         setItemState(stepItem, false, true);
+    }
+}
+
+void ui_001::set_ux_value(QString value, QString phase)
+{
+    QTableWidgetItem* item_1 = ui->tb_cl->item(6, 1);
+    item_1->setText(value);
+    QTableWidgetItem* item_2 = ui->tb_cl->item(6, 5);
+    item_2->setText(phase);
+    GlobalUtils::get_table_values(*ui->tb_cl, tb_cl_values);
+}
+
+QPair<QString, QString> ui_001::calc_ux_value(int index)
+{
+    static const QMap<int, double> multipliers {
+                                               {1,  1.0},
+                                               {2, -1.0},
+                                               {3,  std::sqrt(3.0)},
+                                               {4, -std::sqrt(3.0)},
+                                               };
+
+    if (index >= 5 && index <= 7) {
+        static const QStringList phases = {"UA", "UB", "UC"};
+        QString key = phases[index - 5];
+        return { tb_cl_values[key][0].toString(),
+                tb_cl_values[key][4].toString() };
+    }
+
+    if (!multipliers.contains(index)) {
+        return {"--", "--"};
+    }
+
+    VoltagePhasor ua {tb_cl_values["UA"][0].toDouble(), tb_cl_values["UA"][4].toDouble()};
+    VoltagePhasor ub {tb_cl_values["UB"][0].toDouble(), tb_cl_values["UB"][4].toDouble()};
+    VoltagePhasor uc {tb_cl_values["UC"][0].toDouble(), tb_cl_values["UC"][4].toDouble()};
+
+    auto ux = GlobalUtils::calcUx(ua, ub, uc, multipliers[index]);
+
+    return {
+        QString::number(std::abs(ux),  'f', 3),
+        QString::number(std::arg(ux)*180/M_PI, 'f', 1)
+    };
+}
+
+void ui_001::calc_uab_value()
+{
+    QMap<QString, QPair<QString, QString>> result =
+        GlobalUtils::calcLineVoltageMap(tb_cl_values["UA"][0].toDouble(), tb_cl_values["UA"][4].toDouble(),
+                                        tb_cl_values["UB"][0].toDouble(), tb_cl_values["UB"][4].toDouble(),
+                                        tb_cl_values["UC"][0].toDouble(), tb_cl_values["UC"][4].toDouble()
+                                        );
+    auto setItemText = [&](int row, int col, const QString &text) {
+        QTableWidgetItem *item = ui->tb_down_1->item(row, col);
+        if (!item) {
+            item = new QTableWidgetItem();
+            ui->tb_down_1->setItem(row, col, item);
+        }
+        item->setText(text);
+    };
+    const QStringList keys = { "UAB", "UBC", "UCA" };
+
+    for (int row = 0; row < keys.size(); ++row) {
+        const auto &value = result[keys[row]];
+        setItemText(row, 1, value.first);   // 有效值
+        setItemText(row, 2, value.second);  // 相位
+    }
+}
+
+void ui_001::calc_uo_value()
+{
+    QMap<QString, QPair<QString, QString>> result =
+        GlobalUtils::calcSymmetricalVoltageMap(tb_cl_values["UA"][0].toDouble(), tb_cl_values["UA"][4].toDouble(),
+                                        tb_cl_values["UB"][0].toDouble(), tb_cl_values["UB"][4].toDouble(),
+                                        tb_cl_values["UC"][0].toDouble(), tb_cl_values["UC"][4].toDouble()
+                                        );
+    auto setItemText = [&](int row, int col, const QString &text) {
+        QTableWidgetItem *item = ui->tb_down_1->item(row, col);
+        if (!item) {
+            item = new QTableWidgetItem();
+            ui->tb_down_1->setItem(row, col, item);
+        }
+        item->setText(text);
+    };
+    const QStringList keys = { "U0", "U+", "U-" };
+    const int startRow = 3;
+
+    for (int i = 0; i < keys.size(); ++i) {
+        const auto &value = result[keys[i]];
+        setItemText(startRow + i, 1, value.first);   // 有效值
+        setItemText(startRow + i, 2, value.second);  // 相位
+    }
+}
+
+void ui_001::calc_io_value()
+{
+    QMap<QString, QPair<QString, QString>> result =
+        GlobalUtils::calcSymmetricalCurrentMap(tb_cl_values["IA"][0].toDouble(), tb_cl_values["IA"][4].toDouble(),
+                                               tb_cl_values["IB"][0].toDouble(), tb_cl_values["IB"][4].toDouble(),
+                                               tb_cl_values["IC"][0].toDouble(), tb_cl_values["IC"][4].toDouble()
+                                               );
+    auto setItemText = [&](int row, int col, const QString &text) {
+        QTableWidgetItem *item = ui->tb_down_1->item(row, col);
+        if (!item) {
+            item = new QTableWidgetItem();
+            ui->tb_down_1->setItem(row, col, item);
+        }
+        item->setText(text);
+    };
+    const QStringList keys = { "I0", "I+", "I-" };
+    const int startRow = 6;
+
+    for (int i = 0; i < keys.size(); ++i) {
+        const auto &value = result[keys[i]];
+        setItemText(startRow + i, 1, value.first);   // 有效值
+        setItemText(startRow + i, 2, value.second);  // 相位
     }
 }

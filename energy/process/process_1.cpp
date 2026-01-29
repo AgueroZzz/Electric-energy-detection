@@ -16,6 +16,7 @@ void process_1::setSerial(serial_port *serial)
 {
     _serial.reset(serial);  // 使用 reset 设置共享指针
     QObject::connect(this, &process_1::sig_send_msg_to_serial, _serial.data(), &serial_port::slot_send_msg_to_serial, Qt::QueuedConnection);
+    QObject::connect(_serial.data(), &serial_port::sig_serial_readyRead, this, &process_1::slot_serial_readyRead, Qt::QueuedConnection);
 }
 
 void process_1::slot_start(QMap<QString, QList<QVariant> > map, t1_test_type type, t1_logic_type logic, t1_test_auto t_auto, t1_test_auto_tpye t_a_t, QString delay)
@@ -36,8 +37,20 @@ void process_1::slot_stop()
 {
     timeoutTimer->stop();
     runtimeTimer->stop();
+    QByteArray frame;
+    frame.append(QByteArray::fromHex("0100"));      // 结束
+    emit sig_send_msg_to_serial(frame);
     currentPhase = TestPhase::Idle;
     emit sig_state_changed("已停止", "#7f8c8d");
+}
+
+void process_1::slot_serial_readyRead()
+{
+    if(currentPhase == TestPhase::Idle){
+        return;
+    }else if(currentPhase == TestPhase::Running){
+        qDebug() << _serial->get_serial_port_data();
+    }
 }
 
 void process_1::attemptConnect()
@@ -59,7 +72,7 @@ void process_1::attemptConnect()
 void process_1::test_connect_to_device()
 {
     connectRetryCount = 0;
-    emit sig_state_changed("正在联机...", "#e67e22");
+    emit sig_state_changed("正在联机", "#e67e22");
     startTimestamp = QDateTime::currentMSecsSinceEpoch();
     runtimeTimer->start();
 
@@ -73,8 +86,25 @@ void process_1::test_send_para_to_device()
     QByteArray frame;
     frame.append(QByteArray::fromHex("2202"));      // 字节数+交流实验
     frame.append(QByteArray::fromHex("FF14"));      // 暂时未知
-    // Ux幅值
-    qDebug() << floatToHexLE(_parameter["Ux"][index_map::map_value].toFloat());
+    frame.append(intToLittleEndianHex(int(_parameter["Ux"][index_map::map_value].toFloat() * 250)));        // Ux幅值
+    frame.append(intToLittleEndianHex(int(_parameter["Ux"][index_map::map_phase].toFloat())));              // Ux相位
+    frame.append(intToLittleEndianHex(int(_parameter["UA"][index_map::map_value].toFloat() * 250)));        // UA幅值
+    frame.append(intToLittleEndianHex(int(_parameter["UA"][index_map::map_phase].toFloat())));              // UA相位
+    frame.append(intToLittleEndianHex(int(_parameter["UB"][index_map::map_value].toFloat() * 250)));        // UB幅值
+    frame.append(intToLittleEndianHex(int(_parameter["UB"][index_map::map_phase].toFloat())));              // UB相位
+    frame.append(intToLittleEndianHex(int(_parameter["UC"][index_map::map_value].toFloat() * 250)));        // UC幅值
+    frame.append(intToLittleEndianHex(int(_parameter["UC"][index_map::map_phase].toFloat())));              // UC相位
+    frame.append(intToLittleEndianHex(int(_parameter["IA"][index_map::map_value].toFloat() * 1066)));        // IA幅值
+    frame.append(intToLittleEndianHex(int(_parameter["IA"][index_map::map_phase].toFloat())));              // IA相位
+    frame.append(intToLittleEndianHex(int(_parameter["IB"][index_map::map_value].toFloat() * 1066)));        // IB幅值
+    frame.append(intToLittleEndianHex(int(_parameter["IB"][index_map::map_phase].toFloat())));              // IB相位
+    frame.append(intToLittleEndianHex(int(_parameter["IC"][index_map::map_value].toFloat() * 1066)));        // IC幅值
+    frame.append(intToLittleEndianHex(int(_parameter["IC"][index_map::map_phase].toFloat())));              // IC相位
+    frame.append(intToLittleEndianHex(int(_parameter["Hz"][index_map::map_value].toFloat() * 100)));              // 频率
+    frame.append(QByteArray::fromHex("00"));                                                                // 结束符？
+
+    emit sig_state_changed("测试中", "#e67e22");
+    emit sig_send_msg_to_serial(frame);
 }
 
 void process_1::slot_onTimeout()
@@ -104,7 +134,7 @@ void process_1::slot_phase_changed(TestPhase phase)
     }else if(phase == TestPhase::Connecting){
         test_connect_to_device();
     }else if(phase == TestPhase::Running){
-
+        test_send_para_to_device();
     }else if(phase == TestPhase::Finishing){
 
     }else if(phase == TestPhase::Error){

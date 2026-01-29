@@ -26,6 +26,7 @@ signals:
 private slots:
     void slot_onLeftMode_changed(int id, bool checked);
     void slot_on_tb_cl_changed(QTableWidgetItem* item);
+    void slot_ux_mode_changed(int index);
 
 private:
     Ui::ui_001 *ui;
@@ -36,6 +37,14 @@ private:
                       bool editable,
                       bool green);
     void updateVarStepState(int row, int colVar, int colStep);
+    void set_ux_value(QString value, QString phase);
+    QPair<QString, QString> calc_ux_value(int index);
+    //计算函数
+    void calc_uab_value();
+    void calc_uo_value();
+    void calc_io_value();
+
+
 
     QMap<QString, QList<QVariant>> tb_cl_values;        // UI界面的参量表格数据
 

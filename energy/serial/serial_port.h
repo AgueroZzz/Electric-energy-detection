@@ -25,6 +25,7 @@ public:
 
 signals:
     void sig_serial_status_changed(index_serial_status status);
+    void sig_serial_readyRead();
 
 public slots:
     void slot_serial_opera(index_serial_status status, QStringList deploy);

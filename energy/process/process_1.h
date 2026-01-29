@@ -41,12 +41,23 @@ public:
         map_change_value_2
     };
 
-    void setSerial(serial_port* serial);  // 新增：设置串口指针的 setter 方法
+    enum index_test_port{
+        port_A = 0x80,
+        port_B = 0x40,
+        port_C = 0x20,
+        port_R = 0x10,
+        port_a = 0x08,
+        port_b = 0x04,
+        port_c = 0x02
+    };
+
+    void setSerial(serial_port* serial);  // 设置串口指针的 setter 方法
 
 public slots:
     void slot_start(QMap<QString, QList<QVariant>> map,
                     t1_test_type type, t1_logic_type logic, t1_test_auto t_auto, t1_test_auto_tpye t_a_t, QString delay);
     void slot_stop();
+    void slot_serial_readyRead();
 
 private:
     int connectRetryCount = 0;
@@ -63,6 +74,7 @@ private:
 
     // 测试参数
     QMap<QString, QList<QVariant>> _parameter;
+    // 返回参数
     t1_test_type _type;
     t1_logic_type _logic;
     t1_test_auto _auto;
@@ -75,6 +87,8 @@ private:
     void test_connect_to_device();
     void test_send_para_to_device();
 
+    QMap<QString, std::function<void()>> _parse_function;
+
 private slots:
     void slot_onTimeout();
     void slot_updateRuntime();
@@ -82,8 +96,6 @@ private slots:
     // process interface
 public slots:
     void slot_phase_changed(TestPhase phase) override;
-    // void slot_thread_start() override;
-    // void slot_thread_stop() override;
 
 };
 
