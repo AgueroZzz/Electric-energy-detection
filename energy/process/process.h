@@ -33,6 +33,12 @@ public:
         return byteArray;
     }
 
+    inline quint32 parseActionTime(const QByteArray& frame){
+        return  (quint8(frame[3])) |
+               ((quint8(frame[4])) << 8) |
+               ((quint8(frame[5])) << 16);
+    }
+
 signals:
     void sig_state_changed(QString text, QString color = "#000000");   // 更新状态栏文字+颜色
     void sig_append_log(QString msg);                                 // 追加日志

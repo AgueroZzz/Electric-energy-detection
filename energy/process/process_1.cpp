@@ -46,11 +46,11 @@ void process_1::slot_stop()
 
 void process_1::slot_serial_readyRead()
 {
-    if(currentPhase == TestPhase::Idle){
+    if(currentPhase != TestPhase::Running){
         return;
-    }else if(currentPhase == TestPhase::Running){
-        qDebug() << _serial->get_serial_port_data();
     }
+    qDebug() << _serial->get_serial_port_data();
+    frame_parse(_serial->get_serial_port_data());
 }
 
 void process_1::attemptConnect()
@@ -67,6 +67,33 @@ void process_1::attemptConnect()
     emit sig_send_msg_to_serial(cmd);
 
     timeoutTimer->start(_delay_time);
+}
+
+void process_1::frame_parse(QByteArray frame)
+{
+    QStringList results;
+    quint8 dataCount = quint8(frame[0]);
+    if(frame.size() != (dataCount + 1)){
+        return;             // 帧长度=数据位+1
+    }
+    quint8 type = quint8(frame[1]);
+    if(type == static_cast<quint8>(FrameType::f_action)){           // 动作帧
+        results << "action";
+    }else if(type == static_cast<quint8>(FrameType::f_return)){     // 返回帧
+        results << "return";
+    }else{
+        return;             // 非法帧
+    }
+    quint8 portByte = quint8(frame[2]);
+    QString port = parsePort(portByte);
+    if (port == "UnKnow") {
+        return;             // 未知端口，丢弃
+    }
+    results << port;
+    quint32 actionTimeMs = parseActionTime(frame);
+    results << QString::number(actionTimeMs);
+
+    emit sig_frame_parse_result(results);
 }
 
 void process_1::test_connect_to_device()

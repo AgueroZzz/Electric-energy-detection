@@ -28,6 +28,7 @@ enum class t1_test_auto_tpye{
 
 class process_1 : public process
 {
+    Q_OBJECT
 public:
     explicit process_1(QObject *parent = nullptr);
 
@@ -41,14 +42,9 @@ public:
         map_change_value_2
     };
 
-    enum index_test_port{
-        port_A = 0x80,
-        port_B = 0x40,
-        port_C = 0x20,
-        port_R = 0x10,
-        port_a = 0x08,
-        port_b = 0x04,
-        port_c = 0x02
+    enum class FrameType{
+        f_action = 0x10,
+        f_return = 0x20
     };
 
     void setSerial(serial_port* serial);  // 设置串口指针的 setter 方法
@@ -59,19 +55,17 @@ public slots:
     void slot_stop();
     void slot_serial_readyRead();
 
+signals:
+    void sig_frame_parse_result(const QStringList& result);
+
 private:
     int connectRetryCount = 0;
     static constexpr int MAX_CONNECT_RETRY = 3;
     QTimer *timeoutTimer = nullptr;
     QTimer *runtimeTimer = nullptr;
     quint64 startTimestamp = 0;
-
     QByteArray _frame;
-
     QString _test_type;
-
-    void attemptConnect();
-
     // 测试参数
     QMap<QString, QList<QVariant>> _parameter;
     // 返回参数
@@ -86,7 +80,8 @@ private:
 private:
     void test_connect_to_device();
     void test_send_para_to_device();
-
+    void attemptConnect();
+    void frame_parse(QByteArray frame);
     QMap<QString, std::function<void()>> _parse_function;
 
 private slots:
@@ -96,6 +91,21 @@ private slots:
     // process interface
 public slots:
     void slot_phase_changed(TestPhase phase) override;
+
+private:
+    // 工具函数:判断端口
+    inline QString parsePort(quint8 portByte){
+        switch (portByte) {
+        case 0x80: return "A";
+        case 0x40: return "B";
+        case 0x20: return "C";
+        case 0x10: return "R";
+        case 0x08: return "a";
+        case 0x04: return "b";
+        case 0x02: return "c";
+        default:   return "UnKnow";
+        }
+    }
 
 };
 

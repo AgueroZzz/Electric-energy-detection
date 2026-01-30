@@ -65,6 +65,22 @@ public:
         }
     }
 
+    inline quint16 get_result_index(QString name){
+        if(name == "A"){return 0;}
+        else if(name == "B"){return 1;}
+        else if(name == "C"){return 2;}
+        else if(name == "R"){return 3;}
+        else if(name == "a"){return 4;}
+        else if(name == "b"){return 5;}
+        else if(name == "c"){return 6;}
+        else{
+            return 0;
+        }
+    }
+
+public slots:
+    void slot_frame_parse_result(const QStringList& result);
+
 private:
     void init_UI();
     void init_top_widget();                     // 初始化顶部按钮
@@ -125,6 +141,7 @@ private:
 private slots:
     void slot_test_start();
     void slot_test_stop();
+
 
 };
 

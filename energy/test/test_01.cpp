@@ -7,35 +7,30 @@ test_01::test_01(quint16 test_id, QWidget *parent)
     : test(test_id, parent)
 {
     _serial_ui = new serial_ui();
-
     serial_port* serial = new serial_port();
     _serialPort.reset(serial);
     serial->_thread.start();
-
 
     QObject::connect(_serial_ui, &serial_ui::sig_serial_opera, serial, &serial_port::slot_serial_opera, Qt::QueuedConnection);
     QObject::connect(serial, &serial_port::sig_serial_status_changed, _serial_ui, &serial_ui::slot_serial_status_changed, Qt::QueuedConnection);
 
     init_UI();
-
     init_top_widget();
-
     init_chart_widget();
-
     init_state_widget();
 
     _process_1 = new process_1();
     _process_1->setSerial(serial);
-    connect(_process_1, &process::sig_state_changed, this, [this](QString text, QString color){
+    QObject::connect(_process_1, &process::sig_state_changed, this, [this](QString text, QString color){
         _state_label->setText(text);
         _state_label->setStyleSheet(QString("color:%1; font-weight:bold;").arg(color));
     });
 
-    connect(_process_1, &process::sig_update_runtime, this, [this](double sec){
+    QObject::connect(_process_1, &process::sig_update_runtime, this, [this](double sec){
         _runtime_second->setText(QString::number(sec, 'f', 2));
     });
 
-    connect(_process_1, &process::sig_test_finished, this, [this](bool ok, QString reason){
+    QObject::connect(_process_1, &process::sig_test_finished, this, [this](bool ok, QString reason){
         _btn_start_test->setChecked(false);
         if (!ok) {
             setState(TestState::Error);
@@ -44,6 +39,7 @@ test_01::test_01(quint16 test_id, QWidget *parent)
             setState(TestState::Idle);
         }
     });
+    QObject::connect(_process_1, &process_1::sig_frame_parse_result, this, &test_01::slot_frame_parse_result, Qt::DirectConnection);
 }
 
 void test_01::init_UI()
@@ -234,6 +230,28 @@ void test_01::slot_test_stop()
 {
     _process_1->slot_stop();
     setState(TestState::Sttopped);
+}
+
+void test_01::slot_frame_parse_result(const QStringList& result)
+{
+    QString portName = result[1];
+    QString type = result[0];
+    QString time = result[2];
+    QTableWidgetItem *item;
+    if(type == "action"){
+        item = _ui_001->ui->tb_down_2->item(get_result_index(portName), 1);
+        if (!item) {
+            item = new QTableWidgetItem();
+            _ui_001->ui->tb_down_2->setItem(get_result_index(portName), 1, item);
+        }
+    }else{
+        item = _ui_001->ui->tb_down_2->item(get_result_index(portName), 2);
+        if (!item) {
+            item = new QTableWidgetItem();
+            _ui_001->ui->tb_down_2->setItem(get_result_index(portName), 2, item);
+        }
+    }
+    item->setText(time);
 }
 
 REGISTER_TEST(test_01, 0);
