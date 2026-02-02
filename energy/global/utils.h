@@ -23,7 +23,7 @@ static constexpr double RAD2DEG = 180.0 / M_PI;
 
 namespace GlobalUtils {
 // 工具函数：获取表格中的所有列的数据：数据格式(QMap<QString, QStringList>)
-void get_table_values(const QTableWidget& table, QMap<QString, QList<QVariant>>& map){
+inline void get_table_values(const QTableWidget& table, QMap<QString, QList<QVariant>>& map){
     map.clear();
     constexpr int COL_PARAM = 0;        // 第一列为KEY
     for(int r = 0; r <table.rowCount(); ++r){
@@ -50,7 +50,7 @@ void get_table_values(const QTableWidget& table, QMap<QString, QList<QVariant>>&
 }
 
 // Ux计算方式
-std::complex<double> calcUx(const VoltagePhasor& UA, const VoltagePhasor& UB, const VoltagePhasor& UC, double k){
+inline std::complex<double> calcUx(const VoltagePhasor& UA, const VoltagePhasor& UB, const VoltagePhasor& UC, double k){
     auto toComplex = [](const VoltagePhasor& U) {
         double rad = U.phase_deg * M_PI / 180.0;
         return std::polar(U.rms, rad);
@@ -70,7 +70,7 @@ std::complex<double> calcUx(const VoltagePhasor& UA, const VoltagePhasor& UB, co
 }
 
 // 计算UAB/UBC/UCA
-QMap<QString, QPair<QString, QString>> calcLineVoltageMap(
+inline QMap<QString, QPair<QString, QString>> calcLineVoltageMap(
     double Ua_rms, double Ua_deg,
     double Ub_rms, double Ub_deg,
     double Uc_rms, double Uc_deg
@@ -113,7 +113,7 @@ QMap<QString, QPair<QString, QString>> calcLineVoltageMap(
 }
 
 // 计算U0/U+/U-
-QMap<QString, QPair<QString, QString>> calcSymmetricalVoltageMap(
+inline QMap<QString, QPair<QString, QString>> calcSymmetricalVoltageMap(
     double Ua_rms, double Ua_deg,
     double Ub_rms, double Ub_deg,
     double Uc_rms, double Uc_deg
@@ -165,7 +165,7 @@ QMap<QString, QPair<QString, QString>> calcSymmetricalVoltageMap(
 }
 
 // 计算IO/I+/I-
-QMap<QString, QPair<QString, QString>> calcSymmetricalCurrentMap(
+inline QMap<QString, QPair<QString, QString>> calcSymmetricalCurrentMap(
     double Ia_rms, double Ia_deg,
     double Ib_rms, double Ib_deg,
     double Ic_rms, double Ic_deg
@@ -214,6 +214,57 @@ QMap<QString, QPair<QString, QString>> calcSymmetricalCurrentMap(
     }
 
     return result;
+}
+
+// 设置QTableWidget单元格状态
+inline void setItemState(QTableWidgetItem *item, bool editable, bool green)
+{
+    if (!item) return;
+
+    if (editable) {
+        item->setFlags(item->flags() | Qt::ItemIsEditable);
+        item->setBackground(Qt::white);
+    } else {
+        item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+
+        if (green) {
+            item->setBackground(
+                QBrush(QColor("#c2edc3"), Qt::Dense4Pattern)
+                );
+        } else {
+            item->setBackground(Qt::white);
+        }
+    }
+}
+
+// 表格数据检查:验证并格式化输入为指定小数位数的double字符串
+inline QString formatDoubleString(const QString& text, int decimals = 3, bool* ok = nullptr)
+{
+    QString trimmedText = text.trimmed();
+
+    if (ok) *ok = false;
+
+    // 处理空字符串
+    if (trimmedText.isEmpty()) {
+        if (ok) *ok = true; // 空字符串视为有效，使用默认值
+        return QString::number(0.0, 'f', decimals);
+    }
+
+    // 尝试转换为double
+    bool conversionOk = false;
+    double value = trimmedText.toDouble(&conversionOk);
+
+    if (!conversionOk) {
+        return QString::number(0.0, 'f', decimals);
+    }
+
+    // 检查是否为有效数值
+    if (!std::isfinite(value)) {
+        return QString::number(0.0, 'f', decimals);
+    }
+
+    if (ok) *ok = true;
+    return QString::number(value, 'f', decimals);
 }
 }
 

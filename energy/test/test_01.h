@@ -25,6 +25,7 @@ public:
                 _serialPort->_thread.quit();
 
                 if (!_serialPort->_thread.wait(3000)) {
+                    _serialPort->_thread.terminate();
                     qWarning() << "串口线程等待超时，强制终止（可能有资源泄漏）";
                 }
             }

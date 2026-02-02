@@ -148,12 +148,6 @@ void process_1::slot_onTimeout()
     attemptConnect();
 }
 
-void process_1::slot_updateRuntime()
-{
-    double sec = (QDateTime::currentMSecsSinceEpoch() - startTimestamp) / 1000.0;
-    emit sig_update_runtime(sec);
-}
-
 void process_1::slot_phase_changed(TestPhase phase)
 {
     if(phase == TestPhase::Idle){

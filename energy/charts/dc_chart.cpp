@@ -1,131 +1,178 @@
 #include "dc_chart.h"
 
-const QMap<QString, QColor> dc_chart::CHANNEL_COLOR = {
-    {"UA", Qt::yellow},
-    {"UB", QColor(0x00,0xFF,0x00)},   // 绿色
-    {"UC", Qt::red},
-    {"IA", Qt::yellow},
-    {"IB", QColor(0x00,0xFF,0x00)},
-    {"IC", Qt::red}
-};
-
-dc_chart::dc_chart(QWidget *parent)
-    : QWidget{parent}
+dc_chart::dc_chart(const QMap<QString, QList<QVariant>>& initialMap,
+                   QWidget *parent)
+    : QWidget{parent}, _sycs(initialMap), _zoomFactor(1.0)
 {
     setMinimumSize(320, 320);
-    setStyleSheet("background-color: black;");
-    initUI();
+    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 }
 
-void dc_chart::setValue(const QMap<QString, double> &values)
+void dc_chart::updateValues(const QMap<QString, QList<QVariant> > &data)
 {
-    for (auto it = values.constBegin(); it != values.constEnd(); ++it) {
-        const QString &ch = it.key();
-        if (CHANNEL_COLOR.contains(ch) && !qFuzzyCompare(_values[ch], it.value())) {
-            _values[ch] = it.value();
-        }
-    }
-    update();
+    _sycs = data;
+    update();  // 触发重绘
 }
 
 void dc_chart::slot_set_scale()
 {
-    _scaleIndex = (_scaleIndex + 1) % _scale_list.size();
-    _scale = _scale_list[_scaleIndex];
+    qDebug() << "当前比例尺为" << _zoomFactor;
+    _zoomFactor *= _zoomStep;
+    if (_zoomFactor > _maxZoom) {
+        _zoomFactor = 1.0;             // 放大到最大比例后缩小到初始比例尺
+    }
     update();
+}
+
+void dc_chart::slot_charts_refresh(const QMap<QString, QList<QVariant> > &map)
+{
+    updateValues(map);
 }
 
 void dc_chart::paintEvent(QPaintEvent *event)
 {
-    Q_UNUSED(event);
     QPainter p(this);
-    p.setRenderHint(QPainter::Antialiasing);
+    p.setRenderHint(QPainter::Antialiasing, true);
+    p.setRenderHint(QPainter::TextAntialiasing, true);
 
-    // 1. 背景色
-    p.fillRect(rect(), QColor(30, 30, 30));   // #1E1E1E
+    //  动态计算所有布局参数
+    const int w = width();
+    const int h = height();
 
-    const int margin = 25;
-    const int labelHeight = 25;  // 增加一点高度，确保文字完整
-    QRect drawArea = rect().adjusted(margin, margin, -margin, -margin - labelHeight);
+    // 字体大小随控件高度自适应
+    int fontSize = qBound(9, h / 28, 14);
+    QFont font = p.font();
+    font.setPointSize(fontSize);
+    p.setFont(font);
+    QFontMetrics fm(font);
 
-    // 2. 计算最大绝对值
-    double maxAbs = 1.0;
-    for (double v : _values) maxAbs = std::max(maxAbs, std::abs(v));
-    maxAbs *= _scale;
-
-    const int barCount = CHANNEL_COLOR.size();
-    const int totalWidth = drawArea.width();
-    const int barWidth = totalWidth / (barCount * 2 - 1);
-    const int gap = barWidth;
-
-    // 3. 垂直网格线
-    p.setPen(QPen(QColor(80, 80, 80), 1));
-    int x = drawArea.left();
-    for (int i = 0; i <= barCount; ++i) {
-        p.drawLine(x, drawArea.top(), x, drawArea.bottom());
-        x += barWidth + gap;
+    // 计算标签区宽度（取最宽的通道名 + 余量）
+    double maxLabelWidth = 0;
+    for (const auto &ch : _channelOrder) {
+        maxLabelWidth = std::max(maxLabelWidth, double(fm.horizontalAdvance(ch)));
     }
+    _channelLabelWidth = maxLabelWidth + 24;  // 左右余量
 
-    // 4. 绘制柱子 + 标签
-    x = drawArea.left() + gap / 2;
-    for (auto it = CHANNEL_COLOR.constBegin(); it != CHANNEL_COLOR.constEnd(); ++it) {
-        const QString &ch = it.key();
-        double val = _values.value(ch, 0.0);
+    // 内容区域
+    double contentLeft   = _channelLabelWidth + 12;
+    double contentRight  = w - 24;
+    double contentWidth  = contentRight - contentLeft;
+    double contentHeight = h - 60;
 
-        // 柱子区域
-        QRect barRect(x, drawArea.top(), barWidth, drawArea.height());
-        drawBar(p, barRect, val, maxAbs, it.value());
+    _zeroX = contentLeft + contentWidth * 0.5;
 
-        // 标签区域（在 drawArea 下方，完整在 widget 内）
-        QRect labelRect(x, drawArea.bottom() + 2, barWidth, labelHeight);
+    // 柱子最大长度（左右各 ~42%）
+    _maxBarLength = contentWidth * 0.42;
 
+    // 柱子高度与间距（6条通道）
+    int channelCount = _channelOrder.size();
+    double totalBarsSpace = contentHeight * 0.88;  // 留 12% 上下边距
+    _barHeight  = totalBarsSpace / (channelCount * 1.55);   // 高度:间距 ≈ 1:0.55
+    _barSpacing = _barHeight * 0.55;
+
+    // 起始 Y（顶部居中偏上）
+    _yStart = 35 + (contentHeight - totalBarsSpace) / 2.0;
+
+    //  2. 开始绘制
+    drawBackground(p);
+    drawZeroLine(p);
+    drawBarsAndValues(p);
+}
+
+void dc_chart::drawBackground(QPainter &p)
+{
+    p.fillRect(rect(), Qt::black);
+
+    // 细网格线
+    p.setPen(QPen(QColor(38, 38, 45), 1));
+    int w = width();
+    for (int i = 1; i < 10; ++i) {
+        double x = _channelLabelWidth + 12 + (w - _channelLabelWidth - 36) * i / 10.0;
+        p.drawLine(QPointF(x, 20), QPointF(x, height() - 30));
+    }
+}
+
+void dc_chart::drawZeroLine(QPainter &p)
+{
+    QPen dashPen(QColor(90, 90, 110), 1.2, Qt::DashLine);
+    dashPen.setDashPattern({6, 6});
+    p.setPen(dashPen);
+    p.drawLine(QPointF(_zeroX, _yStart - 15),
+               QPointF(_zeroX, _yStart + (_barHeight + _barSpacing) * 6 + 15));
+}
+
+void dc_chart::drawBarsAndValues(QPainter &p)
+{
+    QFont font = p.font();
+    QFontMetrics fm(font);
+
+    double y = _yStart;
+
+    for (const QString &channel : _channelOrder)
+    {
+        if (!_sycs.contains(channel) || _sycs[channel].isEmpty()) continue;
+
+        QString valueStr = _sycs[channel].first().toString().trimmed();
+        bool ok = false;
+        double value = valueStr.toDouble(&ok);
+        if (!ok) value = 0.0;
+
+        bool isVoltage  = channel.startsWith("U", Qt::CaseInsensitive);
+        bool isNegative = value < 0;
+        double absValue = std::abs(value);
+
+        double fullScale = isVoltage ? 300.0 : 10.0;
+        double ratio = std::min(absValue / fullScale, 1.6);
+
+        // 关键：zoomFactor 越大柱子越长
+        double effectiveMaxLength = _maxBarLength * _zoomFactor;
+        int barLength = qRound(effectiveMaxLength * ratio);
+
+        QColor barColor = isVoltage ? colorVoltage :
+                              isNegative ? colorCurrentNeg : colorCurrentPos;
+
+        double barX = isNegative ? (_zeroX - barLength) : _zeroX;
+
+        QRectF barRect(barX, y, barLength, _barHeight);
+        p.fillRect(barRect, barColor);
+        p.setPen(barColor.lighter(145));
+        p.drawRect(barRect.adjusted(0.5, 0.5, -0.5, -0.5));
+
+        // 通道名
         p.setPen(Qt::white);
-        p.setFont(QFont("Microsoft YaHei", 10, QFont::Bold));
-        p.drawText(labelRect, Qt::AlignCenter, ch);  // 自动居中
+        p.drawText(qRound(_channelLabelWidth - 12 - fm.horizontalAdvance(channel)),
+                   qRound(y + _barHeight/2 + fm.ascent()/2 - 1),
+                   channel);
 
-        x += barWidth + gap;
+        // 数值
+        QString displayText = QString("%1").arg(value, 0, 'f', 3);
+        if (value >= 0) displayText = "+" + displayText;
+
+        double textX = isNegative ?
+                           (_zeroX - barLength - fm.horizontalAdvance(displayText) - 10) :
+                           (_zeroX + barLength + 10);
+
+        QColor textColor = isVoltage ? colorVoltage.lighter(115) :
+                               isNegative ? colorCurrentNeg.lighter(125) :
+                               colorCurrentPos.lighter(125);
+
+        p.setPen(textColor);
+        p.drawText(qRound(textX),
+                   qRound(y + _barHeight/2 + fm.ascent()/2 - 1),
+                   displayText);
+
+        y += _barHeight + _barSpacing;
     }
 
-    // 5. 零轴线
-    p.setPen(QPen(Qt::white, 1, Qt::DashLine));
-    int zeroY = drawArea.top() + drawArea.height() / 2;
-    p.drawLine(drawArea.left(), zeroY, drawArea.right(), zeroY);
-}
+    // 右上角显示当前放大倍数
+    if (_zoomFactor > 1.01) {
+        p.setPen(QColor(140, 140, 160));
+        QFont smallFont = font;
+        smallFont.setPointSize(font.pointSize() - 2);
+        p.setFont(smallFont);
 
-void dc_chart::drawBar(QPainter &p, const QRect &rect, double value, double maxAbs, const QColor &color)
-{
-    if (maxAbs <= 0) return;
-
-    const int midY = rect.top() + rect.height() / 2;
-    const double ratio = value / maxAbs;
-
-    QRect fillRect;
-    if (ratio >= 0) {
-        int h = static_cast<int>(rect.height() * 0.5 * ratio);
-        fillRect = QRect(rect.left(), midY - h, rect.width(), h);
-    } else {
-        int h = static_cast<int>(rect.height() * 0.5 * -ratio);
-        fillRect = QRect(rect.left(), midY, rect.width(), h);
+        QString zoomText = QString("zoom: ×%1").arg(QString::number(_zoomFactor, 'f', 1));
+        p.drawText(width() - 20 - p.fontMetrics().horizontalAdvance(zoomText),
+                   24, zoomText);
     }
-
-    p.fillRect(fillRect, color);
-    p.setPen(QPen(Qt::black, 1));  // 黑色细边框
-    p.drawRect(fillRect);
-}
-
-void dc_chart::initUI()
-{
-    // 1. 设置默认比例
-    _scale = _scale_list[0];
-    _scaleIndex = 0;
-
-    // 2. 初始化通道值（与原始界面一致）
-    QMap<QString, double> defaultValues{
-        {"UA", -8.0}, {"UB", -8.0}, {"UC", 1.0},
-        {"IA",  1.0}, {"IB",  1.0}, {"IC", 1.0}
-    };
-    setValue(defaultValues);
-
-    // 3. 强制首次绘制（确保窗口显示前就有图像）
-    update();
 }

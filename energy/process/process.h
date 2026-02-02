@@ -39,6 +39,9 @@ public:
                ((quint8(frame[5])) << 16);
     }
 
+    QTimer *runtimeTimer = nullptr;
+    quint64 startTimestamp = 0;             // 开始计时为0
+
 signals:
     void sig_state_changed(QString text, QString color = "#000000");   // 更新状态栏文字+颜色
     void sig_append_log(QString msg);                                 // 追加日志
@@ -50,6 +53,10 @@ signals:
 
 public slots:
     virtual void slot_phase_changed(TestPhase phase) = 0;
+    void slot_updateRuntime(){
+        double sec = (QDateTime::currentMSecsSinceEpoch() - startTimestamp) / 1000.0;
+        emit sig_update_runtime(sec);
+    };
 
 protected:
     TestPhase currentPhase = TestPhase::Idle;

@@ -123,11 +123,24 @@ void MainWindow::switchTest(quint16 testId)
         qWarning() << "No creator for test_id:" << testId;
         return;
     }
-
+    if (currentTest_)
+    {
+        setCentralWidget(nullptr);
+        currentTest_->deleteLater();
+        currentTest_.reset();
+    }
     currentTest_.reset(it.value()(testId));
-    currentTest_->setMinimumSize(200, 200);
-    setCentralWidget(currentTest_.get());
-    currentTestId_ = testId;
+    if (currentTest_)
+    {
+        currentTest_->setMinimumSize(200, 200);
+        setCentralWidget(currentTest_.get());
+        currentTestId_ = testId;
 
-    qDebug() << "Test widget added for test_id:" << testId;
+        qDebug() << "Test widget added for test_id:" << testId;
+    }
+    else
+    {
+        qWarning() << "Failed to create test widget for id:" << testId;
+        currentTestId_ = std::numeric_limits<quint16>::max();
+    }
 }

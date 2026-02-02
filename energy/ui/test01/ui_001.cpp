@@ -87,25 +87,49 @@ void ui_001::slot_onLeftMode_changed(int id, bool checked)
 
 void ui_001::slot_on_tb_cl_changed(QTableWidgetItem *item)
 {
+    if (!item)
+        return;
+
+    const int row = item->row();
+    const int col = item->column();
+
+    const bool isValueCol  = (col == 1 || col == 3);
+    const bool isPhaseCol  = (col == 5 || col == 7);
+    const bool needFormat = isValueCol || isPhaseCol;
+
+    if (!needFormat)
+        return;
+
+    const int decimals = isValueCol ? 3 : 1;
+    QString originalText = item->text();
+    QString formattedText = GlobalUtils::formatDoubleString(originalText, decimals);
+
+    // 文本没变化，直接退出
+    if (formattedText == originalText)
+        return;
+
     {
-        if(!item)
-            return;
-        qDebug() << "cl表格中数据改变";
-        int col = item->column();
-        int row = item->row();
-        GlobalUtils::get_table_values(*ui->tb_cl, tb_cl_values);
-        // 有效值改变和相位改变都会触发雷达图重新绘制
-        if(col == 1 || col == 5){
-            emit sig_charts_refresh(tb_cl_values);
-            if(row == 0 || row == 1 || row == 2){
-                auto value_pair = calc_ux_value(ui->cb_ux->currentIndex());
-                set_ux_value(value_pair.first, value_pair.second);
-                calc_uab_value();           // 重新计算UAB/UBC/UCA
-                calc_uo_value();            // 重新计算Uo/U+/U-
-            }
-            if(row == 3 || row == 4 || row == 5){
-                calc_io_value();            // 重新计算Io/I+/I-
-            }
+        QSignalBlocker blocker(ui->tb_cl);
+        item->setText(formattedText);
+    }
+    GlobalUtils::get_table_values(*ui->tb_cl, tb_cl_values);
+
+    // 有效值列（1）或 相位列（5）改变才刷新
+    if (col == 1 || col == 5) {
+        emit sig_charts_refresh(tb_cl_values);
+
+        // 电压
+        if (row >= 0 && row <= 2) {
+            auto value_pair = calc_ux_value(ui->cb_ux->currentIndex());
+            set_ux_value(value_pair.first, value_pair.second);
+
+            calc_uab_value();   // UAB / UBC / UCA
+            calc_uo_value();    // Uo / U+ / U-
+        }
+
+        // 电流
+        else if (row >= 3 && row <= 5) {
+            calc_io_value();    // Io / I+ / I-
         }
     }
 }
@@ -118,10 +142,10 @@ void ui_001::slot_ux_mode_changed(int index)
             // 获取或创建item
             QTableWidgetItem *item = ui->tb_cl->item(row, col);
             if(col == 3 || col == 7){
-                setItemState(item, false, true);
+                GlobalUtils::setItemState(item, false, true);
                 continue;
             }
-            setItemState(item, true, false);
+            GlobalUtils::setItemState(item, true, false);
         }
         for (int col = 0; col < ui->tb_cl->columnCount(); ++col) {
             // 获取或创建item
@@ -182,26 +206,6 @@ void ui_001::setupVarStep(int row, int colVar, int colStep)
     });
 }
 
-void ui_001::setItemState(QTableWidgetItem *item, bool editable, bool green)
-{
-    if (!item) return;
-
-    if (editable) {
-        item->setFlags(item->flags() | Qt::ItemIsEditable);
-        item->setBackground(Qt::white);
-    } else {
-        item->setFlags(item->flags() & ~Qt::ItemIsEditable);
-
-        if (green) {
-            item->setBackground(
-                QBrush(QColor("#c2edc3"), Qt::Dense4Pattern)
-                );
-        } else {
-            item->setBackground(Qt::white);
-        }
-    }
-}
-
 void ui_001::updateVarStepState(int row, int colVar, int colStep)
 {
     QTableWidgetItem *stepItem = ui->tb_cl->item(row, colStep);
@@ -211,13 +215,13 @@ void ui_001::updateVarStepState(int row, int colVar, int colStep)
     bool checked = cb && cb->isChecked();
     if (row == ROW_UX && ui->cb_ux->currentIndex() != 0) {
         // 强制锁死
-        setItemState(stepItem, false, true);
+        GlobalUtils::setItemState(stepItem, false, true);
         return;
     }
     if (checked) {
-        setItemState(stepItem, true, false);
+        GlobalUtils::setItemState(stepItem, true, false);
     } else {
-        setItemState(stepItem, false, true);
+        GlobalUtils::setItemState(stepItem, false, true);
     }
 }
 
@@ -290,9 +294,9 @@ void ui_001::calc_uo_value()
 {
     QMap<QString, QPair<QString, QString>> result =
         GlobalUtils::calcSymmetricalVoltageMap(tb_cl_values["UA"][0].toDouble(), tb_cl_values["UA"][4].toDouble(),
-                                        tb_cl_values["UB"][0].toDouble(), tb_cl_values["UB"][4].toDouble(),
-                                        tb_cl_values["UC"][0].toDouble(), tb_cl_values["UC"][4].toDouble()
-                                        );
+                                               tb_cl_values["UB"][0].toDouble(), tb_cl_values["UB"][4].toDouble(),
+                                               tb_cl_values["UC"][0].toDouble(), tb_cl_values["UC"][4].toDouble()
+                                               );
     auto setItemText = [&](int row, int col, const QString &text) {
         QTableWidgetItem *item = ui->tb_down_1->item(row, col);
         if (!item) {

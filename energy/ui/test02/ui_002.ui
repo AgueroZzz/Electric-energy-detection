@@ -76,12 +76,42 @@
               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
              </property>
             </item>
+            <item row="0" column="1">
+             <property name="text">
+              <string>1.000</string>
+             </property>
+            </item>
+            <item row="0" column="3">
+             <property name="text">
+              <string>1.000</string>
+             </property>
+            </item>
+            <item row="0" column="4">
+             <property name="text">
+              <string>160</string>
+             </property>
+            </item>
             <item row="1" column="0">
              <property name="text">
               <string>UB</string>
              </property>
              <property name="flags">
               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+             </property>
+            </item>
+            <item row="1" column="1">
+             <property name="text">
+              <string>1.000</string>
+             </property>
+            </item>
+            <item row="1" column="3">
+             <property name="text">
+              <string>1.000</string>
+             </property>
+            </item>
+            <item row="1" column="4">
+             <property name="text">
+              <string>160</string>
              </property>
             </item>
             <item row="2" column="0">
@@ -92,12 +122,42 @@
               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
              </property>
             </item>
+            <item row="2" column="1">
+             <property name="text">
+              <string>1.000</string>
+             </property>
+            </item>
+            <item row="2" column="3">
+             <property name="text">
+              <string>1.000</string>
+             </property>
+            </item>
+            <item row="2" column="4">
+             <property name="text">
+              <string>160</string>
+             </property>
+            </item>
             <item row="3" column="0">
              <property name="text">
               <string>IA</string>
              </property>
              <property name="flags">
               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+             </property>
+            </item>
+            <item row="3" column="1">
+             <property name="text">
+              <string>1.000</string>
+             </property>
+            </item>
+            <item row="3" column="3">
+             <property name="text">
+              <string>1.000</string>
+             </property>
+            </item>
+            <item row="3" column="4">
+             <property name="text">
+              <string>10</string>
              </property>
             </item>
             <item row="4" column="0">
@@ -108,12 +168,42 @@
               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
              </property>
             </item>
+            <item row="4" column="1">
+             <property name="text">
+              <string>1.000</string>
+             </property>
+            </item>
+            <item row="4" column="3">
+             <property name="text">
+              <string>1.000</string>
+             </property>
+            </item>
+            <item row="4" column="4">
+             <property name="text">
+              <string>10</string>
+             </property>
+            </item>
             <item row="5" column="0">
              <property name="text">
               <string>IC</string>
              </property>
              <property name="flags">
               <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+             </property>
+            </item>
+            <item row="5" column="1">
+             <property name="text">
+              <string>1.000</string>
+             </property>
+            </item>
+            <item row="5" column="3">
+             <property name="text">
+              <string>1.000</string>
+             </property>
+            </item>
+            <item row="5" column="4">
+             <property name="text">
+              <string>10</string>
              </property>
             </item>
            </widget>
@@ -146,14 +236,14 @@
              </property>
              <layout class="QVBoxLayout" name="verticalLayout">
               <item>
-               <widget class="QRadioButton" name="radioButton">
+               <widget class="QRadioButton" name="rb_action">
                 <property name="text">
                  <string>测接点动作</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="radioButton_2">
+               <widget class="QRadioButton" name="rb_return">
                 <property name="text">
                  <string>测动作和返回</string>
                 </property>
@@ -171,21 +261,21 @@
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
             <item>
-             <widget class="QRadioButton" name="radioButton_3">
+             <widget class="QRadioButton" name="rb_hand">
               <property name="text">
                <string>手动</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QRadioButton" name="radioButton_4">
+             <widget class="QRadioButton" name="rb_a_up">
               <property name="text">
                <string>自动加</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QRadioButton" name="radioButton_5">
+             <widget class="QRadioButton" name="rb_a_down">
               <property name="text">
                <string>自动减</string>
               </property>

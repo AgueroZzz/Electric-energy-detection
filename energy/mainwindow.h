@@ -46,7 +46,5 @@ private:
 
     // ---------- 选择器 ----------
     std::unique_ptr<chooser> chooser_;
-
-    serial_ui* _serial_ui = nullptr;
 };
 #endif // MAINWINDOW_H

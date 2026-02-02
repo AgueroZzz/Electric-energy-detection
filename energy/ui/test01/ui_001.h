@@ -33,9 +33,6 @@ private:
 
     void init_cl_table();
     void setupVarStep(int row, int colVar, int colStep);
-    void setItemState(QTableWidgetItem *item,
-                      bool editable,
-                      bool green);
     void updateVarStepState(int row, int colVar, int colStep);
     void set_ux_value(QString value, QString phase);
     QPair<QString, QString> calc_ux_value(int index);

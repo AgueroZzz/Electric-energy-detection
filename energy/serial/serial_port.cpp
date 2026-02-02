@@ -50,9 +50,9 @@ void serial_port::slot_thread_stop()
 {
     if(_port->isOpen()){
         _port->close();
-        _port->deleteLater();
-        _port = nullptr;
     }
+    _port->deleteLater();
+    _port = nullptr;
     _serial_status = index_serial_status::serial_off;
 }
 
