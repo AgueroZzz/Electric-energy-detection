@@ -138,7 +138,6 @@ private:
 
     QSharedPointer<serial_port> _serialPort;        // 串口智能指针类
 
-    // test interface
 private slots:
     void slot_test_start();
     void slot_test_stop();

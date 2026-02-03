@@ -2,7 +2,15 @@
 
 process_2::process_2(QObject *parent)
     : process{parent}
-{}
+{
+    timeoutTimer = new QTimer();
+    timeoutTimer->setSingleShot(true);
+    connect(timeoutTimer, &QTimer::timeout, this, &process_2::slot_onTimeout);
+
+    runtimeTimer = new QTimer();
+    runtimeTimer->setInterval(100);
+    connect(runtimeTimer, &QTimer::timeout, this, &process_2::slot_updateRuntime);
+}
 
 void process_2::setSerial(serial_port *serial)
 {
@@ -11,7 +19,7 @@ void process_2::setSerial(serial_port *serial)
     QObject::connect(_serial.data(), &serial_port::sig_serial_readyRead, this, &process_2::slot_serial_readyRead, Qt::QueuedConnection);
 }
 
-void process_2::slot_start(QMap<QString, QList<QVariant> > map, t2_test_type type, t2_test_auto auto_type, QString delay)
+void process_2::slot_start(QMap<QString, QList<QVariant>> map, t2_test_type type, t2_test_auto auto_type, QString delay)
 {
     if (isRunning()) return;
 
@@ -39,7 +47,7 @@ void process_2::slot_serial_readyRead()
     if(currentPhase != TestPhase::Running){
         return;
     }
-    qDebug() << _serial->get_serial_port_data();
+    qDebug() << _serial->get_serial_port_data().toHex();
     frame_parse(_serial->get_serial_port_data());
 }
 
@@ -72,7 +80,27 @@ void process_2::test_connect_to_device()
 
 void process_2::test_send_para_to_device()
 {
-
+    QByteArray frame;
+    frame.append(QByteArray::fromHex("230F"));      // 字节数+直流实验
+    frame.append(QByteArray::fromHex("FE14FF"));      // 暂时未知
+    frame.append(QByteArray::fromHex("0000"));        // Ux幅值
+    frame.append(QByteArray::fromHex("0000"));        // Ux相位
+    frame.append(intToLittleEndianHex(int(_parameter["UA"][index_map::map_value].toFloat() * 177)));        // Ua幅值
+    frame.append(QByteArray::fromHex("0000"));        // Ua相位
+    frame.append(intToLittleEndianHex(int(_parameter["UB"][index_map::map_value].toFloat() * 177)));        // Ub幅值
+    frame.append(QByteArray::fromHex("0000"));        // Ub相位
+    frame.append(intToLittleEndianHex(int(_parameter["UC"][index_map::map_value].toFloat() * 177)));        // Uc幅值
+    frame.append(QByteArray::fromHex("0000"));        // Uc相位
+    frame.append(intToLittleEndianHex(int(_parameter["IA"][index_map::map_value].toFloat() * 755)));        // Ia幅值
+    frame.append(QByteArray::fromHex("0000"));        // Ia相位
+    frame.append(intToLittleEndianHex(int(_parameter["IB"][index_map::map_value].toFloat() * 755)));        // Ib幅值
+    frame.append(QByteArray::fromHex("0000"));        // Ib相位
+    frame.append(intToLittleEndianHex(int(_parameter["IC"][index_map::map_value].toFloat() * 755)));        // Ic幅值
+    frame.append(QByteArray::fromHex("0000"));        // Ic相位
+    frame.append(QByteArray::fromHex("8813"));              // 频率:固定？
+    frame.append(QByteArray::fromHex("00"));                                                                // 结束符？
+    emit sig_state_changed("测试中", "#e67e22");
+    emit sig_send_msg_to_serial(frame);
 }
 
 void process_2::attemptConnect()
@@ -116,4 +144,18 @@ void process_2::frame_parse(QByteArray frame)
     results << QString::number(actionTimeMs);
 
     emit sig_frame_parse_result(results);
+}
+
+void process_2::slot_onTimeout()
+{
+    _frame = _serial->get_serial_port_data();
+    if(_frame == QByteArray::fromHex("AA")){
+        timeoutTimer->stop();
+        set_TestPhase(TestPhase::Running);
+        emit sig_state_changed("联机成功", "#27ae60");
+        return;
+    }
+    connectRetryCount++;
+    _serial->clear_serial();
+    attemptConnect();
 }

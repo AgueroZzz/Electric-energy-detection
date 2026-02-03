@@ -51,8 +51,6 @@ private:
     int connectRetryCount = 0;
     static constexpr int MAX_CONNECT_RETRY = 3;
     QTimer *timeoutTimer = nullptr;
-    QTimer *runtimeTimer = nullptr;
-    quint64 startTimestamp = 0;
     QByteArray _frame;
     QString _test_type;
     // 测试参数
@@ -84,6 +82,9 @@ private:
         default:   return "UnKnow";
         }
     }
+
+private slots:
+    void slot_onTimeout();
 };
 
 #endif // PROCESS_2_H

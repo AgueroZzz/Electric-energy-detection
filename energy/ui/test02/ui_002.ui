@@ -225,7 +225,11 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit"/>
+              <widget class="QLineEdit" name="le_delay">
+               <property name="text">
+                <string>1000</string>
+               </property>
+              </widget>
              </item>
             </layout>
            </item>
@@ -291,7 +295,11 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEdit_2"/>
+               <widget class="QLineEdit" name="lineEdit_2">
+                <property name="text">
+                 <string>1000</string>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>

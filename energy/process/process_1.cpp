@@ -157,7 +157,6 @@ void process_1::slot_phase_changed(TestPhase phase)
     }else if(phase == TestPhase::Running){
         test_send_para_to_device();
     }else if(phase == TestPhase::Finishing){
-
     }else if(phase == TestPhase::Error){
         return;
     }
