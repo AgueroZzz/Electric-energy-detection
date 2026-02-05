@@ -44,6 +44,12 @@ void process_1::slot_stop()
     emit sig_state_changed("已停止", "#7f8c8d");
 }
 
+void process_1::slot_set_test_values(QMap<QString, QList<QVariant> > map)
+{
+    this->_parameter = map;
+    return;
+}
+
 void process_1::slot_serial_readyRead()
 {
     if(currentPhase != TestPhase::Running){

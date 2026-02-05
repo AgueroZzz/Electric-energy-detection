@@ -60,7 +60,7 @@ ui_001::ui_001(QWidget *parent)
     ui->rb_up->setChecked(true);
 
     init_cl_table();
-    GlobalUtils::get_table_values(*ui->tb_cl, tb_cl_values);
+    GlobalUtils::get_table_values(*ui->tb_cl, tb_cl_values, 0);
     calc_uab_value();
     calc_uo_value();
     calc_io_value();
@@ -95,12 +95,20 @@ void ui_001::slot_on_tb_cl_changed(QTableWidgetItem *item)
 
     const bool isValueCol  = (col == 1 || col == 3);
     const bool isPhaseCol  = (col == 5 || col == 7);
-    const bool needFormat = isValueCol || isPhaseCol;
+    const bool isIntCol   = (col == 4);
+    const bool needFormat = isValueCol || isPhaseCol || isIntCol;
 
     if (!needFormat)
         return;
 
-    const int decimals = isValueCol ? 3 : 1;
+    int decimals = 0;
+    if (isIntCol) {
+        decimals = 0;
+    } else if (isValueCol) {
+        decimals = 3;
+    } else if (isPhaseCol) {
+        decimals = 1;
+    }
     QString originalText = item->text();
     QString formattedText = GlobalUtils::formatDoubleString(originalText, decimals);
 
@@ -112,7 +120,7 @@ void ui_001::slot_on_tb_cl_changed(QTableWidgetItem *item)
         QSignalBlocker blocker(ui->tb_cl);
         item->setText(formattedText);
     }
-    GlobalUtils::get_table_values(*ui->tb_cl, tb_cl_values);
+    GlobalUtils::get_table_values(*ui->tb_cl, tb_cl_values, 0);
 
     // 有效值列（1）或 相位列（5）改变才刷新
     if (col == 1 || col == 5) {
@@ -231,7 +239,7 @@ void ui_001::set_ux_value(QString value, QString phase)
     item_1->setText(value);
     QTableWidgetItem* item_2 = ui->tb_cl->item(6, 5);
     item_2->setText(phase);
-    GlobalUtils::get_table_values(*ui->tb_cl, tb_cl_values);
+    GlobalUtils::get_table_values(*ui->tb_cl, tb_cl_values, 0);
 }
 
 QPair<QString, QString> ui_001::calc_ux_value(int index)

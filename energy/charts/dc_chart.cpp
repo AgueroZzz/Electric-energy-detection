@@ -6,12 +6,14 @@ dc_chart::dc_chart(const QMap<QString, QList<QVariant>>& initialMap,
 {
     setMinimumSize(320, 320);
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    updateActiveChannels();
 }
 
 void dc_chart::updateValues(const QMap<QString, QList<QVariant> > &data)
 {
     _sycs = data;
-    update();  // 触发重绘
+    updateActiveChannels();   // 每次数据更新都要重新判断活跃通道
+    update();                 // 触发重绘
 }
 
 void dc_chart::slot_set_scale()
@@ -35,7 +37,6 @@ void dc_chart::paintEvent(QPaintEvent *event)
     p.setRenderHint(QPainter::Antialiasing, true);
     p.setRenderHint(QPainter::TextAntialiasing, true);
 
-    //  动态计算所有布局参数
     const int w = width();
     const int h = height();
 
@@ -46,34 +47,37 @@ void dc_chart::paintEvent(QPaintEvent *event)
     p.setFont(font);
     QFontMetrics fm(font);
 
-    // 计算标签区宽度（取最宽的通道名 + 余量）
+    // === 计算标签宽度（只考虑活跃通道）===
     double maxLabelWidth = 0;
-    for (const auto &ch : _channelOrder) {
+    for (const auto &ch : _activeChannels) {
         maxLabelWidth = std::max(maxLabelWidth, double(fm.horizontalAdvance(ch)));
     }
-    _channelLabelWidth = maxLabelWidth + 24;  // 左右余量
+    _channelLabelWidth = maxLabelWidth + 24;
 
-    // 内容区域
     double contentLeft   = _channelLabelWidth + 12;
     double contentRight  = w - 24;
     double contentWidth  = contentRight - contentLeft;
     double contentHeight = h - 60;
 
     _zeroX = contentLeft + contentWidth * 0.5;
-
-    // 柱子最大长度（左右各 ~42%）
     _maxBarLength = contentWidth * 0.42;
 
-    // 柱子高度与间距（6条通道）
-    int channelCount = _channelOrder.size();
-    double totalBarsSpace = contentHeight * 0.88;  // 留 12% 上下边距
-    _barHeight  = totalBarsSpace / (channelCount * 1.55);   // 高度:间距 ≈ 1:0.55
+    // === 根据实际通道数量动态计算柱子高度和间距 ===
+    int channelCount = _activeChannels.size();
+    if (channelCount == 0) {
+        // 没有数据时画个提示
+        p.setPen(Qt::gray);
+        p.drawText(rect(), Qt::AlignCenter, "无通道数据");
+        return;
+    }
+
+    double totalBarsSpace = contentHeight * 0.88;
+    _barHeight  = totalBarsSpace / (channelCount * 1.55);
     _barSpacing = _barHeight * 0.55;
 
-    // 起始 Y（顶部居中偏上）
     _yStart = 35 + (contentHeight - totalBarsSpace) / 2.0;
 
-    //  2. 开始绘制
+    // 开始绘制
     drawBackground(p);
     drawZeroLine(p);
     drawBarsAndValues(p);
@@ -108,7 +112,7 @@ void dc_chart::drawBarsAndValues(QPainter &p)
 
     double y = _yStart;
 
-    for (const QString &channel : _channelOrder)
+    for (const QString &channel : _activeChannels)
     {
         if (!_sycs.contains(channel) || _sycs[channel].isEmpty()) continue;
 
@@ -124,7 +128,6 @@ void dc_chart::drawBarsAndValues(QPainter &p)
         double fullScale = isVoltage ? 300.0 : 10.0;
         double ratio = std::min(absValue / fullScale, 1.6);
 
-        // 关键：zoomFactor 越大柱子越长
         double effectiveMaxLength = _maxBarLength * _zoomFactor;
         int barLength = qRound(effectiveMaxLength * ratio);
 
@@ -138,13 +141,13 @@ void dc_chart::drawBarsAndValues(QPainter &p)
         p.setPen(barColor.lighter(145));
         p.drawRect(barRect.adjusted(0.5, 0.5, -0.5, -0.5));
 
-        // 通道名
+        // 通道名（靠右对齐）
         p.setPen(Qt::white);
         p.drawText(qRound(_channelLabelWidth - 12 - fm.horizontalAdvance(channel)),
                    qRound(y + _barHeight/2 + fm.ascent()/2 - 1),
                    channel);
 
-        // 数值
+        // 数值显示
         QString displayText = QString("%1").arg(value, 0, 'f', 3);
         if (value >= 0) displayText = "+" + displayText;
 
@@ -174,5 +177,20 @@ void dc_chart::drawBarsAndValues(QPainter &p)
         QString zoomText = QString("zoom: ×%1").arg(QString::number(_zoomFactor, 'f', 1));
         p.drawText(width() - 20 - p.fontMetrics().horizontalAdvance(zoomText),
                    24, zoomText);
+    }
+}
+
+void dc_chart::updateActiveChannels()
+{
+    _activeChannels.clear();
+    // 只保留 _channelOrder 中存在且有有效数据的通道
+    for (const QString &ch : _channelOrder) {
+        if (_sycs.contains(ch) && !_sycs[ch].isEmpty()) {
+            bool ok = false;
+            _sycs[ch].first().toDouble(&ok);
+            if (ok) {
+                _activeChannels.append(ch);
+            }
+        }
     }
 }

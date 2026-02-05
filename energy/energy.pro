@@ -18,6 +18,7 @@ SOURCES += \
     mainwindow.cpp \
     process/process_1.cpp \
     process/process_2.cpp \
+    process/process_3.cpp \
     serial/serial_port.cpp \
     serial/serial_ui.cpp \
     sql/sql.cpp \
@@ -90,6 +91,7 @@ HEADERS += \
     process/process.h \
     process/process_1.h \
     process/process_2.h \
+    process/process_3.h \
     serial/serial_port.h \
     serial/serial_ui.h \
     sql/sql.h \

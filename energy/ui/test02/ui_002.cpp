@@ -35,7 +35,7 @@ ui_002::ui_002(QWidget *parent)
     ui->rb_action->setChecked(true);
 
     init_tb_sycs();
-    GlobalUtils::get_table_values(*ui->tb_sycs, tb_sycs_values);
+    GlobalUtils::get_table_values(*ui->tb_sycs, tb_sycs_values, 0);
     calc_uab_bc_ca();
     QObject::connect(ui->tb_sycs, &QTableWidget::itemChanged, this, &ui_002::slot_on_tb_sycs_changed);
 
@@ -118,10 +118,17 @@ void ui_002::slot_on_tb_sycs_changed(QTableWidgetItem *item)
         return;
     const int row = item->row();
     const int col = item->column();
-    if (col != 1)
+
+    const bool isFloatCol = (col == 1 || col == 3);   // 3 位小数
+    const bool isIntCol   = (col == 4);               // 整数
+
+    if (!isFloatCol && !isIntCol)
         return;
+
+    const int decimals = isIntCol ? 0 : 3;
+
     QString originalText = item->text();
-    QString formattedText = GlobalUtils::formatDoubleString(originalText, 3);
+    QString formattedText = GlobalUtils::formatDoubleString(originalText, decimals);
 
     if (formattedText == originalText)
         return;
@@ -130,7 +137,7 @@ void ui_002::slot_on_tb_sycs_changed(QTableWidgetItem *item)
         QSignalBlocker blocker(ui->tb_sycs);
         item->setText(formattedText);
     }
-    GlobalUtils::get_table_values(*ui->tb_sycs, tb_sycs_values);
+    GlobalUtils::get_table_values(*ui->tb_sycs, tb_sycs_values, 0);
 
     emit sig_charts_refresh(tb_sycs_values);
 

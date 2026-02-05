@@ -1,30 +1,29 @@
-#ifndef PROCESS_2_H
-#define PROCESS_2_H
+#ifndef PROCESS_3_H
+#define PROCESS_3_H
 
 #include "process.h"
 
-enum class t2_test_type{
+enum class t3_test_type{
     action,
     action_and_return
 };
 
-enum class t2_test_auto{
+enum class t3_test_auto{
     test_hand,
     test_auto_up,
     test_auto_down
 };
 
-class process_2 : public process
+class process_3 : public process
 {
     Q_OBJECT
 public:
-    explicit process_2(QObject *parent = nullptr);
+    explicit process_3(QObject *parent = nullptr);
 
     enum index_map{
-        map_value = 0,
-        map_change_1,
-        map_change_value_1,
-        map_max
+        map_e_type = 0,
+        map_value = 1,
+        map_phase = 5
     };
 
     enum class FrameType{
@@ -36,7 +35,7 @@ public:
 
 public slots:
     void slot_start(QMap<QString, QList<QVariant>> map,
-                    t2_test_type type, t2_test_auto auto_type, QString delay);
+                    t3_test_type type, t3_test_auto auto_type, QString delay);
     void slot_stop();
     void slot_serial_readyRead();
 
@@ -56,8 +55,8 @@ private:
     // 测试参数
     QMap<QString, QList<QVariant>> _parameter;
     // 返回参数
-    t2_test_type _type;
-    t2_test_auto _auto_type;
+    t3_test_type _type;
+    t3_test_auto _auto_type;
     quint16 _delay_time;
     QSharedPointer<serial_port> _serial;  // 串口共享指针
     QMap<QString, std::function<void()>> _parse_function;       // 解析函数分发map
@@ -87,4 +86,4 @@ private slots:
     void slot_onTimeout();
 };
 
-#endif // PROCESS_2_H
+#endif // PROCESS_3_H

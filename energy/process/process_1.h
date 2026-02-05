@@ -53,6 +53,7 @@ public slots:
     void slot_start(QMap<QString, QList<QVariant>> map,
                     t1_test_type type, t1_logic_type logic, t1_test_auto t_auto, t1_test_auto_tpye t_a_t, QString delay);
     void slot_stop();
+    void slot_set_test_values(QMap<QString, QList<QVariant>> map);
     void slot_serial_readyRead();
 
 signals:

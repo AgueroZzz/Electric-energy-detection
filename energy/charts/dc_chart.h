@@ -30,6 +30,8 @@ private:
     QMap<QString, QList<QVariant>> _sycs;
     // 通道显示顺序（可以调整顺序）
     QStringList _channelOrder = {"UA", "UB", "UC", "IA", "IB", "IC"};
+    // 当前真正要显示的通道（过滤后）
+    QStringList _activeChannels;
 
     // 颜色定义
     QColor colorVoltage{255, 220, 80};      // 电压 - 偏黄色
@@ -53,6 +55,7 @@ private:
     void drawBackground(QPainter &p);
     void drawZeroLine(QPainter &p);
     void drawBarsAndValues(QPainter &p);
+    void updateActiveChannels();
 
 
 };

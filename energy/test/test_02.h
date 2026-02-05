@@ -5,7 +5,7 @@
 #include "ui/test02/ui_002.h"
 #include "process/process_2.h"
 #include "charts/dc_chart.h"
-#include "global/led.h"
+
 
 class test_02 : public test
 {

@@ -23,29 +23,30 @@ static constexpr double RAD2DEG = 180.0 / M_PI;
 
 namespace GlobalUtils {
 // 工具函数：获取表格中的所有列的数据：数据格式(QMap<QString, QStringList>)
-inline void get_table_values(const QTableWidget& table, QMap<QString, QList<QVariant>>& map){
+inline void get_table_values(const QTableWidget& table, QMap<QString, QList<QVariant>>& map, const int& key_index){
     map.clear();
-    constexpr int COL_PARAM = 0;        // 第一列为KEY
-    for(int r = 0; r <table.rowCount(); ++r){
-        auto* param = table.item(r, COL_PARAM);
-        if(!param || param->text().trimmed().isEmpty())
+    // key_index 合法性保护
+    if (key_index < 0 || key_index >= table.columnCount())
+        return;
+    for (int r = 0; r < table.rowCount(); ++r) {
+        auto* param = table.item(r, key_index);
+        if (!param || param->text().trimmed().isEmpty())
             continue;
         QString key = param->text().trimmed();
         QList<QVariant> row;
-
-        for(int c = 1; c < table.columnCount(); ++c){
-            if(QWidget* cell = table.cellWidget(r, c)){
-                if(QCheckBox* cb = cell->findChild<QCheckBox*>()){
+        for (int c = 0; c < table.columnCount(); ++c) {
+            if (c == key_index)
+                continue;   // 跳过 key 列
+            if (QWidget* cell = table.cellWidget(r, c)) {
+                if (QCheckBox* cb = cell->findChild<QCheckBox*>()) {
                     row << cb->isChecked();
                     continue;
                 }
             }
-
             auto* item = table.item(r, c);
             row << (item ? item->text().trimmed() : QString());
         }
-
-        map.insert(key ,row);
+        map.insert(key, row);
     }
 }
 

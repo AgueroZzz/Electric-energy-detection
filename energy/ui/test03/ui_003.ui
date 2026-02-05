@@ -31,19 +31,7 @@
    </property>
    <item>
     <widget class="QWidget" name="widget_table" native="true">
-     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,1">
-      <property name="leftMargin">
-       <number>3</number>
-      </property>
-      <property name="topMargin">
-       <number>3</number>
-      </property>
-      <property name="rightMargin">
-       <number>3</number>
-      </property>
-      <property name="bottomMargin">
-       <number>3</number>
-      </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,1">
       <item>
        <widget class="QGroupBox" name="groupBox">
         <property name="title">
@@ -148,6 +136,31 @@
              <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
             </property>
            </item>
+           <item row="0" column="2">
+            <property name="text">
+             <string>10.000</string>
+            </property>
+           </item>
+           <item row="0" column="4">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+           </item>
+           <item row="0" column="5">
+            <property name="text">
+             <string>120.000</string>
+            </property>
+           </item>
+           <item row="0" column="6">
+            <property name="text">
+             <string>0.0</string>
+            </property>
+           </item>
+           <item row="0" column="8">
+            <property name="text">
+             <string>1.0</string>
+            </property>
+           </item>
            <item row="1" column="1">
             <property name="text">
              <string>UB</string>
@@ -171,6 +184,31 @@
             </property>
             <property name="flags">
              <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+            </property>
+           </item>
+           <item row="1" column="2">
+            <property name="text">
+             <string>10.000</string>
+            </property>
+           </item>
+           <item row="1" column="4">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+           </item>
+           <item row="1" column="5">
+            <property name="text">
+             <string>120.000</string>
+            </property>
+           </item>
+           <item row="1" column="6">
+            <property name="text">
+             <string>-120.0</string>
+            </property>
+           </item>
+           <item row="1" column="8">
+            <property name="text">
+             <string>1.0</string>
             </property>
            </item>
            <item row="2" column="1">
@@ -198,6 +236,31 @@
              <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
             </property>
            </item>
+           <item row="2" column="2">
+            <property name="text">
+             <string>10.000</string>
+            </property>
+           </item>
+           <item row="2" column="4">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+           </item>
+           <item row="2" column="5">
+            <property name="text">
+             <string>120.000</string>
+            </property>
+           </item>
+           <item row="2" column="6">
+            <property name="text">
+             <string>120.0</string>
+            </property>
+           </item>
+           <item row="2" column="8">
+            <property name="text">
+             <string>1.0</string>
+            </property>
+           </item>
            <item row="3" column="1">
             <property name="text">
              <string>IA</string>
@@ -221,6 +284,31 @@
             </property>
             <property name="flags">
              <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+            </property>
+           </item>
+           <item row="3" column="2">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+           </item>
+           <item row="3" column="4">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+           </item>
+           <item row="3" column="5">
+            <property name="text">
+             <string>30.000</string>
+            </property>
+           </item>
+           <item row="3" column="6">
+            <property name="text">
+             <string>0.0</string>
+            </property>
+           </item>
+           <item row="3" column="8">
+            <property name="text">
+             <string>1.0</string>
             </property>
            </item>
            <item row="4" column="1">
@@ -248,6 +336,31 @@
              <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
             </property>
            </item>
+           <item row="4" column="2">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+           </item>
+           <item row="4" column="4">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+           </item>
+           <item row="4" column="5">
+            <property name="text">
+             <string>30.000</string>
+            </property>
+           </item>
+           <item row="4" column="6">
+            <property name="text">
+             <string>-120.0</string>
+            </property>
+           </item>
+           <item row="4" column="8">
+            <property name="text">
+             <string>1.0</string>
+            </property>
+           </item>
            <item row="5" column="1">
             <property name="text">
              <string>IC</string>
@@ -271,6 +384,31 @@
             </property>
             <property name="flags">
              <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+            </property>
+           </item>
+           <item row="5" column="2">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+           </item>
+           <item row="5" column="4">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+           </item>
+           <item row="5" column="5">
+            <property name="text">
+             <string>30.000</string>
+            </property>
+           </item>
+           <item row="5" column="6">
+            <property name="text">
+             <string>120.0</string>
+            </property>
+           </item>
+           <item row="5" column="8">
+            <property name="text">
+             <string>1.0</string>
             </property>
            </item>
            <item row="6" column="1">
@@ -298,6 +436,72 @@
              <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
             </property>
            </item>
+           <item row="6" column="2">
+            <property name="text">
+             <string>10.000</string>
+            </property>
+           </item>
+           <item row="6" column="4">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+           </item>
+           <item row="6" column="5">
+            <property name="text">
+             <string>160.000</string>
+            </property>
+           </item>
+           <item row="6" column="6">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="background">
+             <brush brushstyle="Dense4Pattern">
+              <color alpha="255">
+               <red>194</red>
+               <green>237</green>
+               <blue>195</blue>
+              </color>
+             </brush>
+            </property>
+            <property name="flags">
+             <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+            </property>
+           </item>
+           <item row="6" column="7">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="background">
+             <brush brushstyle="Dense4Pattern">
+              <color alpha="255">
+               <red>194</red>
+               <green>237</green>
+               <blue>195</blue>
+              </color>
+             </brush>
+            </property>
+            <property name="flags">
+             <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+            </property>
+           </item>
+           <item row="6" column="8">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="background">
+             <brush brushstyle="Dense4Pattern">
+              <color alpha="255">
+               <red>194</red>
+               <green>237</green>
+               <blue>195</blue>
+              </color>
+             </brush>
+            </property>
+            <property name="flags">
+             <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+            </property>
+           </item>
            <item row="7" column="1">
             <property name="text">
              <string>HZ</string>
@@ -323,6 +527,72 @@
              <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
             </property>
            </item>
+           <item row="7" column="2">
+            <property name="text">
+             <string>50.000</string>
+            </property>
+           </item>
+           <item row="7" column="4">
+            <property name="text">
+             <string>1.000</string>
+            </property>
+           </item>
+           <item row="7" column="5">
+            <property name="text">
+             <string>1000.000</string>
+            </property>
+           </item>
+           <item row="7" column="6">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="background">
+             <brush brushstyle="Dense4Pattern">
+              <color alpha="255">
+               <red>194</red>
+               <green>237</green>
+               <blue>195</blue>
+              </color>
+             </brush>
+            </property>
+            <property name="flags">
+             <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+            </property>
+           </item>
+           <item row="7" column="7">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="background">
+             <brush brushstyle="Dense4Pattern">
+              <color alpha="255">
+               <red>194</red>
+               <green>237</green>
+               <blue>195</blue>
+              </color>
+             </brush>
+            </property>
+            <property name="flags">
+             <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+            </property>
+           </item>
+           <item row="7" column="8">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="background">
+             <brush brushstyle="Dense4Pattern">
+              <color alpha="255">
+               <red>194</red>
+               <green>237</green>
+               <blue>195</blue>
+              </color>
+             </brush>
+            </property>
+            <property name="flags">
+             <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+            </property>
+           </item>
           </widget>
          </item>
         </layout>
@@ -331,334 +601,239 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,1">
         <item>
-         <widget class="QGroupBox" name="groupBox_2">
-          <property name="title">
-           <string>实验参数设置</string>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_5" stretch="2,1">
-           <property name="topMargin">
-            <number>3</number>
-           </property>
-           <property name="bottomMargin">
-            <number>3</number>
-           </property>
-           <item>
-            <widget class="QGroupBox" name="groupBox_5">
-             <property name="title">
-              <string>参数设置</string>
-             </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_5">
-              <property name="leftMargin">
-               <number>11</number>
-              </property>
-              <property name="topMargin">
-               <number>3</number>
-              </property>
-              <property name="rightMargin">
-               <number>11</number>
-              </property>
-              <property name="bottomMargin">
-               <number>3</number>
-              </property>
-              <item>
-               <widget class="QTableWidget" name="tb_test_deploy">
-                <property name="rowCount">
-                 <number>4</number>
-                </property>
-                <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-                 <bool>false</bool>
-                </attribute>
-                <attribute name="horizontalHeaderStretchLastSection">
-                 <bool>false</bool>
-                </attribute>
-                <attribute name="verticalHeaderVisible">
-                 <bool>false</bool>
-                </attribute>
-                <attribute name="verticalHeaderStretchLastSection">
-                 <bool>false</bool>
-                </attribute>
-                <row/>
-                <row/>
-                <row/>
-                <row/>
-                <column>
-                 <property name="text">
-                  <string>数据项</string>
+         <layout class="QVBoxLayout" name="verticalLayout_2" stretch="5,4">
+          <item>
+           <widget class="QGroupBox" name="groupBox_5">
+            <property name="title">
+             <string>参数设置</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_4">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,2,2,1">
+               <item>
+                <spacer name="horizontalSpacer_7">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
                  </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>值</string>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
                  </property>
-                </column>
-                <item row="0" column="0">
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="label">
                  <property name="text">
                   <string>变化方式</string>
                  </property>
-                 <property name="font">
-                  <font>
-                   <bold>true</bold>
-                  </font>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
                  </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="cb_test_type">
+                 <item>
+                  <property name="text">
+                   <string>手动实验</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>自动增加</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>自动减少</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
                  </property>
-                 <property name="background">
-                  <brush brushstyle="Dense4Pattern">
-                   <color alpha="255">
-                    <red>194</red>
-                    <green>237</green>
-                    <blue>195</blue>
-                   </color>
-                  </brush>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
                  </property>
-                 <property name="flags">
-                  <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled</set>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="1,2,2,1">
+               <item>
+                <spacer name="horizontalSpacer_8">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
                  </property>
-                </item>
-                <item row="1" column="0">
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_2">
                  <property name="text">
                   <string>动作方式</string>
                  </property>
-                 <property name="font">
-                  <font>
-                   <bold>true</bold>
-                  </font>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
                  </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="cb_test_action">
+                 <item>
+                  <property name="text">
+                   <string>动作停止</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>动作返回</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_2">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
                  </property>
-                 <property name="background">
-                  <brush brushstyle="Dense4Pattern">
-                   <color alpha="255">
-                    <red>194</red>
-                    <green>237</green>
-                    <blue>195</blue>
-                   </color>
-                  </brush>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
                  </property>
-                 <property name="flags">
-                  <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled</set>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_6">
+               <item>
+                <spacer name="horizontalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
                  </property>
-                </item>
-                <item row="2" column="0">
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_3">
                  <property name="text">
-                  <string>间隔时间(s)</string>
+                  <string>间隔时间</string>
                  </property>
-                 <property name="font">
-                  <font>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
-                 </property>
-                 <property name="background">
-                  <brush brushstyle="Dense4Pattern">
-                   <color alpha="255">
-                    <red>194</red>
-                    <green>237</green>
-                    <blue>195</blue>
-                   </color>
-                  </brush>
-                 </property>
-                 <property name="flags">
-                  <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled</set>
-                 </property>
-                </item>
-                <item row="2" column="1">
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="le_interval">
                  <property name="text">
                   <string>1.000</string>
                  </property>
-                </item>
-                <item row="3" column="0">
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_5">
                  <property name="text">
-                  <string>防抖时间(ms)</string>
+                  <string>s </string>
                  </property>
-                 <property name="font">
-                  <font>
-                   <bold>true</bold>
-                  </font>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_4">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
                  </property>
-                 <property name="textAlignment">
-                  <set>AlignCenter</set>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
                  </property>
-                 <property name="background">
-                  <brush brushstyle="Dense4Pattern">
-                   <color alpha="255">
-                    <red>194</red>
-                    <green>237</green>
-                    <blue>195</blue>
-                   </color>
-                  </brush>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_7">
+               <item>
+                <spacer name="horizontalSpacer_5">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
                  </property>
-                 <property name="flags">
-                  <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled</set>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
                  </property>
-                </item>
-                <item row="3" column="1">
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_4">
                  <property name="text">
-                  <string>5</string>
+                  <string>防抖时间</string>
                  </property>
-                </item>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QGroupBox" name="groupBox_6">
-             <property name="title">
-              <string>串口操作</string>
-             </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="2,1">
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_3">
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,2">
-                  <item>
-                   <widget class="QLabel" name="label">
-                    <property name="text">
-                     <string>串口名称</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QComboBox" name="cb_serial_name"/>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="1,2">
-                  <item>
-                   <widget class="QLabel" name="label_2">
-                    <property name="text">
-                     <string>波特率</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QComboBox" name="cb_baudrate"/>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="1,2">
-                  <item>
-                   <widget class="QLabel" name="label_5">
-                    <property name="text">
-                     <string>流控制</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QComboBox" name="cb_flow"/>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="1,2">
-                  <item>
-                   <widget class="QLabel" name="label_6">
-                    <property name="text">
-                     <string>校验位</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QComboBox" name="cb_parity"/>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="1,2">
-                  <item>
-                   <widget class="QLabel" name="label_7">
-                    <property name="text">
-                     <string>停止位</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QComboBox" name="cb_stop"/>
-                  </item>
-                 </layout>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_4" stretch="1,1">
-                <item>
-                 <widget class="QPushButton" name="btn_open_serial">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>40</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>刷新串口</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="btn_stop_serial">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>40</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>打开串口</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-             </layout>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout" stretch="2,3">
-          <property name="spacing">
-           <number>3</number>
-          </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="le_delay">
+                 <property name="text">
+                  <string>1000</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_6">
+                 <property name="text">
+                  <string>ms</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_6">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
           <item>
            <widget class="QGroupBox" name="groupBox_3">
             <property name="title">
              <string>开关量</string>
             </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_11">
+            <layout class="QVBoxLayout" name="verticalLayout_5">
              <item>
-              <widget class="QTableWidget" name="tb_krl">
+              <widget class="QTableWidget" name="tb_kgl">
                <property name="rowCount">
                 <number>4</number>
                </property>
@@ -789,6 +964,13 @@
             </layout>
            </widget>
           </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout" stretch="0">
+          <property name="spacing">
+           <number>3</number>
+          </property>
           <item>
            <widget class="QGroupBox" name="groupBox_4">
             <property name="title">
@@ -1002,7 +1184,7 @@
    </item>
    <item>
     <widget class="QWidget" name="widget_charts" native="true">
-     <layout class="QVBoxLayout" name="verticalLayout_6">
+     <layout class="QVBoxLayout" name="verticalLayout_6" stretch="3,2">
       <item>
        <widget class="QWidget" name="ac_chart_widget" native="true"/>
       </item>

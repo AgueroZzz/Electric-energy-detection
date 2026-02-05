@@ -29,6 +29,7 @@
 
 #include "serial/serial_port.h"
 #include "serial/serial_ui.h"
+#include "global/led.h"
 
 namespace Ui {
 class test;
