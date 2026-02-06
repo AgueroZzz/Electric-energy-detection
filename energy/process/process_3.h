@@ -66,6 +66,7 @@ private:
     void test_send_para_to_device();
     void attemptConnect();
     void frame_parse(QByteArray frame);
+    QByteArray create_single_port_frame(QString port_name, QString port_type);
 
 private:
     // 工具函数:判断端口

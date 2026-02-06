@@ -86,18 +86,16 @@ void process_3::test_send_para_to_device()
     frame.append(QByteArray::fromHex("F014C8"));      // 暂时未知
     frame.append(intToLittleEndianHex(int(_parameter["UX"][index_map::map_value].toFloat() * 176.8)));      // Ux幅值
     frame.append(intToLittleEndianHex(int(_parameter["UX"][index_map::map_phase].toFloat())));              // Ux相位
-    frame.append(intToLittleEndianHex(int(_parameter["UA"][index_map::map_value].toFloat() * 250)));        // UA幅值
-    frame.append(intToLittleEndianHex(int(_parameter["UA"][index_map::map_phase].toFloat())));              // UA相位
-    frame.append(intToLittleEndianHex(int(_parameter["UB"][index_map::map_value].toFloat() * 250)));        // UB幅值
-    frame.append(intToLittleEndianHex(int(_parameter["UB"][index_map::map_phase].toFloat())));              // UB相位
-    frame.append(intToLittleEndianHex(int(_parameter["UC"][index_map::map_value].toFloat() * 250)));        // UC幅值
-    frame.append(intToLittleEndianHex(int(_parameter["UC"][index_map::map_phase].toFloat())));              // UC相位
-    frame.append(intToLittleEndianHex(int(_parameter["IA"][index_map::map_value].toFloat() * 1066)));        // IA幅值
-    frame.append(intToLittleEndianHex(int(_parameter["IA"][index_map::map_phase].toFloat())));              // IA相位
-    frame.append(intToLittleEndianHex(int(_parameter["IB"][index_map::map_value].toFloat() * 1066)));        // IB幅值
-    frame.append(intToLittleEndianHex(int(_parameter["IB"][index_map::map_phase].toFloat())));              // IB相位
-    frame.append(intToLittleEndianHex(int(_parameter["IC"][index_map::map_value].toFloat() * 1066)));        // IC幅值
-    frame.append(intToLittleEndianHex(int(_parameter["IC"][index_map::map_phase].toFloat())));              // IC相位
+    frame.append(create_single_port_frame("UA", _parameter["UA"][index_map::map_e_type].toString()));       // UA幅值+相位
+    frame.append(create_single_port_frame("UB", _parameter["UB"][index_map::map_e_type].toString()));       // UB幅值+相位
+    frame.append(create_single_port_frame("UC", _parameter["UC"][index_map::map_e_type].toString()));       // UC幅值+相位
+    frame.append(create_single_port_frame("IA", _parameter["IA"][index_map::map_e_type].toString()));       // IA幅值+相位
+    frame.append(create_single_port_frame("IB", _parameter["IB"][index_map::map_e_type].toString()));       // IB幅值+相位
+    frame.append(create_single_port_frame("IC", _parameter["IC"][index_map::map_e_type].toString()));       // IC幅值+相位
+    frame.append(intToLittleEndianHex(int(_parameter["HZ"][index_map::map_value].toFloat() * 100)));
+    qDebug() << frame;
+    emit sig_state_changed("测试中", "#e67e22");
+    emit sig_send_msg_to_serial(frame);
 }
 
 void process_3::attemptConnect()
@@ -119,6 +117,32 @@ void process_3::attemptConnect()
 void process_3::frame_parse(QByteArray frame)
 {
 
+}
+
+QByteArray process_3::create_single_port_frame(QString port_name, QString port_type)
+{
+    QByteArray frame;
+    // DC下U的系数为176.8    AC下U的系数为250
+    if(port_name.contains("U")){
+        if(port_type == "AC"){
+            frame.append(intToLittleEndianHex(int(_parameter[port_name][index_map::map_value].toFloat()) * 250));
+            frame.append(intToLittleEndianHex(int(_parameter[port_name][index_map::map_phase].toFloat())));
+        }else{
+            frame.append(intToLittleEndianHex(int(_parameter[port_name][index_map::map_value].toFloat()) * 176.8));
+            frame.append(QByteArray::fromHex("0000"));
+        }
+    }
+    // DC下I的系数为755      AC下I的系数为1066.67
+    else{
+        if(port_type == "AC"){
+            frame.append(intToLittleEndianHex(int(_parameter[port_name][index_map::map_value].toFloat()) * 1066.67));
+            frame.append(intToLittleEndianHex(int(_parameter[port_name][index_map::map_phase].toFloat())));
+        }else{
+            frame.append(intToLittleEndianHex(int(_parameter[port_name][index_map::map_value].toFloat()) * 755));
+            frame.append(QByteArray::fromHex("0000"));
+        }
+    }
+    return frame;
 }
 
 void process_3::slot_onTimeout()
