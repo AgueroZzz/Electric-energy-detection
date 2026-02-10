@@ -116,7 +116,29 @@ void process_3::attemptConnect()
 
 void process_3::frame_parse(QByteArray frame)
 {
+    QStringList results;
+    quint8 dataCount = quint8(frame[0]);
+    if(frame.size() != (dataCount + 1)){
+        return;             // 帧长度=数据位+1
+    }
+    quint8 type = quint8(frame[1]);
+    if(type == static_cast<quint8>(FrameType::f_action)){           // 动作帧
+        results << "action";
+    }else if(type == static_cast<quint8>(FrameType::f_return)){     // 返回帧
+        results << "return";
+    }else{
+        return;             // 非法帧
+    }
+    quint8 portByte = quint8(frame[2]);
+    QString port = parsePort(portByte);
+    if (port == "UnKnow") {
+        return;             // 未知端口，丢弃
+    }
+    results << port;
+    quint32 actionTimeMs = parseActionTime(frame);
+    results << QString::number(actionTimeMs);
 
+    emit sig_frame_parse_result(results);
 }
 
 QByteArray process_3::create_single_port_frame(QString port_name, QString port_type)

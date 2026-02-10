@@ -4,6 +4,8 @@
 #include "test.h"
 #include "ui/test25/ui_025.h"
 
+
+
 class test_25 : public test
 {
 public:
@@ -22,8 +24,10 @@ private:
     QToolButton* _btn_open_para;        // 打开参数按钮
     QToolButton* _btn_save_para;        // 保存参数按钮
     QToolButton* _btn_print_test;       // 打印测试记录
+
     QToolButton* _btn_error_head;       // 进入故障前状态
     QToolButton* _btn_end_test;         // 停止实验
+    QButtonGroup* _btn_test_group;
 };
 
 #endif // TEST_25_H

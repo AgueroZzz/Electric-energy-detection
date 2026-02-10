@@ -6,6 +6,7 @@
 #include "process/process_2.h"
 #include "charts/dc_chart.h"
 
+// test02:三项直流电流电压实验
 
 class test_02 : public test
 {

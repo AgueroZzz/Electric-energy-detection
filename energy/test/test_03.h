@@ -7,6 +7,8 @@
 #include "charts/dc_chart.h"
 #include "process/process_3.h"
 
+// test03:三项交直流电流电压实验
+
 class test_03 : public test
 {
 public:

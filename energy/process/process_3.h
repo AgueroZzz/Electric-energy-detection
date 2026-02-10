@@ -68,21 +68,6 @@ private:
     void frame_parse(QByteArray frame);
     QByteArray create_single_port_frame(QString port_name, QString port_type);
 
-private:
-    // 工具函数:判断端口
-    inline QString parsePort(quint8 portByte){
-        switch (portByte) {
-        case 0x80: return "A";
-        case 0x40: return "B";
-        case 0x20: return "C";
-        case 0x10: return "R";
-        case 0x08: return "a";
-        case 0x04: return "b";
-        case 0x02: return "c";
-        default:   return "UnKnow";
-        }
-    }
-
 private slots:
     void slot_onTimeout();
 };

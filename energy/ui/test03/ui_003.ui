@@ -601,7 +601,7 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,1">
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_2" stretch="5,4">
+         <layout class="QVBoxLayout" name="verticalLayout_2" stretch="3,5">
           <item>
            <widget class="QGroupBox" name="groupBox_5">
             <property name="title">

@@ -6,6 +6,7 @@
 #include "charts/ac_chart.h"
 #include "process/process_1.h"
 
+// test01:三项交流电流电压实验
 
 class test_01 : public test
 {
@@ -102,7 +103,7 @@ private:
     QToolButton* _btn_shortout_calcu;   // 短路计算
     QToolButton* _btn_recover_para;     // 恢复默认值
     QToolButton* _btn_up_para;          // 递增数据
-    QToolButton* _btn_down_para;          // 递减数据
+    QToolButton* _btn_down_para;        // 递减数据
     QButtonGroup* _btn_test_group;
     QToolButton* _btn_start_test;       // 开始实验
     QToolButton* _btn_end_test;       // 停止实验

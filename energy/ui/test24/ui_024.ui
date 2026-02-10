@@ -18,9 +18,24 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_5" stretch="3,2">
+  <layout class="QVBoxLayout" name="verticalLayout_5" stretch="5,3">
+   <property name="spacing">
+    <number>2</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_6">
+    <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="4,1,4">
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
@@ -88,35 +103,293 @@
              <property name="text">
               <string>IA</string>
              </property>
+             <property name="textAlignment">
+              <set>AlignCenter</set>
+             </property>
+             <property name="flags">
+              <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+             </property>
+            </item>
+            <item row="0" column="1">
+             <property name="text">
+              <string>0.000</string>
+             </property>
+            </item>
+            <item row="0" column="3">
+             <property name="text">
+              <string>1.000</string>
+             </property>
+            </item>
+            <item row="0" column="4">
+             <property name="text">
+              <string>30</string>
+             </property>
+            </item>
+            <item row="0" column="5">
+             <property name="text">
+              <string>0.0</string>
+             </property>
+            </item>
+            <item row="0" column="7">
+             <property name="text">
+              <string>1.0</string>
+             </property>
             </item>
             <item row="1" column="0">
              <property name="text">
               <string>IB</string>
+             </property>
+             <property name="textAlignment">
+              <set>AlignCenter</set>
+             </property>
+             <property name="flags">
+              <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+             </property>
+            </item>
+            <item row="1" column="1">
+             <property name="text">
+              <string>0.000</string>
+             </property>
+            </item>
+            <item row="1" column="3">
+             <property name="text">
+              <string>1.000</string>
+             </property>
+            </item>
+            <item row="1" column="4">
+             <property name="text">
+              <string>30</string>
+             </property>
+            </item>
+            <item row="1" column="5">
+             <property name="text">
+              <string>240.0</string>
+             </property>
+            </item>
+            <item row="1" column="7">
+             <property name="text">
+              <string>1.0</string>
              </property>
             </item>
             <item row="2" column="0">
              <property name="text">
               <string>IC</string>
              </property>
+             <property name="textAlignment">
+              <set>AlignCenter</set>
+             </property>
+             <property name="flags">
+              <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+             </property>
+            </item>
+            <item row="2" column="1">
+             <property name="text">
+              <string>0.000</string>
+             </property>
+            </item>
+            <item row="2" column="3">
+             <property name="text">
+              <string>1.000</string>
+             </property>
+            </item>
+            <item row="2" column="4">
+             <property name="text">
+              <string>30</string>
+             </property>
+            </item>
+            <item row="2" column="5">
+             <property name="text">
+              <string>120.0</string>
+             </property>
+            </item>
+            <item row="2" column="7">
+             <property name="text">
+              <string>1.0</string>
+             </property>
             </item>
             <item row="3" column="0">
              <property name="text">
               <string>Ia</string>
+             </property>
+             <property name="textAlignment">
+              <set>AlignCenter</set>
+             </property>
+             <property name="flags">
+              <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+             </property>
+            </item>
+            <item row="3" column="1">
+             <property name="text">
+              <string>0.000</string>
+             </property>
+            </item>
+            <item row="3" column="3">
+             <property name="text">
+              <string>1.000</string>
+             </property>
+            </item>
+            <item row="3" column="4">
+             <property name="text">
+              <string>30</string>
+             </property>
+            </item>
+            <item row="3" column="5">
+             <property name="text">
+              <string>0.0</string>
+             </property>
+            </item>
+            <item row="3" column="7">
+             <property name="text">
+              <string>1.0</string>
              </property>
             </item>
             <item row="4" column="0">
              <property name="text">
               <string>Ib</string>
              </property>
+             <property name="textAlignment">
+              <set>AlignCenter</set>
+             </property>
+             <property name="flags">
+              <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+             </property>
+            </item>
+            <item row="4" column="1">
+             <property name="text">
+              <string>0.000</string>
+             </property>
+            </item>
+            <item row="4" column="3">
+             <property name="text">
+              <string>1.000</string>
+             </property>
+            </item>
+            <item row="4" column="4">
+             <property name="text">
+              <string>30</string>
+             </property>
+            </item>
+            <item row="4" column="5">
+             <property name="text">
+              <string>240.0</string>
+             </property>
+            </item>
+            <item row="4" column="7">
+             <property name="text">
+              <string>1.0</string>
+             </property>
             </item>
             <item row="5" column="0">
              <property name="text">
               <string>Ic</string>
              </property>
+             <property name="textAlignment">
+              <set>AlignCenter</set>
+             </property>
+             <property name="flags">
+              <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+             </property>
+            </item>
+            <item row="5" column="1">
+             <property name="text">
+              <string>0.000</string>
+             </property>
+            </item>
+            <item row="5" column="3">
+             <property name="text">
+              <string>1.000</string>
+             </property>
+            </item>
+            <item row="5" column="4">
+             <property name="text">
+              <string>30</string>
+             </property>
+            </item>
+            <item row="5" column="5">
+             <property name="text">
+              <string>120.0</string>
+             </property>
+            </item>
+            <item row="5" column="7">
+             <property name="text">
+              <string>1.0</string>
+             </property>
             </item>
             <item row="6" column="0">
              <property name="text">
               <string>Hz</string>
+             </property>
+             <property name="textAlignment">
+              <set>AlignCenter</set>
+             </property>
+             <property name="flags">
+              <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+             </property>
+            </item>
+            <item row="6" column="1">
+             <property name="text">
+              <string>50.000</string>
+             </property>
+            </item>
+            <item row="6" column="3">
+             <property name="text">
+              <string>0.000</string>
+             </property>
+            </item>
+            <item row="6" column="4">
+             <property name="text">
+              <string>1000</string>
+             </property>
+            </item>
+            <item row="6" column="5">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="background">
+              <brush brushstyle="Dense4Pattern">
+               <color alpha="255">
+                <red>194</red>
+                <green>237</green>
+                <blue>195</blue>
+               </color>
+              </brush>
+             </property>
+             <property name="flags">
+              <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+             </property>
+            </item>
+            <item row="6" column="6">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="background">
+              <brush brushstyle="Dense4Pattern">
+               <color alpha="255">
+                <red>194</red>
+                <green>237</green>
+                <blue>195</blue>
+               </color>
+              </brush>
+             </property>
+             <property name="flags">
+              <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+             </property>
+            </item>
+            <item row="6" column="7">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="background">
+              <brush brushstyle="Dense4Pattern">
+               <color alpha="255">
+                <red>194</red>
+                <green>237</green>
+                <blue>195</blue>
+               </color>
+              </brush>
+             </property>
+             <property name="flags">
+              <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
              </property>
             </item>
            </widget>
@@ -131,6 +404,19 @@
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_2">
              <item>
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
               <widget class="QLabel" name="label">
                <property name="text">
                 <string>开关确认时间ms:</string>
@@ -138,7 +424,24 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit"/>
+              <widget class="QLineEdit" name="le_open">
+               <property name="text">
+                <string>1000</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_4">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
              </item>
             </layout>
            </item>
@@ -149,14 +452,17 @@
              </property>
              <layout class="QVBoxLayout" name="verticalLayout">
               <item>
-               <widget class="QRadioButton" name="radioButton">
+               <widget class="QRadioButton" name="rb_action">
                 <property name="text">
                  <string>测接点动作</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="radioButton_2">
+               <widget class="QRadioButton" name="rb_return">
                 <property name="text">
                  <string>测动作和返回</string>
                 </property>
@@ -174,21 +480,21 @@
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
             <item>
-             <widget class="QRadioButton" name="radioButton_3">
+             <widget class="QRadioButton" name="rb_hand">
               <property name="text">
                <string>手动</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QRadioButton" name="radioButton_4">
+             <widget class="QRadioButton" name="rb_a_up">
               <property name="text">
                <string>自动加</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QRadioButton" name="radioButton_5">
+             <widget class="QRadioButton" name="rb_a_down">
               <property name="text">
                <string>自动减</string>
               </property>
@@ -197,6 +503,19 @@
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_3">
               <item>
+               <spacer name="horizontalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
                <widget class="QLabel" name="label_2">
                 <property name="text">
                  <string>间隔时间ms:</string>
@@ -204,7 +523,24 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEdit_2"/>
+               <widget class="QLineEdit" name="le_delay">
+                <property name="text">
+                 <string>1000</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_3">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
              </layout>
             </item>
@@ -216,7 +552,10 @@
       </layout>
      </item>
      <item>
-      <widget class="QTableWidget" name="tableWidget_4"/>
+      <widget class="QWidget" name="btn_widget" native="true"/>
+     </item>
+     <item>
+      <widget class="QWidget" name="chart_widget" native="true"/>
      </item>
     </layout>
    </item>
@@ -224,6 +563,14 @@
     <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="2,2,3">
      <item>
       <widget class="QTableWidget" name="tb_down_1">
+       <property name="styleSheet">
+        <string notr="true">QTableWidget {
+     background-color: &quot;#97E8F2&quot;;
+    }
+    QTableWidget::item {
+       background-color: &quot;#97E8F2&quot;;
+    }</string>
+       </property>
        <property name="rowCount">
         <number>6</number>
        </property>
@@ -285,6 +632,14 @@
      </item>
      <item>
       <widget class="QTableWidget" name="tb_down_2">
+       <property name="styleSheet">
+        <string notr="true">QTableWidget {
+     background-color: &quot;#FFE6FF&quot;;
+    }
+    QTableWidget::item {
+       background-color: &quot;#FFE6FF&quot;;
+    }</string>
+       </property>
        <property name="rowCount">
         <number>7</number>
        </property>
@@ -352,6 +707,14 @@
      </item>
      <item>
       <widget class="QTableWidget" name="tb_down_3">
+       <property name="styleSheet">
+        <string notr="true">QTableWidget {
+     background-color: &quot;#FFE6FF&quot;;
+    }
+    QTableWidget::item {
+       background-color: &quot;#FFE6FF&quot;;
+    }</string>
+       </property>
        <property name="rowCount">
         <number>25</number>
        </property>
@@ -385,11 +748,6 @@
        <row/>
        <column>
         <property name="text">
-         <string/>
-        </property>
-       </column>
-       <column>
-        <property name="text">
          <string>参量</string>
         </property>
        </column>
@@ -410,135 +768,277 @@
        </column>
        <item row="0" column="0">
         <property name="text">
-         <string/>
+         <string>IA</string>
         </property>
         <property name="checkState">
          <enum>Checked</enum>
         </property>
-       </item>
-       <item row="0" column="1">
-        <property name="text">
-         <string>IA</string>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
         </property>
        </item>
-       <item row="1" column="1">
+       <item row="1" column="0">
         <property name="text">
          <string>IB</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="2" column="1">
+       <item row="2" column="0">
         <property name="text">
          <string>IC</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="3" column="1">
+       <item row="3" column="0">
         <property name="text">
          <string>Ia</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="4" column="1">
+       <item row="4" column="0">
         <property name="text">
          <string>Ib</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="5" column="1">
+       <item row="5" column="0">
         <property name="text">
          <string>Ic</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="6" column="1">
+       <item row="6" column="0">
         <property name="text">
          <string>Io</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="7" column="1">
+       <item row="7" column="0">
         <property name="text">
          <string>I+</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="8" column="1">
+       <item row="8" column="0">
         <property name="text">
          <string>I-</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="9" column="1">
+       <item row="9" column="0">
         <property name="text">
          <string>io</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="10" column="1">
+       <item row="10" column="0">
         <property name="text">
          <string>i+</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="11" column="1">
+       <item row="11" column="0">
         <property name="text">
          <string>i-</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="12" column="1">
+       <item row="12" column="0">
         <property name="text">
          <string>ΦIA</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="13" column="1">
+       <item row="13" column="0">
         <property name="text">
          <string>ΦIB</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="14" column="1">
+       <item row="14" column="0">
         <property name="text">
          <string>ΦIC</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="15" column="1">
+       <item row="15" column="0">
         <property name="text">
          <string>ΦIa</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="16" column="1">
+       <item row="16" column="0">
         <property name="text">
          <string>ΦIb</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="17" column="1">
+       <item row="17" column="0">
         <property name="text">
          <string>ΦIc</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="18" column="1">
+       <item row="18" column="0">
         <property name="text">
          <string>ΦIo</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="19" column="1">
+       <item row="19" column="0">
         <property name="text">
          <string>ΦI+</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="20" column="1">
+       <item row="20" column="0">
         <property name="text">
          <string>ΦI-</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="21" column="1">
+       <item row="21" column="0">
         <property name="text">
          <string>Φio</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="22" column="1">
+       <item row="22" column="0">
         <property name="text">
          <string>Φi+</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="23" column="1">
+       <item row="23" column="0">
         <property name="text">
          <string>Φi-</string>
         </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
        </item>
-       <item row="24" column="1">
+       <item row="24" column="0">
         <property name="text">
          <string>Hz</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
         </property>
        </item>
       </widget>

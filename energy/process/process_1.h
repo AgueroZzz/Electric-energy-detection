@@ -89,21 +89,6 @@ private slots:
 public slots:
     void slot_phase_changed(TestPhase phase) override;
 
-private:
-    // 工具函数:判断端口
-    inline QString parsePort(quint8 portByte){
-        switch (portByte) {
-        case 0x80: return "A";
-        case 0x40: return "B";
-        case 0x20: return "C";
-        case 0x10: return "R";
-        case 0x08: return "a";
-        case 0x04: return "b";
-        case 0x02: return "c";
-        default:   return "UnKnow";
-        }
-    }
-
 };
 
 #endif // PROCESS_1_H
