@@ -32,6 +32,37 @@ public:
         }
     }
 
+    inline t24_test_auto get_test_auto(QString name){
+        if(name == "手动"){
+            return t24_test_auto::test_hand;
+        }else if(name == "自动加"){
+            return t24_test_auto::test_auto_up;
+        }else{
+            return t24_test_auto::test_auto_down;
+        }
+    }
+
+    inline t24_test_type get_test_type(QString name){
+        if(name == "测接点动作"){
+            return t24_test_type::action;
+        }else{
+            return t24_test_type::action_and_return;
+        }
+    }
+
+    inline quint16 get_result_index(QString name){
+        if(name == "A"){return 0;}
+        else if(name == "B"){return 1;}
+        else if(name == "C"){return 2;}
+        else if(name == "R"){return 3;}
+        else if(name == "a"){return 4;}
+        else if(name == "b"){return 5;}
+        else if(name == "c"){return 6;}
+        else{
+            return 0;
+        }
+    }
+
 private:
     void init_UI();
     void init_top_widget();                     // 初始化顶部按钮
@@ -61,7 +92,6 @@ private:
     QToolButton* _chart_btn_x;          // 背景X
     QToolButton* _chart_btn_o;          // 背景o
     QToolButton* _chart_btn_xfl;        // 相分量
-    QToolButton* _chart_btn_xdy;        // 线电压
     QToolButton* _chart_btn_xufl;       // 序分量
 
     // 开关量

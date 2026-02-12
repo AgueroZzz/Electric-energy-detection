@@ -26,14 +26,18 @@ signals:
 private:
     Ui::ui_024 *ui;
     QMap<QString, QList<QVariant>> tb_cl_values;        // UI界面的参量表格数据
+    QButtonGroup *leftGroup;   // 接点动作/返回
+    QButtonGroup *rightGroup;  // 手动/自动加/自动减
 
 private slots:
     void slot_on_tb_sycs_changed(QTableWidgetItem *item);
 
 private:
     void init_cl_table();
+    void calc_down_1();
     void setupVarStep(int row, int colVar, int colStep);
     void updateVarStepState(int row, int colVar, int colStep);
+    QMap<QString, QPair<QString,QString>> calcSixPhaseCurrent();      // 计算IO等
 };
 
 #endif // UI__24_H

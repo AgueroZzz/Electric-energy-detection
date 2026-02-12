@@ -135,12 +135,9 @@ void test_24::init_chart_widget()
     _chart_btn_xfl = createToolButton(":/icon/icon/chart_xiangfl.svg", "相分量");
     _chart_btn_xfl->setCheckable(true);
     _chart_btn_xfl->setChecked(true);
-    _chart_btn_xdy = createToolButton(":/icon/icon/chart_xdy.svg", "线电压");
-    _chart_btn_xdy->setCheckable(true);
     _chart_btn_xufl = createToolButton(":/icon/icon/chart_xufl.svg", "序分量");
     _chart_btn_xufl->setCheckable(true);
     _group->addButton(_chart_btn_xfl, 0);
-    _group->addButton(_chart_btn_xdy, 1);
     _group->addButton(_chart_btn_xufl, 2);
     _group->setExclusive(true);
 
@@ -148,7 +145,6 @@ void test_24::init_chart_widget()
     btn_layout->addWidget(_chart_btn_x);
     btn_layout->addWidget(_chart_btn_o);
     btn_layout->addWidget(_chart_btn_xfl);
-    btn_layout->addWidget(_chart_btn_xdy);
     btn_layout->addWidget(_chart_btn_xufl);
 
     QHBoxLayout* chart_layout = new QHBoxLayout(_ui_024->ui->chart_widget);
@@ -200,7 +196,18 @@ void test_24::init_state_widget()
 
 void test_24::slot_test_start()
 {
+    if (_serialPort->_serial_status != index_serial_status::serial_on) {
+        QMessageBox::warning(nullptr, "串口错误", "串口未开启");
+        _btn_start_test->setChecked(false);
+        setState(TestState::Error);
+        return;
+    }
 
+    setState(TestState::Running);
+    _process_24->slot_start(_ui_024->tb_cl_values,
+                           get_test_type(_ui_024->leftGroup->checkedButton()->text()),
+                           get_test_auto(_ui_024->rightGroup->checkedButton()->text()),
+                           _ui_024->ui->le_delay->text());
 }
 
 void test_24::slot_test_stop()

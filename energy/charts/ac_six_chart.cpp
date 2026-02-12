@@ -153,28 +153,30 @@ void ac_six_chart::updateVisiblePhasors()
 
     switch (_mode)
     {
-    case 0: // 相电流
+    case 0: // 相电流模式 → 显示相电流 + 线电流
+        // 相电流
         _phasors["IA"].visible = _phasors["IA"].magnitude > 1e-6;
         _phasors["IB"].visible = _phasors["IB"].magnitude > 1e-6;
         _phasors["IC"].visible = _phasors["IC"].magnitude > 1e-6;
-        break;
 
-    case 1: // 线电流
+        // 同时显示线电流
         _phasors["Ia"].visible = _phasors["Ia"].magnitude > 1e-6;
         _phasors["Ib"].visible = _phasors["Ib"].magnitude > 1e-6;
         _phasors["Ic"].visible = _phasors["Ic"].magnitude > 1e-6;
         break;
 
     case 2: // 序分量
-        _phasors["I0"].visible = _phasors["I0"].magnitude > 1e-6;
-        _phasors["I+"].visible = _phasors["I+"].magnitude > 1e-6;
-        _phasors["I-"].visible = _phasors["I-"].magnitude > 1e-6;
-        // 兼容写法也显示
-        _phasors["Io"].visible = _phasors["I0"].magnitude > 1e-6;
-        _phasors["i+"].visible = _phasors["I+"].magnitude > 1e-6;
-        _phasors["i-"].visible = _phasors["I-"].magnitude > 1e-6;
+        _phasors["I0"].visible  = _phasors["I0"].magnitude > 1e-6;
+        _phasors["I+"].visible  = _phasors["I+"].magnitude > 1e-6;
+        _phasors["I-"].visible  = _phasors["I-"].magnitude > 1e-6;
+        // 兼容写法
+        _phasors["Io"].visible  = _phasors["I0"].magnitude > 1e-6;
+        _phasors["i+"].visible  = _phasors["I+"].magnitude > 1e-6;
+        _phasors["i-"].visible  = _phasors["I-"].magnitude > 1e-6;
         break;
     }
+
+    update();  // 可选：直接触发重绘
 }
 
 void ac_six_chart::updateDisplay()
@@ -198,8 +200,8 @@ void ac_six_chart::updateDisplay()
 
 void ac_six_chart::drawGrid(QPainter &painter, const QRect &drawRect)
 {
-    QPointF center = rect().center();
-    double radius = qMin(rect().width(), rect().height()) / 2.0 - 10;
+    QPointF center = drawRect.center();   // ← 改成和相量一样
+    double radius = qMin(drawRect.width(), drawRect.height()) / 2.0 - 10;
 
     // 同心圆
     if (_showGridCircles)
@@ -257,10 +259,18 @@ void ac_six_chart::drawPhasor(QPainter &painter, const QRect &drawRect, const Ph
     double x2 = center.x() + len * cos(rad);
     double y2 = center.y() - len * sin(rad);
 
-    // 主线
+    // 根据是相电流还是线电流设置不同线宽和样式
     QPen pen(p.color);
-    pen.setWidth(3);
+    if (p.label.startsWith("I") && p.label.length() == 2) {  // IA, IB, IC
+        pen.setWidth(4);           // 相电流更粗
+        pen.setStyle(Qt::SolidLine);
+    } else if (p.label.startsWith("i") || (p.label.length() == 2 && p.label[0].isLower())) {  // Ia, Ib, Ic
+        pen.setWidth(2);           // 线电流更细
+        // pen.setStyle(Qt::DashLine);  // 可选：改成虚线，更容易区分
+        pen.setStyle(Qt::SolidLine);
+    }
     painter.setPen(pen);
+
     painter.drawLine(center, QPointF(x2, y2));
 
     // 箭头
