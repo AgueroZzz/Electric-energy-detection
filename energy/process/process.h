@@ -5,6 +5,7 @@
 #include <QTimer>
 #include <QDateTime>
 #include <QThread>
+#include <QtEndian>
 #include "serial/serial_port.h"
 
 // 测试过程父类
@@ -37,6 +38,21 @@ public:
         return  (quint8(frame[3])) |
                ((quint8(frame[4])) << 8) |
                ((quint8(frame[5])) << 16);
+    }
+
+    // 将int转换为小端三字节
+    inline QByteArray intToThreeBytesLittleEndian(int value) {
+        QByteArray result;
+        result.resize(3);
+
+        // 确保只取低24位
+        quint32 data = static_cast<quint32>(value) & 0xFFFFFF;
+
+        // 转换为小端格式
+        qToLittleEndian(data, reinterpret_cast<uchar*>(result.data()));
+
+        // 只取前3字节（小端模式下，低字节在前）
+        return result.left(3);
     }
 
     // 工具函数:判断端口

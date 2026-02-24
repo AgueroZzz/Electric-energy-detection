@@ -172,8 +172,8 @@ QMap<QString, QPair<QString, QString> > ui_024::calcSixPhaseCurrent()
 
             if (tb_cl_values.contains(key) && tb_cl_values.value(key).size() > 5)
             {
-                mag = tb_cl_values[key][1].toString().toDouble();
-                phase = tb_cl_values[key][5].toString().toDouble();
+                mag = tb_cl_values[key][0].toString().toDouble();
+                phase = tb_cl_values[key][4].toString().toDouble();
             }
 
             return std::polar(mag, qDegreesToRadians(phase));
@@ -195,8 +195,8 @@ QMap<QString, QPair<QString, QString> > ui_024::calcSixPhaseCurrent()
             double mag = std::abs(c);
             double phase = qRadiansToDegrees(std::arg(c));
 
-            if (phase < 0)
-                phase += 360.0;
+            // if (phase < 0)
+            //     phase += 360.0;
 
             if (qFuzzyCompare(mag + 1.0, 1.0))
                 mag = 0.0;

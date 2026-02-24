@@ -21,7 +21,6 @@ void process_3::setSerial(serial_port *serial)
 
 void process_3::slot_start(QMap<QString, QList<QVariant> > map, t3_test_type type, t3_test_auto auto_type, QString delay)
 {
-    qDebug() << map;
     if (isRunning()) return;
 
     _parameter = map;
@@ -48,7 +47,6 @@ void process_3::slot_serial_readyRead()
     if(currentPhase != TestPhase::Running){
         return;
     }
-    qDebug() << _serial->get_serial_port_data().toHex();
     frame_parse(_serial->get_serial_port_data());
 }
 
@@ -92,8 +90,7 @@ void process_3::test_send_para_to_device()
     frame.append(create_single_port_frame("IA", _parameter["IA"][index_map::map_e_type].toString()));       // IA幅值+相位
     frame.append(create_single_port_frame("IB", _parameter["IB"][index_map::map_e_type].toString()));       // IB幅值+相位
     frame.append(create_single_port_frame("IC", _parameter["IC"][index_map::map_e_type].toString()));       // IC幅值+相位
-    frame.append(intToLittleEndianHex(int(_parameter["HZ"][index_map::map_value].toFloat() * 100)));
-    qDebug() << frame;
+    frame.append(intToThreeBytesLittleEndian(int(_parameter["HZ"][index_map::map_value].toFloat() * 100)));
     emit sig_state_changed("测试中", "#e67e22");
     emit sig_send_msg_to_serial(frame);
 }

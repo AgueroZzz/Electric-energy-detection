@@ -52,8 +52,8 @@ private:
 
     // 显示控制
     double _maxMagnitude = 50.0;           // 当前显示的最大刻度值
-    double _currentScale = 20.0;           // 用户选择的基准量程
-    const QVector<double> _scaleLevels {100, 80, 50, 20};
+    double _currentScale = 5.0;           // 用户选择的基准量程
+    const QVector<double> _scaleLevels {50, 25, 15, 10, 5};
 
     bool _showGridCircles = true;
     bool _showAxes = true;

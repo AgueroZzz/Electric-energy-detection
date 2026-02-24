@@ -38,7 +38,29 @@ test_24::test_24(quint16 test_id, QWidget *parent)
             setState(TestState::Idle);
         }
     });
-    // QObject::connect(_process_24, &process_24::sig_frame_parse_result, this, &test_24::slot_frame_parse_result, Qt::DirectConnection);
+    QObject::connect(_process_24, &process_24::sig_frame_parse_result, this, &test_24::slot_frame_parse_result, Qt::DirectConnection);
+}
+
+void test_24::slot_frame_parse_result(const QStringList &result)
+{
+    QString portName = result[1];
+    QString type = result[0];
+    QString time = result[2];
+    QTableWidgetItem *item;
+    if(type == "action"){
+        item = _ui_024->ui->tb_down_2->item(get_result_index(portName), 1);
+        if (!item) {
+            item = new QTableWidgetItem();
+            _ui_024->ui->tb_down_2->setItem(get_result_index(portName), 1, item);
+        }
+    }else{
+        item = _ui_024->ui->tb_down_2->item(get_result_index(portName), 2);
+        if (!item) {
+            item = new QTableWidgetItem();
+            _ui_024->ui->tb_down_2->setItem(get_result_index(portName), 2, item);
+        }
+    }
+    item->setText(time);
 }
 
 void test_24::init_UI()
@@ -212,7 +234,8 @@ void test_24::slot_test_start()
 
 void test_24::slot_test_stop()
 {
-
+    _process_24->slot_stop();
+    setState(TestState::Sttopped);
 }
 
 REGISTER_TEST(test_24, 23);

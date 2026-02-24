@@ -63,6 +63,9 @@ public:
         }
     }
 
+public slots:
+    void slot_frame_parse_result(const QStringList& result);
+
 private:
     void init_UI();
     void init_top_widget();                     // 初始化顶部按钮

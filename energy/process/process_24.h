@@ -17,6 +17,21 @@ enum class t24_test_auto{
 class process_24 : public process
 {
     Q_OBJECT
+
+    enum index_map{
+        map_value = 0,
+        map_change_1,
+        map_change_value_1,
+        map_max,
+        map_phase,
+        map_change_2,
+        map_change_value_2
+    };
+
+    enum class FrameType{
+        f_action = 0x10,
+        f_return = 0x20
+    };
 public:
     explicit process_24(QObject *parent = nullptr);
 

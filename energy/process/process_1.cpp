@@ -55,7 +55,6 @@ void process_1::slot_serial_readyRead()
     if(currentPhase != TestPhase::Running){
         return;
     }
-    qDebug() << _serial->get_serial_port_data();
     frame_parse(_serial->get_serial_port_data());
 }
 
@@ -133,8 +132,7 @@ void process_1::test_send_para_to_device()
     frame.append(intToLittleEndianHex(int(_parameter["IB"][index_map::map_phase].toFloat())));              // IB相位
     frame.append(intToLittleEndianHex(int(_parameter["IC"][index_map::map_value].toFloat() * 1066)));        // IC幅值
     frame.append(intToLittleEndianHex(int(_parameter["IC"][index_map::map_phase].toFloat())));              // IC相位
-    frame.append(intToLittleEndianHex(int(_parameter["Hz"][index_map::map_value].toFloat() * 100)));              // 频率
-    frame.append(QByteArray::fromHex("00"));                                                                // 结束符？
+    frame.append(intToThreeBytesLittleEndian(int(_parameter["Hz"][index_map::map_value].toFloat() * 100)));              // 频率
 
     emit sig_state_changed("测试中", "#e67e22");
     emit sig_send_msg_to_serial(frame);
