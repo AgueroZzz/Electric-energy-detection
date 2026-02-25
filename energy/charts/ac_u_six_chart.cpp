@@ -1,6 +1,6 @@
-#include "ac_six_chart.h"
+#include "ac_u_six_chart.h"
 
-ac_six_chart::ac_six_chart(const QMap<QString, QList<QVariant> > &initialMap, QWidget *parent)
+ac_u_six_chart::ac_u_six_chart(const QMap<QString, QList<QVariant> > &initialMap, QWidget *parent)
     : QWidget(parent)
 {
     setMinimumSize(320, 320);
@@ -16,13 +16,13 @@ ac_six_chart::ac_six_chart(const QMap<QString, QList<QVariant> > &initialMap, QW
     }
 }
 
-void ac_six_chart::setPhasors(const QMap<QString, Phasor> &phasors)
+void ac_u_six_chart::setPhasors(const QMap<QString, Phasor> &phasors)
 {
     _phasors = phasors;
     update();
 }
 
-void ac_six_chart::paintEvent(QPaintEvent *event)
+void ac_u_six_chart::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing, true);
@@ -43,7 +43,7 @@ void ac_six_chart::paintEvent(QPaintEvent *event)
     }
 }
 
-void ac_six_chart::slot_charts_refresh(const QMap<QString, QList<QVariant> > &map)
+void ac_u_six_chart::slot_charts_refresh(const QMap<QString, QList<QVariant> > &map)
 {
     parsePhasorsFromMap(map);
     calculateDerivedPhasors();
@@ -51,19 +51,19 @@ void ac_six_chart::slot_charts_refresh(const QMap<QString, QList<QVariant> > &ma
     updateDisplay();
 }
 
-void ac_six_chart::slot_setShowGridCircles(bool show)
+void ac_u_six_chart::slot_setShowGridCircles(bool show)
 {
     _showGridCircles = show;
     update();
 }
 
-void ac_six_chart::slot_setShowAxes(bool show)
+void ac_u_six_chart::slot_setShowAxes(bool show)
 {
     _showAxes = show;
     update();
 }
 
-void ac_six_chart::slot_onModeChanged(int mode)
+void ac_u_six_chart::slot_onModeChanged(int mode)
 {
     if (mode < 0 || mode > 2) return;
     _mode = mode;
@@ -71,7 +71,7 @@ void ac_six_chart::slot_onModeChanged(int mode)
     updateDisplay();
 }
 
-void ac_six_chart::slot_onZoomOut()
+void ac_u_six_chart::slot_onZoomOut()
 {
     int idx = _scaleLevels.indexOf(_currentScale);
     if (idx == -1) {
@@ -83,30 +83,29 @@ void ac_six_chart::slot_onZoomOut()
     updateDisplay();
 }
 
-void ac_six_chart::initAllPhasors()
+void ac_u_six_chart::initAllPhasors()
 {
-    // 相电流（大写）
-    _phasors["IA"] = {0, 0, Qt::red,     "IA", false};
-    _phasors["IB"] = {0, 0, Qt::blue,    "IB", false};
-    _phasors["IC"] = {0, 0, Qt::yellow,  "IC", false};
+    // 相电压
+    _phasors["UA"] = {0, 0, Qt::red,     "UA", false};
+    _phasors["UB"] = {0, 0, Qt::blue,    "UB", false};
+    _phasors["UC"] = {0, 0, Qt::yellow,  "UC", false};
 
-    // 线电流（小写）
-    _phasors["Ia"] = {0, 0, Qt::red,     "Ia", false};
-    _phasors["Ib"] = {0, 0, Qt::blue,    "Ib", false};
-    _phasors["Ic"] = {0, 0, Qt::yellow,  "Ic", false};
+    // 线电压
+    _phasors["Ua"] = {0, 0, Qt::red,     "Ua", false};
+    _phasors["Ub"] = {0, 0, Qt::blue,    "Ub", false};
+    _phasors["Uc"] = {0, 0, Qt::yellow,  "Uc", false};
 
-    // 序分量（常用写法）
-    _phasors["I0"]  = {0, 0, Qt::gray,      "I₀",  false};
-    _phasors["I+"]  = {0, 0, Qt::cyan,      "I⁺",  false};
-    _phasors["I-"]  = {0, 0, Qt::magenta,   "I⁻",  false};
+    // 序分量
+    _phasors["Uo"]  = {0, 0, Qt::gray,      "Uo",  false};
+    _phasors["U+"]  = {0, 0, Qt::cyan,      "U+",  false};
+    _phasors["U-"]  = {0, 0, Qt::magenta,   "U-",  false};
 
-    // 兼容写法（小写 o / + / -）
-    _phasors["Io"]  = {0, 0, Qt::gray,      "Io",  false};
-    _phasors["i+"]  = {0, 0, Qt::cyan,      "i+",  false};
-    _phasors["i-"]  = {0, 0, Qt::magenta,   "i-",  false};
+    _phasors["uo"]  = {0, 0, Qt::gray,      "uo",  false};
+    _phasors["u+"]  = {0, 0, Qt::cyan,      "u+",  false};
+    _phasors["u-"]  = {0, 0, Qt::magenta,   "u-",  false};
 }
 
-void ac_six_chart::parsePhasorsFromMap(const QMap<QString, QList<QVariant> > &map)
+void ac_u_six_chart::parsePhasorsFromMap(const QMap<QString, QList<QVariant> > &map)
 {
     // 先全部清零隐藏
     for (auto& p : _phasors) {
@@ -116,11 +115,12 @@ void ac_six_chart::parsePhasorsFromMap(const QMap<QString, QList<QVariant> > &ma
     }
 
     constexpr int COL_MAG = 0;
-    constexpr int COL_PHASE = 4;   // 根据你之前的习惯，第4列是相位
+    constexpr int COL_PHASE = 4;
 
     for (auto it = map.constBegin(); it != map.constEnd(); ++it)
     {
-        QString key = normalizeKey(it.key());
+        // QString key = normalizeKey(it.key());
+        QString key = it.key();
         if (!_phasors.contains(key)) continue;
 
         const auto& vals = it.value();
@@ -139,12 +139,12 @@ void ac_six_chart::parsePhasorsFromMap(const QMap<QString, QList<QVariant> > &ma
     }
 }
 
-void ac_six_chart::calculateDerivedPhasors()
+void ac_u_six_chart::calculateDerivedPhasors()
 {
 
 }
 
-void ac_six_chart::updateVisiblePhasors()
+void ac_u_six_chart::updateVisiblePhasors()
 {
     // 先全部隐藏
     for (auto& p : _phasors) {
@@ -153,33 +153,30 @@ void ac_six_chart::updateVisiblePhasors()
 
     switch (_mode)
     {
-    case 0: // 相电流模式 → 显示相电流 + 线电流
-        // 相电流
-        _phasors["IA"].visible = _phasors["IA"].magnitude > 1e-6;
-        _phasors["IB"].visible = _phasors["IB"].magnitude > 1e-6;
-        _phasors["IC"].visible = _phasors["IC"].magnitude > 1e-6;
-
-        // 同时显示线电流
-        _phasors["Ia"].visible = _phasors["Ia"].magnitude > 1e-6;
-        _phasors["Ib"].visible = _phasors["Ib"].magnitude > 1e-6;
-        _phasors["Ic"].visible = _phasors["Ic"].magnitude > 1e-6;
+    case 0: // 相分量
+        _phasors["UA"].visible = _phasors["UA"].magnitude > 1e-6;
+        _phasors["UB"].visible = _phasors["UB"].magnitude > 1e-6;
+        _phasors["UC"].visible = _phasors["UC"].magnitude > 1e-6;
+        _phasors["Ua"].visible = _phasors["Ua"].magnitude > 1e-6;
+        _phasors["Ub"].visible = _phasors["Ub"].magnitude > 1e-6;
+        _phasors["Uc"].visible = _phasors["Uc"].magnitude > 1e-6;
         break;
 
-    case 2: // 序分量
-        _phasors["I0"].visible  = _phasors["I0"].magnitude > 1e-6;
-        _phasors["I+"].visible  = _phasors["I+"].magnitude > 1e-6;
-        _phasors["I-"].visible  = _phasors["I-"].magnitude > 1e-6;
+    case 1: // 序分量
+        _phasors["Uo"].visible  = _phasors["Uo"].magnitude > 1e-6;
+        _phasors["U+"].visible  = _phasors["U+"].magnitude > 1e-6;
+        _phasors["U-"].visible  = _phasors["U-"].magnitude > 1e-6;
         // 兼容写法
-        _phasors["Io"].visible  = _phasors["I0"].magnitude > 1e-6;
-        _phasors["i+"].visible  = _phasors["I+"].magnitude > 1e-6;
-        _phasors["i-"].visible  = _phasors["I-"].magnitude > 1e-6;
+        _phasors["uo"].visible  = _phasors["uo"].magnitude > 1e-6;
+        _phasors["u+"].visible  = _phasors["u+"].magnitude > 1e-6;
+        _phasors["u-"].visible  = _phasors["u-"].magnitude > 1e-6;
         break;
     }
 
-    update();  // 可选：直接触发重绘
+    update();
 }
 
-void ac_six_chart::updateDisplay()
+void ac_u_six_chart::updateDisplay()
 {
     double maxMag = 0;
     for (const auto& p : _phasors) {
@@ -198,7 +195,7 @@ void ac_six_chart::updateDisplay()
     update();
 }
 
-void ac_six_chart::drawGrid(QPainter &painter, const QRect &drawRect)
+void ac_u_six_chart::drawGrid(QPainter &painter, const QRect &drawRect)
 {
     QPointF center = drawRect.center();   // ← 改成和相量一样
     double radius = qMin(drawRect.width(), drawRect.height()) / 2.0 - 10;
@@ -249,7 +246,7 @@ void ac_six_chart::drawGrid(QPainter &painter, const QRect &drawRect)
     }
 }
 
-void ac_six_chart::drawPhasor(QPainter &painter, const QRect &drawRect, const Phasor &p, const QPointF &center)
+void ac_u_six_chart::drawPhasor(QPainter &painter, const QRect &drawRect, const Phasor &p, const QPointF &center)
 {
     double radius = qMin(rect().width(), rect().height()) / 2.0 - 10;
     double scale = radius / _maxMagnitude;
@@ -261,10 +258,10 @@ void ac_six_chart::drawPhasor(QPainter &painter, const QRect &drawRect, const Ph
 
     // 根据是相电流还是线电流设置不同线宽和样式
     QPen pen(p.color);
-    if (p.label.startsWith("I") && p.label.length() == 2) {  // IA, IB, IC
+    if (p.label.startsWith("U") && p.label.length() == 2) {  // UA/UB/UC
         pen.setWidth(4);           // 相电流更粗
         pen.setStyle(Qt::SolidLine);
-    } else if (p.label.startsWith("i") || (p.label.length() == 2 && p.label[0].isLower())) {  // Ia, Ib, Ic
+    } else if (p.label.startsWith("U") || (p.label.length() == 2 && p.label[0].isLower())) {  // Ua/Ub/Uc
         pen.setWidth(2);           // 线电流更细
         // pen.setStyle(Qt::DashLine);  // 可选：改成虚线，更容易区分
         pen.setStyle(Qt::SolidLine);
@@ -290,17 +287,17 @@ void ac_six_chart::drawPhasor(QPainter &painter, const QRect &drawRect, const Ph
     painter.drawText(QPointF(x2 + 10, y2 + 6), p.label);
 }
 
-QString ac_six_chart::normalizeKey(const QString &key) const
+QString ac_u_six_chart::normalizeKey(const QString &key) const
 {
     QString k = key.trimmed().toUpper();
-    if (k == "IO" || k == "I0")  return "I0";
-    if (k == "I+" || k == "IP" || k == "I_POS") return "I+";
-    if (k == "I-" || k == "IN" || k == "I_NEG") return "I-";
-    if (k == "IA") return "IA";
-    if (k == "IB") return "IB";
-    if (k == "IC") return "IC";
-    if (k == "IA" || k == "IA") return "Ia";  // 小写兼容
-    if (k == "IB" || k == "IB") return "Ib";
-    if (k == "IC" || k == "IC") return "Ic";
+    if (k == "Uo" || k == "Uo")  return "Uo";
+    if (k == "U+" || k == "UP" || k == "I_POS") return "U+";
+    if (k == "U-" || k == "UN" || k == "I_NEG") return "U-";
+    if (k == "UA") return "UA";
+    if (k == "UB") return "UB";
+    if (k == "UC") return "UC";
+    if (k == "Ua" || k == "Ua") return "Ua";  // 小写兼容
+    if (k == "Ub" || k == "Ub") return "Ub";
+    if (k == "Uc" || k == "Uc") return "Uc";
     return key; // 其他保持原样
 }

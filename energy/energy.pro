@@ -11,7 +11,8 @@ CONFIG += c++17
 
 SOURCES += \
     charts/ac_chart.cpp \
-    charts/ac_six_chart.cpp \
+    charts/ac_i_six_chart.cpp \
+    charts/ac_u_six_chart.cpp \
     charts/dc_chart.cpp \
     charts/phasewave_chart.cpp \
     global/led.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
     process/process_1.cpp \
     process/process_2.cpp \
     process/process_24.cpp \
+    process/process_25.cpp \
     process/process_3.cpp \
     serial/serial_port.cpp \
     serial/serial_ui.cpp \
@@ -84,7 +86,8 @@ SOURCES += \
 
 HEADERS += \
     charts/ac_chart.h \
-    charts/ac_six_chart.h \
+    charts/ac_i_six_chart.h \
+    charts/ac_u_six_chart.h \
     charts/dc_chart.h \
     charts/phasewave_chart.h \
     global/index.h \
@@ -95,6 +98,7 @@ HEADERS += \
     process/process_1.h \
     process/process_2.h \
     process/process_24.h \
+    process/process_25.h \
     process/process_3.h \
     serial/serial_port.h \
     serial/serial_ui.h \

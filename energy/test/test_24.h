@@ -4,7 +4,7 @@
 #include "test.h"
 #include "ui/test24/ui_024.h"
 #include "process/process_24.h"
-#include "charts/ac_six_chart.h"
+#include "charts/ac_i_six_chart.h"
 
 // test24:六相交流电流实验
 

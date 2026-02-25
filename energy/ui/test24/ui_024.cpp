@@ -49,7 +49,7 @@ void ui_024::slot_on_tb_sycs_changed(QTableWidgetItem *item)
     if (!item)
         return;
 
-    const int row = item->row();
+    // const int row = item->row();
     const int col = item->column();
 
     const bool isValueCol  = (col == 1 || col == 3);

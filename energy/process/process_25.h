@@ -1,20 +1,20 @@
-#ifndef PROCESS_24_H
-#define PROCESS_24_H
+#ifndef PROCESS_25_H
+#define PROCESS_25_H
 
 #include "process.h"
 
-enum class t24_test_type{
+enum class t25_test_type{
     action,
     action_and_return
 };
 
-enum class t24_test_auto{
+enum class t25_test_auto{
     test_hand,
     test_auto_up,
     test_auto_down
 };
 
-class process_24 : public process
+class process_25 : public process
 {
     Q_OBJECT
 
@@ -33,13 +33,12 @@ class process_24 : public process
         f_return = 0x20
     };
 public:
-    explicit process_24(QObject *parent = nullptr);
-
+    explicit process_25(QObject *parent = nullptr);
     void setSerial(serial_port* serial);  // 设置串口指针的 setter 方法
 
 public slots:
     void slot_start(QMap<QString, QList<QVariant>> map,
-                    t24_test_type type, t24_test_auto auto_type, QString delay);
+                    t25_test_type type, t25_test_auto auto_type, QString delay);
     void slot_stop();
     void slot_serial_readyRead();
 
@@ -59,8 +58,8 @@ private:
     // 测试参数
     QMap<QString, QList<QVariant>> _parameter;
     // 返回参数
-    t24_test_type _type;
-    t24_test_auto _auto_type;
+    t25_test_type _type;
+    t25_test_auto _auto_type;
     quint16 _delay_time;
     QSharedPointer<serial_port> _serial;  // 串口共享指针
     QMap<QString, std::function<void()>> _parse_function;       // 解析函数分发map
@@ -75,4 +74,4 @@ private slots:
     void slot_onTimeout();
 };
 
-#endif // PROCESS_24_H
+#endif // PROCESS_25_H

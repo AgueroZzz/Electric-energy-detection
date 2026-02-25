@@ -1,5 +1,5 @@
-#ifndef AC_SIX_CHART_H
-#define AC_SIX_CHART_H
+#ifndef AC_U_SIX_CHART_H
+#define AC_U_SIX_CHART_H
 
 #include <QWidget>
 #include <QPainter>
@@ -17,12 +17,12 @@ struct Phasor
     bool visible = false;
 };
 
-class ac_six_chart : public QWidget
+class ac_u_six_chart : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ac_six_chart(const QMap<QString, QList<QVariant>>& initialMap = {},
-                                  QWidget *parent = nullptr);
+    explicit ac_u_six_chart(const QMap<QString, QList<QVariant>>& initialMap = {},
+                            QWidget *parent = nullptr);
 
     // 手动设置所有相量（一般不直接调用）
     void setPhasors(const QMap<QString, Phasor>& phasors);
@@ -40,7 +40,7 @@ public slots:
     // 显示X/Y坐标轴
     void slot_setShowAxes(bool show);
 
-    // 模式切换：0=相电流，1=线电流，2=序分量
+    // 模式切换：0=相电压，1=序电压
     void slot_onModeChanged(int mode);
 
     // 缩小比例尺（放大图形）
@@ -58,12 +58,12 @@ private:
     bool _showGridCircles = true;
     bool _showAxes = true;
 
-    int _mode = 0;   // 0:相电流  1:线电流  2:序分量
+    int _mode = 0;   // 0:相分量  1:序分量
 
 private:
     void initAllPhasors();
 
-    // 从输入map解析 IA/IB/IC / Ia/Ib/Ic / I0/I+/I-/Io/i+/i-
+    // 从输入map解析 UA/UB/UC / Ua/Ub/Uc / Uo/U+/U-/uo/u+/u-
     void parsePhasorsFromMap(const QMap<QString, QList<QVariant>>& map);
 
     // 计算派生量
@@ -83,4 +83,4 @@ private:
     QString normalizeKey(const QString& key) const;
 };
 
-#endif // AC_SIX_CHART_H
+#endif // AC_U_SIX_CHART_H
