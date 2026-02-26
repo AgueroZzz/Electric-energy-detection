@@ -22,23 +22,24 @@ void process_25::setSerial(serial_port *serial)
 void process_25::slot_start(QMap<QString, QList<QVariant> > map, t25_test_type type, t25_test_auto auto_type, QString delay)
 {
     if (isRunning()) return;
-
+    QObject::connect(this, &process_25::sig_phase_changed, this, &process_25::slot_phase_changed, Qt::DirectConnection);
     _parameter = map;
     _type = type;
     _auto_type = auto_type;
     _delay_time = delay.toUInt();
-    QObject::connect(this, &process_25::sig_phase_changed, this, &process_25::slot_phase_changed, Qt::DirectConnection);
+    qDebug() << _delay_time;
     set_TestPhase(TestPhase::Connecting);
 }
 
 void process_25::slot_stop()
 {
+    set_TestPhase(TestPhase::Idle);
+    QObject::disconnect(this, &process_25::sig_phase_changed, this, &process_25::slot_phase_changed);
     timeoutTimer->stop();
     runtimeTimer->stop();
     QByteArray frame;
     frame.append(QByteArray::fromHex("0100"));      // 结束
     emit sig_send_msg_to_serial(frame);
-    currentPhase = TestPhase::Idle;
     emit sig_state_changed("已停止", "#7f8c8d");
 }
 
@@ -47,7 +48,12 @@ void process_25::slot_serial_readyRead()
     if(currentPhase != TestPhase::Running){
         return;
     }
-    frame_parse(_serial->get_serial_port_data());
+    if(!frame_parse(_serial->get_serial_port_data())){
+        set_TestPhase(TestPhase::Error);
+        return;
+    }
+
+    set_TestPhase(TestPhase::Finishing);
 }
 
 void process_25::slot_phase_changed(TestPhase phase)
@@ -59,7 +65,8 @@ void process_25::slot_phase_changed(TestPhase phase)
     }else if(phase == TestPhase::Running){
         test_send_para_to_device();
     }else if(phase == TestPhase::Finishing){
-
+        qDebug() << "测试完成";
+        return;
     }else if(phase == TestPhase::Error){
         return;
     }
@@ -113,17 +120,18 @@ void process_25::attemptConnect()
     }
 
     QByteArray cmd = QByteArray::fromHex("01FF");
+    _serial->clear_serial();
     emit sig_send_msg_to_serial(cmd);
 
     timeoutTimer->start(_delay_time);
 }
 
-void process_25::frame_parse(QByteArray frame)
+bool process_25::frame_parse(QByteArray frame)
 {
     QStringList results;
     quint8 dataCount = quint8(frame[0]);
     if(frame.size() != (dataCount + 1)){
-        return;             // 帧长度=数据位+1
+        return false;             // 帧长度=数据位+1
     }
     quint8 type = quint8(frame[1]);
     if(type == static_cast<quint8>(FrameType::f_action)){           // 动作帧
@@ -131,18 +139,20 @@ void process_25::frame_parse(QByteArray frame)
     }else if(type == static_cast<quint8>(FrameType::f_return)){     // 返回帧
         results << "return";
     }else{
-        return;             // 非法帧
+        return false;             // 非法帧
     }
     quint8 portByte = quint8(frame[2]);
     QString port = parsePort(portByte);
     if (port == "UnKnow") {
-        return;             // 未知端口，丢弃
+        return false;             // 未知端口，丢弃
     }
     results << port;
     quint32 actionTimeMs = parseActionTime(frame);
     results << QString::number(actionTimeMs);
 
     emit sig_frame_parse_result(results);
+
+    return true;
 }
 
 void process_25::slot_onTimeout()

@@ -68,7 +68,7 @@ private:
     void test_connect_to_device();
     void test_send_para_to_device();
     void attemptConnect();
-    void frame_parse(QByteArray frame);
+    bool frame_parse(QByteArray frame);
 
 private slots:
     void slot_onTimeout();

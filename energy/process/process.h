@@ -10,12 +10,12 @@
 
 // 测试过程父类
 enum class TestPhase {
-    Idle,
-    Connecting,
-    ParamSetting,
-    Running,
-    Finishing,
-    Error
+    Idle,               // 空闲
+    Connecting,         // 连接
+    ParamSetting,       // 参数设置
+    Running,            // 运行
+    Finishing,          // 完成
+    Error               // 错误
 };
 
 class process : public QObject

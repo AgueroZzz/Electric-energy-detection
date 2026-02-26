@@ -63,6 +63,29 @@ public:
         }
     }
 
+    inline void connect_test_to_process(test_25* test, process_25* process){
+        QObject::connect(process, &process::sig_state_changed, test, [test](QString text, QString color){
+            test->_state_label->setText(text);
+            test->_state_label->setStyleSheet(QString("color:%1; font-weight:bold;").arg(color));
+        });
+
+        QObject::connect(process, &process::sig_update_runtime, test, [test](double sec){
+            test->_runtime_second->setText(QString::asprintf("%.2f", sec));
+        });
+
+        QObject::connect(process, &process::sig_test_finished, test, [test](bool ok, QString reason){
+            test->_btn_start_test->setChecked(false);
+            test->_btn_end_test->setChecked(true);
+            if (!ok) {
+                test->setState(TestState::Error);
+                QMessageBox::warning(test, "测试异常", reason);
+            } else {
+                test->setState(TestState::Idle);
+            }
+        });
+        QObject::connect(process, &process_25::sig_frame_parse_result, test, &test_25::slot_frame_parse_result);
+    }
+
 public slots:
     void slot_frame_parse_result(const QStringList& result);
 

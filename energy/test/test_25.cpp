@@ -17,28 +17,6 @@ test_25::test_25(quint16 test_id, QWidget *parent)
     init_top_widget();
     init_chart_widget();
     init_state_widget();
-
-    _process_25 = new process_25();
-    _process_25->setSerial(serial);
-    QObject::connect(_process_25, &process::sig_state_changed, this, [this](QString text, QString color){
-        _state_label->setText(text);
-        _state_label->setStyleSheet(QString("color:%1; font-weight:bold;").arg(color));
-    });
-
-    QObject::connect(_process_25, &process::sig_update_runtime, this, [this](double sec){
-        _runtime_second->setText(QString::number(sec, 'f', 2));
-    });
-
-    QObject::connect(_process_25, &process::sig_test_finished, this, [this](bool ok, QString reason){
-        _btn_start_test->setChecked(false);
-        if (!ok) {
-            setState(TestState::Error);
-            QMessageBox::warning(this, "测试异常", reason);
-        } else {
-            setState(TestState::Idle);
-        }
-    });
-    QObject::connect(_process_25, &process_25::sig_frame_parse_result, this, &test_25::slot_frame_parse_result, Qt::DirectConnection);
 }
 
 void test_25::slot_frame_parse_result(const QStringList &result)
@@ -227,6 +205,9 @@ void test_25::slot_test_start()
     }
 
     setState(TestState::Running);
+    _process_25 = new process_25();
+    _process_25->setSerial(_serialPort.data());
+    connect_test_to_process(this, _process_25);
     _process_25->slot_start(_ui_025->tb_cl_values,
                             get_test_type(_ui_025->leftGroup->checkedButton()->text()),
                             get_test_auto(_ui_025->rightGroup->checkedButton()->text()),
