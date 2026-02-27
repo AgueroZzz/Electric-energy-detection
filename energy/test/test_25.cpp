@@ -205,9 +205,10 @@ void test_25::slot_test_start()
     }
 
     setState(TestState::Running);
-    _process_25 = new process_25();
+    _process_25 = new process_25(this);
     _process_25->setSerial(_serialPort.data());
     connect_test_to_process(this, _process_25);
+    if(!_process_25) return;
     _process_25->slot_start(_ui_025->tb_cl_values,
                             get_test_type(_ui_025->leftGroup->checkedButton()->text()),
                             get_test_auto(_ui_025->rightGroup->checkedButton()->text()),
@@ -216,7 +217,9 @@ void test_25::slot_test_start()
 
 void test_25::slot_test_stop()
 {
-    _process_25->slot_stop();
+    if (_process_25) {
+        _process_25->slot_stop();
+    }
     setState(TestState::Sttopped);
 }
 

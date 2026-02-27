@@ -134,7 +134,8 @@ private:
     QTimer* _runtimeTimer = nullptr;
     quint64 _startTime = 0;
 
-    process_25* _process_25 = nullptr;
+    // process_25* _process_25 = nullptr;
+    QPointer<process_25> _process_25;
 
     serial_ui* _serial_ui;
 

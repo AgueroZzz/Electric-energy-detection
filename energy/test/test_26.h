@@ -4,6 +4,8 @@
 #include "test.h"
 #include "ui/test26/ui_026.h"
 
+// test26:十二相交流电压/电流实验
+
 class test_26 : public test
 {
 public:

@@ -22,6 +22,7 @@ SOURCES += \
     process/process_2.cpp \
     process/process_24.cpp \
     process/process_25.cpp \
+    process/process_26.cpp \
     process/process_3.cpp \
     serial/serial_port.cpp \
     serial/serial_ui.cpp \
@@ -99,6 +100,7 @@ HEADERS += \
     process/process_2.h \
     process/process_24.h \
     process/process_25.h \
+    process/process_26.h \
     process/process_3.h \
     serial/serial_port.h \
     serial/serial_ui.h \
