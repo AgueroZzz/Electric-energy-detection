@@ -3,6 +3,8 @@
 
 #include "test.h"
 #include "ui/test26/ui_026.h"
+#include "process/process_26.h"
+#include "charts/ac_i_u_twelve_chart.h"
 
 // test26:十二相交流电压/电流实验
 
@@ -11,21 +13,117 @@ class test_26 : public test
 public:
     test_26(quint16 test_id, QWidget *parent = nullptr);
 
+    inline t26_test_auto get_test_auto(QString name){
+        if(name == "手动"){
+            return t26_test_auto::test_hand;
+        }else if(name == "自动加"){
+            return t26_test_auto::test_auto_up;
+        }else{
+            return t26_test_auto::test_auto_down;
+        }
+    }
+
+    inline t26_test_type get_test_type(QString name){
+        if(name == "测接点动作"){
+            return t26_test_type::action;
+        }else{
+            return t26_test_type::action_and_return;
+        }
+    }
+
+    inline quint16 get_result_index(QString name){
+        if(name == "A"){return 0;}
+        else if(name == "B"){return 1;}
+        else if(name == "C"){return 2;}
+        else if(name == "R"){return 3;}
+        else if(name == "a"){return 4;}
+        else if(name == "b"){return 5;}
+        else if(name == "c"){return 6;}
+        else{
+            return 0;
+        }
+    }
+
+    inline void connect_test_to_process(test_26* test, process_26* process){
+        QObject::connect(process, &process::sig_state_changed, test, [test](QString text, QString color){
+            test->_state_label->setText(text);
+            test->_state_label->setStyleSheet(QString("color:%1; font-weight:bold;").arg(color));
+        });
+
+        QObject::connect(process, &process::sig_update_runtime, test, [test](double sec){
+            test->_runtime_second->setText(QString::asprintf("%.2f", sec));
+        });
+
+        QObject::connect(process, &process::sig_test_finished, test, [test](bool ok, QString reason){
+            test->_btn_start_test->setChecked(false);
+            test->_btn_end_test->setChecked(true);
+            if (!ok) {
+                test->setState(TestState::Error);
+                QMessageBox::warning(test, "测试异常", reason);
+            } else {
+                test->setState(TestState::Idle);
+            }
+        });
+        QObject::connect(process, &process_26::sig_frame_parse_result, test, &test_26::slot_frame_parse_result);
+    }
+
+public slots:
+    void slot_frame_parse_result(const QStringList& result);
+
 private:
     void init_UI();
-
     void init_top_widget();                     // 初始化顶部按钮
+    void init_chart_widget();                   // 初始化图像
+    void init_state_widget();                   // 初始化状态栏
 
     // 顶部/中部/底部Widget
     QWidget* _top_widget;
     ui_026* _ui_026;
+    ac_i_u_twelve_chart* _chart;
+    QWidget* _state_widget;
 
     // 顶部btn
     QToolButton* _btn_open_para;        // 打开参数按钮
     QToolButton* _btn_save_para;        // 保存参数按钮
     QToolButton* _btn_print_test;       // 打印测试记录
-    QToolButton* _btn_error_head;       // 进入故障前状态
-    QToolButton* _btn_end_test;         // 停止实验
+    QToolButton* _btn_serial_opera;     // 串口操作
+    QToolButton* _btn_up_para;          // 递增数据
+    QToolButton* _btn_down_para;        // 递减数据
+    QToolButton* _btn_recover_para;     // 恢复默认值
+    QButtonGroup* _btn_test_group;
+    QToolButton* _btn_start_test;       // 开始实验
+    QToolButton* _btn_end_test;       // 停止实验
+
+    // 图标btn
+    QToolButton* _chart_btn_fdq;        // 放大器
+    QToolButton* _chart_btn_x;          // 背景X
+    QToolButton* _chart_btn_o;          // 背景o
+    QToolButton* _chart_btn_xfl;        // 相分量
+    QToolButton* _chart_btn_xufl;       // 序分量
+
+    // 开关量
+    QLabel* _state_label;               // 状态
+    QLabel* _runtime_second;            // 运行时间
+    led* _led_A;
+    led* _led_B;
+    led* _led_C;
+    led* _led_R;
+    led* _led_a;
+    led* _led_b;
+    led* _led_c;
+
+    QTimer* _runtimeTimer = nullptr;
+    quint64 _startTime = 0;
+
+    QPointer<process_26> _process_26;
+
+    serial_ui* _serial_ui;
+
+    QSharedPointer<serial_port> _serialPort;        // 串口智能指针类
+
+private slots:
+    void slot_test_start();
+    void slot_test_stop();
 };
 
 #endif // TEST_26_H

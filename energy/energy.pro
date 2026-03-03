@@ -12,6 +12,7 @@ CONFIG += c++17
 SOURCES += \
     charts/ac_chart.cpp \
     charts/ac_i_six_chart.cpp \
+    charts/ac_i_u_twelve_chart.cpp \
     charts/ac_u_six_chart.cpp \
     charts/dc_chart.cpp \
     charts/phasewave_chart.cpp \
@@ -88,6 +89,7 @@ SOURCES += \
 HEADERS += \
     charts/ac_chart.h \
     charts/ac_i_six_chart.h \
+    charts/ac_i_u_twelve_chart.h \
     charts/ac_u_six_chart.h \
     charts/dc_chart.h \
     charts/phasewave_chart.h \
