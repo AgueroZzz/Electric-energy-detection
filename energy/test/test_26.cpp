@@ -45,18 +45,22 @@ void test_26::init_UI()
 {
     _top_widget = new QWidget();
     _ui_026 = new ui_026();
+    _state_widget = new QWidget();
 
     // 垂直布局
     QVBoxLayout *layout = new QVBoxLayout();
     layout->addWidget(_top_widget);
     layout->addWidget(_ui_026);
+    layout->addWidget(_state_widget);
 
-    layout->setStretch(0, 1);
-    layout->setStretch(1, 9);
+    layout->setStretch(0, 2);
+    layout->setStretch(1, 15);
+    layout->setStretch(2, 1);
+    _state_widget->setMaximumHeight(40);
 
     // 设置组件之间的距离
     layout->setSpacing(0);
-    layout->setContentsMargins(5, 5, 5, 5);
+    layout->setContentsMargins(5, 2, 5, 2);
 
     setLayout(layout);
 }

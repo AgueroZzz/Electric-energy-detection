@@ -3,17 +3,6 @@
 
 #include "process.h"
 
-enum class t25_test_type{
-    action,
-    action_and_return
-};
-
-enum class t25_test_auto{
-    test_hand,
-    test_auto_up,
-    test_auto_down
-};
-
 class process_25 : public process
 {
     Q_OBJECT
@@ -38,7 +27,7 @@ public:
 
 public slots:
     void slot_start(QMap<QString, QList<QVariant>> map,
-                    t25_test_type type, t25_test_auto auto_type, QString delay);
+                    test_type type, test_auto auto_type, QString delay);
     void slot_stop();
     void slot_serial_readyRead();
 
@@ -58,8 +47,8 @@ private:
     // 测试参数
     QMap<QString, QList<QVariant>> _parameter;
     // 返回参数
-    t25_test_type _type;
-    t25_test_auto _auto_type;
+    test_type _type;
+    test_auto _auto_type;
     quint16 _delay_time;
     QSharedPointer<serial_port> _serial;  // 串口共享指针
     QMap<QString, std::function<void()>> _parse_function;       // 解析函数分发map

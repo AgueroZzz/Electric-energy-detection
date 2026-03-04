@@ -833,7 +833,7 @@
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_5">
              <item>
-              <widget class="QTableWidget" name="tb_kgl">
+              <widget class="QTableWidget" name="tb_down_1">
                <property name="rowCount">
                 <number>4</number>
                </property>
@@ -978,7 +978,7 @@
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_12">
              <item>
-              <widget class="QTableWidget" name="tb_result">
+              <widget class="QTableWidget" name="tb_down_2">
                <property name="rowCount">
                 <number>6</number>
                </property>

@@ -30,6 +30,7 @@
 #include "serial/serial_port.h"
 #include "serial/serial_ui.h"
 #include "global/led.h"
+#include "process/process.h"
 
 namespace Ui {
 class test;
@@ -78,6 +79,52 @@ public:
         cell_widget->setStyleSheet("QWidget{background-color : #cccccc}");
 
         return cell_widget;
+    }
+
+    // 工具函数：获取实验的类型
+    inline test_auto get_test_auto(QString name){
+        if(name == "手动"){
+            return test_auto::test_hand;
+        }else if(name == "半自动"){
+            return test_auto::test_h_auto;
+        }else if(name == "全自动"){
+            return test_auto::test_auto;
+        }else if(name == "自动加" || name == "递增"){
+            return test_auto::test_a_up;
+        }else{
+             return test_auto::test_a_down;
+        }
+    }
+
+    // 工具函数：获取开入量逻辑类型
+    inline logic_type get_logic_type(QString name){
+        if(name == "逻辑与"){
+            return logic_type::logic_and;
+        }else{
+            return logic_type::logic_or;
+        }
+    }
+
+    // 工具函数：获取测试自动类型
+    inline test_type get_test_type(QString name){
+        if(name == "测接点动作"){
+            return test_type::t_action;
+        }else{
+            return test_type::t_return;
+        }
+    }
+
+    inline quint16 get_result_index(QString name){
+        if(name == "A"){return 0;}
+        else if(name == "B"){return 1;}
+        else if(name == "C"){return 2;}
+        else if(name == "R"){return 3;}
+        else if(name == "a"){return 4;}
+        else if(name == "b"){return 5;}
+        else if(name == "c"){return 6;}
+        else{
+            return 0;
+        }
     }
 
 signals:

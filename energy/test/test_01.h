@@ -32,51 +32,27 @@ public:
         }
     }
 
-    inline t1_test_auto get_test_auto(QString name){
-        if(name == "手动"){
-            return t1_test_auto::test_hand;
-        }else if(name == "半自动"){
-            return t1_test_auto::test_h_auto;
-        }else{
-            return t1_test_auto::test_auto;
-        }
-    }
+    inline void connect_test_to_process(test_01* test, process_1* process){
+        QObject::connect(process, &process::sig_state_changed, test, [test](QString text, QString color){
+            test->_state_label->setText(text);
+            test->_state_label->setStyleSheet(QString("color:%1; font-weight:bold;").arg(color));
+        });
 
-    inline t1_logic_type get_logic_type(QString name){
-        if(name == "逻辑与"){
-            return t1_logic_type::logic_and;
-        }else{
-            return t1_logic_type::logic_or;
-        }
-    }
+        QObject::connect(process, &process::sig_update_runtime, test, [test](double sec){
+            test->_runtime_second->setText(QString::asprintf("%.2f", sec));
+        });
 
-    inline t1_test_type get_test_type(QString name){
-        if(name == "测接点动作"){
-            return t1_test_type::action;
-        }else{
-            return t1_test_type::action_and_return;
-        }
-    }
-
-    inline t1_test_auto_tpye get_test_type_a(QString name){
-        if(name == "递增"){
-            return t1_test_auto_tpye::t_a_up;
-        }else{
-            return t1_test_auto_tpye::t_a_down;
-        }
-    }
-
-    inline quint16 get_result_index(QString name){
-        if(name == "A"){return 0;}
-        else if(name == "B"){return 1;}
-        else if(name == "C"){return 2;}
-        else if(name == "R"){return 3;}
-        else if(name == "a"){return 4;}
-        else if(name == "b"){return 5;}
-        else if(name == "c"){return 6;}
-        else{
-            return 0;
-        }
+        QObject::connect(process, &process::sig_test_finished, test, [test](bool ok, QString reason){
+            test->_btn_start_test->setChecked(false);
+            test->_btn_end_test->setChecked(true);
+            if (!ok) {
+                test->setState(TestState::Error);
+                QMessageBox::warning(test, "测试异常", reason);
+            } else {
+                test->setState(TestState::Idle);
+            }
+        });
+        QObject::connect(process, &process_1::sig_frame_parse_result, test, &test_01::slot_frame_parse_result);
     }
 
 public slots:
@@ -132,7 +108,7 @@ private:
     QTimer* _runtimeTimer = nullptr;
     quint64 _startTime = 0;
 
-    process_1* _process_1 = nullptr;
+    QPointer<process_1> _process_1;
 
     serial_ui* _serial_ui;
 

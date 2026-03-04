@@ -18,28 +18,6 @@ test_01::test_01(quint16 test_id, QWidget *parent)
     init_top_widget();
     init_chart_widget();
     init_state_widget();
-
-    _process_1 = new process_1();
-    _process_1->setSerial(serial);
-    QObject::connect(_process_1, &process::sig_state_changed, this, [this](QString text, QString color){
-        _state_label->setText(text);
-        _state_label->setStyleSheet(QString("color:%1; font-weight:bold;").arg(color));
-    });
-
-    QObject::connect(_process_1, &process::sig_update_runtime, this, [this](double sec){
-        _runtime_second->setText(QString::number(sec, 'f', 2));
-    });
-
-    QObject::connect(_process_1, &process::sig_test_finished, this, [this](bool ok, QString reason){
-        _btn_start_test->setChecked(false);
-        if (!ok) {
-            setState(TestState::Error);
-            QMessageBox::warning(this, "测试异常", reason);
-        } else {
-            setState(TestState::Idle);
-        }
-    });
-    QObject::connect(_process_1, &process_1::sig_frame_parse_result, this, &test_01::slot_frame_parse_result, Qt::DirectConnection);
 }
 
 void test_01::init_UI()
@@ -218,17 +196,23 @@ void test_01::slot_test_start()
     }
 
     setState(TestState::Running);
+    _process_1 = new process_1(this);
+    _process_1->setSerial(_serialPort.data());
+    connect_test_to_process(this, _process_1);
+    if(!_process_1) return;
     _process_1->slot_start(_ui_001->tb_cl_values,
                            get_test_type(_ui_001->testTypeGroup->checkedButton()->text()),
                            get_logic_type(_ui_001->logicGroup->checkedButton()->text()),
                            get_test_auto(_ui_001->leftGroup->checkedButton()->text()),
-                           get_test_type_a(_ui_001->rightGroup->checkedButton()->text()),
+                           get_test_auto(_ui_001->rightGroup->checkedButton()->text()),
                            _ui_001->ui->le_delay->text());
 }
 
 void test_01::slot_test_stop()
 {
-    _process_1->slot_stop();
+    if (_process_1) {
+        _process_1->slot_stop();
+    }
     setState(TestState::Sttopped);
 }
 

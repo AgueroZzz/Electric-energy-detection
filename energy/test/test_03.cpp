@@ -18,33 +18,28 @@ test_03::test_03(quint16 test_id, QWidget *parent)
     init_top_widget();
     init_chart_widget();
     init_state_widget();
-
-    _process_3 = new process_3();
-    _process_3->setSerial(serial);
-    QObject::connect(_process_3, &process::sig_state_changed, this, [this](QString text, QString color){
-        _state_label->setText(text);
-        _state_label->setStyleSheet(QString("color:%1; font-weight:bold;").arg(color));
-    });
-
-    QObject::connect(_process_3, &process::sig_update_runtime, this, [this](double sec){
-        _runtime_second->setText(QString::number(sec, 'f', 2));
-    });
-
-    QObject::connect(_process_3, &process::sig_test_finished, this, [this](bool ok, QString reason){
-        _btn_start_test->setChecked(false);
-        if (!ok) {
-            setState(TestState::Error);
-            QMessageBox::warning(this, "测试异常", reason);
-        } else {
-            setState(TestState::Idle);
-        }
-    });
-    QObject::connect(_process_3, &process_3::sig_frame_parse_result, this, &test_03::slot_frame_parse_result, Qt::DirectConnection);
 }
 
 void test_03::slot_frame_parse_result(const QStringList &result)
 {
-
+    QString portName = result[1];
+    QString type = result[0];
+    QString time = result[2];
+    QTableWidgetItem *item;
+    if(type == "action"){
+        item = _ui_003->ui->tb_down_1->item(get_result_index(portName), 1);
+        if (!item) {
+            item = new QTableWidgetItem();
+            _ui_003->ui->tb_down_1->setItem(get_result_index(portName), 1, item);
+        }
+    }else{
+        item = _ui_003->ui->tb_down_1->item(get_result_index(portName), 2);
+        if (!item) {
+            item = new QTableWidgetItem();
+            _ui_003->ui->tb_down_1->setItem(get_result_index(portName), 2, item);
+        }
+    }
+    item->setText(time);
 }
 
 void test_03::init_UI()
@@ -185,8 +180,11 @@ void test_03::slot_test_start()
         setState(TestState::Error);
         return;
     }
-
     setState(TestState::Running);
+    _process_3 = new process_3(this);
+    _process_3->setSerial(_serialPort.data());
+    connect_test_to_process(this, _process_3);
+    if(!_process_3) return;
     _process_3->slot_start(_ui_003->tb_cl_values,
                            get_test_type(_ui_003->ui->cb_test_action->currentText()),
                            get_test_auto(_ui_003->ui->cb_test_type->currentText()),
@@ -195,7 +193,9 @@ void test_03::slot_test_start()
 
 void test_03::slot_test_stop()
 {
-    _process_3->slot_stop();
+    if (_process_3) {
+        _process_3->slot_stop();
+    }
     setState(TestState::Sttopped);
 }
 

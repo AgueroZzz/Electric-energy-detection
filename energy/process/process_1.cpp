@@ -19,7 +19,7 @@ void process_1::setSerial(serial_port *serial)
     QObject::connect(_serial.data(), &serial_port::sig_serial_readyRead, this, &process_1::slot_serial_readyRead, Qt::QueuedConnection);
 }
 
-void process_1::slot_start(QMap<QString, QList<QVariant> > map, t1_test_type type, t1_logic_type logic, t1_test_auto t_auto, t1_test_auto_tpye t_a_t, QString delay)
+void process_1::slot_start(QMap<QString, QList<QVariant> > map, test_type type, logic_type logic, test_auto t_auto, test_auto t_a_t, QString delay)
 {
     if (isRunning()) return;
 

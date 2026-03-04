@@ -14,22 +14,46 @@ class test_03 : public test
 public:
     test_03(quint16 test_id, QWidget *parent = nullptr);
 
-    inline t3_test_auto get_test_auto(QString name){
-        if(name == "手动实验"){
-            return t3_test_auto::test_hand;
-        }else if(name == "自动增加"){
-            return t3_test_auto::test_auto_up;
-        }else{
-            return t3_test_auto::test_auto_down;
+    ~test_03(){
+        if (_process_3) {
+            _process_3->slot_stop();
+        }
+        if (_serialPort) {
+            if (_serialPort->_serial_status == index_serial_status::serial_on) {
+                _serialPort->slot_serial_opera(index_serial_status::serial_off, {});
+            }
+            if (_serialPort->_thread.isRunning()) {
+                _serialPort->_thread.quit();
+
+                if (!_serialPort->_thread.wait(3000)) {
+                    _serialPort->_thread.terminate();
+                    qWarning() << "串口线程等待超时，强制终止（可能有资源泄漏）";
+                }
+            }
         }
     }
 
-    inline t3_test_type get_test_type(QString name){
-        if(name == "动作停止"){
-            return t3_test_type::action;
-        }else{
-            return t3_test_type::action_and_return;
-        }
+    inline void connect_test_to_process(test_03* test, process_3* process){
+        QObject::connect(process, &process::sig_state_changed, test, [test](QString text, QString color){
+            test->_state_label->setText(text);
+            test->_state_label->setStyleSheet(QString("color:%1; font-weight:bold;").arg(color));
+        });
+
+        QObject::connect(process, &process::sig_update_runtime, test, [test](double sec){
+            test->_runtime_second->setText(QString::asprintf("%.2f", sec));
+        });
+
+        QObject::connect(process, &process::sig_test_finished, test, [test](bool ok, QString reason){
+            test->_btn_start_test->setChecked(false);
+            test->_btn_end_test->setChecked(true);
+            if (!ok) {
+                test->setState(TestState::Error);
+                QMessageBox::warning(test, "测试异常", reason);
+            } else {
+                test->setState(TestState::Idle);
+            }
+        });
+        QObject::connect(process, &process_3::sig_frame_parse_result, test, &test_03::slot_frame_parse_result);
     }
 
 public slots:
@@ -71,7 +95,7 @@ private:
     led* _led_b;
     led* _led_c;
 
-    process_3* _process_3 = nullptr;
+    QPointer<process_3> _process_3;
 
     serial_ui* _serial_ui;
 

@@ -18,6 +18,27 @@ enum class TestPhase {
     Error               // 错误
 };
 
+// 测试类型
+enum class test_type{
+    t_action,       // 动作
+    t_return        // 动作/返回
+};
+
+// 逻辑类型
+enum class logic_type{
+    logic_and,      // 逻辑与
+    logic_or        // 逻辑或
+};
+
+// 测试类型
+enum class test_auto{
+    test_hand,      // 手动测试
+    test_auto,      // 自动测试
+    test_h_auto,    // 半自动测试
+    test_a_up,      // 自动测试加
+    test_a_down     // 自动测试减
+};
+
 class process : public QObject
 {
     Q_OBJECT

@@ -20,13 +20,13 @@ void ui_003::init_table()
     ui->tb_fz_xw->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tb_fz_xw->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
-    ui->tb_kgl->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->tb_kgl->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->tb_kgl->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tb_down_1->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tb_down_1->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tb_down_1->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
-    ui->tb_result->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->tb_result->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->tb_result->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tb_down_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tb_down_2->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tb_down_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     init_first_table();
 

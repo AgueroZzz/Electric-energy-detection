@@ -15,32 +15,9 @@ test_02::test_02(quint16 test_id, QWidget *parent)
     QObject::connect(serial, &serial_port::sig_serial_status_changed, _serial_ui, &serial_ui::slot_serial_status_changed, Qt::QueuedConnection);
 
     init_UI();
-
     init_top_widget();
     init_chart_widget();
     init_state_widget();
-
-    _process_2 = new process_2();
-    _process_2->setSerial(serial);
-    QObject::connect(_process_2, &process::sig_state_changed, this, [this](QString text, QString color){
-        _state_label->setText(text);
-        _state_label->setStyleSheet(QString("color:%1; font-weight:bold;").arg(color));
-    });
-
-    QObject::connect(_process_2, &process::sig_update_runtime, this, [this](double sec){
-        _runtime_second->setText(QString::number(sec, 'f', 2));
-    });
-
-    QObject::connect(_process_2, &process::sig_test_finished, this, [this](bool ok, QString reason){
-        _btn_start_test->setChecked(false);
-        if (!ok) {
-            setState(TestState::Error);
-            QMessageBox::warning(this, "测试异常", reason);
-        } else {
-            setState(TestState::Idle);
-        }
-    });
-    QObject::connect(_process_2, &process_2::sig_frame_parse_result, this, &test_02::slot_frame_parse_result, Qt::DirectConnection);
 }
 
 void test_02::slot_frame_parse_result(const QStringList &result)
@@ -201,6 +178,10 @@ void test_02::slot_test_start()
     }
 
     setState(TestState::Running);
+    _process_2 = new process_2(this);
+    _process_2->setSerial(_serialPort.data());
+    connect_test_to_process(this, _process_2);
+    if(!_process_2) return;
     _process_2->slot_start(_ui_002->tb_sycs_values,
                            get_test_type(_ui_002->leftGroup->checkedButton()->text()),
                            get_test_auto(_ui_002->rightGroup->checkedButton()->text()),
@@ -209,7 +190,9 @@ void test_02::slot_test_start()
 
 void test_02::slot_test_stop()
 {
-    _process_2->slot_stop();
+    if (_process_2) {
+        _process_2->slot_stop();
+    }
     setState(TestState::Sttopped);
 }
 

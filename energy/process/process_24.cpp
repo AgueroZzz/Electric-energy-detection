@@ -19,7 +19,7 @@ void process_24::setSerial(serial_port *serial)
     QObject::connect(_serial.data(), &serial_port::sig_serial_readyRead, this, &process_24::slot_serial_readyRead, Qt::QueuedConnection);
 }
 
-void process_24::slot_start(QMap<QString, QList<QVariant> > map, t24_test_type type, t24_test_auto auto_type, QString delay)
+void process_24::slot_start(QMap<QString, QList<QVariant> > map, test_type type, test_auto auto_type, QString delay)
 {
     if (isRunning()) return;
 

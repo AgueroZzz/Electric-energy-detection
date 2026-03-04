@@ -19,7 +19,7 @@ void process_26::setSerial(serial_port *serial)
     QObject::connect(_serial.data(), &serial_port::sig_serial_readyRead, this, &process_26::slot_serial_readyRead, Qt::QueuedConnection);
 }
 
-void process_26::slot_start(QMap<QString, QList<QVariant> > map, t26_test_type type, t26_test_auto auto_type, QString delay)
+void process_26::slot_start(QMap<QString, QList<QVariant> > map, test_type type, test_auto auto_type, QString delay)
 {
     if (isRunning()) return;
     QObject::connect(this, &process_26::sig_phase_changed, this, &process_26::slot_phase_changed, Qt::DirectConnection);

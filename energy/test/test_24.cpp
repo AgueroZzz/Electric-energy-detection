@@ -17,28 +17,6 @@ test_24::test_24(quint16 test_id, QWidget *parent)
     init_top_widget();
     init_chart_widget();
     init_state_widget();
-
-    _process_24 = new process_24();
-    _process_24->setSerial(serial);
-    QObject::connect(_process_24, &process::sig_state_changed, this, [this](QString text, QString color){
-        _state_label->setText(text);
-        _state_label->setStyleSheet(QString("color:%1; font-weight:bold;").arg(color));
-    });
-
-    QObject::connect(_process_24, &process::sig_update_runtime, this, [this](double sec){
-        _runtime_second->setText(QString::number(sec, 'f', 2));
-    });
-
-    QObject::connect(_process_24, &process::sig_test_finished, this, [this](bool ok, QString reason){
-        _btn_start_test->setChecked(false);
-        if (!ok) {
-            setState(TestState::Error);
-            QMessageBox::warning(this, "测试异常", reason);
-        } else {
-            setState(TestState::Idle);
-        }
-    });
-    QObject::connect(_process_24, &process_24::sig_frame_parse_result, this, &test_24::slot_frame_parse_result, Qt::DirectConnection);
 }
 
 void test_24::slot_frame_parse_result(const QStringList &result)
@@ -224,8 +202,11 @@ void test_24::slot_test_start()
         setState(TestState::Error);
         return;
     }
-
     setState(TestState::Running);
+    _process_24 = new process_24(this);
+    _process_24->setSerial(_serialPort.data());
+    connect_test_to_process(this, _process_24);
+    if(!_process_24) return;
     _process_24->slot_start(_ui_024->tb_cl_values,
                            get_test_type(_ui_024->leftGroup->checkedButton()->text()),
                            get_test_auto(_ui_024->rightGroup->checkedButton()->text()),
@@ -234,7 +215,9 @@ void test_24::slot_test_start()
 
 void test_24::slot_test_stop()
 {
-    _process_24->slot_stop();
+    if (_process_24) {
+        _process_24->slot_stop();
+    }
     setState(TestState::Sttopped);
 }
 

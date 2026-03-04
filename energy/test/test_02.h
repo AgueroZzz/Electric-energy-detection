@@ -32,35 +32,27 @@ public:
         }
     }
 
-    inline t2_test_auto get_test_auto(QString name){
-        if(name == "手动"){
-            return t2_test_auto::test_hand;
-        }else if(name == "自动加"){
-            return t2_test_auto::test_auto_up;
-        }else{
-            return t2_test_auto::test_auto_down;
-        }
-    }
+    inline void connect_test_to_process(test_02* test, process_2* process){
+        QObject::connect(process, &process::sig_state_changed, test, [test](QString text, QString color){
+            test->_state_label->setText(text);
+            test->_state_label->setStyleSheet(QString("color:%1; font-weight:bold;").arg(color));
+        });
 
-    inline t2_test_type get_test_type(QString name){
-        if(name == "测接点动作"){
-            return t2_test_type::action;
-        }else{
-            return t2_test_type::action_and_return;
-        }
-    }
+        QObject::connect(process, &process::sig_update_runtime, test, [test](double sec){
+            test->_runtime_second->setText(QString::asprintf("%.2f", sec));
+        });
 
-    inline quint16 get_result_index(QString name){
-        if(name == "A"){return 0;}
-        else if(name == "B"){return 1;}
-        else if(name == "C"){return 2;}
-        else if(name == "R"){return 3;}
-        else if(name == "a"){return 4;}
-        else if(name == "b"){return 5;}
-        else if(name == "c"){return 6;}
-        else{
-            return 0;
-        }
+        QObject::connect(process, &process::sig_test_finished, test, [test](bool ok, QString reason){
+            test->_btn_start_test->setChecked(false);
+            test->_btn_end_test->setChecked(true);
+            if (!ok) {
+                test->setState(TestState::Error);
+                QMessageBox::warning(test, "测试异常", reason);
+            } else {
+                test->setState(TestState::Idle);
+            }
+        });
+        QObject::connect(process, &process_2::sig_frame_parse_result, test, &test_02::slot_frame_parse_result);
     }
 
 public slots:
@@ -103,7 +95,7 @@ private:
     led* _led_b;
     led* _led_c;
 
-    process_2* _process_2 = nullptr;
+    QPointer<process_2> _process_2;
 
     serial_ui* _serial_ui;
 

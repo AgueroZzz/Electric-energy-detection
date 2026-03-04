@@ -13,34 +13,22 @@ class test_26 : public test
 public:
     test_26(quint16 test_id, QWidget *parent = nullptr);
 
-    inline t26_test_auto get_test_auto(QString name){
-        if(name == "手动"){
-            return t26_test_auto::test_hand;
-        }else if(name == "自动加"){
-            return t26_test_auto::test_auto_up;
-        }else{
-            return t26_test_auto::test_auto_down;
+    ~test_26(){
+        if (_process_26) {
+            _process_26->slot_stop();
         }
-    }
+        if (_serialPort) {
+            if (_serialPort->_serial_status == index_serial_status::serial_on) {
+                _serialPort->slot_serial_opera(index_serial_status::serial_off, {});
+            }
+            if (_serialPort->_thread.isRunning()) {
+                _serialPort->_thread.quit();
 
-    inline t26_test_type get_test_type(QString name){
-        if(name == "测接点动作"){
-            return t26_test_type::action;
-        }else{
-            return t26_test_type::action_and_return;
-        }
-    }
-
-    inline quint16 get_result_index(QString name){
-        if(name == "A"){return 0;}
-        else if(name == "B"){return 1;}
-        else if(name == "C"){return 2;}
-        else if(name == "R"){return 3;}
-        else if(name == "a"){return 4;}
-        else if(name == "b"){return 5;}
-        else if(name == "c"){return 6;}
-        else{
-            return 0;
+                if (!_serialPort->_thread.wait(3000)) {
+                    _serialPort->_thread.terminate();
+                    qWarning() << "串口线程等待超时，强制终止（可能有资源泄漏）";
+                }
+            }
         }
     }
 
