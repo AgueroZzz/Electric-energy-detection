@@ -267,6 +267,19 @@ inline QString formatDoubleString(const QString& text, int decimals = 3, bool* o
     if (ok) *ok = true;
     return QString::number(value, 'f', decimals);
 }
+
+//获取表格选中行的第一列的名称：返回QList<QString>
+inline QList<QString> getCheckRowName(const QTableWidget& table){
+    QList<QString> check_name_list;
+    for(int row = 0; row < table.rowCount(); ++row){
+        QTableWidgetItem *item = table.item(row, 0);  // 第一列 column=0
+        if (item && item->isSelected()) {
+            check_name_list.append(item->text());
+        }
+    }
+
+    return check_name_list;
+}
 }
 
 #endif // UTILS_H

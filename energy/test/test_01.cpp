@@ -205,7 +205,8 @@ void test_01::slot_test_start()
                            get_logic_type(_ui_001->logicGroup->checkedButton()->text()),
                            get_test_auto(_ui_001->leftGroup->checkedButton()->text()),
                            get_test_auto(_ui_001->rightGroup->checkedButton()->text()),
-                           _ui_001->ui->le_delay->text());
+                           _ui_001->ui->le_delay->text(),
+                           QList<QString>());
 }
 
 void test_01::slot_test_stop()

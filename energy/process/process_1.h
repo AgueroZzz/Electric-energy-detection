@@ -30,7 +30,8 @@ public:
 
 public slots:
     void slot_start(QMap<QString, QList<QVariant>> map,
-                    test_type type, logic_type logic, test_auto t_auto, test_auto t_a_t, QString delay);
+                    test_type type, logic_type logic, test_auto t_auto, test_auto t_a_t, QString delay,
+                    QList<QString> check);
     void slot_stop();
     void slot_set_test_values(QMap<QString, QList<QVariant>> map);
     void slot_serial_readyRead();
@@ -52,6 +53,7 @@ private:
     test_auto _auto;
     test_auto _auto_type;
     quint16 _delay_time;
+    QMap<QString, QPair<bool, bool>> _check_map;
     QSharedPointer<serial_port> _serial;  // 串口共享指针
 
 private:

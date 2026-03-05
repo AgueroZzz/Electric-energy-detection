@@ -19,7 +19,7 @@ void process_1::setSerial(serial_port *serial)
     QObject::connect(_serial.data(), &serial_port::sig_serial_readyRead, this, &process_1::slot_serial_readyRead, Qt::QueuedConnection);
 }
 
-void process_1::slot_start(QMap<QString, QList<QVariant> > map, test_type type, logic_type logic, test_auto t_auto, test_auto t_a_t, QString delay)
+void process_1::slot_start(QMap<QString, QList<QVariant> > map, test_type type, logic_type logic, test_auto t_auto, test_auto t_a_t, QString delay, QList<QString> check)
 {
     if (isRunning()) return;
 
@@ -29,6 +29,7 @@ void process_1::slot_start(QMap<QString, QList<QVariant> > map, test_type type, 
     _auto = t_auto;
     _auto_type = t_a_t;
     _delay_time = delay.toUInt();
+
     QObject::connect(this, &process_1::sig_phase_changed, this, &process_1::slot_phase_changed, Qt::DirectConnection);
     set_TestPhase(TestPhase::Connecting);
 }
@@ -99,6 +100,19 @@ void process_1::frame_parse(QByteArray frame)
     results << QString::number(actionTimeMs);
 
     emit sig_frame_parse_result(results);
+
+    // 判断自动还是手动,手动则通过按钮暂停直接退出
+    if(_auto == test_auto::test_hand){
+        return;
+    }
+    // 自动则通过判断开入量来操作
+    else if(_auto == test_auto::test_auto){
+
+    }
+    // 半自动？
+    else{
+
+    }
 }
 
 void process_1::test_connect_to_device()
