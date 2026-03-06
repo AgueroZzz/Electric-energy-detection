@@ -1090,11 +1090,6 @@
        <row/>
        <column>
         <property name="text">
-         <string/>
-        </property>
-       </column>
-       <column>
-        <property name="text">
          <string>参量</string>
         </property>
        </column>

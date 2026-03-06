@@ -52,7 +52,7 @@ private:
     test_auto _auto_type;
     quint16 _delay_time;
     QSharedPointer<serial_port> _serial;  // 串口共享指针
-    QMap<QString, std::function<void()>> _parse_function;       // 解析函数分发map
+    // QMap<QString, std::function<void()>> _parse_function;       // 解析函数分发map
 
 private:
     void test_connect_to_device();

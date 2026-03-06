@@ -206,7 +206,7 @@ void test_01::slot_test_start()
                            get_test_auto(_ui_001->leftGroup->checkedButton()->text()),
                            get_test_auto(_ui_001->rightGroup->checkedButton()->text()),
                            _ui_001->ui->le_delay->text(),
-                           QList<QString>());
+                           getCheckRowName(*_ui_001->ui->tb_down_2));
 }
 
 void test_01::slot_test_stop()
@@ -219,6 +219,7 @@ void test_01::slot_test_stop()
 
 void test_01::slot_frame_parse_result(const QStringList& result)
 {
+    qDebug() << result;
     QString portName = result[1];
     QString type = result[0];
     QString time = result[2];

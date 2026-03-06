@@ -42,26 +42,34 @@ signals:
 private:
     int connectRetryCount = 0;
     static constexpr int MAX_CONNECT_RETRY = 3;
+
     QTimer *timeoutTimer = nullptr;
+
     QByteArray _frame;
-    QString _test_type;
+
     // 测试参数
     QMap<QString, QList<QVariant>> _parameter;
+
     // 返回参数
     test_type _type;
     logic_type _logic;
     test_auto _auto;
     test_auto _auto_type;
     quint16 _delay_time;
-    QMap<QString, QPair<bool, bool>> _check_map;
-    QSharedPointer<serial_port> _serial;  // 串口共享指针
+
+    // 串口共享指针
+    QSharedPointer<serial_port> _serial;
+
+    // 测试返回值部分
+    QMap<QString, bool> _action_map;
+    QMap<QString, QPair<bool, bool>> _return_map;
 
 private:
     void test_connect_to_device();
     void test_send_para_to_device();
     void attemptConnect();
     void frame_parse(QByteArray frame);
-    QMap<QString, std::function<void()>> _parse_function;
+    // QMap<QString, std::function<void()>> _parse_function;
 
 private slots:
     void slot_onTimeout();

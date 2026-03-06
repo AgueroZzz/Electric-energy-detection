@@ -81,6 +81,19 @@ public:
         return cell_widget;
     }
 
+    //工具函数：获取表格选中行的第一列的名称：返回QList<QString>
+    inline QList<QString> getCheckRowName(const QTableWidget& table){
+        QList<QString> check_name_list;
+        for(int row = 0; row < table.rowCount(); ++row){
+            QTableWidgetItem *item = table.item(row, 0);  // 第一列 column=0
+            if (item && item->checkState() == Qt::CheckState::Checked) {
+                check_name_list.append(item->text());
+            }
+        }
+
+        return check_name_list;
+    }
+
     // 工具函数：获取实验的类型
     inline test_auto get_test_auto(QString name){
         if(name == "手动"){

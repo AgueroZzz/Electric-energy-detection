@@ -21,6 +21,7 @@ struct VoltagePhasor
 static constexpr double DEG2RAD = M_PI / 180.0;
 static constexpr double RAD2DEG = 180.0 / M_PI;
 
+// 表格工具类函数
 namespace GlobalUtils {
 // 工具函数：获取表格中的所有列的数据：数据格式(QMap<QString, QStringList>)
 inline void get_table_values(const QTableWidget& table, QMap<QString, QList<QVariant>>& map, const int& key_index){
@@ -267,18 +268,28 @@ inline QString formatDoubleString(const QString& text, int decimals = 3, bool* o
     if (ok) *ok = true;
     return QString::number(value, 'f', decimals);
 }
+}
 
-//获取表格选中行的第一列的名称：返回QList<QString>
-inline QList<QString> getCheckRowName(const QTableWidget& table){
-    QList<QString> check_name_list;
-    for(int row = 0; row < table.rowCount(); ++row){
-        QTableWidgetItem *item = table.item(row, 0);  // 第一列 column=0
-        if (item && item->isSelected()) {
-            check_name_list.append(item->text());
-        }
+namespace TestUtils{
+// 初始化动作列表
+inline QMap<QString, bool> initActionMap(QList<QString> name){
+    QMap<QString, bool> map;
+    for(int i = 0; i < name.length(); ++i){
+        map.insert(name[i], false);
     }
+    return map;
+}
 
-    return check_name_list;
+// 初始化动作返回列表
+inline QMap<QString, QPair<bool, bool>> initReturnMap(QList<QString> name){
+    QMap<QString, QPair<bool, bool>> map;
+    for(int i = 0; i < name.length(); ++i){
+        QPair<bool, bool> pair;
+        pair.first = false;
+        pair.second = false;
+        map.insert(name[i], pair);
+    }
+    return map;
 }
 }
 

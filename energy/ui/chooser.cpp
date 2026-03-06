@@ -31,9 +31,9 @@ chooser::chooser(QWidget *parent)
         {"整组试验Ⅱ",       ":/choose_bg/pic/SHOT_0.BMP"},
         {"保护定值校验",       ":/choose_bg/pic/TZK_0.BMP"},
         {"快切",    ":/choose_bg/pic/KQ_0.bmp"},
-        {"交流试验6I",            ":/choose_bg/pic/STEP6I_0.BMP"},
-        {"交流试验6U",      ":/choose_bg/pic/STEP6U_0.bmp"},
-        {"交流试验6UI",      ":/choose_bg/pic/STEP6U_0.bmp"},
+        {"6I交流试验",            ":/choose_bg/pic/STEP6I_0.BMP"},
+        {"6U交流试验",      ":/choose_bg/pic/STEP6U_0.bmp"},
+        {"12UI交流试验",      ":/choose_bg/pic/STEP6U_0.bmp"},
         {"交流试验3-按序分量输出",     ":/choose_bg/pic/transplay_0.bmp"}
     };
 

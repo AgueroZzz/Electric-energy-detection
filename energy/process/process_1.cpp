@@ -22,13 +22,18 @@ void process_1::setSerial(serial_port *serial)
 void process_1::slot_start(QMap<QString, QList<QVariant> > map, test_type type, logic_type logic, test_auto t_auto, test_auto t_a_t, QString delay, QList<QString> check)
 {
     if (isRunning()) return;
-
     _parameter = map;
     _type = type;
+    if(type == test_type::t_action){
+        _action_map = TestUtils::initActionMap(check);
+    }else{
+        _return_map = TestUtils::initReturnMap(check);
+    }
     _logic = logic;
     _auto = t_auto;
     _auto_type = t_a_t;
     _delay_time = delay.toUInt();
+
 
     QObject::connect(this, &process_1::sig_phase_changed, this, &process_1::slot_phase_changed, Qt::DirectConnection);
     set_TestPhase(TestPhase::Connecting);
@@ -99,17 +104,27 @@ void process_1::frame_parse(QByteArray frame)
     quint32 actionTimeMs = parseActionTime(frame);
     results << QString::number(actionTimeMs);
 
+    // 如果当前是动作，但是是返回数据则不发送信号
+    if(_type == test_type::t_action && results[0] == "return")
+        qDebug() << "11111";
+        return;
+
+    // 如果当前的端口不在确认列表里也不发送信号
+    if(!_action_map.keys().contains(port) || !_return_map.keys().contains(port))
+        qDebug() << "22222";
+        return;
+
     emit sig_frame_parse_result(results);
 
-    // 判断自动还是手动,手动则通过按钮暂停直接退出
+    // 判断自动还是手动,手动则通过按钮暂停直接退出,先判断是不是需要的端口再决定发送信号
     if(_auto == test_auto::test_hand){
         return;
     }
-    // 自动则通过判断开入量来操作
+    // 自动则通过判断开入量来操作,先判断是不是需要的端口再决定发送信号
     else if(_auto == test_auto::test_auto){
 
     }
-    // 半自动？
+    // 半自动:每次解析后弹出对话框来判断下一步操作
     else{
 
     }

@@ -7,6 +7,7 @@
 #include <QThread>
 #include <QtEndian>
 #include "serial/serial_port.h"
+#include "global/utils.h"
 
 // 测试过程父类
 enum class TestPhase {
