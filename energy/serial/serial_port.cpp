@@ -58,25 +58,40 @@ void serial_port::slot_thread_stop()
 
 void serial_port::slot_send_msg_to_serial(const QByteArray& msg)
 {
-    if(!_port || !_port->isOpen()){
-        qDebug() << "串口未开启";
+    if(!_port){
+        qWarning() << "串口对象为空";
         return;
     }
-
+    if(!_port->isOpen()){
+        qWarning() << "串口未开启";
+        return;
+    }
     if(msg.isEmpty()){
-        qDebug() << "发送数据为空";
+        qWarning() << "发送数据为空";
         return;
     }
 
-    quint64 bytesWritten = _port->write(msg);
+    qint64 totalWritten = 0;
 
-    if (bytesWritten == -1) {
-        qWarning() << "发送失败:" << _port->errorString();
-    } else if (bytesWritten < msg.size()) {
-        qWarning() << "发送不完整，只写了" << bytesWritten << "字节，共" << msg.size();
-    } else {
-        qDebug() << "已发送:" << msg.size() << "字节 →" << msg.toHex(' ').toUpper();
+    while(totalWritten < msg.size())
+    {
+        qint64 written = _port->write(msg.constData() + totalWritten,
+                                      msg.size() - totalWritten);
+        if(written == -1)
+        {
+            qWarning() << "发送失败:" << _port->errorString();
+            return;
+        }
+        totalWritten += written;
+        // 等待数据真正写入
+        if(!_port->waitForBytesWritten(1000))
+        {
+            qWarning() << "等待串口写入超时:" << _port->errorString();
+            return;
+        }
     }
+    qDebug() << "已发送:" << totalWritten
+             << "字节 →" << msg.toHex(' ').toUpper();
 }
 
 void serial_port::slot_readReady()

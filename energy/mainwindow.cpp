@@ -101,6 +101,7 @@ void MainWindow::resetCurrentTest()
 {
     if (currentTest_) {
         currentTest_->close();
+
         currentTest_.reset();
         setCentralWidget(nullptr);
         currentTestId_ = std::numeric_limits<quint16>::max();
@@ -110,7 +111,6 @@ void MainWindow::resetCurrentTest()
 void MainWindow::onTestChosen(quint16 testId)
 {
     if (testId == currentTestId_) return;
-
     resetCurrentTest();
     switchTest(testId);
 }

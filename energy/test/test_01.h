@@ -15,7 +15,9 @@ public:
 
     ~test_01(){
         if (_process_1) {
-            _process_1->slot_stop();
+            _process_1->disconnect();       // 断开process发出的所有信号
+            disconnect(_process_1);         // 断开连接到process的所有槽
+            _process_1->slot_stop();        // 再停止
         }
         if (_serialPort) {
             if (_serialPort->_serial_status == index_serial_status::serial_on) {

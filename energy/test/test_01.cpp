@@ -212,6 +212,7 @@ void test_01::slot_test_start()
 void test_01::slot_test_stop()
 {
     if (_process_1) {
+        _process_1->disconnect();
         _process_1->slot_stop();
     }
     setState(TestState::Sttopped);

@@ -105,7 +105,7 @@ public:
         }else if(name == "自动加" || name == "递增"){
             return test_auto::test_a_up;
         }else{
-             return test_auto::test_a_down;
+            return test_auto::test_a_down;
         }
     }
 

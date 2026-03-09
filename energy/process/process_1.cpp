@@ -106,12 +106,10 @@ void process_1::frame_parse(QByteArray frame)
 
     // 如果当前是动作，但是是返回数据则不发送信号
     if(_type == test_type::t_action && results[0] == "return")
-        qDebug() << "11111";
         return;
 
     // 如果当前的端口不在确认列表里也不发送信号
     if(!_action_map.keys().contains(port) || !_return_map.keys().contains(port))
-        qDebug() << "22222";
         return;
 
     emit sig_frame_parse_result(results);
