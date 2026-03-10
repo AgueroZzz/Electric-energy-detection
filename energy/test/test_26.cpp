@@ -88,7 +88,6 @@ void test_26::init_top_widget()
     _btn_start_test   = createToolButton(":/icon/icon/start.svg",   "开始实验");
     _btn_start_test->setCheckable(true);
     QObject::connect(this, &test_26::sig_test_start, this, &test_26::slot_test_start, Qt::DirectConnection);
-    QObject::connect(this, &test_26::sig_test_stop, this, &test_26::slot_test_stop, Qt::DirectConnection);
     QObject::connect(_btn_start_test, &QPushButton::clicked, this, [=](){
         emit sig_test_start();
     });
@@ -206,6 +205,7 @@ void test_26::slot_test_start()
 
     setState(TestState::Running);
     _process_26 = new process_26(this);
+    QObject::connect(this, &test_26::sig_test_stop, _process_26, &process_26::slot_stop);
     _process_26->setSerial(_serialPort.data());
     connect_test_to_process(this, _process_26);
     if(!_process_26) return;
@@ -217,10 +217,6 @@ void test_26::slot_test_start()
 
 void test_26::slot_test_stop()
 {
-    if (_process_26) {
-        _process_26->slot_stop();
-    }
-    setState(TestState::Sttopped);
 }
 
 REGISTER_TEST(test_26, 25);
