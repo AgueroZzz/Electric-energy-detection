@@ -15,7 +15,8 @@ public:
 
     ~test_02(){
         if (_process_2) {
-            _process_2->slot_stop();
+            _process_2->deleteLater();
+            _process_2 = nullptr;
         }
         if (_serialPort) {
             if (_serialPort->_serial_status == index_serial_status::serial_on) {

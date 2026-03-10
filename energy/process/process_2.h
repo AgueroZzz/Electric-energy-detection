@@ -41,15 +41,16 @@ private:
     static constexpr int MAX_CONNECT_RETRY = 3;
     QTimer *timeoutTimer = nullptr;
     QByteArray _frame;
-    QString _test_type;
     // 测试参数
     QMap<QString, QList<QVariant>> _parameter;
     // 返回参数
     test_type _type;
+    // 自动类型
     test_auto _auto_type;
+    // 串口延时时间
     quint16 _delay_time;
-    QSharedPointer<serial_port> _serial;  // 串口共享指针
-    // QMap<QString, std::function<void()>> _parse_function;       // 解析函数分发map
+    // 串口指针
+    serial_port* _serial = nullptr;
 
 private:
     void test_connect_to_device();

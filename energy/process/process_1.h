@@ -49,16 +49,18 @@ private:
 
     // 测试参数
     QMap<QString, QList<QVariant>> _parameter;
-
     // 返回参数
     test_type _type;
+    // 逻辑类型
     logic_type _logic;
+    // 自动类型
     test_auto _auto;
+    // 自动加减
     test_auto _auto_type;
+    // 串口延时时间
     quint16 _delay_time;
-
-    // 串口共享指针
-    QSharedPointer<serial_port> _serial;
+    // 串口指针
+    serial_port* _serial = nullptr;
 
     // 测试返回值部分
     QMap<QString, bool> _action_map;

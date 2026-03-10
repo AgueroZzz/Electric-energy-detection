@@ -14,9 +14,13 @@ process_1::process_1(QObject *parent)
 
 void process_1::setSerial(serial_port *serial)
 {
-    _serial.reset(serial);  // 使用 reset 设置共享指针
-    QObject::connect(this, &process_1::sig_send_msg_to_serial, _serial.data(), &serial_port::slot_send_msg_to_serial, Qt::QueuedConnection);
-    QObject::connect(_serial.data(), &serial_port::sig_serial_readyRead, this, &process_1::slot_serial_readyRead, Qt::QueuedConnection);
+    _serial = serial;
+    QObject::connect(this, &process_1::sig_send_msg_to_serial,
+                     _serial, &serial_port::slot_send_msg_to_serial,
+                     Qt::QueuedConnection);
+    QObject::connect(_serial, &serial_port::sig_serial_readyRead,
+                     this, &process_1::slot_serial_readyRead,
+                     Qt::QueuedConnection);
 }
 
 void process_1::slot_start(QMap<QString, QList<QVariant> > map, test_type type, logic_type logic, test_auto t_auto, test_auto t_a_t, QString delay, QList<QString> check)

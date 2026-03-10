@@ -94,6 +94,7 @@ void test_25::init_top_widget()
     });
     _btn_end_test     = createToolButton(":/icon/icon/stop.svg",    "停止实验");
     QObject::connect(_btn_end_test, &QPushButton::clicked, this, [=](){
+        setState(TestState::Sttopped);
         emit sig_test_stop();
     });
     _btn_end_test->setCheckable(true);

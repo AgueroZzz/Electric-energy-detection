@@ -69,12 +69,12 @@ void test_01::init_top_widget()
     _btn_start_test   = createToolButton(":/icon/icon/start.svg",   "开始实验");
     _btn_start_test->setCheckable(true);
     QObject::connect(this, &test_01::sig_test_start, this, &test_01::slot_test_start, Qt::DirectConnection);
-    QObject::connect(this, &test_01::sig_test_stop, this, &test_01::slot_test_stop, Qt::DirectConnection);
     QObject::connect(_btn_start_test, &QPushButton::clicked, this, [=](){
         emit sig_test_start();
     });
     _btn_end_test     = createToolButton(":/icon/icon/stop.svg",    "停止实验");
     QObject::connect(_btn_end_test, &QPushButton::clicked, this, [=](){
+        setState(TestState::Sttopped);
         emit sig_test_stop();
     });
     _btn_end_test->setCheckable(true);
@@ -197,6 +197,7 @@ void test_01::slot_test_start()
 
     setState(TestState::Running);
     _process_1 = new process_1(this);
+    QObject::connect(this, &test_01::sig_test_stop, _process_1, &process_1::slot_stop);
     _process_1->setSerial(_serialPort.data());
     connect_test_to_process(this, _process_1);
     if(!_process_1) return;
@@ -211,11 +212,7 @@ void test_01::slot_test_start()
 
 void test_01::slot_test_stop()
 {
-    if (_process_1) {
-        _process_1->disconnect();
-        _process_1->slot_stop();
-    }
-    setState(TestState::Sttopped);
+
 }
 
 void test_01::slot_frame_parse_result(const QStringList& result)
