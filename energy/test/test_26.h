@@ -15,7 +15,8 @@ public:
 
     ~test_26(){
         if (_process_26) {
-            _process_26->slot_stop();
+            _process_26->deleteLater();
+            _process_26 = nullptr;
         }
         if (_serialPort) {
             if (_serialPort->_serial_status == index_serial_status::serial_on) {
