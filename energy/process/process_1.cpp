@@ -113,7 +113,7 @@ void process_1::frame_parse(QByteArray frame)
         return;
 
     // 如果当前的端口不在确认列表里也不发送信号
-    if(!_action_map.keys().contains(port) || !_return_map.keys().contains(port))
+    if(!_action_map.contains(port) || !_return_map.contains(port))
         return;
 
     emit sig_frame_parse_result(results);
@@ -124,7 +124,39 @@ void process_1::frame_parse(QByteArray frame)
     }
     // 自动则通过判断开入量来操作,先判断是不是需要的端口再决定发送信号
     else if(_auto == test_auto::test_auto){
+        // 根据当前测试类型，更新对应 map 中该端口的状态
+        if(_type == test_type::t_action){
+            // 动作测试：将该端口标记为已触发
+            if(_action_map.contains(port)){
+                _action_map[port] = true;
+            }
 
+            // 检查 _action_map 中所有 key 是否都为 true
+            bool allDone = std::all_of(_action_map.begin(), _action_map.end(),
+                                       [](bool val){ return val; });
+            if(allDone){
+                set_TestPhase(TestPhase::Finishing);
+                emit sig_test_finished(true, "所有动作已完成");
+            }
+
+        } else if(_type == test_type::t_return){
+            // 返回测试：根据帧类型（action/return）更新 pair
+            if(_return_map.contains(port)){
+                if(results[0] == "action"){
+                    _return_map[port].first = true;     // 动作已触发
+                } else if(results[0] == "return"){
+                    _return_map[port].second = true;    // 返回已触发
+                }
+            }
+
+            // 检查 _return_map 中所有 key 的 pair 两个是否都为 true
+            bool allDone = std::all_of(_return_map.begin(), _return_map.end(),
+                                       [](const QPair<bool,bool>& p){ return p.first && p.second; });
+            if(allDone){
+                set_TestPhase(TestPhase::Finishing);
+                emit sig_test_finished(true, "所有动作与返回已完成");
+            }
+        }
     }
     // 半自动:每次解析后弹出对话框来判断下一步操作
     else{
