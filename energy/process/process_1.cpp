@@ -33,6 +33,7 @@ void process_1::slot_start(QMap<QString, QList<QVariant> > map, test_type type, 
     }else{
         _return_map = TestUtils::initReturnMap(check);
     }
+    qDebug() << _parameter;
     _logic = logic;
     _auto = t_auto;
     _auto_type = t_a_t;
@@ -113,7 +114,7 @@ void process_1::frame_parse(QByteArray frame)
         return;
 
     // 如果当前的端口不在确认列表里也不发送信号
-    if(!_action_map.contains(port) || !_return_map.contains(port))
+    if(!_action_map.contains(port) && !_return_map.contains(port))
         return;
 
     emit sig_frame_parse_result(results);
@@ -124,6 +125,7 @@ void process_1::frame_parse(QByteArray frame)
     }
     // 自动则通过判断开入量来操作,先判断是不是需要的端口再决定发送信号
     else if(_auto == test_auto::test_auto){
+        qDebug() << "当前是自动测试";
         // 根据当前测试类型，更新对应 map 中该端口的状态
         if(_type == test_type::t_action){
             // 动作测试：将该端口标记为已触发
@@ -224,6 +226,9 @@ void process_1::slot_phase_changed(TestPhase phase)
     }else if(phase == TestPhase::Running){
         test_send_para_to_device();
     }else if(phase == TestPhase::Finishing){
+        emit sig_state_changed("已停止", "#7f8c8d");
+        timeoutTimer->stop();
+        runtimeTimer->stop();
     }else if(phase == TestPhase::Error){
         return;
     }

@@ -41,8 +41,6 @@ private:
     void calc_uo_value();
     void calc_io_value();
 
-
-
     QMap<QString, QList<QVariant>> tb_cl_values;        // UI界面的参量表格数据
 
     QButtonGroup *leftGroup;   // 手动 / 全自动 / 半自动

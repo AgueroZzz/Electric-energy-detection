@@ -115,6 +115,8 @@ private:
 
     QSharedPointer<serial_port> _serialPort;        // 串口智能指针类
 
+    QString _test_time;             // 测试运行时间
+
 private slots:
     void slot_test_start();
     void slot_test_stop();

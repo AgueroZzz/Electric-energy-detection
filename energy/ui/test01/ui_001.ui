@@ -46,6 +46,9 @@
          <property name="rowCount">
           <number>8</number>
          </property>
+         <property name="columnCount">
+          <number>8</number>
+         </property>
          <attribute name="verticalHeaderVisible">
           <bool>false</bool>
          </attribute>

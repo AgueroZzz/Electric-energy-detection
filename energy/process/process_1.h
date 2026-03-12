@@ -61,10 +61,12 @@ private:
     quint16 _delay_time;
     // 串口指针
     serial_port* _serial = nullptr;
-
     // 测试返回值部分
     QMap<QString, bool> _action_map;
     QMap<QString, QPair<bool, bool>> _return_map;
+    // 需要变化的部分:有效值\相位
+    QMap<QString, QStringList> _value_change_map;
+    QMap<QString, QStringList> _phase_change_map;
 
 private:
     void test_connect_to_device();

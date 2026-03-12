@@ -291,6 +291,41 @@ inline QMap<QString, QPair<bool, bool>> initReturnMap(QList<QString> name){
     }
     return map;
 }
+
+// 初始化测试变化值map
+inline void initChangeMap(QMap<QString, QList<QVariant>> change, QMap<QString, QStringList>& _value_map, QMap<QString, QStringList>& _phase_map){
+    for (auto it = change.begin(); it != change.end(); ++it)
+    {
+        const QString& channel = it.key();
+        const QList<QVariant>& list = it.value();
+
+        if(list.size() < 6)
+            continue;
+
+        // -------- 幅值变化 --------
+        bool valueChange = list[1].toBool();
+
+        if(valueChange)
+        {
+            QString value = list[0].toString();
+            QString step  = list[2].toString();
+            QString max   = list[3].toString();
+
+            _value_map.insert(channel, QStringList{value, step, max});
+        }
+
+        // -------- 相位变化 --------
+        bool phaseChange = list[5].toBool();
+
+        if(phaseChange)
+        {
+            QString phaseValue = list[4].toString();
+            QString phaseStep  = list[6].toString();
+
+            _phase_map.insert(channel, QStringList{phaseValue, phaseStep});
+        }
+    }
+}
 }
 
 #endif // UTILS_H

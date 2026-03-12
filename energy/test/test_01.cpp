@@ -70,11 +70,22 @@ void test_01::init_top_widget()
     _btn_start_test->setCheckable(true);
     QObject::connect(this, &test_01::sig_test_start, this, &test_01::slot_test_start, Qt::DirectConnection);
     QObject::connect(_btn_start_test, &QPushButton::clicked, this, [=](){
+        // 清空单元格内容
+        for(int row = 0; row < _ui_001->ui->tb_down_2->rowCount(); row++){
+            for(int col = 1; col < _ui_001->ui->tb_down_2->columnCount(); col++){
+                QTableWidgetItem *item = _ui_001->ui->tb_down_2->item(row, col);
+                if(item){
+                    item->setText("");
+                }
+            }
+        }
         emit sig_test_start();
     });
     _btn_end_test     = createToolButton(":/icon/icon/stop.svg",    "停止实验");
     QObject::connect(_btn_end_test, &QPushButton::clicked, this, [=](){
         setState(TestState::Sttopped);
+        _test_time = _runtime_second->text();
+        qDebug() << _test_time;
         emit sig_test_stop();
     });
     _btn_end_test->setCheckable(true);
