@@ -207,6 +207,11 @@ void test_01::slot_test_start()
     }
 
     setState(TestState::Running);
+    if (_process_1) {
+        _process_1->slot_stop();
+        _process_1->deleteLater();
+        _process_1 = nullptr;
+    }
     _process_1 = new process_1(this);
     QObject::connect(this, &test_01::sig_test_stop, _process_1, &process_1::slot_stop);
     _process_1->setSerial(_serialPort.data());

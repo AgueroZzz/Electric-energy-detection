@@ -14,6 +14,7 @@ enum class TestPhase {
     Idle,               // 空闲
     Connecting,         // 连接
     ParamSetting,       // 参数设置
+    Pause,              // 暂停
     Running,            // 运行
     Finishing,          // 完成
     Error               // 错误

@@ -10,6 +10,10 @@ process_1::process_1(QObject *parent)
     runtimeTimer = new QTimer();
     runtimeTimer->setInterval(100);
     connect(runtimeTimer, &QTimer::timeout, this, &process_1::slot_updateRuntime);
+
+    sendTimer = new QTimer();
+    sendTimer->setInterval(1000);       // 一秒发送一次数据
+    connect(sendTimer, &QTimer::timeout, this, &process_1::slot_sendTimer_out);
 }
 
 void process_1::setSerial(serial_port *serial)
@@ -23,6 +27,87 @@ void process_1::setSerial(serial_port *serial)
                      Qt::QueuedConnection);
 }
 
+void process_1::initChangeMap()
+{
+    _value_change_map.clear();
+    _phase_change_map.clear();
+
+    for (auto it = _parameter.cbegin(); it != _parameter.cend(); ++it)
+    {
+        const QString& channel = it.key();
+        const QList<QVariant>& data = it.value();
+
+        if (data.size() < 6)
+            continue;
+
+        // -------- 幅值变化 --------
+        if (data[map_change_1].toBool())
+        {
+            QStringList list;
+            list.reserve(3);
+            list << data[map_value].toString()
+                 << data[map_change_value_1].toString()
+                 << data[map_max].toString();
+            _value_change_map.insert(channel, list);
+        }
+
+        // -------- 相位变化 --------
+        if (data[map_change_2].toBool())
+        {
+            QStringList list;
+            list.reserve(2);
+            list << data[map_phase].toString()
+                 << data[map_change_value_2].toString();
+            _phase_change_map.insert(channel, list);
+        }
+    }
+
+    qDebug() << _phase_change_map;
+}
+
+void process_1::auto_change_value_map()
+{
+    if(_value_change_map.isEmpty())
+        return;
+
+    for(auto it = _value_change_map.begin(); it != _value_change_map.end(); ++it){
+        QString channel = it.key();
+        QStringList& list = it.value();
+
+        if (list.size() < 3)
+            continue;
+
+        double current = list[0].toDouble();
+        double step    = list[1].toDouble();
+        double limit   = list[2].toDouble();
+
+        if (step <= 0.0)
+            continue;
+
+        double newValue = current;
+
+        if (_auto_type == test_auto::test_a_up)          // 自动递增
+        {
+            newValue = current + step;
+            if (newValue > limit)
+                newValue = limit;                        // 不超过上限
+        }
+        else if (_auto_type == test_auto::test_a_down)   // 自动递减
+        {
+            newValue = current - step;
+            if (newValue < limit)
+                newValue = limit;
+        }
+
+        list[0] = QString::number(newValue, 'f', 3);
+    }
+}
+
+void process_1::auto_change_phase_map()
+{
+
+}
+
 void process_1::slot_start(QMap<QString, QList<QVariant> > map, test_type type, logic_type logic, test_auto t_auto, test_auto t_a_t, QString delay, QList<QString> check)
 {
     if (isRunning()) return;
@@ -33,13 +118,12 @@ void process_1::slot_start(QMap<QString, QList<QVariant> > map, test_type type, 
     }else{
         _return_map = TestUtils::initReturnMap(check);
     }
-    qDebug() << _parameter;
+    // 初始化变化参数
+    initChangeMap();
     _logic = logic;
     _auto = t_auto;
     _auto_type = t_a_t;
     _delay_time = delay.toUInt();
-
-
     QObject::connect(this, &process_1::sig_phase_changed, this, &process_1::slot_phase_changed, Qt::DirectConnection);
     set_TestPhase(TestPhase::Connecting);
 }
@@ -48,6 +132,7 @@ void process_1::slot_stop()
 {
     timeoutTimer->stop();
     runtimeTimer->stop();
+    sendTimer->stop();
     QByteArray frame;
     frame.append(QByteArray::fromHex("0100"));      // 结束
     emit sig_send_msg_to_serial(frame);
@@ -198,8 +283,6 @@ void process_1::test_send_para_to_device()
     frame.append(intToLittleEndianHex(int(_parameter["IC"][index_map::map_value].toFloat() * 1066)));        // IC幅值
     frame.append(intToLittleEndianHex(int(_parameter["IC"][index_map::map_phase].toFloat())));              // IC相位
     frame.append(intToThreeBytesLittleEndian(int(_parameter["Hz"][index_map::map_value].toFloat() * 100)));              // 频率
-
-    emit sig_state_changed("测试中", "#e67e22");
     emit sig_send_msg_to_serial(frame);
 }
 
@@ -217,6 +300,16 @@ void process_1::slot_onTimeout()
     attemptConnect();
 }
 
+void process_1::slot_sendTimer_out()
+{
+    sendTimer->stop();
+    // 先处理数据，再发送数据
+    auto_change_value_map();
+    auto_change_phase_map();
+    test_send_para_to_device();
+    sendTimer->start();
+}
+
 void process_1::slot_phase_changed(TestPhase phase)
 {
     if(phase == TestPhase::Idle){
@@ -224,11 +317,13 @@ void process_1::slot_phase_changed(TestPhase phase)
     }else if(phase == TestPhase::Connecting){
         test_connect_to_device();
     }else if(phase == TestPhase::Running){
-        test_send_para_to_device();
+        emit sig_state_changed("测试中", "#e67e22");
+        sendTimer->start();
     }else if(phase == TestPhase::Finishing){
         emit sig_state_changed("已停止", "#7f8c8d");
         timeoutTimer->stop();
         runtimeTimer->stop();
+        sendTimer->stop();
     }else if(phase == TestPhase::Error){
         return;
     }

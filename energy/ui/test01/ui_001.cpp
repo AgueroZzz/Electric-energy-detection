@@ -210,6 +210,7 @@ void ui_001::setupVarStep(int row, int colVar, int colStep)
     updateVarStepState(row, colVar, colStep);
 
     connect(cb, &QCheckBox::stateChanged, this, [=](int){
+        GlobalUtils::get_table_values(*ui->tb_cl, tb_cl_values, 0);
         updateVarStepState(row, colVar, colStep);
     });
 }

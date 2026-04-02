@@ -26,7 +26,7 @@ public:
         f_return = 0x20
     };
 
-    void setSerial(serial_port* serial);  // 设置串口指针的 setter 方法
+    void setSerial(serial_port* serial);  // 设置串口指针的 setter 方法 
 
 public slots:
     void slot_start(QMap<QString, QList<QVariant>> map,
@@ -43,7 +43,8 @@ private:
     int connectRetryCount = 0;
     static constexpr int MAX_CONNECT_RETRY = 3;
 
-    QTimer *timeoutTimer = nullptr;
+    QTimer* timeoutTimer = nullptr;         // 响应超时timer
+    QTimer* sendTimer = nullptr;            // 发送数据timer
 
     QByteArray _frame;
 
@@ -72,11 +73,14 @@ private:
     void test_connect_to_device();
     void test_send_para_to_device();
     void attemptConnect();
-    void frame_parse(QByteArray frame);
-    // QMap<QString, std::function<void()>> _parse_function;
+    void frame_parse(QByteArray frame); // 帧解析
+    void initChangeMap();               // 初始化变化参数列表
+    void auto_change_value_map();               // 自动变换有效值map
+    void auto_change_phase_map();               // 自动变化相位map
 
 private slots:
     void slot_onTimeout();
+    void slot_sendTimer_out();
 
     // process interface
 public slots:

@@ -321,6 +321,7 @@ inline void initChangeMap(QMap<QString, QList<QVariant>> change, QMap<QString, Q
         {
             QString phaseValue = list[4].toString();
             QString phaseStep  = list[6].toString();
+            QString phaseMax   = (list.size() > 7) ? list[7].toString() : "";
 
             _phase_map.insert(channel, QStringList{phaseValue, phaseStep});
         }
