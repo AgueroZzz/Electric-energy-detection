@@ -11,6 +11,8 @@
 #include <complex.h>
 #include <math.h>
 #include <QPair>
+#include <QToolButton>
+#include <QFile>
 
 struct VoltagePhasor
 {
@@ -329,4 +331,17 @@ inline void initChangeMap(QMap<QString, QList<QVariant>> change, QMap<QString, Q
 }
 }
 
+namespace BtnUtils {
+// 工具函数：创建一个带图标和文字的按钮
+inline void createToolButton(QToolButton* btn, const QString &iconPath, const QString &text) {
+    btn->setIcon(QIcon(iconPath));
+    btn->setText(text);
+    btn->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+    btn->setIconSize(QSize(24, 24));
+    btn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding); // 自动拉伸
+    btn->setMinimumHeight(55);
+    btn->setMaximumHeight(55);
+}
+
+}
 #endif // UTILS_H

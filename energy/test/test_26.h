@@ -2,7 +2,7 @@
 #define TEST_26_H
 
 #include "test.h"
-#include "ui/test26/ui_026.h"
+#include "ui/ui_026.h"
 #include "process/process_26.h"
 #include "charts/ac_i_u_twelve_chart.h"
 

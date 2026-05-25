@@ -2,7 +2,7 @@
 #define TEST__3_H
 
 #include "test.h"
-#include "ui/test03/ui_003.h"
+#include "ui/ui_003.h"
 #include "charts/ac_chart.h"
 #include "charts/dc_chart.h"
 #include "process/process_3.h"

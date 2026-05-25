@@ -2,7 +2,7 @@
 #define TEST_21_H
 
 #include "test.h"
-#include "ui/test21/ui_021.h"
+#include "ui/ui_021.h"
 
 class test_21 : public test
 {

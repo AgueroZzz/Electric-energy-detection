@@ -2,7 +2,7 @@
 #define TEST__2_H
 
 #include "test.h"
-#include "ui/test02/ui_002.h"
+#include "ui/ui_002.h"
 #include "process/process_2.h"
 #include "charts/dc_chart.h"
 
