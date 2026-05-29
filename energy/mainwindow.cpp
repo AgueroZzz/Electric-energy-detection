@@ -28,15 +28,6 @@ MainWindow::MainWindow(QWidget *parent)
     chooser_->setWindowFlags(chooser_->windowFlags() | Qt::WindowStaysOnTopHint);
     chooser_->show();
 
-    QFile qss_file(":/qdarkstyle/light/lightstyle.qss");
-    if(qss_file.open(QFile::ReadOnly)){
-        QString style = QLatin1String(qss_file.readAll());
-        setStyleSheet(style);
-        qss_file.close();
-    }
-
-    setContentsMargins(0, 0, 0, 0);
-
     showMaximized();
 }
 
@@ -45,6 +36,13 @@ MainWindow::~MainWindow() = default;
 void MainWindow::initUi()
 {
     createMenus();
+    setContentsMargins(0, 0, 0, 0);
+    QFile qss_file(":/qdarkstyle/light/lightstyle.qss");
+    if(qss_file.open(QFile::ReadOnly)){
+        QString style = QLatin1String(qss_file.readAll());
+        setStyleSheet(style);
+        qss_file.close();
+    }
 }
 
 void MainWindow::createMenus()
